@@ -27,6 +27,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     TablesComponent,
     IconsComponent,
     MapsComponent
+  ],
+  exports: [
+    DashboardComponent,
+    UserProfileComponent,
+    TablesComponent,
+    IconsComponent,
+    MapsComponent
   ]
 })
 
