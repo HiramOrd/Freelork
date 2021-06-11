@@ -8,12 +8,13 @@ import { RegisterComponent } from '../../pages/register/register.component';
 import {HomeComponent} from '../../pages/home/home.component';
 import {RouterModule} from '@angular/router';
 @NgModule({
-    imports: [
-        CommonModule,
-        FormsModule,
-        NgbModule,
-        RouterModule
-    ],
+  imports: [
+    CommonModule,
+    FormsModule,
+    NgbModule,
+    RouterModule,
+    ReactiveFormsModule
+  ],
   declarations: [
     LoginComponent,
     RegisterComponent,
