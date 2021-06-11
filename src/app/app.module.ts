@@ -14,7 +14,7 @@ import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { AuthLayoutModule } from './layouts/auth-layout/auth-layout.module';
 import { AdminLayoutModule } from './layouts/admin-layout/admin-layout.module';
-
+import { ModuleRegisterModule } from './pages/register/module-register/module-register.module';
 
 @NgModule({
   imports: [
@@ -26,7 +26,8 @@ import { AdminLayoutModule } from './layouts/admin-layout/admin-layout.module';
     RouterModule,
     AppRoutingModule,
     AuthLayoutModule,
-    AdminLayoutModule
+    AdminLayoutModule,
+    ModuleRegisterModule
   ],
   declarations: [
     AppComponent,

@@ -7,6 +7,7 @@ import { LoginComponent } from '../../pages/login/login.component';
 import { RegisterComponent } from '../../pages/register/register.component';
 import {HomeComponent} from '../../pages/home/home.component';
 import {RouterModule} from '@angular/router';
+import { ModuleRegisterModule } from 'src/app/pages/register/module-register/module-register.module';
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +16,13 @@ import {RouterModule} from '@angular/router';
     RouterModule,
     ReactiveFormsModule
   ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        NgbModule,
+        RouterModule,
+        ModuleRegisterModule
+    ],
   declarations: [
     LoginComponent,
     RegisterComponent,
