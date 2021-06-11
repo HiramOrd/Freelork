@@ -28,13 +28,13 @@
 
           <div class="btn-group btn-group-toggle w-100 mb-4" ngbRadioGroup name="radioBasic" [(ngModel)]="model">
             <label ngbButtonLabel class="btn-outline-primary border-right-0">
-              <input ngbButton type="radio" [value]="1"> Practicante
+              <input ngbButton type="radio" [value]="1" routerLink="student"> Practicante
             </label>
             <label ngbButtonLabel class="btn-outline-primary border-left-0 border-right-0">
-              <input ngbButton type="radio" [value]="2"> Profesor
+              <input ngbButton type="radio" [value]="2" routerLink="teacher"> Profesor
             </label>
             <label ngbButtonLabel class="btn-outline-primary border-left-0">
-              <input ngbButton type="radio" [value]="3"> Empresa
+              <input ngbButton type="radio" [value]="3" routerLink="company"> Empresa
             </label>
           </div>
 
@@ -93,3 +93,5 @@
     </div>
   </div>
 </div>
+
+<router-outlet></router-outlet>

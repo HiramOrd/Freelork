@@ -13,6 +13,9 @@ import {UserProfileComponent} from './pages/user-profile/user-profile.component'
 import {TablesComponent} from './pages/tables/tables.component';
 import {IconsComponent} from './pages/icons/icons.component';
 import {MapsComponent} from './pages/maps/maps.component';
+import {CompanyComponent} from './pages/register/module-register/company/company.component';
+import {TeacherComponent} from './pages/register/module-register/teacher/teacher.component';
+import {StudentComponent} from './pages/register/module-register/student/student.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
@@ -29,7 +32,16 @@ const routes: Routes = [
     path: '', component: AuthLayoutComponent, children: [
       {path: 'home', component: HomeComponent},
       {path: 'login', component: LoginComponent},
-      {path: 'register', component: RegisterComponent}
+      {path: 'register', component: RegisterComponent},
+      {path: 'teacher', component: TeacherComponent},
+      {path: 'company', component: CompanyComponent},
+    ]
+  },
+  {
+    path: 'register', component: AuthLayoutComponent, children: [
+      {path: 'teacher', component: TeacherComponent},
+      {path: 'company', component: CompanyComponent},
+      {path: 'student', component: StudentComponent},
     ]
   },
   {path: '**', redirectTo: 'dashboard'}
