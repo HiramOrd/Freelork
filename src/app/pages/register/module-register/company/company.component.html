@@ -1,1 +1,29 @@
-<p>company works!</p>
+<form [formGroup]="companysForm" (ngSubmit)="companysSubmit()">
+
+    <input type="hidden" formControlName="role">
+  
+    <app-register-form></app-register-form>
+  
+    <div class="row m-0 p-0">
+      <div class="form-group col-12 p-0">
+        <div class="input-group input-group-alternative" [ngClass]="(companysForm.controls.career.invalid && companysForm.controls.career.touched ) ? 'error-border' : ''">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-search"></i></span>
+          </div>
+          <select class="form-control" formControlName="career">
+            <option [value]="null" disabled hidden>Carrera</option>
+            <option value="0">Ingeniería en Software</option>
+            <option value="1">Ingeniería en Biomédica</option>
+            <option value="2">Ingeriería en Biotecnología</option>
+            <option value="3">Ingeniería Financiera</option>
+            <option value="4">Licenciatura en administración y gestión empresarial</option>
+            <option value="5">Licenciatura en terapia física</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  
+    <div class="text-center">
+      <button type="submit" class="col-sm-8 btn btn-primary mt-4">Crear cuenta</button>
+    </div>
+  </form>

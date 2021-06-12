@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {RegisterFormComponent} from '../register-form/register-form.component';
 
 @Component({
   selector: 'app-company',
@@ -6,10 +9,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./company.component.css']
 })
 export class CompanyComponent implements OnInit {
-
-  constructor() { }
+  @ViewChild(RegisterFormComponent, {static: true}) public registerFormComponent: RegisterFormComponent;
+  companysForm: FormGroup;
+  
+  constructor(private router: Router) {
+  }
 
   ngOnInit(): void {
+    this.companysForm = new FormGroup({
+      role: new FormControl('3'),
+      career: new FormControl(null, [Validators.required]),
+      registerForm: this.registerFormComponent.createFormGroup(),
+    });
+    this.companysForm
+      .get('registerForm')
+      .get('email')
+      .setValidators([Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]);
+  }
+
+  companysSubmit(): void {
+    console.log(this.companysForm.getRawValue());
+    (this.companysForm.valid) ? this.router.navigate(['/login']) : this.companysForm.markAllAsTouched();
   }
 
 }
