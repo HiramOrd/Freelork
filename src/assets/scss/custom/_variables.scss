@@ -100,9 +100,10 @@ $colors: map-merge((
   "gray-dark":  $gray-800
 ), $colors);
 
-$default:       #EAEAF2 !default;
+$default:       #0b0b3c !default;
 $primary:       #9897FD !default;
 $secondary:     #f7fafc !default;
+$background:    #EAEAF2 !default;
 $success:       $green !default;
 $info:          $teal !default;
 $warning:       $orange !default;
@@ -124,6 +125,7 @@ $github:        #222222 !default;
 $theme-colors: () !default;
 $theme-colors: map-merge((
   "default":      $default,
+  "background":   $background,
   "primary":      $primary,
   "secondary":    $secondary,
   "success":      $success,
