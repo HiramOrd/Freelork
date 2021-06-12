@@ -1,0 +1,66 @@
+<div [formGroup]="registerForm">
+  <div class="form-group">
+    <div class="input-group input-group-alternative"  [ngClass]="(registerForm.controls.fullName.invalid && registerForm.controls.fullName.touched ) ? 'error-border' : ''">
+      <div class="input-group-prepend">
+        <span class="input-group-text"><i class="fas fa-user-alt"></i></span>
+      </div>
+      <input class="form-control" placeholder="Nombre Completo" type="text" formControlName="fullName">
+    </div>
+    <div *ngIf="registerForm.controls.fullName.errors?.required && registerForm.controls.fullName.touched">
+      <small class="error-text ml-2">*Ingresa tu Nombre</small>
+    </div>
+    <div *ngIf="registerForm.controls.fullName.errors?.minlength && registerForm.controls.fullName.touched">
+      <small class="error-text ml-2">*Por favor, ingresa tu nombre completo</small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="input-group input-group-alternative" [ngClass]="(registerForm.controls.email.invalid && registerForm.controls.email.touched ) ? 'error-border' : ''">
+      <div class="input-group-prepend">
+        <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+      </div>
+      <input class="form-control" placeholder="Correo electrónico" type="email" formControlName="email">
+    </div>
+    <div *ngIf="registerForm.controls.email.errors?.required && registerForm.controls.email.touched">
+      <small class="error-text ml-2">*Ingresa tu correo electrónico</small>
+    </div>
+    <div *ngIf="registerForm.controls.email.errors?.pattern && registerForm.controls.email.touched && router.url !== '/register/student'">
+      <small class="error-text ml-2">*Correo invalido. Formato: example@example.com</small>
+    </div>
+    <div *ngIf="registerForm.controls.email.errors?.pattern && registerForm.controls.email.touched && router.url ==='/register/student'">
+      <small class="error-text ml-2">*Correo invalido. Formato: xxxxxxxxx@estudiantes.upqroo.edu.mx</small>
+    </div>
+  </div>
+
+  <div class="row m-0 p-0 col-12">
+    <div class="form-group col-sm-6 p-0 pr-sm-2">
+      <div class="input-group input-group-alternative" [ngClass]="(registerForm.controls.password.invalid && registerForm.controls.password.touched ) ? 'error-border' : ''">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+        </div>
+        <input class="form-control" placeholder="Contraseña" type="password" formControlName="password">
+      </div>
+      <div *ngIf="registerForm.controls.password.errors?.required && registerForm.controls.password.touched">
+        <small class="error-text ml-2">*Ingresa una contraseña</small>
+      </div>
+      <div *ngIf="registerForm.controls.password.errors?.minlength && registerForm.controls.password.touched">
+        <small class="error-text ml-2">*La contraseña debe ser de {{registerForm.controls.password.errors?.minlength.requiredLength}} caracteres</small>
+      </div>
+    </div>
+
+    <div class="form-group col-sm-6 p-0 pl-sm-2">
+      <div class="input-group input-group-alternative" [ngClass]="(registerForm.controls.confirmPassword.invalid && registerForm.controls.confirmPassword.touched ) ? 'error-border' : ''">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+        </div>
+        <input class="form-control" placeholder="Confirmar contraseña" type="password" formControlName="confirmPassword">
+      </div>
+      <div *ngIf="registerForm.controls.confirmPassword.errors?.required && registerForm.controls.confirmPassword.touched">
+        <small class="error-text ml-2">*Confirma tu contraseña</small>
+      </div>
+      <div *ngIf="registerForm.controls.confirmPassword.errors?.mustMatch && registerForm.controls.confirmPassword.touched">
+        <small class="error-text ml-2">*La contraseña no coincide</small>
+      </div>
+    </div>
+  </div>
+</div>

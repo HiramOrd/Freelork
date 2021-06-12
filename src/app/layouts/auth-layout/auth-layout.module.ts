@@ -4,33 +4,27 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { LoginComponent } from '../../pages/login/login.component';
-import { RegisterComponent } from '../../pages/register/register.component';
 import {HomeComponent} from '../../pages/home/home.component';
 import {RouterModule} from '@angular/router';
 import { ModuleRegisterModule } from 'src/app/pages/register/module-register/module-register.module';
+import {AuthLayoutComponent} from './auth-layout.component';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     NgbModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ModuleRegisterModule
   ],
-    imports: [
-        CommonModule,
-        FormsModule,
-        NgbModule,
-        RouterModule,
-        ModuleRegisterModule
-    ],
   declarations: [
+    AuthLayoutComponent,
     LoginComponent,
-    RegisterComponent,
-    HomeComponent
+    HomeComponent,
   ],
   exports: [
+    AuthLayoutComponent,
     LoginComponent,
-    RegisterComponent,
     HomeComponent
   ]
 })

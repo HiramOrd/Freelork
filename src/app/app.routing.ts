@@ -32,16 +32,12 @@ const routes: Routes = [
     path: '', component: AuthLayoutComponent, children: [
       {path: 'home', component: HomeComponent},
       {path: 'login', component: LoginComponent},
-      {path: 'register', component: RegisterComponent},
-      {path: 'teacher', component: TeacherComponent},
-      {path: 'company', component: CompanyComponent},
-    ]
-  },
-  {
-    path: 'register', component: AuthLayoutComponent, children: [
-      {path: 'teacher', component: TeacherComponent},
-      {path: 'company', component: CompanyComponent},
-      {path: 'student', component: StudentComponent},
+      {path: 'register', component: RegisterComponent, children: [
+          {path: 'teacher', component: TeacherComponent},
+          {path: 'company', component: CompanyComponent},
+          {path: 'student', component: StudentComponent},
+          {path: '**', redirectTo: 'student'}
+        ]},
     ]
   },
   {path: '**', redirectTo: 'dashboard'}

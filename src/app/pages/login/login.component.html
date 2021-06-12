@@ -14,30 +14,30 @@
           <div class="text-center text-muted mb-4">
             <span class="title-session text-darkBlue">Iniciar Sesión</span>
           </div>
-          <form role="form"  [formGroup]="login" (ngSubmit)="loginSubmit()">
+          <form role="form" [formGroup]="loginForm" (ngSubmit)="loginSubmit()">
             <div class="form-group mb-3">
-              <div class="input-group input-group-alternative" [ngClass]="(login.controls.email.invalid && login.controls.email.touched ) ? 'error-border' : ''">
+              <div class="input-group input-group-alternative" [ngClass]="(loginForm.controls.email.invalid && loginForm.controls.email.touched ) ? 'error-border' : ''">
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                 </div>
                 <input class="form-control" placeholder="Correo electrónico" type="email" formControlName="email">
               </div>
-              <div *ngIf="login.controls.email.invalid && login.controls.email.touched">
+              <div *ngIf="loginForm.controls.email.invalid && loginForm.controls.email.touched">
                 <small class="error-text ml-2">*Correo electrónico invalido</small>
               </div>
             </div>
 
             <div class="form-group">
-              <div class="input-group input-group-alternative" [ngClass]="(login.controls.password.invalid && login.controls.password.touched ) ? 'error-border' : ''">
+              <div class="input-group input-group-alternative" [ngClass]="(loginForm.controls.password.invalid && loginForm.controls.password.touched ) ? 'error-border' : ''">
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                 </div>
                 <input class="form-control" placeholder="Contraseña" type="password" formControlName="password">
               </div>
-              <div *ngIf="login.controls.password.errors?.minlength && login.controls.password.touched">
-                <small class="error-text ml-2">*El password debe ser de {{login.controls.password.errors?.minlength.requiredLength}} caracteres</small>
+              <div *ngIf="loginForm.controls.password.errors?.minlength && loginForm.controls.password.touched">
+                <small class="error-text ml-2">*La contraseña debe ser de {{loginForm.controls.password.errors?.minlength.requiredLength}} caracteres</small>
               </div>
-              <div *ngIf="login.controls.password.errors?.required && login.controls.password.touched">
+              <div *ngIf="loginForm.controls.password.errors?.required && loginForm.controls.password.touched">
                 <small class="error-text ml-2">*Ingresa tu contraseña</small>
               </div>
             </div>

@@ -8,10 +8,10 @@ import {Router} from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit, OnDestroy {
-  login: FormGroup;
+  loginForm: FormGroup;
 
   constructor( private router: Router) {
-    this.login = new FormGroup({
+    this.loginForm = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null, [Validators.required, Validators.minLength(8)])
     });
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   loginSubmit(): void {
-    (this.login.valid) ? this.router.navigate(['/dashboard']) :  this.login.markAllAsTouched();
+    (this.loginForm.valid) ? this.router.navigate(['/dashboard']) :  this.loginForm.markAllAsTouched();
   }
 
 }

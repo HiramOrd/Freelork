@@ -15,9 +15,12 @@ import { ComponentsModule } from './components/components.module';
 import { AuthLayoutModule } from './layouts/auth-layout/auth-layout.module';
 import { AdminLayoutModule } from './layouts/admin-layout/admin-layout.module';
 import { ModuleRegisterModule } from './pages/register/module-register/module-register.module';
+import {CommonModule} from '@angular/common';
+import {UtilitiesModule} from './utilities/utilities.module';
 
 @NgModule({
   imports: [
+    CommonModule,
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
@@ -27,12 +30,10 @@ import { ModuleRegisterModule } from './pages/register/module-register/module-re
     AppRoutingModule,
     AuthLayoutModule,
     AdminLayoutModule,
-    ModuleRegisterModule
+    UtilitiesModule
   ],
   declarations: [
-    AppComponent,
-    AdminLayoutComponent,
-    AuthLayoutComponent
+    AppComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
