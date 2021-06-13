@@ -40,6 +40,9 @@
               <div *ngIf="loginForm.controls.password.errors?.required && loginForm.controls.password.touched">
                 <small class="error-text ml-2">*Ingresa tu contraseña</small>
               </div>
+              <div *ngIf="loginError">
+                <small class="error-text ml-2">*Usuario o contraseña incorrectos</small>
+              </div>
             </div>
             <div class="custom-control custom-control-alternative custom-checkbox">
               <input class="custom-control-input" id=" customCheckLogin" type="checkbox">
@@ -58,7 +61,7 @@
           <a  class="text-black-50"><small>¿Olvidaste tu contraseña?</small></a>
         </div>
         <div class="col-6 text-right">
-          <a routerLink="/register" class="text-black-50"><small>No tengo cuenta</small></a>
+          <a routerLink="../register" class="text-black-50"><small>No tengo cuenta</small></a>
         </div>
       </div>
     </div>
