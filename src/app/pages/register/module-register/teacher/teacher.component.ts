@@ -18,7 +18,8 @@ export class TeacherComponent implements OnInit {
 
     this.teachersForm = new FormGroup({
       role: new FormControl('1'),
-      career: new FormControl(null, [Validators.required]),
+      cellphone: new FormControl(null, [Validators.required, Validators.pattern("[0-9 ]{10}")]),
+      grade: new FormControl(null, [Validators.required]),
       registerForm: this.registerFormComponent.createFormGroup(),
     });
     this.teachersForm

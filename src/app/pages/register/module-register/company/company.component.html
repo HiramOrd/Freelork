@@ -6,6 +6,65 @@
   
     <div class="row m-0 p-0">
       <div class="form-group col-12 p-0">
+        <div class="input-group input-group-alternative" [ngClass]="(companysForm.controls.sizecompany.invalid && companysForm.controls.sizecompany.touched ) ? 'error-border' : ''">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="far fa-building"></i></span>
+          </div>
+          <input class="form-control" placeholder="Tamaño de la empresa" type="number" formControlName="sizecompany" maxlength="9" NumbersOnly>
+        </div>
+        <div *ngIf="companysForm.controls.sizecompany.errors?.required && companysForm.controls.sizecompany.touched">
+          <small class="error-text ml-2">*Ingresa la cantidad de empleados de la empresa</small>
+        </div>
+      </div>
+
+      <div class="form-group col-12 p-0">
+          <div class="input-group input-group-alternative" [ngClass]="(companysForm.controls.service.invalid && companysForm.controls.service.touched ) ? 'error-border' : ''">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-briefcase"></i></span>
+            </div>
+            <select class="form-control" formControlName="service">
+              <option [value]="null" disabled hidden>Giro de la empresa</option>
+              <option value="0">Industrial</option>
+              <option value="1">Servicios</option>
+              <option value="2">Comercial</option>
+            </select>
+          </div>
+          <div *ngIf="companysForm.controls.service.errors?.required && companysForm.controls.service.touched">
+            <small class="error-text ml-2">*Selecciona el tipo de giro de la empresa</small>
+          </div>
+      </div>
+
+      <div class="form-group col-12 p-0">
+        <div class="input-group input-group-alternative" [ngClass]="(companysForm.controls.address.invalid && companysForm.controls.address.touched ) ? 'error-border' : ''">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+          </div>
+          <input class="form-control" placeholder="Dirección de la empresa" type="text" formControlName="address" maxlength="9" NumbersOnly>
+        </div>
+        <div *ngIf="companysForm.controls.address.errors?.required && companysForm.controls.address.touched">
+          <small class="error-text ml-2">*Ingresa la dirección de la empresa</small>
+        </div>
+        <div *ngIf="companysForm.controls.address.errors?.minLength && companysForm.controls.address.touched">
+          <small class="error-text ml-2">*Ingresa la dirección debe contener al menos 10 caracteres</small>
+        </div>
+      </div>
+
+      <div class="form-group col-12 p-0">
+        <div class="input-group input-group-alternative"  [ngClass]="(companysForm.controls.cellphone.invalid && companysForm.controls.cellphone.touched ) ? 'error-border' : ''">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-mobile-alt"></i></span>
+          </div>
+          <input class="form-control" placeholder="Número de teléfono" type="tel" formControlName="cellphone">
+        </div>
+        <div *ngIf="companysForm.controls.cellphone.errors?.required && companysForm.controls.cellphone.touched">
+          <small class="error-text ml-2">*Ingresa tu número de teléfono</small>
+        </div>
+        <div *ngIf="companysForm.controls.cellphone.errors?.pattern && companysForm.controls.cellphone.touched">
+          <small class="error-text ml-2">*Por favor, ingresa tu número de teléfono de 10 dígitos</small>
+        </div>
+      </div>
+
+      <div class="form-group col-12 p-0">
         <div class="input-group input-group-alternative" [ngClass]="(companysForm.controls.career.invalid && companysForm.controls.career.touched ) ? 'error-border' : ''">
           <div class="input-group-prepend">
             <span class="input-group-text"><i class="fas fa-search"></i></span>

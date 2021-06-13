@@ -18,6 +18,10 @@ export class CompanyComponent implements OnInit {
   ngOnInit(): void {
     this.companysForm = new FormGroup({
       role: new FormControl('3'),
+      sizecompany: new FormControl(null, [Validators.required]),
+      service: new FormControl(null, [Validators.required]),
+      address: new FormControl(null, [Validators.required, Validators.minLength(10)]),
+      cellphone: new FormControl(null, [Validators.required, Validators.pattern("[0-9 ]{10}")]),
       career: new FormControl(null, [Validators.required]),
       registerForm: this.registerFormComponent.createFormGroup(),
     });

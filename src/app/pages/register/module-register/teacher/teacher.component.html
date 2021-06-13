@@ -3,25 +3,44 @@
     <input type="hidden" formControlName="role">
   
     <app-register-form></app-register-form>
+
+   
   
     <div class="row m-0 p-0">
       <div class="form-group col-12 p-0">
-        <div class="input-group input-group-alternative" [ngClass]="(teachersForm.controls.career.invalid && teachersForm.controls.career.touched ) ? 'error-border' : ''">
+        <div class="input-group input-group-alternative"  [ngClass]="(teachersForm.controls.cellphone.invalid && teachersForm.controls.cellphone.touched ) ? 'error-border' : ''">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-mobile-alt"></i></span>
+          </div>
+          <input class="form-control" placeholder="Número de teléfono" type="tel" formControlName="cellphone">
+        </div>
+        <div *ngIf="teachersForm.controls.cellphone.errors?.required && teachersForm.controls.cellphone.touched">
+          <small class="error-text ml-2">*Ingresa tu número de teléfono</small>
+        </div>
+        <div *ngIf="teachersForm.controls.cellphone.errors?.pattern && teachersForm.controls.cellphone.touched">
+          <small class="error-text ml-2">*Por favor, ingresa tu número de teléfono de 10 dígitos</small>
+        </div>
+      </div>
+
+      <div class="form-group col-12 p-0">
+        <div class="input-group input-group-alternative" [ngClass]="(teachersForm.controls.grade.invalid && teachersForm.controls.grade.touched ) ? 'error-border' : ''">
           <div class="input-group-prepend">
             <span class="input-group-text"><i class="fas fa-search"></i></span>
           </div>
-          <select class="form-control" formControlName="career">
-            <option [value]="null" disabled hidden>Carrera</option>
-            <option value="0">Ingeniería en Software</option>
-            <option value="1">Ingeniería en Biomédica</option>
-            <option value="2">Ingeriería en Biotecnología</option>
-            <option value="3">Ingeniería Financiera</option>
-            <option value="4">Licenciatura en administración y gestión empresarial</option>
-            <option value="5">Licenciatura en terapia física</option>
+          <select class="form-control" formControlName="grade">
+            <option [value]="null" disabled hidden>Título académico</option>
+            <option value="0">Lic.</option>
+            <option value="1">Ing.</option>
+            <option value="2">Arq.</option>
+            <option value="3">Dr.</option>
+            <option value="4">Dra.</option>
+            <option value="5">C.P.T.</option>
+            <option value="5">Profe.</option>
+            <option value="5">Profa.</option>
           </select>
         </div>
-        <div *ngIf="teachersForm.controls.career.errors?.required && teachersForm.controls.career.touched">
-          <small class="error-text ml-2">*Selecciona la carrera que cursas</small>
+        <div *ngIf="teachersForm.controls.grade.errors?.required && teachersForm.controls.grade.touched">
+          <small class="error-text ml-2">*Selecciona el título académico que tienes</small>
         </div>
       </div>
     </div>
