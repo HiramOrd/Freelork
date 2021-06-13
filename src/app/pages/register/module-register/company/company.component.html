@@ -39,13 +39,13 @@
           <div class="input-group-prepend">
             <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
           </div>
-          <input class="form-control" placeholder="Dirección de la empresa" type="text" formControlName="address" maxlength="9" NumbersOnly>
+          <input class="form-control" placeholder="Dirección de la empresa" type="text" formControlName="address" minlength="10">
         </div>
         <div *ngIf="companysForm.controls.address.errors?.required && companysForm.controls.address.touched">
           <small class="error-text ml-2">*Ingresa la dirección de la empresa</small>
         </div>
-        <div *ngIf="companysForm.controls.address.errors?.minLength && companysForm.controls.address.touched">
-          <small class="error-text ml-2">*Ingresa la dirección debe contener al menos 10 caracteres</small>
+        <div *ngIf="companysForm.controls.address.errors?.minlength && companysForm.controls.address.touched">
+          <small class="error-text ml-2">*La direción debe contener al menos 10 caracteres</small>
         </div>
       </div>
 
@@ -54,7 +54,7 @@
           <div class="input-group-prepend">
             <span class="input-group-text"><i class="fas fa-mobile-alt"></i></span>
           </div>
-          <input class="form-control" placeholder="Número de teléfono" type="tel" formControlName="cellphone">
+          <input class="form-control" placeholder="Número de teléfono" type="tel" formControlName="cellphone" maxlength="10" NumbersOnly>
         </div>
         <div *ngIf="companysForm.controls.cellphone.errors?.required && companysForm.controls.cellphone.touched">
           <small class="error-text ml-2">*Ingresa tu número de teléfono</small>
@@ -79,7 +79,12 @@
             <option value="5">Licenciatura en terapia física</option>
           </select>
         </div>
+        <div *ngIf="companysForm.controls.career.errors?.required && companysForm.controls.career.touched">
+          <small class="error-text ml-2">*Selecciona la carrera en la que la empresa ofrecera estancias y estadias</small>
+        </div>
       </div>
+
+
     </div>
   
     <div class="text-center">

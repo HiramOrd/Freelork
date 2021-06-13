@@ -12,7 +12,7 @@
           <div class="input-group-prepend">
             <span class="input-group-text"><i class="fas fa-mobile-alt"></i></span>
           </div>
-          <input class="form-control" placeholder="Número de teléfono" type="tel" formControlName="cellphone">
+          <input class="form-control" placeholder="Número de teléfono" type="tel" formControlName="cellphone" maxlength="10" NumbersOnly>
         </div>
         <div *ngIf="teachersForm.controls.cellphone.errors?.required && teachersForm.controls.cellphone.touched">
           <small class="error-text ml-2">*Ingresa tu número de teléfono</small>
