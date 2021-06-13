@@ -10,13 +10,15 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { AppRoutingModule } from './app.routing';
+import { AppRoutingModule } from './routes/app.routing';
 import { ComponentsModule } from './components/components.module';
 import { AuthLayoutModule } from './layouts/auth-layout/auth-layout.module';
 import { AdminLayoutModule } from './layouts/admin-layout/admin-layout.module';
 import { ModuleRegisterModule } from './pages/register/module-register/module-register.module';
 import {CommonModule} from '@angular/common';
 import {UtilitiesModule} from './utilities/utilities.module';
+import {RoutesLayoutModule} from './layouts/routes-layout/routes-layout.module';
+import {ServicesModule} from './services/services.module';
 
 @NgModule({
   imports: [
@@ -30,7 +32,9 @@ import {UtilitiesModule} from './utilities/utilities.module';
     AppRoutingModule,
     AuthLayoutModule,
     AdminLayoutModule,
-    UtilitiesModule
+    UtilitiesModule,
+    RoutesLayoutModule,
+    ServicesModule
   ],
   declarations: [
     AppComponent
