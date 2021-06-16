@@ -6,7 +6,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from '../../pages/login/login.component';
 import {HomeComponent} from '../../pages/home/home.component';
 import {RouterModule} from '@angular/router';
-import { ModuleRegisterModule } from 'src/app/pages/register/module-register/module-register.module';
+import { FormsRegisterModule } from 'src/app/pages/register/forms-register/forms-register.module';
 import {AuthLayoutComponent} from './auth-layout.component';
 @NgModule({
   imports: [
@@ -15,7 +15,7 @@ import {AuthLayoutComponent} from './auth-layout.component';
     NgbModule,
     RouterModule,
     ReactiveFormsModule,
-    ModuleRegisterModule
+    FormsRegisterModule
   ],
   declarations: [
     AuthLayoutComponent,

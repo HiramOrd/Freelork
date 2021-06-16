@@ -1,7 +1,7 @@
 <div class="main-content">
   <nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">
     <div class="container px-4">
-      <a class="navbar-brand" routerLinkActive="active" [routerLink]="['/dashboard']">
+      <a class="navbar-brand" routerLinkActive="active" [routerLink]="['/dash']">
         <img src="assets/img/brand/logo.png" class="mr-3"/>
         <span class="text-uppercase text-white">Proyecto</span>
       </a>
@@ -14,7 +14,7 @@
         <div class="navbar-collapse-header d-md-none">
           <div class="row">
             <div class="col-6 collapse-brand">
-              <a routerLinkActive="active" [routerLink]="['/dashboard']">
+              <a routerLinkActive="active" [routerLink]="['/dash']">
                 <img src="assets/img/brand/logo-dark.png"><span class="text-uppercase ml-3 font-weight-bold text-darkBlue">Proyecto</span>
               </a>
             </div>
@@ -29,19 +29,19 @@
         <!-- Navbar items -->
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link nav-link-icon" routerLinkActive="active" [routerLink]="['home']">
+            <a class="nav-link nav-link-icon" routerLinkActive="active" [routerLink]="['/guest/home']">
               <i class="fas fa-home"></i>
               <span class="nav-link-inner--text">Home</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-link-icon" routerLinkActive="active" [routerLink]="['login']">
+            <a class="nav-link nav-link-icon" routerLinkActive="active" [routerLink]="['/guest/login']">
               <i class="ni ni-key-25"></i>
               <span class="nav-link-inner--text">Iniciar Sesión</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-link-icon" routerLinkActive="active" [routerLink]="['register']">
+            <a class="nav-link nav-link-icon" routerLinkActive="active" [routerLink]="['/guest/register']">
               <i class="ni ni-circle-08"></i>
               <span class="nav-link-inner--text">Registro</span>
             </a>

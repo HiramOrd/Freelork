@@ -4,10 +4,10 @@ import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-register-form',
-  templateUrl: './register-form.component.html',
-  styleUrls: ['./register-form.component.css']
+  templateUrl: './all-users.component.html',
+  styleUrls: ['./all-users.component.css']
 })
-export class RegisterFormComponent implements OnInit {
+export class AllUsersComponent implements OnInit {
   public registerForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder, public router: Router) {

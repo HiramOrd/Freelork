@@ -1,0 +1,53 @@
+<div class="header bg-gradient-lightBlue py-7 py-lg-8">
+  <div class="container">
+    <div class="header-body text-center mb-7">
+      <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-6">
+          <h1 class="text-white">Bienvenido!</h1>
+          <p class="text-lead text-white">
+            Esta es la página para registrar integrantes de la administración escolar.
+            <br>
+            <b class="text-uppercase">¡Compartela con precaución!</b>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="separator separator-bottom separator-skew zindex-100">
+    <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <polygon class="fill-background" points="2560 0 2560 100 0 100"></polygon>
+    </svg>
+  </div>
+</div>
+<!-- Page content -->
+<div class="container mt--8 pb-5">
+  <!-- Table -->
+  <div class="row justify-content-center">
+    <div class="col-lg-6 col-md-8">
+      <div class="card bg-secondary shadow border-0">
+        <div class="card-body px-lg-5 py-lg-5">
+          <div class="text-center text-muted mb-4">
+            <span class="title-session text-darkBlue">Nuevo Administrador</span>
+          </div>
+
+          <form [formGroup]="adminForm" (ngSubmit)="teachersSubmit()">
+
+            <input type="hidden" formControlName="role">
+
+            <app-register-form></app-register-form>
+
+            <div class="text-center">
+              <button type="submit" class="col-sm-8 btn btn-primary mt-4">Crear cuenta</button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+      <div class="col-12 row p-0 m-0 mt-3 justify-content-end">
+        <div class="text-right">
+          <a routerLink="/guest/login" class="text-black-50 mouse-pointer"><small>¿Ya tienes una cuenta?</small></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -24,13 +24,13 @@
     <div *ngIf="registerForm.controls.email.errors?.required && registerForm.controls.email.touched">
       <small class="error-text ml-2">*Ingresa tu correo electrónico</small>
     </div>
-    <div *ngIf="registerForm.controls.email.errors?.pattern && registerForm.controls.email.touched && router.url ==='/register/student'">
+    <div *ngIf="registerForm.controls.email.errors?.pattern && registerForm.controls.email.touched && router.url ==='/guest/register/student'">
       <small class="error-text ml-2">*Correo invalido. Formato: xxxxxxxxx@estudiantes.upqroo.edu.mx</small>
     </div>
-    <div *ngIf="registerForm.controls.email.errors?.pattern && registerForm.controls.email.touched && router.url === '/register/teacher'">
+    <div *ngIf="registerForm.controls.email.errors?.pattern && registerForm.controls.email.touched && router.url === '/guest/register/teacher'">
       <small class="error-text ml-2">*Correo invalido. Formato: xxxxxxxxx@docentes.upqroo.edu.mx</small>
     </div>
-    <div *ngIf="registerForm.controls.email.errors?.pattern && registerForm.controls.email.touched && router.url === '/register/company'">
+    <div *ngIf="registerForm.controls.email.errors?.pattern && registerForm.controls.email.touched && router.url === '/guest/register/company'">
       <small class="error-text ml-2">*Correo invalido. Formato: xxxxxxxxx@dominio.com</small>
     </div>
   </div>

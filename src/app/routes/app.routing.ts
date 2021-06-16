@@ -13,12 +13,13 @@ import {UserProfileComponent} from '../pages/user-profile/user-profile.component
 import {TablesComponent} from '../pages/tables/tables.component';
 import {IconsComponent} from '../pages/icons/icons.component';
 import {MapsComponent} from '../pages/maps/maps.component';
-import {CompanyComponent} from '../pages/register/module-register/company/company.component';
-import {TeacherComponent} from '../pages/register/module-register/teacher/teacher.component';
-import {StudentComponent} from '../pages/register/module-register/student/student.component';
+import {CompanyComponent} from '../pages/register/forms-register/company/company.component';
+import {TeacherComponent} from '../pages/register/forms-register/teacher/teacher.component';
+import {StudentComponent} from '../pages/register/forms-register/student/student.component';
 import {Page404Component} from './page404/page404.component';
 import {RoutesLayoutComponent} from '../layouts/routes-layout/routes-layout.component';
 import {AuthenticationGuard} from '../authentication.guard';
+import {AdminComponent} from '../pages/register/forms-register/admin/admin.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'dash/home', pathMatch: 'full'},
@@ -35,6 +36,12 @@ const routes: Routes = [
           {path: '**', redirectTo: '/not/404/error/register'}
         ]},
       {path: '**', redirectTo: '/not/404/error/guest'},
+    ]
+  },
+  {
+    path: 'admin-guest/register', component: AuthLayoutComponent, children: [
+      {path: '42hbjhv34345nj', component: AdminComponent},
+      {path: '**', redirectTo: '/not/404/error/unknown'}
     ]
   },
   {

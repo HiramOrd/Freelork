@@ -7,8 +7,9 @@ import { RegisterComponent } from '../register.component';
 import {RouterModule} from '@angular/router';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { RegisterFormComponent } from './register-form/register-form.component';
+import { AllUsersComponent } from './all-users/all-users.component';
 import {UtilitiesModule} from '../../../utilities/utilities.module';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import {UtilitiesModule} from '../../../utilities/utilities.module';
     CompanyComponent,
     StudentComponent,
     RegisterComponent,
-    RegisterFormComponent
+    AllUsersComponent,
+    AdminComponent
   ],
   exports: [
     TeacherComponent,
@@ -33,4 +35,4 @@ import {UtilitiesModule} from '../../../utilities/utilities.module';
     RegisterComponent
   ]
 })
-export class ModuleRegisterModule { }
+export class FormsRegisterModule { }

@@ -1,9 +1,9 @@
 <form [formGroup]="companysForm" (ngSubmit)="companysSubmit()">
 
     <input type="hidden" formControlName="role">
-  
+
     <app-register-form></app-register-form>
-  
+
     <div class="row m-0 p-0">
       <div class="form-group col-12 p-0">
         <div class="input-group input-group-alternative" [ngClass]="(companysForm.controls.sizecompany.invalid && companysForm.controls.sizecompany.touched ) ? 'error-border' : ''">
@@ -22,7 +22,7 @@
           <small class="error-text ml-2">*Selecciona el tamaño de la empresa</small>
         </div>
       </div>
-      
+
       <div class="form-group col-12 p-0">
           <div class="input-group input-group-alternative" [ngClass]="(companysForm.controls.service.invalid && companysForm.controls.service.touched ) ? 'error-border' : ''">
             <div class="input-group-prepend">
@@ -54,45 +54,8 @@
           <small class="error-text ml-2">*La direción debe contener al menos 10 caracteres</small>
         </div>
       </div>
-
-      <div class="form-group col-12 p-0">
-        <div class="input-group input-group-alternative"  [ngClass]="(companysForm.controls.cellphone.invalid && companysForm.controls.cellphone.touched ) ? 'error-border' : ''">
-          <div class="input-group-prepend">
-            <span class="input-group-text"><i class="fas fa-mobile-alt"></i></span>
-          </div>
-          <input class="form-control" placeholder="Número de teléfono" type="tel" formControlName="cellphone" maxlength="10" NumbersOnly>
-        </div>
-        <div *ngIf="companysForm.controls.cellphone.errors?.required && companysForm.controls.cellphone.touched">
-          <small class="error-text ml-2">*Ingresa tu número de teléfono</small>
-        </div>
-        <div *ngIf="companysForm.controls.cellphone.errors?.pattern && companysForm.controls.cellphone.touched">
-          <small class="error-text ml-2">*Por favor, ingresa tu número de teléfono de 10 dígitos</small>
-        </div>
-      </div>
-
-      <div class="form-group col-12 p-0">
-        <div class="input-group input-group-alternative" [ngClass]="(companysForm.controls.career.invalid && companysForm.controls.career.touched ) ? 'error-border' : ''">
-          <div class="input-group-prepend">
-            <span class="input-group-text"><i class="fas fa-search"></i></span>
-          </div>
-          <select class="form-control" formControlName="career">
-            <option [value]="null" disabled hidden>Carrera</option>
-            <option value="0">Ingeniería en Software</option>
-            <option value="1">Ingeniería en Biomédica</option>
-            <option value="2">Ingeriería en Biotecnología</option>
-            <option value="3">Ingeniería Financiera</option>
-            <option value="4">Licenciatura en administración y gestión empresarial</option>
-            <option value="5">Licenciatura en terapia física</option>
-          </select>
-        </div>
-        <div *ngIf="companysForm.controls.career.errors?.required && companysForm.controls.career.touched">
-          <small class="error-text ml-2">*Selecciona la carrera en la que la empresa ofrecera estancias y estadias</small>
-        </div>
-      </div>
-
-
     </div>
-  
+
     <div class="text-center">
       <button type="submit" class="col-sm-8 btn btn-primary mt-4">Crear cuenta</button>
     </div>

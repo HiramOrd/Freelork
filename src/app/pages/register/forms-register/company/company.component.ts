@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
-import {RegisterFormComponent} from '../register-form/register-form.component';
+import {AllUsersComponent} from '../all-users/all-users.component';
 
 @Component({
   selector: 'app-company',
@@ -9,9 +9,9 @@ import {RegisterFormComponent} from '../register-form/register-form.component';
   styleUrls: ['./company.component.css']
 })
 export class CompanyComponent implements OnInit {
-  @ViewChild(RegisterFormComponent, {static: true}) public registerFormComponent: RegisterFormComponent;
+  @ViewChild(AllUsersComponent, {static: true}) public registerFormComponent: AllUsersComponent;
   companysForm: FormGroup;
-  
+
   constructor(private router: Router) {
   }
 
@@ -21,14 +21,8 @@ export class CompanyComponent implements OnInit {
       sizecompany: new FormControl(null, [Validators.required]),
       service: new FormControl(null, [Validators.required]),
       address: new FormControl(null, [Validators.required, Validators.minLength(10)]),
-      cellphone: new FormControl(null, [Validators.required, Validators.pattern("[0-9 ]{10}")]),
-      career: new FormControl(null, [Validators.required]),
       registerForm: this.registerFormComponent.createFormGroup(),
     });
-    this.companysForm
-      .get('registerForm')
-      .get('email')
-      .setValidators([Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]);
   }
 
   companysSubmit(): void {

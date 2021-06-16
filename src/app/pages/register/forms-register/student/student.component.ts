@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
-import {RegisterFormComponent} from '../register-form/register-form.component';
+import {AllUsersComponent} from '../all-users/all-users.component';
 
 @Component({
   selector: 'app-student',
@@ -9,7 +9,7 @@ import {RegisterFormComponent} from '../register-form/register-form.component';
   styleUrls: ['./student.component.css']
 })
 export class StudentComponent implements OnInit {
-  @ViewChild(RegisterFormComponent, {static: true}) public registerFormComponent: RegisterFormComponent;
+  @ViewChild(AllUsersComponent, {static: true}) public registerFormComponent: AllUsersComponent;
   studentsForm: FormGroup;
 
   constructor(private router: Router) {
@@ -17,11 +17,8 @@ export class StudentComponent implements OnInit {
 
   ngOnInit(): void {
     this.studentsForm = new FormGroup({
-      role: new FormControl('0'),
+      role: new FormControl('1'),
       enrollment: new FormControl(null, [Validators.required, Validators.minLength(9)]),
-      career: new FormControl(null, [Validators.required]),
-      quarter: new FormControl(null, [Validators.required]),
-      schedule: new FormControl(null, [Validators.required]),
       registerForm: this.registerFormComponent.createFormGroup(),
     });
     this.studentsForm
