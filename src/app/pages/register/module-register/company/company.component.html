@@ -10,13 +10,19 @@
           <div class="input-group-prepend">
             <span class="input-group-text"><i class="far fa-building"></i></span>
           </div>
-          <input class="form-control" placeholder="Tamaño de la empresa" type="number" formControlName="sizecompany" maxlength="9" NumbersOnly>
+          <select class="form-control" formControlName="sizecompany">
+            <option [value]="null" disabled hidden>Tamaño de la empresa</option>
+            <option value="0">0-10 empleados</option>
+            <option value="1">11-50 empleados</option>
+            <option value="2">51-100 empleados</option>
+            <option value="3">+100 empleados</option>
+          </select>
         </div>
         <div *ngIf="companysForm.controls.sizecompany.errors?.required && companysForm.controls.sizecompany.touched">
-          <small class="error-text ml-2">*Ingresa la cantidad de empleados de la empresa</small>
+          <small class="error-text ml-2">*Selecciona el tamaño de la empresa</small>
         </div>
       </div>
-
+      
       <div class="form-group col-12 p-0">
           <div class="input-group input-group-alternative" [ngClass]="(companysForm.controls.service.invalid && companysForm.controls.service.touched ) ? 'error-border' : ''">
             <div class="input-group-prepend">
