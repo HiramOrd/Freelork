@@ -1,0 +1,12 @@
+.table-home{
+  flex: 1 1 auto;
+  height: 25rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+@media screen and (min-width: 1200px) {
+  .table-home{
+    height: 0px;
+  }
+}

@@ -3,6 +3,25 @@
   cursor: pointer;
 }
 
+.background-default{
+  height: 15rem;
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+}
+@media screen and (min-width: 576px) {
+  .background-default{
+    height: 20rem;
+  }
+}
+
+.font-size-9{
+  font-size: 0.9rem;
+}
+.font-size-8{
+  font-size: 0.8rem;
+}
+
 .title-session{
     font-size: 1.5rem;
   }

@@ -26,7 +26,6 @@ const routes: Routes = [
   {
     path: 'guest', component: AuthLayoutComponent, children: [
       {path: '', pathMatch: 'full', redirectTo: 'home'},
-      {path: 'home', component: LoginComponent},
       {path: 'login', component: LoginComponent},
       {path: 'register', component: RegisterComponent, children: [
           {path: '', pathMatch: 'full', redirectTo: 'student'},
@@ -47,7 +46,7 @@ const routes: Routes = [
   {
     path: 'dash', component: AdminLayoutComponent, canActivate: [AuthenticationGuard], children: [
       {path: '', pathMatch: 'full', redirectTo: 'home'},
-      {path: 'home', component: DashboardComponent},
+      {path: 'home', component: HomeComponent},
       {path: 'user-profile', component: UserProfileComponent},
       {path: 'tables', component: TablesComponent},
       {path: 'icons', component: IconsComponent},
