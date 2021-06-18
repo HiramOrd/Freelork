@@ -11,7 +11,7 @@
         <div class="card-header border-0 bg-lighterBlue">
           <div class="row justify-content-start align-items-center">
 
-            <h3 class="mb-0 mr-3">Tareas realizadas</h3>
+            <h3 class="mb-0 mr-3">Actividades realizadas</h3>
 
             <!-- Form -->
             <form class="form-inline">
@@ -24,7 +24,21 @@
                 </div>
               </div>
             </form>
+            <label class="mb-0">
+              <span class="text-sm text-primary font-weight-bold">De: </span>
+              <input type="date" class="btn btn-neutral"
+                     [max]="today | date: 'yyyy-MM-dd'"
+                     [(ngModel)]="dateMinRange">
+            </label>
 
+            <!-- TODO: El input muestra pedazos de fecha -->
+            <label class="mb-0">
+              <span class="text-sm text-primary font-weight-bold">Hasta: </span>
+              <input type="date" class="btn btn-neutral"
+                     [min]="dateMinRange | date: 'yyyy-MM-dd'"
+                     [max]="today | date: 'yyyy-MM-dd'"
+                     [(ngModel)]="dateMaxRange">
+            </label>
             <button class="btn btn-primary">Exportar</button>
 
             <label class="d-flex align-items-center text-primary text-sm font-weight-bold mb-0">

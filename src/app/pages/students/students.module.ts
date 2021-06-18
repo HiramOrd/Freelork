@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StudentsTableComponent } from './register/students-table.component';
 import {NgbDropdownModule} from '@ng-bootstrap/ng-bootstrap';
+import {FormsModule} from '@angular/forms';
 
 
 
@@ -9,7 +10,8 @@ import {NgbDropdownModule} from '@ng-bootstrap/ng-bootstrap';
   declarations: [StudentsTableComponent],
   imports: [
     CommonModule,
-    NgbDropdownModule
+    NgbDropdownModule,
+    FormsModule
   ]
 })
 export class StudentsModule { }

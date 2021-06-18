@@ -6,8 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./students-table.component.css']
 })
 export class StudentsTableComponent implements OnInit {
+  today;
+  dateMinRange;
+  dateMaxRange;
+  dateDisabled = true;
 
-  constructor() { }
+  constructor() {
+    this.today = Date.now();
+    this.dateMinRange = this.today;
+    this.dateMaxRange = this.today;
+  }
 
   ngOnInit(): void {
   }
