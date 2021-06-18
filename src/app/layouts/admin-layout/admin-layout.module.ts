@@ -14,6 +14,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {AdminLayoutComponent} from './admin-layout.component';
 import {ComponentsModule} from '../../components/components.module';
 import {RouterModule} from '@angular/router';
+import {StudentsModule} from '../../pages/students/students.module';
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -24,7 +25,8 @@ import {RouterModule} from '@angular/router';
     NgbModule,
     ClipboardModule,
     ComponentsModule,
-    RouterModule
+    RouterModule,
+    StudentsModule
   ],
   declarations: [
     AdminLayoutComponent,

@@ -69,6 +69,7 @@ $grays: map-merge((
 ), $grays);
 
 $blue:    #5e72e4 !default;
+$bueSecond: #C5CBFF !default;
 $light-blue:#75A3FF !default;
 $lighter-blue: #E4EBFE !default;
 $light-purple: #F6EDFE !default;
@@ -85,6 +86,7 @@ $cyan:    #2bffc6 !default;
 $colors: () !default;
 $colors: map-merge((
   "blue":       $blue,
+  "blueSecond":  $bueSecond,
   "lightBlue":  $light-blue,
   "lighterBlue":  $lighter-blue,
   "lightPurple":  $light-purple,
