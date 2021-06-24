@@ -1,12 +1,15 @@
 <form [formGroup]="teachersForm" (ngSubmit)="teachersSubmit()">
 
-    <input type="hidden" formControlName="role">
-  
+  <!-- Role Input -->
+  <input type="hidden" formControlName="role">
+
     <app-register-form></app-register-form>
 
-   
-  
+
+
     <div class="row m-0 p-0">
+
+      <!-- Start Phone Input -->
       <div class="form-group col-12 p-0">
         <div class="input-group input-group-alternative"  [ngClass]="(teachersForm.controls.cellphone.invalid && teachersForm.controls.cellphone.touched ) ? 'error-border' : ''">
           <div class="input-group-prepend">
@@ -21,7 +24,9 @@
           <small class="error-text ml-2">*Por favor, ingresa tu número de teléfono de 10 dígitos</small>
         </div>
       </div>
+      <!-- End Phone Input -->
 
+      <!-- Start Degree Input -->
       <div class="form-group col-12 p-0">
         <div class="input-group input-group-alternative" [ngClass]="(teachersForm.controls.grade.invalid && teachersForm.controls.grade.touched ) ? 'error-border' : ''">
           <div class="input-group-prepend">
@@ -43,8 +48,10 @@
           <small class="error-text ml-2">*Selecciona el título académico que tienes</small>
         </div>
       </div>
+      <!-- End Degree Input -->
+
     </div>
-  
+
     <div class="text-center">
       <button type="submit" class="col-sm-8 btn btn-primary mt-4">Crear cuenta</button>
     </div>

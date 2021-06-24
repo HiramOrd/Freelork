@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {AllUsersComponent} from '../all-users/all-users.component';
+import {AllUsersComponent} from '../forms-register/all-users/all-users.component';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 

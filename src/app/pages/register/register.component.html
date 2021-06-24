@@ -1,3 +1,4 @@
+<!-- Start Header Title -->
 <div class="header bg-gradient-lightBlue py-7 py-lg-8">
   <div class="container">
     <div class="header-body text-center mb-7">
@@ -15,9 +16,10 @@
     </svg>
   </div>
 </div>
-<!-- Page content -->
+<!-- End Header Title -->
+
+<!-- Start Page content -->
 <div class="container mt--8 pb-5">
-  <!-- Table -->
   <div class="row justify-content-center">
     <div class="col-lg-6 col-md-8">
       <div class="card bg-secondary shadow border-0">
@@ -26,6 +28,7 @@
             <span class="title-session text-darkBlue">Crear una cuenta</span>
           </div>
 
+          <!-- Start New Register Desktop -->
           <div class="btn-group btn-group-toggle w-100 mb-4 d-none d-sm-inline-flex" ngbRadioGroup name="radioBasic" [(ngModel)]="userType">
             <label ngbButtonLabel class="btn-outline-primary border-right-0">
               <input ngbButton type="radio" [value]="0" routerLink="student"> Practicante
@@ -37,7 +40,9 @@
               <input ngbButton type="radio" [value]="2" routerLink="company"> Empresa
             </label>
           </div>
+          <!-- End New Register Desktop -->
 
+          <!-- Start New Register Mobile -->
           <div class="btn-group-toggle w-100 mb-4 d-flex flex-column d-sm-none" ngbRadioGroup name="radioBasic" [(ngModel)]="userType">
             <label ngbButtonLabel class="col-12 m-0 btn-outline-primary border-bottom-0 border-rounded-top">
               <input ngbButton type="radio" [value]="0" routerLink="student"> Practicante
@@ -49,7 +54,9 @@
               <input ngbButton type="radio" [value]="2" routerLink="company"> Empresa
             </label>
           </div>
+          <!-- End New Register Desktop -->
 
+          <!-- Custom Forms -->
           <router-outlet></router-outlet>
 
         </div>
@@ -62,3 +69,5 @@
     </div>
   </div>
 </div>
+<!-- End Page content -->
+

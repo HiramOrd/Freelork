@@ -1,19 +1,24 @@
-<!-- Background Color -->
+<!-- Start Background Color -->
 <div class="bg-gradient-lightBlue background-default">
 </div>
+<!-- End Background Color -->
 
-<!-- Page content -->
+<!-- Start Page content -->
 <div class="container-fluid pt-5 pt-md-8">
-  <!-- Table -->
+
+
   <div class="row">
     <div class="col">
+      <!-- Start Table Card -->
       <div class="card shadow px-2 px-sm-3 bg-lighterBlue">
+
+        <!-- Start Card Header -->
         <div class="card-header border-0 bg-lighterBlue">
           <div class="row justify-content-start align-items-center">
 
             <h3 class="mb-0 mr-3">Actividades realizadas</h3>
 
-            <!-- Form -->
+            <!-- Start Search Input -->
             <form class="form-inline">
               <div class="form-group mb-0 rounded overflow-hidden ">
                 <div class="input-group input-group-alternative">
@@ -24,6 +29,9 @@
                 </div>
               </div>
             </form>
+            <!-- End Search Input -->
+
+            <!-- Start Date Range Export-->
             <label class="mb-0">
               <span class="text-sm text-primary font-weight-bold">De: </span>
               <input type="date" class="btn btn-neutral"
@@ -40,7 +48,9 @@
                      [(ngModel)]="dateMaxRange">
             </label>
             <button class="btn btn-primary">Exportar</button>
+            <!-- Start Date Range Export-->
 
+            <!-- Start View Per Page -->
             <label class="d-flex align-items-center text-primary text-sm font-weight-bold mb-0">
               <span>Vistas:</span>
               <select class="btn btn-link shadow-none">
@@ -50,9 +60,13 @@
                 <option value="">Todos</option>
               </select>
             </label>
+            <!-- End View Per Page -->
 
           </div>
         </div>
+        <!-- End Card Header -->
+
+        <!-- Start Register Table -->
         <div class="table-responsive bg-white rounded">
           <table class="table align-items-center table-flush">
             <thead class="thead-light">
@@ -66,7 +80,8 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
+              <!-- Start Register Row -->
+              <tr>
               <th scope="row">
                 <span class="mb-0 text-sm">Se agrgaron diseños </span>
               </th>
@@ -97,9 +112,14 @@
                 </div>
               </td>
             </tr>
+              <!-- End Register Row -->
+
             </tbody>
           </table>
         </div>
+        <!-- End Register Table -->
+
+        <!-- Start Pagination -->
         <div class="card-footer py-4 bg-lighterBlue">
           <nav aria-label="...">
             <ul class="pagination justify-content-end mb-0">
@@ -125,7 +145,12 @@
             </ul>
           </nav>
         </div>
+        <!-- End Pagination -->
+
       </div>
+      <!-- End Table Card -->
+
     </div>
   </div>
+
 </div>

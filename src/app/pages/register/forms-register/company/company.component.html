@@ -1,10 +1,13 @@
 <form [formGroup]="companysForm" (ngSubmit)="companysSubmit()">
 
-    <input type="hidden" formControlName="role">
+  <!-- Role input -->
+  <input type="hidden" formControlName="role">
 
     <app-register-form></app-register-form>
 
     <div class="row m-0 p-0">
+
+      <!-- Start Size Company Input -->
       <div class="form-group col-12 p-0">
         <div class="input-group input-group-alternative" [ngClass]="(companysForm.controls.sizecompany.invalid && companysForm.controls.sizecompany.touched ) ? 'error-border' : ''">
           <div class="input-group-prepend">
@@ -22,7 +25,9 @@
           <small class="error-text ml-2">*Selecciona el tamaño de la empresa</small>
         </div>
       </div>
+      <!-- End Size Company Input -->
 
+      <!-- Start Type Services Input -->
       <div class="form-group col-12 p-0">
           <div class="input-group input-group-alternative" [ngClass]="(companysForm.controls.service.invalid && companysForm.controls.service.touched ) ? 'error-border' : ''">
             <div class="input-group-prepend">
@@ -39,7 +44,9 @@
             <small class="error-text ml-2">*Selecciona el tipo de giro de la empresa</small>
           </div>
       </div>
+      <!-- End Type Services Input -->
 
+      <!-- Start Address Input -->
       <div class="form-group col-12 p-0">
         <div class="input-group input-group-alternative" [ngClass]="(companysForm.controls.address.invalid && companysForm.controls.address.touched ) ? 'error-border' : ''">
           <div class="input-group-prepend">
@@ -54,6 +61,8 @@
           <small class="error-text ml-2">*La direción debe contener al menos 10 caracteres</small>
         </div>
       </div>
+      <!-- End Address Input -->
+
     </div>
 
     <div class="text-center">

@@ -5,7 +5,7 @@ import {Routes, RouterModule} from '@angular/router';
 
 import {AdminLayoutComponent} from '../layouts/admin-layout/admin-layout.component';
 import {AuthLayoutComponent} from '../layouts/auth-layout/auth-layout.component';
-import {HomeComponent} from '../pages/home/home.component';
+import {HomeComponent} from '../pages/students/home/home.component';
 import {LoginComponent} from '../pages/login/login.component';
 import {RegisterComponent} from '../pages/register/register.component';
 import {DashboardComponent} from '../pages/dashboard/dashboard.component';
@@ -19,7 +19,7 @@ import {StudentComponent} from '../pages/register/forms-register/student/student
 import {Page404Component} from './page404/page404.component';
 import {RoutesLayoutComponent} from '../layouts/routes-layout/routes-layout.component';
 import {AuthenticationGuard} from '../authentication.guard';
-import {AdminComponent} from '../pages/register/forms-register/admin/admin.component';
+import {AdminComponent} from '../pages/register/admin/admin.component';
 import {StudentsTableComponent} from '../pages/students/register/students-table.component';
 
 const routes: Routes = [

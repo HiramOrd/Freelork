@@ -2,22 +2,19 @@
   <div class="row align-items-center justify-content-xl-between">
     <div class="col-xl-6">
       <div class="copyright text-center text-xl-left text-muted">
-        &copy; {{ test | date: "yyyy" }} <a href="https://www.creative-tim.com?ref=ada-footer-admin-layout" class="font-weight-bold ml-1" target="_blank">Creative Tim</a>
+        &copy; {{ test | date: "yyyy" }} <span class="text-primary font-weight-bold ml-1" target="_blank">FKVH Team</span>
       </div>
     </div>
     <div class="col-xl-6">
       <ul class="nav nav-footer justify-content-center justify-content-xl-end">
         <li class="nav-item">
-          <a href="https://www.creative-tim.com?ref=ada-footer-admin-layout" class="nav-link" target="_blank">Creative Tim</a>
+          <a href="http://www.upqroo.edu.mx/" class="nav-link" target="blank">UPQROO</a>
         </li>
         <li class="nav-item">
-          <a href="https://www.creative-tim.com/presentation?ref=ada-footer-admin-layout" class="nav-link" target="_blank">About Us</a>
+          <a href="http://new.upqroo.edu.mx/nosotros" class="nav-link" target="blank">Sobre UPQROO</a>
         </li>
         <li class="nav-item">
-          <a href="http://blog.creative-tim.com?ref=ada-footer-admin-layout" class="nav-link" target="_blank">Blog</a>
-        </li>
-        <li class="nav-item">
-          <a href="https://github.com/creativetimofficial/argon-dashboard-angular/blob/master/LICENSE.md" class="nav-link" target="_blank">MIT License</a>
+          <span class="nav-link mouse-pointer" (click)="openContactModal()">Contacto FKVH Team</span>
         </li>
       </ul>
     </div>

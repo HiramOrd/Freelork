@@ -9,7 +9,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AllUsersComponent } from './all-users/all-users.component';
 import {UtilitiesModule} from '../../../utilities/utilities.module';
-import { AdminComponent } from './admin/admin.component';
+import { AdminComponent } from '../admin/admin.component';
 
 @NgModule({
   imports: [
