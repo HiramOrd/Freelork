@@ -1,10 +1,12 @@
 <form [formGroup]="studentsForm" (ngSubmit)="studentsSubmit()">
 
+  <!-- Role Input -->
   <input type="hidden" formControlName="role">
 
   <app-register-form></app-register-form>
 
   <div class="row m-0 p-0">
+    <!-- Start Enrollment Input -->
     <div class="form-group col-12 p-0">
       <div class="input-group input-group-alternative" [ngClass]="(studentsForm.controls.enrollment.invalid && studentsForm.controls.enrollment.touched ) ? 'error-border' : ''">
         <div class="input-group-prepend">
@@ -19,6 +21,8 @@
         <small class="error-text ml-2">*Debe ser de {{studentsForm.controls.enrollment.errors?.minlength.requiredLength}} caracteres</small>
       </div>
     </div>
+    <!-- End Enrollment Input -->
+
   </div>
 
   <div class="text-center">

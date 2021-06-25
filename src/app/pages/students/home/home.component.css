@@ -1,4 +1,4 @@
-.table-home{
+.task-table{
   flex: 1 1 auto;
   height: 25rem;
   overflow-y: auto;
@@ -6,7 +6,15 @@
 }
 
 @media screen and (min-width: 1200px) {
-  .table-home{
+  .task-table{
     height: 0px;
   }
+}
+
+
+.advises-table{
+  flex: 1 1 auto;
+  height: 18rem;
+  overflow-y: auto;
+  overflow-x: hidden;
 }

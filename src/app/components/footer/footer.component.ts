@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {ContactTeamComponent} from '../contact-team/contact-team.component';
 
 @Component({
   selector: 'app-footer',
@@ -8,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 export class FooterComponent implements OnInit {
   test: Date = new Date();
 
-  constructor() { }
+  constructor(private modalService: NgbModal) { }
 
   ngOnInit() {
+  }
+
+  openContactModal() {
+    const modalRef = this.modalService.open(ContactTeamComponent, {size: 'sm'});
   }
 
 }
