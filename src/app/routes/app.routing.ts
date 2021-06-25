@@ -20,6 +20,8 @@ import {Page404Component} from './page404/page404.component';
 import {RoutesLayoutComponent} from '../layouts/routes-layout/routes-layout.component';
 import {AuthenticationGuard} from '../authentication.guard';
 import {AdminComponent} from '../pages/register/forms-register/admin/admin.component';
+import { RegisterTaskComponent } from '../pages/register-task/register-task.component';
+
 
 const routes: Routes = [
   {path: '', redirectTo: 'dash/home', pathMatch: 'full'},
@@ -50,6 +52,7 @@ const routes: Routes = [
       {path: 'user-profile', component: UserProfileComponent},
       {path: 'tables', component: TablesComponent},
       {path: 'icons', component: IconsComponent},
+      {path: 'register-task', component: RegisterTaskComponent},
       {path: 'maps', component: MapsComponent},
       {path: '**', redirectTo: '/not/404/error/dash'},
     ]

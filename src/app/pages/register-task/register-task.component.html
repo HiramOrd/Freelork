@@ -1,0 +1,79 @@
+<div class="bg-gradient-lightBlue background-default h-100">
+</div>
+<div class="pb-0 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+      <!-- Card stats -->
+      <div class="row">
+        <div class="col-xl-6 ">
+          <div class="row h-100">
+            <div class="col-12">
+              <div class="card card-stats mb-4 mb-xl-0 h-100">
+                <div class="card-body p-xl-3">
+                  <div class="col-sm-12 mx-auto d-flex flex-column text-darker font-weight-bold">
+                    <p class="text-left">Datos generales</p>
+                    <div class="col-12 col-xl-12 mb-3 px-0 w-100">
+                        <p>Proyecto</p>
+                        <input class="w-100" type="text">
+                    </div>
+                    <div class="d-flex justify-content-between col-xl-12 mb-3 px-0 w-100">
+                        <div class="col-7 col-xl-7 mb-3 px-0 w-100">
+                          <p>Título</p>
+                            <input class="w-100" type="text">
+                        </div>
+                        <div class="col-3 col-xl-3 mb-3 px-0 w-100">
+                            <p>Tiempo</p>
+                            <input class="w-100" type="text">
+                        </div>
+                    </div>
+                    <div class="col-12 col-xl-12 mb-4 px-0 w-100">
+                        <p>Descripción</p>                     
+                        <textarea class="tall-input w-100" name="comment"></textarea>
+                    </div>
+                    <div class="text-right">
+                        <button type="submit" class="col-sm-4 btn btn-primary my-auto">Aceptar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-6" >
+          <div class="row h-100">
+            <div class="col-12 mt-4 mt-xl-0">
+              <div class="card card-stats mb-4 mb-xl-0 h-100">
+                <div class="card-body px-2 px-sm-4 p-lg-4" style="position: relative; max-height: 500px;">
+                  <div class="">
+                    <input type="file" #newPhoto id="newPhoto" accept=".png, .jpg, .jpeg" (change)="onFileChanged($event)" required>
+                  </div>
+                  <div  class="w-100 h-100 d-flex justify-content-center align-items-center" style="position: absolute; z-index: 2; max-width: 92%">
+                   
+                      <svg xmlns="http://www.w3.org/2000/svg" (click)="chargePhoto()" class="icon icon-tabler icon-tabler-file-plus" style="width: 130px !important; height:130px !important; cursor:pointer;" viewBox="0 0 24 24" stroke-width="1" stroke="#9A9CE5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+                        <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
+                        <line x1="12" y1="11" x2="12" y2="17" />
+                        <line x1="9" y1="14" x2="15" y2="14" />
+                      </svg>
+                
+                  </div>
+                  
+                  <img class="" [src]="(imageShow === undefined)? '/assets/img/example.jpg' : this.imageShow" style="width: 100%; object-fit: contain;">
+            
+                  <!-- <div class="w-100">
+                    <img class="w-100 h-100" src="../../../assets/img/example.jpg" alt="" style="width: 500px; height: 500px !important;">
+                  </div> -->
+                
+                  
+
+                 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

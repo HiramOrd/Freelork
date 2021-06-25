@@ -1,0 +1,12 @@
+.tall-input{
+    height: 250px;
+}
+textarea {
+    overflow: auto;
+    vertical-align: top;
+    resize: none;
+}
+
+#newPhoto{
+    display: none;
+}
