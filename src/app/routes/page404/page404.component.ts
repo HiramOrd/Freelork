@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {UtilitiesService} from '../../services/utilities.service';
 
 @Component({
   selector: 'app-page404',
@@ -7,28 +8,22 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./page404.component.css']
 })
 export class Page404Component implements OnInit {
-  route = {id: 0, name: 'Inicio', route: '/dash'};
+  route = '';
+  name = '';
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  constructor(private utilitiesService: UtilitiesService) { }
 
   ngOnInit(): void {
-    switch (this.origin) {
-      case 'register':
-        this.route = {id: 1, name: 'Registro de usuario', route: '/guest/register'};
-        break;
-
-      case 'guest':
-        this.route = {id: 2, name: 'Inicio de sesión', route: '/guest'};
-        break;
-
-      case 'dash':
-        this.route = {id: 3, name: 'Dashboard', route: '/dash'};
-        break;
-    }
+    this.route = this.setRoute();
+    this.name = this.setRouteName();
   }
 
-  get origin() {
-    return this.activatedRoute.snapshot.params.origin;
+  setRoute(): string {
+    return this.utilitiesService.getRoleRoute() ?
+      '/dash/' + this.utilitiesService.getRoleRoute() + 'home' : '/guest';
   }
 
+  setRouteName(): string {
+    return this.utilitiesService.getRoleRoute() ? 'Home' : 'Login';
+  }
 }

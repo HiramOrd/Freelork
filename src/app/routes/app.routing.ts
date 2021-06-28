@@ -21,21 +21,22 @@ import {RoutesLayoutComponent} from '../layouts/routes-layout/routes-layout.comp
 import {AuthenticationGuard} from '../authentication.guard';
 import {AdminComponent} from '../pages/register/admin/admin.component';
 import {StudentsTableComponent} from '../pages/students/register/students-table.component';
+import {StudentsProjectsComponent} from '../pages/students/projects/students-projects.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'dash/home', pathMatch: 'full'},
+  {path: '', redirectTo: '/guest/login', pathMatch: 'full'},
   {
     path: 'guest', component: AuthLayoutComponent, children: [
-      {path: '', pathMatch: 'full', redirectTo: 'home'},
+      {path: '', pathMatch: 'full', redirectTo: 'login'},
       {path: 'login', component: LoginComponent},
       {path: 'register', component: RegisterComponent, children: [
           {path: '', pathMatch: 'full', redirectTo: 'student'},
           {path: 'teacher', component: TeacherComponent},
           {path: 'company', component: CompanyComponent},
           {path: 'student', component: StudentComponent},
-          {path: '**', redirectTo: '/not/404/error/register'}
+          {path: '**', redirectTo: '/not/404', data: { error: 2 }},
         ]},
-      {path: '**', redirectTo: '/not/404/error/guest'},
+      {path: '**', redirectTo: '/not/404', data: { error: 2 }},
     ]
   },
   {
@@ -46,20 +47,42 @@ const routes: Routes = [
   },
   {
     path: 'dash', component: AdminLayoutComponent, canActivate: [AuthenticationGuard], children: [
+      {
+        path: 'adm', children: [
+          {path: 'projects', component: StudentsProjectsComponent},
+          {path: '**', redirectTo: '/not/404' },
+        ]
+      },
+      {
+        path: 'std', children: [
+          {path: 'home', component: HomeComponent},
+          {path: 'register', component: StudentsTableComponent},
+          {path: 'projects', component: StudentsProjectsComponent},
+          {path: '**', redirectTo: '/not/404' },
+        ]
+      },
+      {
+        path: 'tch', children: [
+          {path: '**', redirectTo: '/not/404' },
+        ]
+      },
+      {
+        path: 'comp', children: [
+          {path: '**', redirectTo: '/not/404' },
+        ]
+      },
       {path: '', pathMatch: 'full', redirectTo: 'home'},
-      {path: 'home', component: HomeComponent},
-      {path: 'register', component: StudentsTableComponent},
       {path: 'user-profile', component: UserProfileComponent},
       {path: 'tables', component: TablesComponent},
       {path: 'icons', component: IconsComponent},
       {path: 'maps', component: MapsComponent},
-      {path: '**', redirectTo: '/not/404/error/dash'},
+      {path: '**', redirectTo: '/not/404'},
     ]
   },
   {path: 'not', component: RoutesLayoutComponent, children: [
-      {path: '', pathMatch: 'full', redirectTo: '404/error/unknown'},
-      {path: '404/error/:origin', component: Page404Component},
-      {path: '**', redirectTo: '404/error/unknown'},
+      {path: '', pathMatch: 'full', redirectTo: '404'},
+      {path: '404', component: Page404Component},
+      {path: '**', redirectTo: '404'},
     ]},
   {path: '**', redirectTo: 'not'}
 ];

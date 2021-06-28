@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import {UtilitiesService} from '../../services/utilities.service';
 
 declare interface RouteInfo {
     path: string;
@@ -8,11 +9,11 @@ declare interface RouteInfo {
     class: string;
 }
 export const ROUTES: RouteInfo[] = [
-  { path: 'home', title: 'Dashboard',  icon: 'ni-tv-2 text-primary', class: '' },
-  { path: 'register', title: 'Registro',  icon: 'ni-bullet-list-67 text-primary', class: '' },
-  { path: 'register', title: 'Proyectos',  icon: 'ni-archive-2 text-primary', class: '' },
-  { path: 'register', title: 'Grupos',  icon: 'ni-books text-primary', class: '' },
-  { path: 'register', title: 'Avisos',  icon: 'ni-notification-70 text-primary', class: '' },
+  { path: 'std/home', title: 'Dashboard',  icon: 'ni-tv-2 text-primary', class: '' },
+  { path: 'std/register', title: 'Registro',  icon: 'ni-bullet-list-67 text-primary', class: '' },
+  { path: 'std/projects', title: 'Proyectos',  icon: 'ni-archive-2 text-primary', class: '' },
+  // { path: 'std/register', title: 'Grupos',  icon: 'ni-books text-primary', class: '' },
+  // { path: 'std/register', title: 'Avisos',  icon: 'ni-notification-70 text-primary', class: '' },
   // {path: 'icons', title: 'Icons', icon: 'ni-planet text-blue', class: ''},
   // {path: 'maps', title: 'Maps', icon: 'ni-pin-3 text-orange', class: ''},
   // {path: 'user-profile', title: 'User profile', icon: 'ni-single-02 text-yellow', class: ''},
@@ -28,10 +29,12 @@ export class SidebarComponent implements OnInit {
 
   public menuItems: any[];
   public isCollapsed = true;
+  roleRoute;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private utilitiesService: UtilitiesService) { }
 
   ngOnInit() {
+    this.roleRoute = this.utilitiesService.getRoleRoute();
     this.menuItems = ROUTES.filter(menuItem => menuItem);
     this.router.events.subscribe((event) => {
       this.isCollapsed = true;

@@ -1,8 +1,41 @@
-/* You can add global styles to this file, and also import other style files */
+// Utilities
 .mouse-pointer{
   cursor: pointer;
 }
+.font-size-9{
+  font-size: 0.9rem;
+}
+.font-size-8{
+  font-size: 0.8rem;
+}
+.title-session{
+  font-size: 1.5rem;
+}
 
+.text-darkBlue{
+  color: #1C1679;
+}
+
+.grid-cards{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 1fr);
+  grid-gap: 1rem;
+}
+@media screen and (min-width: 768px) {
+  .grid-cards{
+    grid-template-columns: repeat(auto-fit, 20rem);
+  }
+}
+
+// Forms Errors Styles
+.error-border{
+  border: #FE7F94 solid 2px !important;
+}
+.error-text{
+  color: #FE7F94 !important;
+}
+
+// Background Header Dashboard
 .background-default{
   height: 15rem;
   position: absolute;
@@ -15,24 +48,32 @@
   }
 }
 
-.font-size-9{
-  font-size: 0.9rem;
-}
-.font-size-8{
-  font-size: 0.8rem;
-}
-
-.title-session{
-    font-size: 1.5rem;
+// All Modals
+@keyframes modal-background-fade {
+  from {
+    opacity: 0;
   }
-
-.text-darkBlue{
-  color: #1C1679;
+  to {
+    opacity: 0.16;
+  }
+}
+@keyframes modal-component-fade {
+  from {
+    top: -200px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+.modal-backdrop.show{
+  animation: ease .3s modal-background-fade;
+}
+.modal {
+  animation: ease .3s modal-component-fade;
 }
 
-.error-border{
-  border: #FE7F94 solid 2px !important;
-}
-.error-text{
-  color: #FE7F94 !important;
-}
+// Notification Modal
+// Alert Modal
+// Warning Modal
