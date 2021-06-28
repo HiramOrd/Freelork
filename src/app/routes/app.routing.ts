@@ -60,6 +60,7 @@ const routes: Routes = [
           {path: 'home', component: HomeComponent},
           {path: 'register', component: StudentsTableComponent},
           {path: 'projects', component: StudentsProjectsComponent},
+          {path: 'register-task', component: RegisterTaskComponent},
           {path: '**', redirectTo: '/not/404' },
         ]
       },
@@ -77,7 +78,6 @@ const routes: Routes = [
       {path: 'user-profile', component: UserProfileComponent},
       {path: 'tables', component: TablesComponent},
       {path: 'icons', component: IconsComponent},
-      {path: 'register-task', component: RegisterTaskComponent},
       {path: 'maps', component: MapsComponent},
       {path: '**', redirectTo: '/not/404'},
     ]
