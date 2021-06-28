@@ -1,12 +1,30 @@
 .tall-input{
     height: 250px;
+    color: black !important; 
+    border: 2px solid #E6E6E6 !important;
+}
+.tall-input:focus{
+    border: 2px solid #CDCDCD !important;
 }
 textarea {
     overflow: auto;
     vertical-align: top;
     resize: none;
 }
-
+#change-size{
+    width: 130px !important;
+    height:130px !important; 
+    cursor:pointer;
+    transition: transform .5s;
+}
+#change-size:hover{
+    cursor:pointer;
+    transform: scale(1.3);
+    -webkit-transform: scale(1.3);
+    -moz-transform: scale(1.3);
+    -ms-transform: scale(1.3);
+    transition: transform .5s;
+}
 #newPhoto{
     display: none;
 }

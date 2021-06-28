@@ -1,5 +1,6 @@
 <div class="bg-gradient-lightBlue background-default h-100">
 </div>
+<form  (ngSubmit)="registerTaskSubmit()">
 <div class="pb-0 pt-5 pt-md-8">
   <div class="container-fluid">
     <div class="header-body">
@@ -11,24 +12,37 @@
               <div class="card card-stats mb-4 mb-xl-0 h-100">
                 <div class="card-body p-xl-3">
                   <div class="col-sm-12 mx-auto d-flex flex-column text-darker font-weight-bold">
-                    <p class="text-left">Datos generales</p>
-                    <div class="col-12 col-xl-12 mb-3 px-0 w-100">
-                        <p>Proyecto</p>
-                        <input class="w-100" type="text">
+                    <p class="text-left" style="font-size: 18px; font-weight: 500;">Datos generales</p>
+                    
+                    <div class="w-100 px-0 d-flex justify-content-end">  
+                      <input class="form-control col-12 col-sm-5 input-border text-center" type="date">
                     </div>
+
+                    <div class="col-12 col-xl-12 mb-3 px-0 w-100">
+                        <label class="title-input">Proyecto</label>   
+                        <input class="form-control w-100 input-border" type="text">
+                    </div>
+
+                   <!--  <div class="input-group input-group-alternative">
+                      <input class="form-control" placeholder="Buscar registro..." type="text">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text text-primary"><i class="fas fa-search"></i></span>
+                      </div>
+                    </div> -->
+                    
                     <div class="d-flex justify-content-between col-xl-12 mb-3 px-0 w-100">
-                        <div class="col-7 col-xl-7 mb-3 px-0 w-100">
-                          <p>Título</p>
-                            <input class="w-100" type="text">
+                        <div class="col-9 col-xl-9 px-0 w-100 pr-3">
+                          <label class="title-input">Título</label>
+                            <input class="form-control w-100 input-border" type="text">
                         </div>
-                        <div class="col-3 col-xl-3 mb-3 px-0 w-100">
-                            <p>Tiempo</p>
-                            <input class="w-100" type="text">
+                        <div class="col-3 col-xl-3 px-0 w-100">
+                            <label class="title-input">Tiempo</label>
+                            <input class="form-control w-100 input-border" type="text">
                         </div>
                     </div>
                     <div class="col-12 col-xl-12 mb-4 px-0 w-100">
-                        <p>Descripción</p>                     
-                        <textarea class="tall-input w-100" name="comment"></textarea>
+                        <label class="title-input">Descripción</label>              
+                        <textarea class="form-control w-100 tall-input" name="comment"></textarea>
                     </div>
                     <div class="text-right">
                         <button type="submit" class="col-sm-4 btn btn-primary my-auto">Aceptar</button>
@@ -49,7 +63,7 @@
                   </div>
                   <div  class="w-100 h-100 d-flex justify-content-center align-items-center" style="position: absolute; z-index: 2; max-width: 92%">
                    
-                      <svg xmlns="http://www.w3.org/2000/svg" (click)="chargePhoto()" class="icon icon-tabler icon-tabler-file-plus" style="width: 130px !important; height:130px !important; cursor:pointer;" viewBox="0 0 24 24" stroke-width="1" stroke="#9A9CE5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <svg xmlns="http://www.w3.org/2000/svg" (click)="chargePhoto()" id="change-size" class="icon icon-tabler icon-tabler-file-plus" viewBox="0 0 24 24" stroke-width="1" stroke="#9A9CE5" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                         <path d="M14 3v4a1 1 0 0 0 1 1h4" />
                         <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
@@ -59,7 +73,7 @@
                 
                   </div>
                   
-                  <img class="" [src]="(imageShow === undefined)? '/assets/img/example.jpg' : this.imageShow" style="width: 100%; object-fit: contain;">
+                  <img class="" [src]="(imageShow === undefined)? '/assets/img/example.jpg' : this.imageShow" style="width: 100%; max-height: 600px; object-fit: contain;">
             
                   <!-- <div class="w-100">
                     <img class="w-100 h-100" src="../../../assets/img/example.jpg" alt="" style="width: 500px; height: 500px !important;">
@@ -77,3 +91,4 @@
     </div>
   </div>
 </div>
+</form>

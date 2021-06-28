@@ -44,3 +44,15 @@
 .error-text{
   color: #FE7F94 !important;
 }
+.input-border{
+  color: black !important; 
+  border: 2px solid #E6E6E6 !important;
+}
+.input-border:focus {
+  border: 2px solid #CDCDCD !important;
+}
+.title-input{
+  margin-bottom: 8px; 
+  font-size: 14px; 
+  font-weight: 400;
+}

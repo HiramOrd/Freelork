@@ -1,11 +1,12 @@
 import { Component, OnInit, ViewChild, ElementRef, Renderer2} from '@angular/core';
-
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 @Component({
   selector: 'app-register-task',
   templateUrl: './register-task.component.html',
   styleUrls: ['./register-task.component.css']
 })
 export class RegisterTaskComponent implements OnInit {
+  registerTaskForm: FormGroup;
   @ViewChild('newPhoto') newPhoto: ElementRef;
   file:any;
   imageShow:any;
@@ -13,6 +14,10 @@ export class RegisterTaskComponent implements OnInit {
   constructor(private renderer: Renderer2) { }
 
   ngOnInit(): void {
+    
+  }
+  registerTaskSubmit(){
+
   }
 
   chargePhoto(){
