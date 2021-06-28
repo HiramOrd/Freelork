@@ -22,6 +22,8 @@ import {AuthenticationGuard} from '../authentication.guard';
 import {AdminComponent} from '../pages/register/admin/admin.component';
 import {StudentsTableComponent} from '../pages/students/register/students-table.component';
 import {StudentsProjectsComponent} from '../pages/students/projects/students-projects.component';
+import { RegisterTaskComponent } from '../pages/register-task/register-task.component';
+
 
 const routes: Routes = [
   {path: '', redirectTo: '/guest/login', pathMatch: 'full'},
@@ -75,6 +77,7 @@ const routes: Routes = [
       {path: 'user-profile', component: UserProfileComponent},
       {path: 'tables', component: TablesComponent},
       {path: 'icons', component: IconsComponent},
+      {path: 'register-task', component: RegisterTaskComponent},
       {path: 'maps', component: MapsComponent},
       {path: '**', redirectTo: '/not/404'},
     ]

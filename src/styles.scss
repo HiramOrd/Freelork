@@ -6,6 +6,27 @@ root{
 .mouse-pointer{
   cursor: pointer;
 }
+
+.background-default{
+  height: 15rem;
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+}
+@media screen and (min-width: 576px) {
+  .background-default{
+    height: 20rem;
+  }
+}
+
+.background-complete{
+  height: 100%;
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+}
+
+
 .font-size-9{
   font-size: 0.9rem;
 }
@@ -84,3 +105,16 @@ root{
 // Notification Modal
 // Alert Modal
 // Warning Modal
+
+.input-border{
+  color: black !important;
+  border: 2px solid #E6E6E6 !important;
+}
+.input-border:focus {
+  border: 2px solid #CDCDCD !important;
+}
+.title-input{
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 400;
+}
