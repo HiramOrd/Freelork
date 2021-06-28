@@ -6,6 +6,7 @@ import {FormsModule} from '@angular/forms';
 import {HomeComponent} from './home/home.component';
 import {RouterModule} from '@angular/router';
 import { StudentsProjectsComponent } from './projects/students-projects.component';
+import { ModalViewRegisterStudentComponent } from './register/modal-view-register-student/modal-view-register-student.component';
 
 
 
@@ -14,6 +15,7 @@ import { StudentsProjectsComponent } from './projects/students-projects.componen
     StudentsTableComponent,
     HomeComponent,
     StudentsProjectsComponent,
+    ModalViewRegisterStudentComponent,
   ],
   imports: [
     CommonModule,

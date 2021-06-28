@@ -67,49 +67,37 @@
         <!-- End Card Header -->
 
         <!-- Start Register Table -->
-        <div class="table-responsive bg-white rounded">
+        <div class="table-responsive bg-white rounded" (click)="viewRegister()">
           <table class="table align-items-center table-flush">
             <thead class="thead-light">
             <tr>
               <th scope="col">Titulo</th>
-              <th scope="col">Proyecto</th>
+              <th scope="col" class="d-none d-lg-table-cell">Proyecto</th>
               <th scope="col">Fecha</th>
-              <th scope="col">Duración</th>
+              <th scope="col" class="d-none d-lg-table-cell">Duración</th>
               <th scope="col">Estado</th>
-              <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
+
               <!-- Start Register Row -->
-              <tr>
+              <tr class="row-button">
               <th scope="row">
                 <span class="mb-0 text-sm">Se agrgaron diseños </span>
               </th>
-              <td>
-                <a href="">Amma Club</a>
+              <td class="d-none d-lg-table-cell">
+                <a routerLink="../projects" >Amma Club</a>
               </td>
               <td>
                 <span>02/10/2020</span>
               </td>
-              <td>
+              <td class="d-none d-lg-table-cell">
                 1h 23min
               </td>
               <td>
-                <span class="badge badge-dot mr-4">
-                    <i class="bg-warning"></i> pending
+                <span class="badge badge-dot mr-4 text-orange">
+                    Pendiente
                 </span>
-              </td>
-              <td class="text-right">
-                <div ngbDropdown placement="bottom-right" container="body">
-                  <a class="btn btn-sm btn-icon-only text-light mr-0"  ngbDropdownToggle>
-                    <i class="fas fa-ellipsis-v"></i>
-                  </a>
-                  <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                    <a class="dropdown-item" href="javascript:void(0)">Ver más</a>
-                    <a class="dropdown-item" href="javascript:void(0)">Editar</a>
-                    <a class="dropdown-item" href="javascript:void(0)">Eliminar</a>
-                  </div>
-                </div>
               </td>
             </tr>
               <!-- End Register Row -->

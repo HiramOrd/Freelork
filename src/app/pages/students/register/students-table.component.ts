@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {ModalViewRegisterStudentComponent} from './modal-view-register-student/modal-view-register-student.component';
 
 @Component({
   selector: 'app-register',
@@ -11,13 +13,18 @@ export class StudentsTableComponent implements OnInit {
   dateMaxRange;
   dateDisabled = true;
 
-  constructor() {
+  constructor(private modalService: NgbModal) {
     this.today = Date.now();
     this.dateMinRange = this.today;
     this.dateMaxRange = this.today;
   }
 
   ngOnInit(): void {
+  }
+
+  viewRegister() {
+    const modalRef = this.modalService.open(ModalViewRegisterStudentComponent);
+    modalRef.componentInstance.name = 'World';
   }
 
 }
