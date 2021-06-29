@@ -1,0 +1,11 @@
+.cancel-button{
+    background-color: white; 
+    border: none; 
+    color: inherit;
+}
+.cancel-acept{
+    background-color: white; 
+    border: none; 
+    color: inherit; 
+    font-weight: 600;
+}
