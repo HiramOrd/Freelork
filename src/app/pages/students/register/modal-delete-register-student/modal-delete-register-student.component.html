@@ -13,11 +13,11 @@
     </div>
 
     <div class="d-flex justify-content-end">
-        <button class="cancel-button pr-5" name="button">
+        <button class="cancel-button pr-5" name="button" (click)="activeModal.dismiss('Cross click')">
             Cancelar
         </button>
 
-        <button class="cancel-acept" name="button">
+        <button class="cancel-acept" name="button" (click)="deleteRegister()">
             Aceptar
         </button>
       </div>
