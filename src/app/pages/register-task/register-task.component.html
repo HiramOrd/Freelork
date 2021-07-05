@@ -1,94 +1,199 @@
 <div class="bg-gradient-lightBlue background-default h-100">
 </div>
-<form  (ngSubmit)="registerTaskSubmit()">
-<div class="pb-0 pt-5 pt-md-8">
-  <div class="container-fluid">
-    <div class="header-body">
-      <!-- Card stats -->
+
+
+<!-- Start Content -->
+<div>
+
+  <!-- Start Form -->
+  <form (submit)="registerTaskSubmit()">
+    <div class="container-fluid pt-5 pt-md-8">
+
+      <!-- Start Cards section -->
       <div class="row">
+        <!-- Start Left Section -->
+        <div class="col-xl-6 pb-4 pb-xl-0">
+          <div class="row h-100">
+            <div class="col-12">
+              <div class="card card-stats mb-4 mb-xl-0 h-100">
+
+                <!-- Start Card Header -->
+                <div class="card-header bg-white border-0">
+                  <div class="row align-items-center">
+                    <div class="col-8">
+                      <h3 class="mb-0">Datos Generales</h3>
+                    </div>
+                  </div>
+                </div>
+                <!-- End Card Header -->
+
+                <!-- Start Card Body -->
+                <div class="card-body p-xl-3 bg-secondary">
+                  <div class="row justify-content-end">
+
+                    <!-- Start Date Input -->
+                    <div class="col-6">
+                      <div class="form-group m-0">
+                        <input type="date" class="form-control form-control-alternative">
+                      </div>
+                    </div>
+                  </div>
+                  <!-- End Date Input -->
+
+                  <!-- Start Project Input -->
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="form-group">
+                        <label class="form-control-label" for="select-project">Proyecto</label>
+                        <select id="select-project" class="form-control form-control-alternative">
+                          <option [value]="null" disabled hidden selected>Selecciona un proyecto</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- End Project Input -->
+
+                  <div class="row">
+
+                    <!-- Start Title Input -->
+                    <div class="col-lg-8">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-first-name">Titulo</label>
+                        <input type="text" id="input-first-name" class="form-control form-control-alternative"
+                               placeholder="¿En qué trabajaste hoy?">
+                      </div>
+                    </div>
+                    <!-- End Title Input -->
+
+                    <!-- Start Time Input -->
+                    <div class="col-lg-4">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-last-name">Tiempo</label>
+                        <input type="number" id="input-last-name" class="form-control form-control-alternative"
+                               placeholder="¿Cuántas horas?" title="¿Cuántas horas trabajaste hoy?" NumbersOnly>
+                      </div>
+                    </div>
+                    <!-- End Time Input -->
+
+                  </div>
+
+                  <!-- Start Description Input -->
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="form-group">
+                        <label class="form-control-label" for="project-description">Descripción</label>
+                        <textarea class="form-control form-control-alternative"
+                                  id="project-description" rows="10"
+                                  placeholder="Aquí puedes describir un poco mas que hiciste... (Opcional)"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- End Description Input -->
+
+                  <!-- Start Submit Desktop -->
+                  <div class="row justify-content-end d-none d-xl-flex">
+                    <div class="col-auto">
+                      <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Aceptar</button>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- End Submit Desktop -->
+
+                </div>
+                <!-- End Card Body -->
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Left Section -->
+
+        <!-- Start Right Section -->
         <div class="col-xl-6 ">
           <div class="row h-100">
             <div class="col-12">
               <div class="card card-stats mb-4 mb-xl-0 h-100">
-                <div class="card-body p-xl-3">
-                  <div class="col-sm-12 mx-auto d-flex flex-column text-darker font-weight-bold">
-                    <p class="text-left" style="font-size: 18px; font-weight: 500;">Datos generales</p>
-                    
-                    <div class="w-100 px-0 d-flex justify-content-end">  
-                      <input class="form-control col-12 col-sm-5 input-border text-center" type="date">
-                    </div>
 
-                    <div class="col-12 col-xl-12 mb-3 px-0 w-100">
-                        <label class="title-input">Proyecto</label>   
-                        <input class="form-control w-100 input-border" type="text">
-                    </div>
-
-                   <!--  <div class="input-group input-group-alternative">
-                      <input class="form-control" placeholder="Buscar registro..." type="text">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text text-primary"><i class="fas fa-search"></i></span>
-                      </div>
-                    </div> -->
-                    
-                    <div class="d-flex justify-content-between col-xl-12 mb-3 px-0 w-100">
-                        <div class="col-9 col-xl-9 px-0 w-100 pr-3">
-                          <label class="title-input">Título</label>
-                            <input class="form-control w-100 input-border" type="text">
-                        </div>
-                        <div class="col-3 col-xl-3 px-0 w-100">
-                            <label class="title-input">Tiempo</label>
-                            <input class="form-control w-100 input-border" type="text">
-                        </div>
-                    </div>
-                    <div class="col-12 col-xl-12 mb-4 px-0 w-100">
-                        <label class="title-input">Descripción</label>              
-                        <textarea class="form-control w-100 tall-input" name="comment"></textarea>
-                    </div>
-                    <div class="text-right">
-                        <button type="submit" class="col-sm-4 btn btn-primary my-auto">Aceptar</button>
+                <!-- Start Card Header -->
+                <div class="card-header bg-white border-0">
+                  <div class="row align-items-center">
+                    <div class="col-8">
+                      <h3 class="mb-0">Imagen</h3>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-6" >
-          <div class="row h-100">
-            <div class="col-12 mt-4 mt-xl-0">
-              <div class="card card-stats mb-4 mb-xl-0 h-100">
-                <div class="card-body px-2 px-sm-4 p-lg-4" style="position: relative; max-height: 500px;">
-                  <div class="">
-                    <input type="file" #newPhoto id="newPhoto" accept=".png, .jpg, .jpeg" (change)="onFileChanged($event)" required>
-                  </div>
-                  <div  class="w-100 h-100 d-flex justify-content-center align-items-center" style="position: absolute; z-index: 2; max-width: 92%">
-                   
-                      <svg xmlns="http://www.w3.org/2000/svg" (click)="chargePhoto()" id="change-size" class="icon icon-tabler icon-tabler-file-plus" viewBox="0 0 24 24" stroke-width="1" stroke="#9A9CE5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <!-- End Card Header -->
+
+                <div class="card-body p-0 bg-secondary" id="image-container">
+                  <!-- Start Image Input -->
+                  <input type="file" #newPhoto id="newPhoto" accept=".png, .jpg, .jpeg"
+                         (change)="onFileChanged($event)" required>
+                  <!-- End Image Input -->
+
+                  <!-- Start Image Box -->
+                  <div class="col p-0 h-100 d-flex justify-content-center align-items-center"
+                       (click)="chargePhoto()" id="image-box">
+
+                    <!-- Start Image Preview -->
+                    <div class="p-1 p-md-3" id="image">
+                      <img [src]="(imageShow === undefined)? '/assets/img/example.jpg' : this.imageShow">
+                    </div>
+                    <!-- End Image Preview -->
+
+                    <!-- Start Image Background Blur -->
+                    <div id="background">
+                      <img [src]="(imageShow === undefined)? '/assets/img/example.jpg' : this.imageShow">
+                    </div>
+                    <!-- End Image Background Blur -->
+
+                    <!-- Start Image Button -->
+                    <div id="button-box" class="h-100 w-100 d-flex justify-content-center align-items-center">
+                      <svg xmlns="http://www.w3.org/2000/svg"
+                           class="icon icon-tabler icon-tabler-file-plus" viewBox="0 0 24 24" stroke-width="1"
+                           stroke="#9A9CE5" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                        <path d="M14 3v4a1 1 0 0 0 1 1h4" />
-                        <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
-                        <line x1="12" y1="11" x2="12" y2="17" />
-                        <line x1="9" y1="14" x2="15" y2="14" />
+                        <path d="M14 3v4a1 1 0 0 0 1 1h4"/>
+                        <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"/>
+                        <line x1="12" y1="11" x2="12" y2="17"/>
+                        <line x1="9" y1="14" x2="15" y2="14"/>
                       </svg>
-                
-                  </div>
-                  
-                  <img class="" [src]="(imageShow === undefined)? '/assets/img/example.jpg' : this.imageShow" style="width: 100%; max-height: 600px; object-fit: contain;">
-            
-                  <!-- <div class="w-100">
-                    <img class="w-100 h-100" src="../../../assets/img/example.jpg" alt="" style="width: 500px; height: 500px !important;">
-                  </div> -->
-                
-                  
+                    </div>
+                    <!-- End Image Button -->
 
-                 
+                  </div>
+
                 </div>
               </div>
             </div>
           </div>
         </div>
+        <!-- End Right Section -->
+
+        <!-- Start Mobile Submit -->
+        <div class="col-12 mt-4 d-xl-none">
+          <div class="row">
+            <div class="col-12">
+              <div class="card card-stats">
+                <div class="card-body bg-secondary">
+                  <div class="row justify-content-center">
+                    <div class="col-12 col-md-6">
+                      <div class="form-group">
+                        <button type="submit" class="col btn btn-primary">Aceptar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Mobile Submit -->
+
       </div>
     </div>
-  </div>
+  </form>
+  <!-- End Form -->
+
 </div>
-</form>
+<!-- End Content -->
