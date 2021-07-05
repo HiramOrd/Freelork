@@ -8,14 +8,14 @@
     transition: all 0.3s ease-out;
     transform:scale(1.10);
 }
-.cancel-acept{
+.cancel-accept{
     background-color: transparent; 
     border: none; 
     color: inherit; 
     font-weight: 600;
     transition: all 0.3s ease-out;
 }
-.cancel-acept:hover{
+.cancel-accept:hover{
     transition: all 0.3s ease-out;
     transform:scale(1.10);
 }

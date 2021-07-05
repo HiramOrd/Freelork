@@ -23,6 +23,8 @@ import {AdminComponent} from '../pages/register/admin/admin.component';
 import {StudentsTableComponent} from '../pages/students/register/students-table.component';
 import {StudentsProjectsComponent} from '../pages/students/projects/students-projects.component';
 import { RegisterTaskComponent } from '../pages/register-task/register-task.component';
+import { GroupsComponent } from '../pages/teacher/groups/groups.component';
+import { CreateGroupComponent } from '../pages/teacher/groups/create-group/create-group.component';
 
 
 const routes: Routes = [
@@ -66,6 +68,8 @@ const routes: Routes = [
       },
       {
         path: 'tch', children: [
+          {path: 'create-group', component: CreateGroupComponent},
+          {path: 'groups', component: GroupsComponent},
           {path: '**', redirectTo: '/not/404' },
         ]
       },
