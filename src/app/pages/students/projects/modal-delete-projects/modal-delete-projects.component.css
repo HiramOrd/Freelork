@@ -1,0 +1,21 @@
+.cancel-button{
+    background-color: transparent; 
+    border: none; 
+    color: inherit;
+    transition: all 0.3s ease-out;
+}
+.cancel-button:hover{
+    transition: all 0.3s ease-out;
+    transform:scale(1.10);
+}
+.cancel-accept{
+    background-color: transparent; 
+    border: none; 
+    color: inherit; 
+    font-weight: 600;
+    transition: all 0.3s ease-out;
+}
+.cancel-accept:hover{
+    transition: all 0.3s ease-out;
+    transform:scale(1.10);
+}

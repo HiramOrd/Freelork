@@ -1,0 +1,24 @@
+<div class="modal-header pt-3 pb-0 d-flex align-items-center justify-content-end">
+  
+    <button class="btn px-3 text-gray" title="Cerrar Ventana" (click)="activeModal.dismiss('Cross click')">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+  <div class="modal-body pt-0">
+    <h2 class="modal-head">Borrar Tarea Realizada</h2>
+    <div class="d-flex pt-4 pb-5">
+      <p class="text-sm font-weight-normal font-weight-light">
+        ¿Estás seguro que deseas borrar "Filtro por busqueda"?
+      </p>
+    </div>
+
+    <div class="d-flex justify-content-end">
+        <button class="cancel-button pr-5" name="button" (click)="activeModal.dismiss('Cross click')">
+            Cancelar
+        </button>
+
+        <button class="cancel-accept" name="button" (click)="deleteRegister()">
+            Aceptar
+        </button>
+      </div>
+  </div>

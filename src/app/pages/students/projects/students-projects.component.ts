@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { ModalDeleteProjectsComponent } from './modal-delete-projects/modal-delete-projects.component';
 
 @Component({
   selector: 'app-projects',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentsProjectsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private modalService: NgbModal){}
 
   ngOnInit(): void {
+  }
+
+  deleteRegister() {
+    const modalRef = this.modalService.open(ModalDeleteProjectsComponent);
+    modalRef.componentInstance.name = 'World';
   }
 
 }

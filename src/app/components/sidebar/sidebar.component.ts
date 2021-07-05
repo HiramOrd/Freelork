@@ -12,7 +12,7 @@ export const ROUTES: RouteInfo[] = [
   { path: 'std/home', title: 'Dashboard',  icon: 'ni-tv-2 text-primary', class: '' },
   { path: 'std/register', title: 'Registro',  icon: 'ni-bullet-list-67 text-primary', class: '' },
   { path: 'std/projects', title: 'Proyectos',  icon: 'ni-archive-2 text-primary', class: '' },
-  // { path: 'std/register', title: 'Grupos',  icon: 'ni-books text-primary', class: '' },
+  { path: 'tch/groups', title: 'Grupos',  icon: 'ni-books text-primary', class: '' },
   // { path: 'std/register', title: 'Avisos',  icon: 'ni-notification-70 text-primary', class: '' },
   // {path: 'icons', title: 'Icons', icon: 'ni-planet text-blue', class: ''},
   // {path: 'maps', title: 'Maps', icon: 'ni-pin-3 text-orange', class: ''},

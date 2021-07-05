@@ -1,0 +1,53 @@
+.transform-icon{
+    transition: all 0.3s ease-out;
+}
+.transform-icon:hover{
+    transition: all 0.3s ease-out;
+    transform:scale(1.15);
+}
+.copy-icon{
+    transition: all 0.3s ease-out;
+}
+.copy-icon:hover{
+    transition: all 0.3s ease-out;
+    transform:scale(1.15);
+}
+.font-code{
+    font-size: 1rem;
+    letter-spacing: .03em;
+}
+.tooltip-icon{
+    position: relative;
+    display: inline-block;
+}
+.tooltip-icon .tooltiptext{
+    visibility: hidden;
+    width: 80px;
+    font-size: .8rem !important;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 110%;
+    left: 170%;
+    margin-left: -75px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.tooltip-icon .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+.tooltip-icon:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
