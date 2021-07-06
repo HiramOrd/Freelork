@@ -1,0 +1,9 @@
+.bg-lightblue{
+    color: #32325D;
+    background-color: #F1F0FE;
+}
+.bg-lightblue-border{
+    color: #32325D;
+    background-color: #F1F0FE;
+    border: 1px solid #C0C2D9;
+}
