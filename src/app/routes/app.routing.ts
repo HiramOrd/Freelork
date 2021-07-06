@@ -22,7 +22,7 @@ import {AuthenticationGuard} from '../authentication.guard';
 import {AdminComponent} from '../pages/register/admin/admin.component';
 import {StudentsTableComponent} from '../pages/students/register/students-table.component';
 import {StudentsProjectsComponent} from '../pages/students/projects/students-projects.component';
-import { RegisterTaskComponent } from '../pages/register-task/register-task.component';
+import { RegisterTaskComponent } from '../pages/students/register-task/register-task.component';
 import { GroupsComponent } from '../pages/teacher/groups/groups.component';
 import { CreateGroupComponent } from '../pages/teacher/groups/create-group/create-group.component';
 

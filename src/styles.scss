@@ -34,12 +34,48 @@
   }
 }
 
+.add-button{
+  position: absolute !important;
+  top: -10px;
+  right: -10px;
+}
+
 // Forms Errors Styles
 .error-border{
   border: var(--redText) solid 2px !important;
 }
 .error-text{
   color: var(--redText) !important;
+}
+
+// Tooltip
+
+.defaultTooltip{
+  animation: 0.2s defaultTooltipAnimation ;
+}
+.defaultTooltip .tooltip-inner{
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.bs-tooltip-top .arrow:before{
+  border-top-color: rgba(0, 0, 0, 0.7)!important;
+}
+.bs-tooltip-bottom .arrow:before{
+  border-bottom-color: rgba(0, 0, 0, 0.7)!important;
+}
+.bs-tooltip-left .arrow:before{
+  border-left-color: rgba(0, 0, 0, 0.7)!important;
+}
+.bs-tooltip-right .arrow:before{
+  border-right-color: rgba(0, 0, 0, 0.7)!important;
+}
+@keyframes defaultTooltipAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 // Background Header Dashboard

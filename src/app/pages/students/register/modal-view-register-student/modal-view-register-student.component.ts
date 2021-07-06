@@ -15,6 +15,7 @@ export class ModalViewRegisterStudentComponent implements OnInit {
   ngOnInit(): void {}
 
   deleteRegister() {
+    this.activeModal.dismiss('Change Modal');
     const modalRef = this.modalService.open(ModalDeleteRegisterStudentComponent);
     modalRef.componentInstance.name = 'World';
   }

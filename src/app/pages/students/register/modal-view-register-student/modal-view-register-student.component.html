@@ -1,14 +1,14 @@
 <div class="modal-header pt-3 pb-0 d-flex align-items-center justify-content-end">
 
-  <a class="btn text-xs m-0 mr-3 text-gray px-3" title="Editar registro">
+  <a class="btn text-xs m-0 mr-3 text-gray px-3" tabindex="-1" routerLink="/dash/std/register-task" (click)="activeModal.dismiss('Edit click')">
     <i class="fas fa-pen "></i>
   </a>
 
-  <button class="btn text-xs text-gray px-3" title="Eliminar registro" (click)="deleteRegister()">
+  <button class="btn text-xs text-gray px-3" tabindex="-1" (click)="deleteRegister()">
     <i class="fas fa-trash"></i>
   </button>
 
-  <button class="btn px-3 text-gray" title="Cerrar Ventana" (click)="activeModal.dismiss('Cross click')">
+  <button class="btn px-3 text-gray" tabindex="-1" (click)="activeModal.dismiss('Cross click')">
     <i class="fas fa-times"></i>
   </button>
 </div>
