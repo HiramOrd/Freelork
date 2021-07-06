@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import { ModalDeleteGroupComponent } from './modal-delete-group/modal-delete-group.component';
-
 @Component({
   selector: 'app-groups',
   templateUrl: './groups.component.html',

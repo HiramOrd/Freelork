@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-create-group',
@@ -6,10 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-group.component.css']
 })
 export class CreateGroupComponent implements OnInit {
+  createGroupForm : FormGroup;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.createGroupForm = new FormGroup({
+      nameGroup: new FormControl(null, [Validators.required, Validators.minLength(9)]),
+      career: new FormControl(null, [Validators.required]),
+    });
+
+  }
+
+  createGroupSubmit(){
+   
   }
 
 }
