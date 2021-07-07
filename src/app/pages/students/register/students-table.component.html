@@ -12,59 +12,129 @@
       <!-- Start Table Card -->
       <div class="card shadow px-2 px-sm-3 bg-lighterBlue">
 
-        <!-- Start Card Header -->
-        <div class="card-header border-0 bg-lighterBlue">
-          <div class="row justify-content-start align-items-center">
+        <!-- Start Add Button -->
+        <button class=" btn btn-primary border-white m-0 add-button" routerLink="../register-task"
+                placement="left" openDelay="400" ngbTooltip="Crear nuevo registro" tooltipClass="defaultTooltip">
+          <i class="fas fa-plus"></i>
+        </button>
+        <!-- End Add Button -->
 
-            <h3 class="mb-0 mr-3">Actividades realizadas</h3>
+        <div class="card-header bg-lighterBlue px-0">
 
+          <!-- Start First Row -->
+          <div class="row align-items-center mb-3 ">
+            <h3 class="col-auto mb-2 mb-sm-0 mr-2">Actividades realizadas</h3>
+          </div>
+          <!-- End First Row -->
+
+          <!-- Start Second Row -->
+          <div class="row align-items-end mb-0">
+
+            <!-- Start Date Range Export-->
             <!-- Start Search Input -->
-            <form class="form-inline">
-              <div class="form-group mb-0 rounded overflow-hidden ">
-                <div class="input-group input-group-alternative">
+            <form class="col-xl row m-0 mb-3 mb-xl-2">
+              <div class="col p-0 mb-0 mr-2 form-group rounded overflow-hidden">
+                <div class="input-group input-group-alternative w-100">
                   <input class="form-control" placeholder="Buscar registro..." type="text">
                   <div class="input-group-prepend">
                     <span class="input-group-text text-primary"><i class="fas fa-search"></i></span>
                   </div>
                 </div>
               </div>
+
+              <button class="btn btn-neutral text-primary d-xl-none" (click)="collapse.toggle()" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+                <i class="fas fa-sliders-h"></i>
+              </button>
+
             </form>
             <!-- End Search Input -->
+            <div class="row col-12 col-xl-auto m-0 p-0" #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+              <div class="col-sm col-xl-auto form-group mb-2 mb-sm-3 mb-xl-2">
+                <label for="firstDate" class="form-control-label m-0">De: </label>
+                <input id="firstDate" type="date" class="form-control form-control-alternative"
+                       [max]="today | date: 'yyyy-MM-dd'"
+                       [(ngModel)]="dateMinRange">
+              </div>
 
+              <!-- TODO: El input muestra pedazos de fecha -->
+              <div class="col-sm col-xl-auto form-group mb-2 mb-sm-3 mb-xl-2">
+                <label for="secondDate" class="form-control-label m-0">Hasta:</label>
+                <input id="secondDate" type="date" class="form-control form-control-alternative"
+                       [min]="dateMinRange | date: 'yyyy-MM-dd'"
+                       [max]="today | date: 'yyyy-MM-dd'"
+                       [(ngModel)]="dateMaxRange">
+              </div>
+
+              <div class="col-sm col-xl-auto form-group mb-3 mb-xl-2">
+                <label for="vpp" class="form-control-label m-0">Vistas:</label>
+                <select id="vpp" class="form-control form-control-range">
+                  <option value="">5</option>
+                  <option value="">10</option>
+                  <option value="">20</option>
+                  <option value="">Todos</option>
+                </select>
+              </div>
+
+
+
+              <div class="col-sm-12 col-xl-auto form-group mb-2 d-flex align-items-end">
+                <div class="btn-group m-0 w-100">
+                  <button type="button" class="btn btn-primary">
+                    <i class="fas fa-download"></i>
+                    <span class="ml-2">Exportar</span>
+                  </button>
+                  <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+                    <button class="btn btn-primary dropdown-toggle-split" ngbDropdownToggle><i class="fas fa-chevron-down"></i></button>
+                    <div class="dropdown-menu" ngbDropdownMenu>
+                      <button ngbDropdownItem>Exportar todo</button>
+                      <button ngbDropdownItem>Exportar por fecha</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
             <!-- Start Date Range Export-->
-            <label class="mb-0">
-              <span class="text-sm text-primary font-weight-bold">De: </span>
-              <input type="date" class="btn btn-neutral"
-                     [max]="today | date: 'yyyy-MM-dd'"
-                     [(ngModel)]="dateMinRange">
-            </label>
-
-            <!-- TODO: El input muestra pedazos de fecha -->
-            <label class="mb-0">
-              <span class="text-sm text-primary font-weight-bold">Hasta: </span>
-              <input type="date" class="btn btn-neutral"
-                     [min]="dateMinRange | date: 'yyyy-MM-dd'"
-                     [max]="today | date: 'yyyy-MM-dd'"
-                     [(ngModel)]="dateMaxRange">
-            </label>
-            <button class="btn btn-primary">Exportar</button>
-            <!-- Start Date Range Export-->
-
-            <!-- Start View Per Page -->
-            <label class="d-flex align-items-center text-primary text-sm font-weight-bold mb-0">
-              <span>Vistas:</span>
-              <select class="btn btn-link shadow-none">
-                <option value="">5</option>
-                <option value="">10</option>
-                <option value="">20</option>
-                <option value="">Todos</option>
-              </select>
-            </label>
-            <!-- End View Per Page -->
 
           </div>
+          <!-- End Second Row -->
+
         </div>
-        <!-- End Card Header -->
+
+
+        <!--            &lt;!&ndash; Start Date Range Export&ndash;&gt;-->
+        <!--            <label class="mb-0">-->
+        <!--              <span class="text-sm text-primary font-weight-bold">De: </span>-->
+        <!--              <input type="date" class="btn btn-neutral"-->
+        <!--                     [max]="today | date: 'yyyy-MM-dd'"-->
+        <!--                     [(ngModel)]="dateMinRange">-->
+        <!--            </label>-->
+
+        <!--            &lt;!&ndash; TODO: El input muestra pedazos de fecha &ndash;&gt;-->
+        <!--            <label class="mb-0">-->
+        <!--              <span class="text-sm text-primary font-weight-bold">Hasta: </span>-->
+        <!--              <input type="date" class="btn btn-neutral"-->
+        <!--                     [min]="dateMinRange | date: 'yyyy-MM-dd'"-->
+        <!--                     [max]="today | date: 'yyyy-MM-dd'"-->
+        <!--                     [(ngModel)]="dateMaxRange">-->
+        <!--            </label>-->
+        <!--            <button class="btn btn-primary">Exportar</button>-->
+        <!--            &lt;!&ndash; Start Date Range Export&ndash;&gt;-->
+
+        <!--            &lt;!&ndash; Start View Per Page &ndash;&gt;-->
+        <!--            <label class="d-flex align-items-center text-primary text-sm font-weight-bold mb-0">-->
+        <!--              <span>Vistas:</span>-->
+        <!--              <select class="btn btn-link shadow-none">-->
+        <!--                <option value="">5</option>-->
+        <!--                <option value="">10</option>-->
+        <!--                <option value="">20</option>-->
+        <!--                <option value="">Todos</option>-->
+        <!--              </select>-->
+        <!--            </label>-->
+        <!--            &lt;!&ndash; End View Per Page &ndash;&gt;-->
+
+        <!--          </div>-->
+        <!--        </div>-->
+        <!--        &lt;!&ndash; End Card Header &ndash;&gt;-->
 
         <!-- Start Register Table -->
         <div class="table-responsive bg-white rounded" (click)="viewRegister()">
@@ -80,13 +150,13 @@
             </thead>
             <tbody>
 
-              <!-- Start Register Row -->
-              <tr class="row-button">
+            <!-- Start Register Row -->
+            <tr class="row-button">
               <th scope="row">
                 <span class="mb-0 text-sm">Se agrgaron diseños </span>
               </th>
               <td class="d-none d-lg-table-cell">
-                <a routerLink="../projects" >Amma Club</a>
+                <a routerLink="../projects">Amma Club</a>
               </td>
               <td>
                 <span>02/10/2020</span>
@@ -100,7 +170,7 @@
                 </span>
               </td>
             </tr>
-              <!-- End Register Row -->
+            <!-- End Register Row -->
 
             </tbody>
           </table>

@@ -21,10 +21,11 @@ input#newPhoto {
   width: 130px !important;
   height: 130px !important;
   filter: opacity(0.4);
-  transition: transform .2s;
+  stroke: #9A9CE5;
+  transition: all .2s;
 }
 #image-container:hover #button-box{
-  background-color: rgba(255, 255, 255, 0.85);
+  background-color: rgba(118, 163, 255, 0.3);
 }
 #image-container:hover #button-box svg{
   transform: scale(1.3);
