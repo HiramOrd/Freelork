@@ -1,6 +1,6 @@
 <div class="modal-header pt-3 pb-0 d-flex align-items-center justify-content-end">
 
-  <a class="btn text-xs m-0 mr-3 text-gray px-3" tabindex="-1" routerLink="/dash/std/register-task" (click)="activeModal.dismiss('Edit click')">
+  <a class="btn text-xs m-0 mr-3 text-gray px-3" tabindex="-1" [routerLink]="['/dash/std/edit-task']" [queryParams]="{id: id, origin: origin}" (click)="activeModal.dismiss('Edit click')">
     <i class="fas fa-pen "></i>
   </a>
 

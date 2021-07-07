@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -8,16 +8,15 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./modal-delete-register-student.component.css']
 })
 export class ModalDeleteRegisterStudentComponent implements OnInit {
+  @Input() id;
 
   constructor(public activeModal: NgbActiveModal) { }
 
   ngOnInit(): void {
+    console.log(this.id);
   }
 
-  deleteRegister(){
-    
+  deleteRegister(): void {
   }
-
- 
 
 }

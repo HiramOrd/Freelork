@@ -63,6 +63,7 @@ const routes: Routes = [
           {path: 'register', component: StudentsTableComponent},
           {path: 'projects', component: StudentsProjectsComponent},
           {path: 'register-task', component: RegisterTaskComponent},
+          {path: 'edit-task', component: RegisterTaskComponent},
           {path: '**', redirectTo: '/not/404' },
         ]
       },

@@ -23,6 +23,7 @@
   color: #1C1679;
 }
 
+// Cards Grid
 .grid-cards{
   display: grid;
   grid-template-columns: repeat(auto-fit, 1fr);
@@ -34,10 +35,20 @@
   }
 }
 
+// Add Button Table
 .add-button{
   position: absolute !important;
   top: -10px;
   right: -10px;
+}
+
+// Row button
+.row-button{
+  transition: all ease 0.2s;
+}
+.row-button:hover{
+  background-color: rgba(197, 203, 255, 0.3);
+  cursor: pointer;
 }
 
 // Forms Errors Styles
@@ -49,7 +60,6 @@
 }
 
 // Tooltip
-
 .defaultTooltip{
   animation: 0.2s defaultTooltipAnimation ;
 }
