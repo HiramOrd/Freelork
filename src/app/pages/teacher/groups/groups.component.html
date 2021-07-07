@@ -27,9 +27,10 @@
                   Ingeniería en Software
                 </p>
             </div>
+            <!-- Aca esta el tooltip -->
             <div class="row w-100 m-0 align-content-center">
                 <p class="font-weight-bold font-code">Código:&nbsp;{{groupCode!==undefined?groupCode:'No disponible'}}&nbsp;</p>
-                <div class="d-flex align-content-center mouse-pointer copy-icon tooltip-icon" placement="top" ngbTooltip="Tooltip on top" (click)="copyCode(groupCode!==undefined?groupCode:'No disponible')">
+                <div class="d-flex align-content-center mouse-pointer copy-icon tooltip-icon" placement="top" openDelay="100" ngbTooltip="Copiar" tooltipClass="defaultTooltip" (click)="copyCode(groupCode!==undefined?groupCode:'No disponible')">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="32" height="32" style="width: 28px; padding-bottom: 1.3rem;" viewBox="0 0 24 24" stroke-width="1.5" stroke="#9A9CE5" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                         <rect x="8" y="8" width="12" height="12" rx="2" />
@@ -38,9 +39,6 @@
                                 
                 </div>
             </div>
-            <button type="button" class="btn btn-outline-secondary mr-2" placement="left" ngbTooltip="Tooltip on left">
-              Tooltip on lefts
-            </button>
             <div class="d-flex justify-content-between mt-2">
                 <div class="text-left">
                     <p class="text-sm m-0 text-dark font-weight-bold">20 alumnos</p>

@@ -12,7 +12,7 @@ export class StudentsTableComponent implements OnInit {
   dateMinRange;
   dateMaxRange;
   dateDisabled = true;
-  public isCollapsed = false;
+  public isCollapsed = true;
 
   constructor(private modalService: NgbModal) {
     this.today = Date.now();
