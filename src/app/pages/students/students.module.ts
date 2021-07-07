@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StudentsTableComponent } from './register/students-table.component';
-import {NgbDropdownModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbDropdownModule, NgbModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule} from '@angular/forms';
 import {HomeComponent} from './home/home.component';
 import {RouterModule} from '@angular/router';
@@ -30,7 +30,8 @@ import {UtilitiesModule} from '../../utilities/utilities.module';
     FormsModule,
     RouterModule,
     NgbTooltipModule,
-    UtilitiesModule
+    UtilitiesModule,
+    NgbModule
   ]
 })
 export class StudentsModule { }
