@@ -15,6 +15,7 @@ import {AdminLayoutComponent} from './admin-layout.component';
 import {ComponentsModule} from '../../components/components.module';
 import {RouterModule} from '@angular/router';
 import {StudentsModule} from '../../pages/students/students.module';
+import {TeacherModule} from '../../pages/teacher/teacher.module';
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -26,7 +27,8 @@ import {StudentsModule} from '../../pages/students/students.module';
     ClipboardModule,
     ComponentsModule,
     RouterModule,
-    StudentsModule
+    StudentsModule,
+    TeacherModule
   ],
   declarations: [
     AdminLayoutComponent,

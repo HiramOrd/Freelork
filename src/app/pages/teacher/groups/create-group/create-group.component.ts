@@ -7,7 +7,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./create-group.component.css']
 })
 export class CreateGroupComponent implements OnInit {
-  createGroupForm : FormGroup;
+  createGroupForm: FormGroup;
 
   constructor(private router: Router) { }
 
@@ -19,8 +19,9 @@ export class CreateGroupComponent implements OnInit {
 
   }
 
-  createGroupSubmit(){
-   /*  console.log(this.createGroupForm.getRawValue()); */
+  createGroupSubmit(): void {
+    console.log(this.createGroupForm.getRawValue());
+    (this.createGroupForm.valid) ? this.router.navigate(['/login']) : this.createGroupForm.markAllAsTouched();
   }
 
 }
