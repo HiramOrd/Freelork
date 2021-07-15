@@ -29,6 +29,10 @@ export class RegisterTaskComponent implements OnInit {
     this.newPhoto.nativeElement.click();
   }
 
+  deletePhoto(): void {
+    this.imageShow = undefined;
+  }
+
   onFileChanged(event) {
   this.file = event.target.files[0]
   var reader = new FileReader();

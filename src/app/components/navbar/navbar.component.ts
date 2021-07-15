@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { ROUTES } from '../sidebar/sidebar.component';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { Router } from '@angular/router';
+import {UtilitiesService} from '../../services/utilities.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,11 +13,14 @@ export class NavbarComponent implements OnInit {
   public focus;
   public listTitles: any[];
   public location: Location;
-  constructor(location: Location,  private element: ElementRef, private router: Router) {
+  roleRoute;
+
+  constructor(location: Location,  private element: ElementRef, private router: Router, private utilitiesService: UtilitiesService) {
     this.location = location;
   }
 
   ngOnInit() {
+    this.roleRoute = this.utilitiesService.getRoleRoute();
     this.listTitles = ROUTES.filter(listTitle => listTitle);
   }
   getTitle(){

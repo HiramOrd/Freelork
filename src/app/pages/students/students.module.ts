@@ -12,6 +12,7 @@ import { ModalDeleteProjectsComponent } from './projects/modal-delete-projects/m
 import {RegisterTaskComponent} from './register-task/register-task.component';
 import {UtilitiesModule} from '../../utilities/utilities.module';
 import { ModalViewAdvisesComponent } from './home/modal-view-advises/modal-view-advises.component';
+import { GroupStudentComponent } from './group-student/group-student.component';
 
 
 
@@ -24,7 +25,8 @@ import { ModalViewAdvisesComponent } from './home/modal-view-advises/modal-view-
     ModalDeleteRegisterStudentComponent,
     ModalDeleteProjectsComponent,
     RegisterTaskComponent,
-    ModalViewAdvisesComponent
+    ModalViewAdvisesComponent,
+    GroupStudentComponent
   ],
   imports: [
     CommonModule,

@@ -25,6 +25,7 @@ import {StudentsProjectsComponent} from '../pages/students/projects/students-pro
 import { RegisterTaskComponent } from '../pages/students/register-task/register-task.component';
 import { GroupsComponent } from '../pages/teacher/groups/groups.component';
 import { CreateGroupComponent } from '../pages/teacher/groups/create-group/create-group.component';
+import {GroupStudentComponent} from '../pages/students/group-student/group-student.component';
 
 
 const routes: Routes = [
@@ -60,10 +61,15 @@ const routes: Routes = [
       {
         path: 'std', children: [
           {path: 'home', component: HomeComponent},
-          {path: 'register', component: StudentsTableComponent},
+          {path: 'register', children: [
+              {path: '', component: StudentsTableComponent},
+              {path: 'create-task', component: RegisterTaskComponent},
+              {path: 'edit-task', component: RegisterTaskComponent},
+              {path: '**', redirectTo: '/not/404' },
+            ]},
           {path: 'projects', component: StudentsProjectsComponent},
-          {path: 'register-task', component: RegisterTaskComponent},
-          {path: 'edit-task', component: RegisterTaskComponent},
+          {path: 'group', component: GroupStudentComponent},
+          {path: 'profile', component: UserProfileComponent},
           {path: '**', redirectTo: '/not/404' },
         ]
       },
