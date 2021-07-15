@@ -1,1 +1,21 @@
-<p>modal-view-advises works!</p>
+<div class="modal-header pt-3 pb-0 d-flex align-items-center justify-content-end">
+  <button class="btn px-3 text-gray" tabindex="-1" (click)="activeModal.dismiss('Cross click')">
+    <i class="fas fa-times"></i>
+  </button>
+</div>
+<div class="modal-body pt-0">
+  <h2 class="modal-head">Filtro por rango de fecha</h2>
+  <i class="fas fa-calendar mr-3"></i>
+  <span class="text-xs font-weight-bold font-weight-light">{{'12-03-2021' | date}} - {{'12-03-2021' | date}}</span>
+
+  <br>
+  <br>
+
+  <div class="d-flex">
+    <i class="fas fa-align-left mr-3"></i>
+    <p class="text-sm font-weight-normal font-weight-light">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam malesuada tincidunt tortor sed pulvinar. In hac habitasse platea dictumst. Sed dictum turpis vel ipsum scelerisque tincidunt.
+    </p>
+  </div>
+
+</div>
