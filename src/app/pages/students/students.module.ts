@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StudentsTableComponent } from './register/students-table.component';
 import {NgbDropdownModule, NgbModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HomeComponent} from './home/home.component';
 import {RouterModule} from '@angular/router';
 import { StudentsProjectsComponent } from './projects/students-projects.component';
@@ -13,6 +13,8 @@ import {RegisterTaskComponent} from './register-task/register-task.component';
 import {UtilitiesModule} from '../../utilities/utilities.module';
 import { ModalViewAdvisesComponent } from './home/modal-view-advises/modal-view-advises.component';
 import { GroupStudentComponent } from './group-student/group-student.component';
+import { ExampleComponent } from './example/example.component';
+import {FileUploadModule} from 'ng2-file-upload';
 
 
 
@@ -26,7 +28,8 @@ import { GroupStudentComponent } from './group-student/group-student.component';
     ModalDeleteProjectsComponent,
     RegisterTaskComponent,
     ModalViewAdvisesComponent,
-    GroupStudentComponent
+    GroupStudentComponent,
+    ExampleComponent
   ],
   imports: [
     CommonModule,
@@ -35,7 +38,9 @@ import { GroupStudentComponent } from './group-student/group-student.component';
     RouterModule,
     NgbTooltipModule,
     UtilitiesModule,
-    NgbModule
+    NgbModule,
+    FileUploadModule,
+    ReactiveFormsModule
   ]
 })
 export class StudentsModule { }

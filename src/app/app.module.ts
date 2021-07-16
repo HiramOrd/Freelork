@@ -20,6 +20,9 @@ import {UtilitiesModule} from './utilities/utilities.module';
 import {RoutesLayoutModule} from './layouts/routes-layout/routes-layout.module';
 import {ServicesModule} from './services/services.module';
 
+import { CloudinaryModule } from '@cloudinary/angular-5.x';
+import * as  Cloudinary from 'cloudinary-core';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -34,7 +37,11 @@ import {ServicesModule} from './services/services.module';
     AdminLayoutModule,
     UtilitiesModule,
     RoutesLayoutModule,
-    ServicesModule
+    ServicesModule,
+    CloudinaryModule.forRoot(Cloudinary,
+      {
+        cloud_name: 'fvkhteam'
+      }),
   ],
   declarations: [
     AppComponent
