@@ -15,7 +15,6 @@ import { AdminLayoutModule } from './layouts/admin-layout/admin-layout.module';
 import {CommonModule} from '@angular/common';
 import {UtilitiesModule} from './utilities/utilities.module';
 import {RoutesLayoutModule} from './layouts/routes-layout/routes-layout.module';
-import {ServicesModule} from './services/services.module';
 
 @NgModule({
   imports: [
@@ -31,7 +30,6 @@ import {ServicesModule} from './services/services.module';
     AdminLayoutModule,
     UtilitiesModule,
     RoutesLayoutModule,
-    ServicesModule,
   ],
   declarations: [
     AppComponent

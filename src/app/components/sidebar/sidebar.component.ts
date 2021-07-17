@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {UtilitiesService} from '../../services/utilities.service';
+import {UtilitiesService} from '../../utilities/utilities.service';
 
 declare interface RouteInfo {
     path: string;
