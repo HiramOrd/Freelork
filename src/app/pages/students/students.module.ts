@@ -13,7 +13,6 @@ import {RegisterTaskComponent} from './register-task/register-task.component';
 import {UtilitiesModule} from '../../utilities/utilities.module';
 import { ModalViewAdvisesComponent } from './home/modal-view-advises/modal-view-advises.component';
 import { GroupStudentComponent } from './group-student/group-student.component';
-import {FileUploadModule} from 'ng2-file-upload';
 
 
 
@@ -28,7 +27,6 @@ import {FileUploadModule} from 'ng2-file-upload';
     RegisterTaskComponent,
     ModalViewAdvisesComponent,
     GroupStudentComponent,
-    ExampleComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +36,6 @@ import {FileUploadModule} from 'ng2-file-upload';
     NgbTooltipModule,
     UtilitiesModule,
     NgbModule,
-    FileUploadModule,
     ReactiveFormsModule
   ]
 })
