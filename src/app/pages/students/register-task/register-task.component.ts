@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild, ElementRef, Renderer2} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import { Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
@@ -8,25 +8,30 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./register-task.component.css']
 })
 export class RegisterTaskComponent implements OnInit {
-  registerTaskForm: FormGroup;
-  @ViewChild('newPhoto') newPhoto: ElementRef;
-  file:any;
-  imageShow:any;
-  origin;
+  public registerTaskForm: FormGroup;
+  public imageShow;
+  private origin: string;
+  ondrag = false;
+  borderActive = true;
 
-  constructor(private renderer: Renderer2, private router: Router, private route: ActivatedRoute) { }
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.registerTaskForm = new FormGroup({
+      imageFile: new FormControl(undefined, []),
+      date: new FormControl('', [Validators.required]),
+    });
+
     this.route.queryParams.subscribe( params => {
-      (params.origin) ? this.origin = params.origin : this.origin = 0;
+      (params.origin) ? this.origin = params.origin : this.origin = '0';
     });
   }
-  registerTaskSubmit(){
 
+  get imageFile() {
+    return this.registerTaskForm.get('imageFile');
   }
 
-  chargePhoto(){
-    this.newPhoto.nativeElement.click();
+  registerTaskSubmit() {
   }
 
   deletePhoto(): void {
@@ -34,12 +39,53 @@ export class RegisterTaskComponent implements OnInit {
   }
 
   onFileChanged(event) {
-  this.file = event.target.files[0]
-  var reader = new FileReader();
-  reader.readAsDataURL(event.target.files[0]);
-    reader.onload = (event) => {
-    this.imageShow = (<FileReader>event.target).result;
+    this.getImage(event.target.files);
+  }
+
+  getImage(files) {
+    if (files.length > 0) {
+      const file = files[0];
+      this.registerTaskForm.patchValue({
+        imageFile: file
+      });
     }
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      this.imageShow = reader.result;
+    };
+    reader.readAsDataURL(this.imageFile.value);
+  }
+
+  dropHandler(ev) {
+    ev.preventDefault();
+    if (ev.dataTransfer.items) {
+      for (let i = 0; i < ev.dataTransfer.items.length; i++) {
+        console.log(ev.dataTransfer.items[i]);
+        if (ev.dataTransfer.items[i].type.includes('image')) {
+          const file = ev.dataTransfer.items[i].getAsFile();
+          this.getImage([file]);
+        }
+      }
+    } else {
+      for (let i = 0; i < ev.dataTransfer.files.length; i++) {
+        this.getImage([ev.dataTransfer.files[i]]);
+      }
+    }
+    this.ondrag = false;
+    if (ev.dataTransfer.items) {
+      ev.dataTransfer.items.clear();
+    } else {
+      ev.dataTransfer.clearData();
+    }
+  }
+
+  dragExit() {
+    this.ondrag = false;
+  }
+
+  dragOverHandler(ev) {
+    this.ondrag = true;
+    ev.preventDefault();
   }
 
   return(): void {
@@ -47,6 +93,6 @@ export class RegisterTaskComponent implements OnInit {
     if (this.origin === '1') {
       route = '/dash/std/home';
     }
-    this.router.navigate([route]);
+    this.router.navigate([route]).then(() => {} );
   }
 }
