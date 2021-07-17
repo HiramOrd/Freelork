@@ -3,7 +3,7 @@
     <div class="header-body">
 
       <!-- Start Form -->
-      <form (submit)="registerTaskSubmit()" [formGroup]="registerTaskForm">
+      <form (submit)="postTask()" [formGroup]="registerTaskForm">
       <div class="row">
         <!-- Start Left Section -->
         <div class="col-xl-6 pb-4 pb-xl-0">
@@ -35,7 +35,12 @@
                     <!-- Start Date Input -->
                     <div class="col-12 col-sm-6">
                       <div class="form-group m-sm-0">
-                        <input type="date" class="form-control form-control-alternative" />
+                        <input type="date" class="form-control form-control-alternative"
+                               [ngClass]="(registerTaskForm.controls.date.invalid && registerTaskForm.controls.date.touched ) ? 'error-border' : ''"
+                               [max]="today | date: 'yyyy-MM-dd'" placeholder="Fecha" formControlName="date" />
+                        <div *ngIf="registerTaskForm.controls.date.invalid && registerTaskForm.controls.date.touched">
+                          <small class="error-text ml-2">*Ingresa la fecha</small>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -46,9 +51,14 @@
                     <div class="col-12">
                       <div class="form-group">
                         <label class="form-control-label" for="select-project">Proyecto</label>
-                        <select id="select-project" class="form-control form-control-alternative">
+                        <select [ngClass]="(registerTaskForm.controls.project.invalid && registerTaskForm.controls.project.touched ) ? 'error-border' : ''"
+                          id="select-project" class="form-control form-control-alternative" formControlName="project">
                           <option [value]="null" disabled hidden selected>¿En qué proyecto se trabajó?</option>
+                          <option [value]="1">Ejemplo</option>
                         </select>
+                        <div *ngIf="registerTaskForm.controls.project.invalid && registerTaskForm.controls.project.touched">
+                          <small class="error-text ml-2">*Selecciona un proyecto</small>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -60,8 +70,12 @@
                     <div class="col-lg-8">
                       <div class="form-group">
                         <label class="form-control-label" for="input-first-name">Titulo</label>
-                        <input type="text" id="input-first-name" class="form-control form-control-alternative"
-                               placeholder="¿Qué se hizo?">
+                        <input [ngClass]="(registerTaskForm.controls.title.invalid && registerTaskForm.controls.title.touched ) ? 'error-border' : ''"
+                          type="text" id="input-first-name" class="form-control form-control-alternative"
+                          placeholder="¿Qué se hizo?" formControlName="title" maxlength="50">
+                        <div *ngIf="registerTaskForm.controls.title.invalid && registerTaskForm.controls.title.touched">
+                          <small class="error-text ml-2">*Agregar un titulo descriptivo</small>
+                        </div>
                       </div>
                     </div>
                     <!-- End Title Input -->
@@ -70,8 +84,12 @@
                     <div class="col-lg-4">
                       <div class="form-group">
                         <label class="form-control-label" for="input-last-name">Tiempo</label>
-                        <input type="number" id="input-last-name" class="form-control form-control-alternative"
-                               placeholder="¿Cuántas horas?" NumbersOnly>
+                        <input [ngClass]="(registerTaskForm.controls.time.invalid && registerTaskForm.controls.time.touched ) ? 'error-border' : ''"
+                          type="number" id="input-last-name" class="form-control form-control-alternative"
+                          placeholder="¿Cuántas horas?" NumbersOnly formControlName="time">
+                        <div *ngIf="registerTaskForm.controls.time.invalid && registerTaskForm.controls.time.touched">
+                          <small class="error-text ml-2">*Horas obligatorias</small>
+                        </div>
                       </div>
                     </div>
                     <!-- End Time Input -->
@@ -84,7 +102,7 @@
                       <div class="form-group">
                         <label class="form-control-label" for="project-description">Descripción</label>
                         <textarea class="form-control form-control-alternative"
-                                  id="project-description" rows="10"
+                                  id="project-description" rows="10" maxlength="500" formControlName="description"
                                   placeholder="Aquí puedes describir un poco mas que se hizo... (Opcional)"></textarea>
                       </div>
                     </div>

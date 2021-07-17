@@ -11,13 +11,19 @@ export class RegisterTaskComponent implements OnInit {
   public registerTaskForm: FormGroup;
   public imageShow;
   private origin: string;
+  public today = Date.now();
 
   constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    console.log(this.today);
     this.registerTaskForm = new FormGroup({
-      imageFile: new FormControl(null, []),
       date: new FormControl(null, [Validators.required]),
+      project: new FormControl(null, [Validators.required]),
+      title: new FormControl(null, [Validators.required, Validators.minLength(10)]),
+      time: new FormControl(null, [Validators.required]),
+      description: new FormControl(null, []),
+      imageFile: new FormControl(null, []),
     });
 
     this.route.queryParams.subscribe( params => {
@@ -31,28 +37,12 @@ export class RegisterTaskComponent implements OnInit {
 
   getImage(event) {
     this.imageFile.setValue(event?.value ?? null);
-    console.clear();
-    console.log(this.registerTaskForm.get('imageFile').value);
-    const textFileAsBlob = new Blob([this.registerTaskForm.get('imageFile').value], {type: 'text/plain'});
-    const fileNameToSaveAs = 'myNewFile.txt';
-    const downloadLink = document.createElement('a');
-    downloadLink.download = fileNameToSaveAs;
-    downloadLink.innerHTML = 'My Hidden Link';
-    window.URL = window.URL || window.webkitURL;
-    downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
-    document.body.appendChild(downloadLink);
-    downloadLink.click();
-    // if (this.imageFile.value !== null) {
-    //   const reader = new FileReader();
-    //   reader.onloadend = () => {
-    //     console.log(reader.result);
-    //   };
-    //   reader.readAsDataURL(this.imageFile.value);
-    // }
-
   }
 
-  registerTaskSubmit() {
+  postTask() {
+    (this.registerTaskForm.valid) ? console.log('guardando...') :  this.registerTaskForm.markAllAsTouched();
+    console.clear();
+    console.log(this.registerTaskForm.getRawValue());
   }
 
   return(): void {
