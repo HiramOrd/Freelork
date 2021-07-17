@@ -8,7 +8,6 @@ import {AuthLayoutComponent} from '../layouts/auth-layout/auth-layout.component'
 import {HomeComponent} from '../pages/students/home/home.component';
 import {LoginComponent} from '../pages/login/login.component';
 import {RegisterComponent} from '../pages/register/register.component';
-import {DashboardComponent} from '../pages/dashboard/dashboard.component';
 import {UserProfileComponent} from '../pages/user-profile/user-profile.component';
 import {TablesComponent} from '../pages/tables/tables.component';
 import {IconsComponent} from '../pages/icons/icons.component';
@@ -26,7 +25,6 @@ import { RegisterTaskComponent } from '../pages/students/register-task/register-
 import { GroupsComponent } from '../pages/teacher/groups/groups.component';
 import { CreateGroupComponent } from '../pages/teacher/groups/create-group/create-group.component';
 import {GroupStudentComponent} from '../pages/students/group-student/group-student.component';
-import {ExampleComponent} from '../pages/students/example/example.component';
 
 
 const routes: Routes = [
@@ -64,7 +62,7 @@ const routes: Routes = [
           {path: 'home', component: HomeComponent},
           {path: 'register', children: [
               {path: '', component: StudentsTableComponent},
-              {path: 'create-task', component: ExampleComponent},
+              {path: 'create-task', component: RegisterTaskComponent},
               {path: 'edit-task', component: RegisterTaskComponent},
               {path: '**', redirectTo: '/not/404' },
             ]},
