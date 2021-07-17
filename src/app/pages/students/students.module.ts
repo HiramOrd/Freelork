@@ -14,6 +14,7 @@ import {UtilitiesModule} from '../../utilities/utilities.module';
 import { ModalViewAdvisesComponent } from './home/modal-view-advises/modal-view-advises.component';
 import { GroupStudentComponent } from './group-student/group-student.component';
 import {ComponentsModule} from '../../components/components.module';
+import { ModalAddProjectComponent } from './projects/modal-add-project/modal-add-project.component';
 
 
 
@@ -28,6 +29,7 @@ import {ComponentsModule} from '../../components/components.module';
     RegisterTaskComponent,
     ModalViewAdvisesComponent,
     GroupStudentComponent,
+    ModalAddProjectComponent,
   ],
   imports: [
     CommonModule,
