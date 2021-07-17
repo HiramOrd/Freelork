@@ -11,15 +11,13 @@ export class RegisterTaskComponent implements OnInit {
   public registerTaskForm: FormGroup;
   public imageShow;
   private origin: string;
-  ondrag = false;
-  borderActive = true;
 
   constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.registerTaskForm = new FormGroup({
-      imageFile: new FormControl(undefined, []),
-      date: new FormControl('', [Validators.required]),
+      imageFile: new FormControl(null, []),
+      date: new FormControl(null, [Validators.required]),
     });
 
     this.route.queryParams.subscribe( params => {
@@ -28,64 +26,33 @@ export class RegisterTaskComponent implements OnInit {
   }
 
   get imageFile() {
-    return this.registerTaskForm.get('imageFile');
+    return this.registerTaskForm.get('imageFile') as FormControl;
+  }
+
+  getImage(event) {
+    this.imageFile.setValue(event?.value ?? null);
+    console.clear();
+    console.log(this.registerTaskForm.get('imageFile').value);
+    const textFileAsBlob = new Blob([this.registerTaskForm.get('imageFile').value], {type: 'text/plain'});
+    const fileNameToSaveAs = 'myNewFile.txt';
+    const downloadLink = document.createElement('a');
+    downloadLink.download = fileNameToSaveAs;
+    downloadLink.innerHTML = 'My Hidden Link';
+    window.URL = window.URL || window.webkitURL;
+    downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    // if (this.imageFile.value !== null) {
+    //   const reader = new FileReader();
+    //   reader.onloadend = () => {
+    //     console.log(reader.result);
+    //   };
+    //   reader.readAsDataURL(this.imageFile.value);
+    // }
+
   }
 
   registerTaskSubmit() {
-  }
-
-  deletePhoto(): void {
-    this.imageShow = undefined;
-  }
-
-  onFileChanged(event) {
-    this.getImage(event.target.files);
-  }
-
-  getImage(files) {
-    if (files.length > 0) {
-      const file = files[0];
-      this.registerTaskForm.patchValue({
-        imageFile: file
-      });
-    }
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      this.imageShow = reader.result;
-    };
-    reader.readAsDataURL(this.imageFile.value);
-  }
-
-  dropHandler(ev) {
-    ev.preventDefault();
-    if (ev.dataTransfer.items) {
-      for (let i = 0; i < ev.dataTransfer.items.length; i++) {
-        console.log(ev.dataTransfer.items[i]);
-        if (ev.dataTransfer.items[i].type.includes('image')) {
-          const file = ev.dataTransfer.items[i].getAsFile();
-          this.getImage([file]);
-        }
-      }
-    } else {
-      for (let i = 0; i < ev.dataTransfer.files.length; i++) {
-        this.getImage([ev.dataTransfer.files[i]]);
-      }
-    }
-    this.ondrag = false;
-    if (ev.dataTransfer.items) {
-      ev.dataTransfer.items.clear();
-    } else {
-      ev.dataTransfer.clearData();
-    }
-  }
-
-  dragExit() {
-    this.ondrag = false;
-  }
-
-  dragOverHandler(ev) {
-    this.ondrag = true;
-    ev.preventDefault();
   }
 
   return(): void {

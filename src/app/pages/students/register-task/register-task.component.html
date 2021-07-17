@@ -131,58 +131,7 @@
                   </div>
                 </div>
                 <!-- End Card Header -->
-
-                <!-- Start Image Input -->
-                <input type="file" id="newPhoto" accept=".png, .jpg, .jpeg"
-                       (change)="onFileChanged($event)" required class="d-none">
-                <!-- End Image Input -->
-
-                <div class="p-3 h-100" id="image-container">
-
-                  <div class="h-100 d-flex justify-content-center align-items-center flex-column text-center" id="image-box"
-                         [ngClass]="[(ondrag === true) ? 'ondrag': '', (imageShow !== undefined) ? '' : 'border-active' ]"
-                         (drop)="dropHandler($event)"
-                         (dragleave)="dragExit()"
-                         (dragover)="dragOverHandler($event);">
-
-                    <ng-container *ngIf="imageShow === undefined; else image">
-                      <label class="btn btn-primary image-button mb-2" for="newPhoto" id="upload-button">
-                        <i class="fas fa-upload"></i>
-                      </label>
-                      <p class="m-0 font-weight-normal">Arrastra y suelta o haz clic para cargar Imagen</p>
-                    </ng-container>
-
-                    <ng-template #image>
-                      <!-- Start Image Preview -->
-                      <div class="p-1 p-md-3" id="image">
-                        <img [src]="this.imageShow" alt="">
-                      </div>
-                      <!-- End Image Preview -->
-
-                      <!-- Start Image Background Blur -->
-                      <div id="background">
-                        <img [src]="this.imageShow" alt="">
-                      </div>
-                      <!-- End Image Background Blur -->
-
-                      <!-- Start Image Button -->
-                      <div id="button-box" class="h-100 w-100 d-flex justify-content-center align-items-center">
-
-                        <label class="btn btn-neutral text-primary image-button mb-2" for="newPhoto">
-                          <i class="fas fa-redo"></i>
-                        </label>
-
-                        <button class="btn btn-neutral text-red image-button mb-2" (click)="deletePhoto()">
-                          <i class="fas fa-trash"></i>
-                        </button>
-
-                      </div>
-                      <!-- End Image Button -->
-                    </ng-template>
-
-                  </div>
-
-                </div>
+                  <app-drag-and-drop [imageFile]="imageFile" (result)="getImage($event)"></app-drag-and-drop>
               </div>
             </div>
           </div>

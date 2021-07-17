@@ -24,7 +24,8 @@ import { DragAndDropComponent } from './drag-and-drop/drag-and-drop.component';
   exports: [
     FooterComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    DragAndDropComponent
   ]
 })
 export class ComponentsModule { }

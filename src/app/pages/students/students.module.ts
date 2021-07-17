@@ -13,6 +13,7 @@ import {RegisterTaskComponent} from './register-task/register-task.component';
 import {UtilitiesModule} from '../../utilities/utilities.module';
 import { ModalViewAdvisesComponent } from './home/modal-view-advises/modal-view-advises.component';
 import { GroupStudentComponent } from './group-student/group-student.component';
+import {ComponentsModule} from '../../components/components.module';
 
 
 
@@ -36,7 +37,8 @@ import { GroupStudentComponent } from './group-student/group-student.component';
     NgbTooltipModule,
     UtilitiesModule,
     NgbModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ComponentsModule
   ]
 })
 export class StudentsModule { }
