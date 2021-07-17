@@ -13,8 +13,11 @@ export class CreateGroupComponent implements OnInit {
 
   ngOnInit(): void {
     this.createGroupForm = new FormGroup({
-      nameGroup: new FormControl('', [Validators.required, Validators.minLength(9)]),
-      career: new FormControl('', [Validators.required]),
+      nameGroup: new FormControl(null, [Validators.required, Validators.minLength(6)]),
+      career: new FormControl(null, [Validators.required]),
+      grade: new FormControl(null, [Validators.required]),
+      group: new FormControl(null, [Validators.required]),
+      schedule: new FormControl(null, [Validators.required]),
     });
 
   }

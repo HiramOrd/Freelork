@@ -9,7 +9,7 @@
 
       <!-- Start Grid Cards Projects -->
       <div class="grid-cards">
-
+        <ng-template #tipContent let-greeting="greeting">{{greeting}}</ng-template>
         <!-- Start Card Project -->
         <div class="card card-stats mb-4 mb-xl-0">
           <div class="card-body px-2 px-sm-4 p-lg-4">
@@ -27,10 +27,10 @@
                   Ingeniería en Software
                 </p>
             </div>
-            <!-- Aca esta el tooltip -->
             <div class="row w-100 m-0 align-content-center">
                 <p class="font-weight-bold font-code">Código:&nbsp;{{groupCode!==undefined?groupCode:'No disponible'}}&nbsp;</p>
-                <div class="d-flex align-content-center mouse-pointer copy-icon tooltip-icon" placement="top" openDelay="100" ngbTooltip="Copiar" tooltipClass="defaultTooltip" (click)="copyCode(groupCode!==undefined?groupCode:'No disponible')">
+                <div class="d-flex align-content-center mouse-pointer copy-icon tooltip-icon" placement="top" [ngbTooltip]="tipContent"
+                triggers="manual" #t1="ngbTooltip" (mouseover)="openTooltipHover(t1, 'Copiar')" (mouseout)="closeTooltip(t1)" (click)="openTooltipClick(t1, 'Copiado')">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="32" height="32" style="width: 28px; padding-bottom: 1.3rem;" viewBox="0 0 24 24" stroke-width="1.5" stroke="#9A9CE5" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                         <rect x="8" y="8" width="12" height="12" rx="2" />
@@ -70,13 +70,14 @@
             </div>
             <div class="row w-100 m-0 align-content-center">
                 <p class="font-weight-bold font-code">Código:&nbsp;{{groupCode!==undefined?groupCode:'No disponible'}}&nbsp;</p>
-                <div class="d-flex align-content-center mouse-pointer copy-icon tooltip-icon" (click)="copyCode(groupCode!==undefined?groupCode:'No disponible')">
+                <div class="d-flex align-content-center mouse-pointer copy-icon tooltip-icon" placement="top" [ngbTooltip]="tipContent"
+                triggers="manual" #t1="ngbTooltip" (mouseover)="openTooltipHover(t1, 'Copiar')" (mouseout)="closeTooltip(t1)" (click)="openTooltipClick(t1, 'Copiado')">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="32" height="32" style="width: 28px; padding-bottom: 1.3rem;" viewBox="0 0 24 24" stroke-width="1.5" stroke="#9A9CE5" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                         <rect x="8" y="8" width="12" height="12" rx="2" />
                         <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2" />
                     </svg>
-                    <span class="tooltiptext" id="myTooltip">Copiar</span>                
+                                
                 </div>
             </div>
             <div class="d-flex justify-content-between mt-2">
@@ -111,13 +112,14 @@
             </div>
             <div class="row w-100 m-0 align-content-center">
                 <p class="font-weight-bold font-code">Código:&nbsp;{{groupCode!==undefined?groupCode:'No disponible'}}&nbsp;</p>
-                <div class="d-flex align-content-center mouse-pointer copy-icon tooltip-icon" (click)="copyCode(groupCode!==undefined?groupCode:'No disponible')">
+                <div class="d-flex align-content-center mouse-pointer copy-icon tooltip-icon" placement="top" [ngbTooltip]="tipContent"
+                triggers="manual" #t1="ngbTooltip" (mouseover)="openTooltipHover(t1, 'Copiar')" (mouseout)="closeTooltip(t1)" (click)="openTooltipClick(t1, 'Copiado')">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="32" height="32" style="width: 28px; padding-bottom: 1.3rem;" viewBox="0 0 24 24" stroke-width="1.5" stroke="#9A9CE5" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                         <rect x="8" y="8" width="12" height="12" rx="2" />
                         <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2" />
                     </svg>
-                    <span class="tooltiptext" id="myTooltip">Copiar</span>                
+                                
                 </div>
             </div>
             <div class="d-flex justify-content-between mt-2">
@@ -152,13 +154,14 @@
             </div>
             <div class="row w-100 m-0 align-content-center">
                 <p class="font-weight-bold font-code">Código:&nbsp;{{groupCode!==undefined?groupCode:'No disponible'}}&nbsp;</p>
-                <div class="d-flex align-content-center mouse-pointer copy-icon tooltip-icon" (click)="copyCode(groupCode!==undefined?groupCode:'No disponible')">
+                <div class="d-flex align-content-center mouse-pointer copy-icon tooltip-icon" placement="top" [ngbTooltip]="tipContent"
+                triggers="manual" #t1="ngbTooltip" (mouseover)="openTooltipHover(t1, 'Copiar')" (mouseout)="closeTooltip(t1)" (click)="openTooltipClick(t1, 'Copiado')">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="32" height="32" style="width: 28px; padding-bottom: 1.3rem;" viewBox="0 0 24 24" stroke-width="1.5" stroke="#9A9CE5" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                         <rect x="8" y="8" width="12" height="12" rx="2" />
                         <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2" />
                     </svg>
-                    <span class="tooltiptext" id="myTooltip">Copiar</span>                
+                                
                 </div>
             </div>
             <div class="d-flex justify-content-between mt-2">
@@ -193,13 +196,14 @@
             </div>
             <div class="row w-100 m-0 align-content-center">
                 <p class="font-weight-bold font-code">Código:&nbsp;{{groupCode!==undefined?groupCode:'No disponible'}}&nbsp;</p>
-                <div class="d-flex align-content-center mouse-pointer copy-icon tooltip-icon" (click)="copyCode(groupCode!==undefined?groupCode:'No disponible')">
+                <div class="d-flex align-content-center mouse-pointer copy-icon tooltip-icon" placement="top" [ngbTooltip]="tipContent"
+                triggers="manual" #t1="ngbTooltip" (mouseover)="openTooltipHover(t1, 'Copiar')" (mouseout)="closeTooltip(t1)" (click)="openTooltipClick(t1, 'Copiado')">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="32" height="32" style="width: 28px; padding-bottom: 1.3rem;" viewBox="0 0 24 24" stroke-width="1.5" stroke="#9A9CE5" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                         <rect x="8" y="8" width="12" height="12" rx="2" />
                         <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2" />
                     </svg>
-                    <span class="tooltiptext" id="myTooltip">Copiar</span>                
+                                
                 </div>
             </div>
             <div class="d-flex justify-content-between mt-2">

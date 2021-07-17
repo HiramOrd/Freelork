@@ -30,79 +30,81 @@
                   <form [formGroup]="createGroupForm" (ngSubmit)="createGroupSubmit()">
 
                     <div class="row">
-                      <div class="col-12">
-                        <div class="form-group" [ngClass]="(createGroupForm.controls.nameGroup.invalid && createGroupForm.controls.nameGroup.touched ) ? 'error-border' : ''">
-                          <label class="form-control-label" for="input-first-name">Nombre del grupo</label>
-                          <input type="text" id="input-first-name" class="form-control form-control-alternative bg-lightblue" formControlName="nameGroup" NumbersOnly>
+                      <div class="form-group col-12">
+                        <label class="form-control-label" for="input-first-name">Nombre del grupo</label>
+                        <div class="input-group" [ngClass]="(createGroupForm.controls.nameGroup.invalid && createGroupForm.controls.nameGroup.touched ) ? 'error-border' : ''">
+                          <input type="text" id="input-first-name" class="form-control form-control-alternative bg-lightblue" formControlName="nameGroup">
                         </div>
-                      </div>
-                      <div *ngIf="createGroupForm.controls.nameGroup.errors?.required && createGroupForm.controls.nameGroup.touched">
-                        <small class="error-text ml-2">*Ingresa el nombre del grupo</small>
+                        <div *ngIf="createGroupForm.controls.nameGroup.errors?.required && createGroupForm.controls.nameGroup.touched">
+                          <small class="error-text ml-2">*Ingresa el nombre del grupo</small>
+                        </div>
+                        <div *ngIf="createGroupForm.controls.nameGroup.errors?.minlength && createGroupForm.controls.nameGroup.touched">
+                          <small class="error-text ml-2">*El nombre del grupo debe tener al menos 6 caracteres</small>
+                        </div>
                       </div>
                     </div>
 
 
                     <div class="row">
-                        <div class="col-12">
-                          <div class="form-group">
-                            <label class="form-control-label" for="select-project">Carrera</label>
-                            <select id="select-project" class="form-control form-control-alternative bg-lightblue-border" formControlName="career">
-                              <option [value]="null" disabled hidden selected>Selecciona la carrera</option>
+                        <div class="form-group col-12">
+                          <label class="form-control-label" for="career">Carrera</label>
+                          <div class="input-group">
+                            <select id="career" class="form-control form-control-alternative bg-lightblue-border" formControlName="career">
+                              <option [value]="null" disabled hidden selected>Selecciona la carreras</option>
                               <option>Ingenieria en software</option>
                             </select>
                           </div>
-                        </div>
-                        <div *ngIf="createGroupForm.controls.career.errors?.required && createGroupForm.controls.career.touched">
-                          <small class="error-text ml-2">*Ingresa el nombre del grupo</small>
+                          <div *ngIf="createGroupForm.controls.career.errors?.required && createGroupForm.controls.career.touched">
+                            <small class="error-text ml-2">*Selecciona la carrera del grupo</small>
+                          </div>
                         </div>
                     </div>
 
                     <div class="row">
-                      <div class="col-12">
-                        <div class="form-group">
-                          <label class="form-control-label" for="quarter">Cuatrimestre</label>
-                          <select id="quarter" class="form-control form-control-alternative bg-lightblue-border" formControlName="career">
-                            <option [value]="null" disabled hidden selected>Selecciona el cuatrimestre</option>
+                      <div class="form-group col-12">
+                        <label class="form-control-label" for="grade">Cuatrimestre</label>
+                        <div class="input-group">
+                          <select id="grade" class="form-control form-control-alternative bg-lightblue-border" formControlName="grade">
+                            <option [value]="null" disabled hidden>Selecciona el cuatrimestre</option>
                             <option>6to cuatrimestre</option>
                           </select>
                         </div>
+                        <div *ngIf="createGroupForm.controls.grade.errors?.required && createGroupForm.controls.grade.touched">
+                          <small class="error-text ml-2">*Selecciona el cuatrimestre del grupo</small>
+                        </div>
                       </div>
-                      <div *ngIf="createGroupForm.controls.career.errors?.required && createGroupForm.controls.career.touched">
-                        <small class="error-text ml-2">*Ingresa el nombre del grupo</small>
+                      
+                    </div>
+
+                    <div class="row">
+                      <div class="form-group col-12">
+                        <label class="form-control-label" for="schedule">Turno</label>
+                        <div class="input-group">                     
+                          <select id="schedule" class="form-control bg-lightblue-border" formControlName="schedule">
+                            <option [value]="null" disabled hidden selected>Selecciona el turno</option>
+                            <option>Matutino</option>
+                          </select>
+                        </div>
+                        <div *ngIf="createGroupForm.controls.schedule.errors?.required && createGroupForm.controls.schedule.touched">
+                          <small class="error-text ml-2">*Selecciona el turno del grupo</small>
+                        </div>
                       </div>
                     </div>
 
                     <div class="row">
-                      <div class="col-12">
-                        <div class="form-group">
-                          <label class="form-control-label" for="group">Grupo</label>
-                          <select id="group" class="form-control form-control-alternative bg-lightblue-border" formControlName="career">
+                      <div class="form-group col-12">
+                        <label class="form-control-label" for="group">Grupo</label>
+                        <div class="input-group">
+                          <select id="group" class="form-control form-control-alternative bg-lightblue-border" formControlName="group">
                             <option [value]="null" disabled hidden selected>Selecciona el grupo</option>
                             <option>IS63</option>
                           </select>
                         </div>
-                      </div>
-                      <div *ngIf="createGroupForm.controls.career.errors?.required && createGroupForm.controls.career.touched">
-                        <small class="error-text ml-2">*Ingresa el nombre del grupo</small>
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-12">
-                        <div class="form-group">
-                          <label class="form-control-label" for="schedule">Turno</label>
-                          <select id="schedule" class="form-control form-control-alternative bg-lightblue-border" formControlName="career">
-                            <option [value]="null" disabled hidden selected>Selecciona el grupo</option>
-                            <option>Matutino</option>
-                          </select>
+                        <div *ngIf="createGroupForm.controls.group.errors?.required && createGroupForm.controls.group.touched">
+                          <small class="error-text ml-2">*Selecciona el grupo</small>
                         </div>
                       </div>
-                      <div *ngIf="createGroupForm.controls.career.errors?.required && createGroupForm.controls.career.touched">
-                        <small class="error-text ml-2">*Ingresa el nombre del grupo</small>
-                      </div>
                     </div>
-
-
 
                     <div class="text-center pt-3">
                       <button type="submit" class="col-sm-4 btn btn-primary my-auto">Aceptar</button>
