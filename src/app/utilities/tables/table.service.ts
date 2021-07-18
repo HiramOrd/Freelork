@@ -19,6 +19,11 @@ interface State {
   sortDirection: SortDirection;
 }
 
+interface ColumnsTable {
+  type: string;
+  data: any;
+}
+
 const compare = (v1: string | number, v2: string | number) => v1 < v2 ? -1 : v1 > v2 ? 1 : 0;
 
 function sort(arrayTable: any[], column: SortColumn, direction: string): any[] {
@@ -33,9 +38,20 @@ function sort(arrayTable: any[], column: SortColumn, direction: string): any[] {
 }
 
 function matches(data: any, term: string, pipe: PipeTransform) {
-  return data.name.toLowerCase().includes(term.toLowerCase())
-    || pipe.transform(data.area).includes(term)
-    || pipe.transform(data.population).includes(term);
+  let verify = false;
+
+  // tslint:disable-next-line:forin
+  for (const property in data) {
+    if (typeof(data[property]) === 'string') {
+      verify = data[property].toLowerCase().includes(term.toLowerCase());
+    } else if ( typeof(data[property]) === 'number') {
+      verify = pipe.transform(data[property]).includes(term);
+    }
+    if (verify === true) {
+      break;
+    }
+  }
+  return verify;
 }
 
 @Injectable({providedIn: 'root'})
