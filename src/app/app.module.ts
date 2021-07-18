@@ -12,7 +12,7 @@ import { AppRoutingModule } from './routes/app.routing';
 import { ComponentsModule } from './components/components.module';
 import { AuthLayoutModule } from './layouts/auth-layout/auth-layout.module';
 import { AdminLayoutModule } from './layouts/admin-layout/admin-layout.module';
-import {CommonModule} from '@angular/common';
+import {CommonModule, DecimalPipe} from '@angular/common';
 import {UtilitiesModule} from './utilities/utilities.module';
 import {RoutesLayoutModule} from './layouts/routes-layout/routes-layout.module';
 
@@ -34,7 +34,7 @@ import {RoutesLayoutModule} from './layouts/routes-layout/routes-layout.module';
   declarations: [
     AppComponent
   ],
-  providers: [],
+  providers: [DecimalPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

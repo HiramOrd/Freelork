@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NumbersOnlyDirective } from './numbers-only.directive';
+import {NgbdSortableHeader} from './tables/sortable.directive';
 
 
 
 @NgModule({
-  declarations: [NumbersOnlyDirective],
+  declarations: [NumbersOnlyDirective, NgbdSortableHeader],
   exports: [
-    NumbersOnlyDirective
+    NumbersOnlyDirective,
+    NgbdSortableHeader
   ],
   imports: [
     CommonModule
