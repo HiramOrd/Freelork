@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild, ElementRef, Renderer2} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import { Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
@@ -8,34 +8,41 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./register-task.component.css']
 })
 export class RegisterTaskComponent implements OnInit {
-  registerTaskForm: FormGroup;
-  @ViewChild('newPhoto') newPhoto: ElementRef;
-  file:any;
-  imageShow:any;
-  origin;
+  public registerTaskForm: FormGroup;
+  public imageShow;
+  private origin: string;
+  public today = Date.now();
 
-  constructor(private renderer: Renderer2, private router: Router, private route: ActivatedRoute) { }
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    console.log(this.today);
+    this.registerTaskForm = new FormGroup({
+      date: new FormControl(null, [Validators.required]),
+      project: new FormControl(null, [Validators.required]),
+      title: new FormControl(null, [Validators.required, Validators.minLength(10)]),
+      time: new FormControl(null, [Validators.required]),
+      description: new FormControl(null, []),
+      imageFile: new FormControl(null, []),
+    });
+
     this.route.queryParams.subscribe( params => {
-      (params.origin) ? this.origin = params.origin : this.origin = 0;
+      (params.origin) ? this.origin = params.origin : this.origin = '0';
     });
   }
-  registerTaskSubmit(){
 
+  get imageFile() {
+    return this.registerTaskForm.get('imageFile') as FormControl;
   }
 
-  chargePhoto(){
-    this.newPhoto.nativeElement.click();
+  getImage(event) {
+    this.imageFile.setValue(event?.value ?? null);
   }
 
-  onFileChanged(event) {
-  this.file = event.target.files[0]
-  var reader = new FileReader();
-  reader.readAsDataURL(event.target.files[0]);
-    reader.onload = (event) => {
-    this.imageShow = (<FileReader>event.target).result;
-    }
+  postTask() {
+    (this.registerTaskForm.valid) ? console.log('guardando...') :  this.registerTaskForm.markAllAsTouched();
+    console.clear();
+    console.log(this.registerTaskForm.getRawValue());
   }
 
   return(): void {
@@ -43,6 +50,6 @@ export class RegisterTaskComponent implements OnInit {
     if (this.origin === '1') {
       route = '/dash/std/home';
     }
-    this.router.navigate([route]);
+    this.router.navigate([route]).then(() => {} );
   }
 }

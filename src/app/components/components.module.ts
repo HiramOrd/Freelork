@@ -6,6 +6,7 @@ import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ContactTeamComponent } from './contact-team/contact-team.component';
+import { DragAndDropComponent } from './drag-and-drop/drag-and-drop.component';
 
 @NgModule({
   imports: [
@@ -17,12 +18,14 @@ import { ContactTeamComponent } from './contact-team/contact-team.component';
     FooterComponent,
     NavbarComponent,
     SidebarComponent,
-    ContactTeamComponent
+    ContactTeamComponent,
+    DragAndDropComponent
   ],
   exports: [
     FooterComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    DragAndDropComponent
   ]
 })
 export class ComponentsModule { }

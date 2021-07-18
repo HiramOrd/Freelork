@@ -3,7 +3,7 @@
     <div class="header-body">
 
       <!-- Start Form -->
-      <form (submit)="registerTaskSubmit()">
+      <form (submit)="postTask()" [formGroup]="registerTaskForm">
       <div class="row">
         <!-- Start Left Section -->
         <div class="col-xl-6 pb-4 pb-xl-0">
@@ -35,7 +35,12 @@
                     <!-- Start Date Input -->
                     <div class="col-12 col-sm-6">
                       <div class="form-group m-sm-0">
-                        <input type="date" class="form-control form-control-alternative">
+                        <input type="date" class="form-control form-control-alternative"
+                               [ngClass]="(registerTaskForm.controls.date.invalid && registerTaskForm.controls.date.touched ) ? 'error-border' : ''"
+                               [max]="today | date: 'yyyy-MM-dd'" placeholder="Fecha" formControlName="date" />
+                        <div *ngIf="registerTaskForm.controls.date.invalid && registerTaskForm.controls.date.touched">
+                          <small class="error-text ml-2">*Ingresa la fecha</small>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -46,9 +51,14 @@
                     <div class="col-12">
                       <div class="form-group">
                         <label class="form-control-label" for="select-project">Proyecto</label>
-                        <select id="select-project" class="form-control form-control-alternative">
+                        <select [ngClass]="(registerTaskForm.controls.project.invalid && registerTaskForm.controls.project.touched ) ? 'error-border' : ''"
+                          id="select-project" class="form-control form-control-alternative" formControlName="project">
                           <option [value]="null" disabled hidden selected>¿En qué proyecto se trabajó?</option>
+                          <option [value]="1">Ejemplo</option>
                         </select>
+                        <div *ngIf="registerTaskForm.controls.project.invalid && registerTaskForm.controls.project.touched">
+                          <small class="error-text ml-2">*Selecciona un proyecto</small>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -60,8 +70,12 @@
                     <div class="col-lg-8">
                       <div class="form-group">
                         <label class="form-control-label" for="input-first-name">Titulo</label>
-                        <input type="text" id="input-first-name" class="form-control form-control-alternative"
-                               placeholder="¿Qué se hizo?">
+                        <input [ngClass]="(registerTaskForm.controls.title.invalid && registerTaskForm.controls.title.touched ) ? 'error-border' : ''"
+                          type="text" id="input-first-name" class="form-control form-control-alternative"
+                          placeholder="¿Qué se hizo?" formControlName="title" maxlength="50">
+                        <div *ngIf="registerTaskForm.controls.title.invalid && registerTaskForm.controls.title.touched">
+                          <small class="error-text ml-2">*Agregar un titulo descriptivo</small>
+                        </div>
                       </div>
                     </div>
                     <!-- End Title Input -->
@@ -70,8 +84,12 @@
                     <div class="col-lg-4">
                       <div class="form-group">
                         <label class="form-control-label" for="input-last-name">Tiempo</label>
-                        <input type="number" id="input-last-name" class="form-control form-control-alternative"
-                               placeholder="¿Cuántas horas?" NumbersOnly>
+                        <input [ngClass]="(registerTaskForm.controls.time.invalid && registerTaskForm.controls.time.touched ) ? 'error-border' : ''"
+                          type="number" id="input-last-name" class="form-control form-control-alternative"
+                          placeholder="¿Cuántas horas?" NumbersOnly formControlName="time">
+                        <div *ngIf="registerTaskForm.controls.time.invalid && registerTaskForm.controls.time.touched">
+                          <small class="error-text ml-2">*Horas obligatorias</small>
+                        </div>
                       </div>
                     </div>
                     <!-- End Time Input -->
@@ -84,7 +102,7 @@
                       <div class="form-group">
                         <label class="form-control-label" for="project-description">Descripción</label>
                         <textarea class="form-control form-control-alternative"
-                                  id="project-description" rows="10"
+                                  id="project-description" rows="10" maxlength="500" formControlName="description"
                                   placeholder="Aquí puedes describir un poco mas que se hizo... (Opcional)"></textarea>
                       </div>
                     </div>
@@ -131,46 +149,7 @@
                   </div>
                 </div>
                 <!-- End Card Header -->
-
-                <div class="card-body p-0 bg-secondary" id="image-container">
-                  <!-- Start Image Input -->
-                  <input type="file" #newPhoto id="newPhoto" accept=".png, .jpg, .jpeg"
-                         (change)="onFileChanged($event)" required>
-                  <!-- End Image Input -->
-
-                  <!-- Start Image Box -->
-                  <div class="col p-0 h-100 d-flex justify-content-center align-items-center"
-                       (click)="chargePhoto()" id="image-box">
-
-                    <!-- Start Image Preview -->
-                    <div class="p-1 p-md-3" id="image">
-                      <img [src]="(imageShow === undefined)? '/assets/img/example.jpg' : this.imageShow">
-                    </div>
-                    <!-- End Image Preview -->
-
-                    <!-- Start Image Background Blur -->
-                    <div id="background">
-                      <img [src]="(imageShow === undefined)? '/assets/img/example.jpg' : this.imageShow">
-                    </div>
-                    <!-- End Image Background Blur -->
-
-                    <!-- Start Image Button -->
-                    <div id="button-box" class="h-100 w-100 d-flex justify-content-center align-items-center">
-                      <svg xmlns="http://www.w3.org/2000/svg"
-                           class="icon icon-tabler icon-tabler-file-plus" viewBox="0 0 24 24" stroke-width="1"
-                           fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                        <path d="M14 3v4a1 1 0 0 0 1 1h4"/>
-                        <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"/>
-                        <line x1="12" y1="11" x2="12" y2="17"/>
-                        <line x1="9" y1="14" x2="15" y2="14"/>
-                      </svg>
-                    </div>
-                    <!-- End Image Button -->
-
-                  </div>
-
-                </div>
+                  <app-drag-and-drop [imageFile]="imageFile" (result)="getImage($event)"></app-drag-and-drop>
               </div>
             </div>
           </div>

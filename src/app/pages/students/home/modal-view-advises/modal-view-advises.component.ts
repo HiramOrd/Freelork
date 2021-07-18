@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-modal-view-advises',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModalViewAdvisesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private modalService: NgbModal, public activeModal: NgbActiveModal) { }
 
   ngOnInit(): void {
   }

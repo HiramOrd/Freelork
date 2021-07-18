@@ -1,0 +1,76 @@
+<!-- Start Background Color -->
+<div class="bg-gradient-lightBlue background-default">
+</div>
+<!-- End Background Color -->
+
+<!-- Start Page content -->
+<div class="container-fluid pt-3 pt-md-7">
+
+
+  <div class="row">
+    <div class="col">
+      <!-- Start Table Card -->
+      <div class="card shadow px-2 px-sm-3" id="student-group-card">
+
+        <div class="card-header"></div>
+
+        <form class="card-body px-0 pb-0 text-center">
+          <p class="font-weight-normal">Uy! Parece que no estas en ningún grupo</p>
+          <div class="d-flex mx-auto mb-3 align-items-center" id="code-input">
+            <input type="text" class="form-control form-control-blue mr-2"  placeholder="Ingresa un codigo de grupo">
+            <i class="far fa-question-circle ml-1 text-sm"
+               placement="right" ngbTooltip="Tu asesor académico te proporcionará un código para ingresar a la clase" tooltipClass="defaultTooltip"></i>
+          </div>
+          <button type="submit" class="btn btn-primary px-5">Ingresar</button>
+        </form>
+
+        <form>
+          <div class="form-group form-inline">
+            Full text search: <input class="form-control ml-2" type="text" name="searchTerm" [(ngModel)]="tableService.searchTerm"/>
+            <span class="ml-3" *ngIf="tableService.loading$ | async">Loading...</span>
+          </div>
+
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col" sortable="name" (sort)="onSort($event)">Country</th>
+              <th scope="col" sortable="area" (sort)="onSort($event)">Area</th>
+              <th scope="col" sortable="population" (sort)="onSort($event)">Population</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let country of arrayTable$ | async">
+              <th scope="row">{{ country.id }}</th>
+              <td>
+                <ngb-highlight [result]="country.name" [term]="tableService.searchTerm"></ngb-highlight>
+              </td>
+              <td><ngb-highlight [result]="country.area | number" [term]="tableService.searchTerm"></ngb-highlight></td>
+              <td><ngb-highlight [result]="country.population | number" [term]="tableService.searchTerm"></ngb-highlight></td>
+            </tr>
+            </tbody>
+          </table>
+
+          <div class="d-flex justify-content-between p-2">
+            <ngb-pagination
+              [collectionSize]="(total$ | async)!" [(page)]="tableService.page" [pageSize]="tableService.pageSize">
+            </ngb-pagination>
+
+            <select class="custom-select" style="width: auto" name="pageSize" [(ngModel)]="tableService.pageSize">
+              <option [ngValue]="2">2 items per page</option>
+              <option [ngValue]="4">4 items per page</option>
+              <option [ngValue]="6">6 items per page</option>
+            </select>
+          </div>
+
+        </form>
+        <div class="card-footer"></div>
+
+
+      </div>
+      <!-- End Table Card -->
+
+    </div>
+  </div>
+
+</div>

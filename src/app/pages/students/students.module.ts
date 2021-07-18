@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StudentsTableComponent } from './register/students-table.component';
 import {NgbDropdownModule, NgbModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HomeComponent} from './home/home.component';
 import {RouterModule} from '@angular/router';
 import { StudentsProjectsComponent } from './projects/students-projects.component';
@@ -12,6 +12,9 @@ import { ModalDeleteProjectsComponent } from './projects/modal-delete-projects/m
 import {RegisterTaskComponent} from './register-task/register-task.component';
 import {UtilitiesModule} from '../../utilities/utilities.module';
 import { ModalViewAdvisesComponent } from './home/modal-view-advises/modal-view-advises.component';
+import { GroupStudentComponent } from './group-student/group-student.component';
+import {ComponentsModule} from '../../components/components.module';
+import { ModalAddProjectComponent } from './projects/modal-add-project/modal-add-project.component';
 
 
 
@@ -24,7 +27,9 @@ import { ModalViewAdvisesComponent } from './home/modal-view-advises/modal-view-
     ModalDeleteRegisterStudentComponent,
     ModalDeleteProjectsComponent,
     RegisterTaskComponent,
-    ModalViewAdvisesComponent
+    ModalViewAdvisesComponent,
+    GroupStudentComponent,
+    ModalAddProjectComponent,
   ],
   imports: [
     CommonModule,
@@ -33,7 +38,9 @@ import { ModalViewAdvisesComponent } from './home/modal-view-advises/modal-view-
     RouterModule,
     NgbTooltipModule,
     UtilitiesModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule,
+    ComponentsModule
   ]
 })
 export class StudentsModule { }

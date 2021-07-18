@@ -1,5 +1,6 @@
 :root{
   --redText: #fe7f94;
+  --redTextDark: #fa475f;
 }
 
 // Utilities
@@ -40,6 +41,22 @@
   position: absolute !important;
   top: -10px;
   right: -10px;
+}
+
+// Secondary Button link
+.btn.secondary{
+  color: var(--light);
+}
+.btn.secondary:hover{
+  color: var(--gray);
+}
+
+// Danger Button Link
+.btn.danger{
+  color: var(--redText);
+}
+.btn.danger:hover{
+  color: var(--redTextDark);
 }
 
 // Row button
@@ -86,6 +103,15 @@
   to {
     opacity: 1;
   }
+}
+
+// Form Control Blue
+.form-control.form-control-blue{
+  border: 1px solid var(--primary);
+}
+.form-control.form-control-blue:hover,
+.form-control.form-control-blue:active{
+  border: 2px solid var(--primary) !important;
 }
 
 // Background Header Dashboard
@@ -148,4 +174,30 @@
   margin-bottom: 8px;
   font-size: 14px;
   font-weight: 400;
+}
+
+// Table Sort title
+.table-title{
+  cursor: pointer;
+}
+.table-title div{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.table-title:hover{
+  background-color: var(--lighter)!important;
+}
+.table-title:active{
+  background-color: var(--secondary)!important;
+}
+
+.table-title div span{
+  visibility: hidden;
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.table-title:hover div span{
+  visibility: visible;
 }

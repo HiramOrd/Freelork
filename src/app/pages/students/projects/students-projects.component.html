@@ -14,10 +14,10 @@
         <div class="card card-stats mb-4 mb-xl-0">
           <div class="card-body px-2 px-sm-4 p-lg-4">
             <div class="d-flex justify-content-end align-items-center">
-              <a href="" class="m-0">
-                <i class="transform-icon transform-icon text-xs fas fa-pen mr-3 text-white bg-purple rounded-circle p-2" title="Editar el proyecto"></i>
-              </a>
-              <i class="transform-icon text-xs fas fa-trash text-white bg-danger mouse-pointer rounded-circle p-2" title="Eliminar el proyecto" (click)="deleteRegister()"></i>
+<!--              <a href="" class="m-0">-->
+<!--                <i class="transform-icon transform-icon text-xs fas fa-pen mr-3 text-white bg-purple rounded-circle p-2"></i>-->
+<!--              </a>-->
+              <i class="transform-icon text-xs fas fa-trash text-white bg-danger mouse-pointer rounded-circle p-2" (click)="deleteRegister()"></i>
             </div>
             <img src="assets/img/brand/logo-dark.png" alt="" height="60px" class="mw-100">
             <p class="text-sm font-weight-bold m-0">Proyecto: Ammaclub</p>
@@ -35,97 +35,13 @@
         <!-- End ard Project -->
 
         <!-- Start Card Project -->
-        <div class="card card-stats mb-4 mb-xl-0">
-          <div class="card-body px-2 px-sm-4 p-lg-4">
-            <div class="d-flex justify-content-end align-items-center">
-              <a href="" class="m-0">
-                <i class="transform-icon text-xs fas fa-pen mr-3 text-white bg-purple rounded-circle p-2" title="Editar el proyecto"></i>
-              </a>
-              <i class="transform-icon text-xs fas fa-trash text-white bg-danger mouse-pointer rounded-circle p-2" title="Eliminar el proyecto"></i>
-            </div>
-            <img src="assets/img/brand/logo-dark.png" alt="" height="60px" class="mw-100">
-            <p class="text-sm font-weight-bold m-0">Proyecto: Ammaclub</p>
-            <p class="text-xs text-black-50 font-weight-bold">Fecha de creación: 12/06/2021</p>
-            <p class="text-xs font-weight-normal text-dark font-weight-bold m-0">Objetivos:</p>
-            <p class="text-xs font-weight-normal text-dark">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a imperdiet neque. Praesent sed massa ut
-              justo ultrices sagittis in non purus.
-            </p>
-            <div class="text-right">
-              <p class="text-sm m-0 font-weight-bold"> Status: <span class="text-green">Activo</span></p>
-            </div>
-          </div>
-        </div>
-        <!-- End ard Project -->
+        <div class="card card-stats mb-4 mb-xl-0 new-project py-4" (click)="open()">
+          <div class="card-body px-2 px-sm-4 p-lg-4 d-flex align-content-center justify-content-center flex-column text-center">
+              <div class="rounded-circle p-3 new-button d-flex justify-content-center align-items-center mx-auto mb-3">
+                <i class="fas fa-lg fa-plus"></i>
+              </div>
 
-        <!-- Start Card Project -->
-        <div class="card card-stats mb-4 mb-xl-0">
-          <div class="card-body px-2 px-sm-4 p-lg-4">
-            <div class="d-flex justify-content-end align-items-center">
-              <a href="" class="m-0">
-                <i class="transform-icon text-xs fas fa-pen mr-3 text-white bg-purple rounded-circle p-2" title="Editar el proyecto"></i>
-              </a>
-              <i class="transform-icon text-xs fas fa-trash text-white bg-danger mouse-pointer rounded-circle p-2" title="Eliminar el proyecto"></i>
-            </div>
-            <img src="assets/img/brand/logo-dark.png" alt="" height="60px" class="mw-100">
-            <p class="text-sm font-weight-bold m-0">Proyecto: Ammaclub</p>
-            <p class="text-xs text-black-50 font-weight-bold">Fecha de creación: 12/06/2021</p>
-            <p class="text-xs font-weight-normal text-dark font-weight-bold m-0">Objetivos:</p>
-            <p class="text-xs font-weight-normal text-dark">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a imperdiet neque. Praesent sed massa ut
-              justo ultrices sagittis in non purus.
-            </p>
-            <div class="text-right">
-              <p class="text-sm m-0 font-weight-bold"> Status: <span class="text-green">Activo</span></p>
-            </div>
-          </div>
-        </div>
-        <!-- End ard Project -->
-
-        <!-- Start Card Project -->
-        <div class="card card-stats mb-4 mb-xl-0">
-          <div class="card-body px-2 px-sm-4 p-lg-4">
-            <div class="d-flex justify-content-end align-items-center">
-              <a href="" class="m-0">
-                <i class="transform-icon text-xs fas fa-pen mr-3 text-white bg-purple rounded-circle p-2" title="Editar el proyecto"></i>
-              </a>
-              <i class="transform-icon text-xs fas fa-trash text-white bg-danger mouse-pointer rounded-circle p-2" title="Eliminar el proyecto"></i>
-            </div>
-            <img src="assets/img/brand/logo-dark.png" alt="" height="60px" class="mw-100">
-            <p class="text-sm font-weight-bold m-0">Proyecto: Ammaclub</p>
-            <p class="text-xs text-black-50 font-weight-bold">Fecha de creación: 12/06/2021</p>
-            <p class="text-xs font-weight-normal text-dark font-weight-bold m-0">Objetivos:</p>
-            <p class="text-xs font-weight-normal text-dark">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a imperdiet neque. Praesent sed massa ut
-              justo ultrices sagittis in non purus.
-            </p>
-            <div class="text-right">
-              <p class="text-sm m-0 font-weight-bold"> Status: <span class="text-green">Activo</span></p>
-            </div>
-          </div>
-        </div>
-        <!-- End ard Project -->
-
-        <!-- Start Card Project -->
-        <div class="card card-stats mb-4 mb-xl-0">
-          <div class="card-body px-2 px-sm-4 p-lg-4">
-            <div class="d-flex justify-content-end align-items-center">
-              <a href="" class="m-0">
-                <i class="transform-icon text-xs fas fa-pen mr-3 text-white bg-purple rounded-circle p-2" title="Editar el proyecto"></i>
-              </a>
-              <i class="transform-icon text-xs fas fa-trash text-white bg-danger mouse-pointer rounded-circle p-2" title="Eliminar el proyecto"></i>
-            </div>
-            <img src="assets/img/brand/logo-dark.png" alt="" height="60px" class="mw-100">
-            <p class="text-sm font-weight-bold m-0">Proyecto: Ammaclub</p>
-            <p class="text-xs text-black-50 font-weight-bold">Fecha de creación: 12/06/2021</p>
-            <p class="text-xs font-weight-normal text-dark font-weight-bold m-0">Objetivos:</p>
-            <p class="text-xs font-weight-normal text-dark">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a imperdiet neque. Praesent sed massa ut
-              justo ultrices sagittis in non purus.
-            </p>
-            <div class="text-right">
-              <p class="text-sm m-0 font-weight-bold"> Status: <span class="text-green">Activo</span></p>
-            </div>
+            <span class="text-uppercase font-weight-bold">Nuevo proyecto</span>
           </div>
         </div>
         <!-- End ard Project -->

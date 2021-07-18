@@ -1,0 +1,32 @@
+<div class="modal-header pt-3 pb-0 d-flex align-items-center justify-content-end">
+
+  <button class="btn px-3 text-gray" tabindex="-1" (click)="activeModal.dismiss('Cross click')">
+    <i class="fas fa-times"></i>
+  </button>
+</div>
+  <div class="modal-body pt-0">
+    <label for="typeahead-focus" class="font-weight-bold">Busca un nuevo proyecto:</label>
+    <div class="row p-0 m-0 align-items-center">
+      <input
+        id="typeahead-focus"
+        type="text" tabindex="-1"
+        class="form-control form-control-blue col"
+        [(ngModel)]="model"
+        [ngbTypeahead]="search"
+        (focus)="focus$.next($any($event).target.value)"
+        (click)="click$.next($any($event).target.value)"
+        #instance="ngbTypeahead"
+      />
+      <i class="far fa-question-circle ml-2 p-0 col-auto" placement="bottom" ngbTooltip="Puedes buscar proyectos de la empresa en donde realizas tus prácticas" tooltipClass="defaultTooltip"></i>
+    </div>
+
+  </div>
+<div class="modal-footer d-flex justify-content-end">
+  <button class="btn mr-3" tabindex="-1" name="button" (click)="activeModal.dismiss('Cross click')">
+    Cancelar
+  </button>
+
+  <button class="btn btn-primary" name="button">
+    Agregar Proyecto
+  </button>
+</div>
