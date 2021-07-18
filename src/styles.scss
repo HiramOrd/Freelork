@@ -175,3 +175,29 @@
   font-size: 14px;
   font-weight: 400;
 }
+
+// Table Sort title
+.table-title{
+  cursor: pointer;
+}
+.table-title div{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.table-title:hover{
+  background-color: var(--lighter)!important;
+}
+.table-title:active{
+  background-color: var(--secondary)!important;
+}
+
+.table-title div span{
+  visibility: hidden;
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.table-title:hover div span{
+  visibility: visible;
+}

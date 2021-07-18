@@ -18,24 +18,25 @@ export class StudentsTableComponent implements OnInit {
   dateDisabled = true;
   public isCollapsed = true;
 
-  // Test
+  // Table
   arrayTable$: Observable<any[]>;
   total$: Observable<number>;
-
   @ViewChildren(NgbdSortableHeader) headers: QueryList<NgbdSortableHeader>;
 
   constructor(public studentsService: StudentsService, public tableService: TableService) {
     this.today = Date.now();
     this.dateMinRange = this.today;
     this.dateMaxRange = this.today;
-
-    // Test
-    this.tableService.initService(COUNTRIES);
-    this.arrayTable$ = tableService.arrayTable$;
-    this.total$ = tableService.total$;
   }
 
   ngOnInit(): void {
+    this.setTableInfo(COUNTRIES);
+  }
+
+  setTableInfo(arrayTable) {
+    this.tableService.initService(arrayTable);
+    this.arrayTable$ = this.tableService.arrayTable$;
+    this.total$ = this.tableService.total$;
   }
 
   onSort({column, direction}: SortEvent) {

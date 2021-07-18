@@ -1,35 +1,59 @@
 
 export const COUNTRIES: any[] = [
   {
-    id: 1,
-    firsName: 'Carlos',
-    lastname: 'Borges',
-    phone: 17075200,
+    title: 1,
+    project: 'Carlos',
+    date: 'Borges',
+    time: 17075200,
     status: 1,
-    age: 12
   },
   {
-    id: 2,
-    firsName: 'Zuly',
-    lastname: 'Cuevas',
-    phone: 111111,
+    title: 2,
+    project: 'Zuly',
+    date: 'Cuevas',
+    time: 111111,
     status: 0,
-    age: 20
   },
   {
-    id: 3,
-    firsName: 'Aron',
-    lastname: 'Zulo',
-    phone: 8888888,
+    title: 3,
+    project: 'Aron',
+    date: 'Zulo',
+    time: 8888888,
     status: 0,
-    age: 10
   },
   {
-    id: 4,
-    firsName: 'Diana',
-    lastname: 'Montes',
-    phone: 3333333,
+    title: 4,
+    project: 'Diana',
+    date: 'Montes',
+    time: 3333333,
     status: 1,
-    age: 40
+  },
+  {
+    title: 1,
+    project: 'Carlos',
+    date: 'Borges',
+    time: 17075200,
+    status: 1,
+  },
+  {
+    title: 2,
+    project: 'Zuly',
+    date: 'Cuevas',
+    time: 111111,
+    status: 0,
+  },
+  {
+    title: 3,
+    project: 'Aron',
+    date: 'Zulo',
+    time: 8888888,
+    status: 0,
+  },
+  {
+    title: 4,
+    project: 'Diana',
+    date: 'Montes',
+    time: 3333333,
+    status: 1,
   },
 ];
