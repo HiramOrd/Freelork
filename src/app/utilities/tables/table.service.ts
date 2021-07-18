@@ -2,7 +2,6 @@ import {Injectable, PipeTransform} from '@angular/core';
 
 import {BehaviorSubject, Observable, of, Subject} from 'rxjs';
 
-import {COUNTRIES} from './countries';
 import {DecimalPipe} from '@angular/common';
 import {debounceTime, delay, switchMap, tap} from 'rxjs/operators';
 import {SortColumn, SortDirection} from './sortable.directive';
@@ -40,7 +39,7 @@ function matches(data: any, term: string, pipe: PipeTransform) {
 }
 
 @Injectable({providedIn: 'root'})
-export class CountryService {
+export class TableService {
   private _loading$ = new BehaviorSubject<boolean>(true);
   private _search$ = new Subject<void>();
   private _arrayTable$ = new BehaviorSubject<any[]>([]);
@@ -55,10 +54,14 @@ export class CountryService {
   };
 
   constructor(private pipe: DecimalPipe) {
+  }
+
+
+  initService(array: any[]) {
     this._search$.pipe(
       tap(() => this._loading$.next(true)),
       debounceTime(200),
-      switchMap(() => this._search()),
+      switchMap(() => this._search(array)),
       delay(200),
       tap(() => this._loading$.next(false))
     ).subscribe(result => {
@@ -87,11 +90,11 @@ export class CountryService {
     this._search$.next();
   }
 
-  private _search(): Observable<SearchResult> {
+  private _search(array: any[]): Observable<SearchResult> {
     const {sortColumn, sortDirection, pageSize, page, searchTerm} = this._state;
 
     // 1. sort
-    let arrayTable = sort(COUNTRIES, sortColumn, sortDirection);
+    let arrayTable = sort(array, sortColumn, sortDirection);
 
     // 2. filter
     arrayTable = arrayTable.filter(data => matches(data, searchTerm, this.pipe));
