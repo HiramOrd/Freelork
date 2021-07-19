@@ -25,6 +25,8 @@ import { RegisterTaskComponent } from '../pages/students/register-task/register-
 import { GroupsComponent } from '../pages/teacher/groups/groups.component';
 import { CreateGroupComponent } from '../pages/teacher/groups/create-group/create-group.component';
 import {GroupStudentComponent} from '../pages/students/group-student/group-student.component';
+import { StudentsListComponent } from '../pages/teacher/students/students-list/students-list.component';
+import { StudentsProfileComponent } from '../pages/teacher/students/students-profile/students-profile.component';
 
 
 const routes: Routes = [
@@ -74,8 +76,10 @@ const routes: Routes = [
       },
       {
         path: 'tch', children: [
-          {path: 'create-group', component: CreateGroupComponent},
           {path: 'groups', component: GroupsComponent},
+          {path: 'create-group', component: CreateGroupComponent},
+          {path: 'students-list', component: StudentsListComponent},
+          {path: 'students-profile', component: StudentsProfileComponent},
           {path: '**', redirectTo: '/not/404' },
         ]
       },
