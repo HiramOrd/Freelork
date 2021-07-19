@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
+import {HttpClientService} from '../../../services/http-client.service';
 
 @Component({
   selector: 'app-register-task',
@@ -13,17 +14,23 @@ export class RegisterTaskComponent implements OnInit {
   private origin: string;
   public today = Date.now();
 
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private httpClientService: HttpClientService) { }
 
   ngOnInit(): void {
-    console.log(this.today);
+    // console.log(this.today);
     this.registerTaskForm = new FormGroup({
-      date: new FormControl(null, [Validators.required]),
-      project: new FormControl(null, [Validators.required]),
+      // NULL Default
+      id: new FormControl(null),
+      idUser: new FormControl(1, [Validators.required]),
+      dateRegister: new FormControl(null, [Validators.required]),
+      idProject: new FormControl(null, [Validators.required]),
       title: new FormControl(null, [Validators.required, Validators.minLength(10)]),
-      time: new FormControl(null, [Validators.required]),
-      description: new FormControl(null, []),
-      imageFile: new FormControl(null, []),
+      timeRegister: new FormControl(null, [Validators.required]),
+      description: new FormControl(null, []), // Se manda como vacio y no nulo
+      file: new FormControl(null, []),
     });
 
     this.route.queryParams.subscribe( params => {
@@ -31,18 +38,31 @@ export class RegisterTaskComponent implements OnInit {
     });
   }
 
-  get imageFile() {
-    return this.registerTaskForm.get('imageFile') as FormControl;
+  get file() {
+    return this.registerTaskForm.get('file') as FormControl;
+  }
+  get dateRegister() {
+    return this.registerTaskForm.get('dateRegister') as FormControl;
   }
 
   getImage(event) {
-    this.imageFile.setValue(event?.value ?? null);
+    this.file.setValue(event?.value ?? null);
+  }
+
+
+  validateForm() {
+    (this.registerTaskForm.valid) ?
+      this.postTask() :  this.registerTaskForm.markAllAsTouched();
   }
 
   postTask() {
-    (this.registerTaskForm.valid) ? console.log('guardando...') :  this.registerTaskForm.markAllAsTouched();
-    console.clear();
-    console.log(this.registerTaskForm.getRawValue());
+    this.httpClientService.postTask(this.registerTaskForm.getRawValue()).subscribe( response => {
+      console.log('Accepted');
+      console.log(response);
+    }, (error) => {
+      console.log('Error');
+      console.log(error.status);
+    } );
   }
 
   return(): void {

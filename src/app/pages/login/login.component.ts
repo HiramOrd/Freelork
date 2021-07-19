@@ -20,9 +20,6 @@ export class LoginComponent implements OnInit, OnDestroy {
     });
   }
 
-  get email() {return this.loginForm.get('email'); }
-  get password() {return this.loginForm.get('email'); }
-
   ngOnInit() {
     this.authService.logout();
   }
@@ -30,18 +27,20 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   getLogin() {
-    this.authService.login(this.email.value, this.password.value).subscribe((response) => {
+    this.authService.login(this.loginForm.getRawValue()).subscribe((response) => {
       this.loginError = false;
       localStorage.setItem('token', response.token);
-      localStorage.setItem('role', response.role);
+      localStorage.setItem('role', response.user.role);
+      localStorage.setItem('user', response.user);
       this.router.navigate(['/dash/' + this.utilitiesService.getRoleRoute() + 'home']);
     }, (error) => {
-      // this.loginError = true;
-      // this.loginForm.reset();
-      localStorage.setItem('token', 'true');
-      localStorage.setItem('role', '1');
-
-      this.router.navigate(['/dash/' + this.utilitiesService.getRoleRoute() + 'home']);
+      this.loginError = true;
+      this.loginForm.reset();
+      console.log('Login Error');
+      console.warn(error);
+      // localStorage.setItem('token', 'true');
+      // localStorage.setItem('role', '1');
+      // this.router.navigate(['/dash/' + this.utilitiesService.getRoleRoute() + 'home']);
     });
   }
 

@@ -1,8 +1,9 @@
 
 export class API {
-  static SERVER = '';
+  static SERVER = 'https://d6c98feeb3cd.ngrok.io/freelork/';
   // static SERVER = '';
-  static API = '';
+  static API = 'api/v1/';
 
-  static LOGIN = '';
+  static LOGIN = 'login';
+  static POST_TASK = 'register/';
 }
