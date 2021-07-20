@@ -24,8 +24,8 @@
                     <div class="card bg-gradient-lightBlue" style="height: 100px;"></div>
 
                     <div class="position-absolute">
-                        <div class="content-image rounded">
-                            <img src="https://aprendecomohacerlo.com/wp-content/uploads/2021/02/foto-perfil-whatsapp.jpg" class="img-fluid aux-image rounded" alt="image-profile">
+                        <div class="content-image ">
+                            <img src="https://aprendecomohacerlo.com/wp-content/uploads/2021/02/foto-perfil-whatsapp.jpg" class="img-fluid aux-image" alt="image-profile">
                         </div>
                        
                     </div>
@@ -35,7 +35,7 @@
                   <!-- Start Advises Table -->
                   <div class="card mb-4 bg-transparent border-0 data-student">
                     <!-- Start Advises Row -->
-                    <div class="col py-3 flex-grow-0" (click)="viewAdviseModal()">
+                    <div class="col py-3 flex-grow-0 text-sm-center text-xl-left" >
                           <span class="d-block" style="font-size: 16px; font-weight: 600; color: black;">Katherine Sarahid González Ramírez</span>
                       <!--     <i class="far fa-calendar-alt mr-3"></i><small class="font-weight-bold text-xs">20-10-2021 - 13-10-2021</small> -->
                           <span class="d-md-inline-flex text-xs" style="font-size: 14px; font-weight: 500; color: black;"> 201900059@estudiantes.upqroo.edu.mx</span>
@@ -44,20 +44,20 @@
 
                   </div>
                   <!-- End Advises Table -->
-                  <hr>
+                  <hr class="separator-line"> 
                   <div class="d-flex justify-content-center">
-                    <div class="d-flex justify-content-around w-75">
-                      <div class="col-auto text-center">
+                    <div class="d-md-flex d-sm-inline-flex justify-content-around w-75">
+                      <div class="col-md-auto col-xs-12 pb-2 pb-sm-0 text-center">
                         <i class="far fa-building fa-2x"></i>
                         <p class="text-info-profile m-0">Wayaweb</p>
                         <small>Empresa</small>
                       </div>
-                      <div class="col-auto text-center">
+                      <div class="col-md-auto col-xs-12 pb-2 pb-sm-0 text-center">
                         <i class="fas fa-graduation-cap fa-2x"></i>
                         <p class="text-info-profile m-0">Ingenieria En Software</p>
                         <small>Carrera</small>
                       </div>
-                      <div class="col-auto text-center">
+                      <div class="col-md-auto col-xs-12 pb-2 pb-sm-0 text-center">
                         <i class="far fa-address-card fa-2x"></i>
                         <p class="text-info-profile m-0">Isay Gonzales</p>
                         <small>Advisor</small>
@@ -185,7 +185,9 @@
                       </div>
         
                       <!-- TODO: El input muestra pedazos de fecha -->
-                      <div class="d-xl-inline-flex align-items-end col-xl-auto form-group mb-2 mb-sm-3 mb-xl-2">
+
+                      <!-- Grupo -->
+                   <!--    <div class="d-xl-inline-flex align-items-end col-xl-auto form-group mb-2 mb-sm-3 mb-xl-2">
                         <label for="secondDate" class="form-control-label my-auto pr-2">Grupo:</label>
                         <div ngbDropdown class="d-xl-inline-block d-sm-inline-flex col-sm-12 p-sm-0">
                             <button class="btn btn-outline-primary col-sm-12 col-xl-auto" id="dropdownBasic1" ngbDropdownToggle>Todos</button>
@@ -195,7 +197,7 @@
                               <button ngbDropdownItem>IS81-ETH</button>
                             </div>
                         </div>
-                      </div>
+                      </div> -->
         
                         <!--    <div class="col-sm col-xl-auto form-group mb-3 mb-xl-2">
                         <label for="vpp" class="form-control-label m-0">Vistas:</label>

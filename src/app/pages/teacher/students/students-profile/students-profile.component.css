@@ -1,7 +1,7 @@
 .content-image{
     margin-top: 2.5rem !important;
     margin-left: 5rem;
-    border: 3px solid white;
+   
 }
 .data-student{
     margin-left: 15rem;
@@ -15,4 +15,27 @@
     object-fit: cover;
     width: 156px;
     height: 156px;
+    border: 3px solid white;
+    border-radius: 10px;
 }
+.separator-line{
+    margin-bottom: 1rem;
+    border-top: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 1200px) {
+    .content-image{
+        margin-top: 2.5rem !important;
+        margin-left: 5vw !important;
+    }
+    .data-student{
+        margin-top: 7rem;
+        margin-bottom: 0rem !important;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .separator-line{
+        margin-top: 0rem;
+    }
+  }
+  
