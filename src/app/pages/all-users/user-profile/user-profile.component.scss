@@ -1,0 +1,12 @@
+.profile-image{
+  position: absolute;
+  left: 50%;
+  bottom: -70%;
+  transform: translateX(-50%);
+  border-radius: 10px;
+  border: 2px solid white;
+}
+
+.profile-content{
+  padding-top: 5rem;
+}

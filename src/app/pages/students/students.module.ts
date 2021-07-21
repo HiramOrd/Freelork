@@ -12,9 +12,13 @@ import { ModalDeleteProjectsComponent } from './projects/modal-delete-projects/m
 import {RegisterTaskComponent} from './register-task/register-task.component';
 import {UtilitiesModule} from '../../utilities/utilities.module';
 import { ModalViewAdvisesComponent } from './home/modal-view-advises/modal-view-advises.component';
-import { GroupStudentComponent } from './group-student/group-student.component';
+import { NewGroupStudentComponent } from './group-student/new-group-student/new-group-student.component';
 import {ComponentsModule} from '../../components/components.module';
 import { ModalAddProjectComponent } from './projects/modal-add-project/modal-add-project.component';
+import { GroupStudentComponent } from './group-student/group-student.component';
+import { ProfileStudentComponent } from './profile-student/profile-student.component';
+import {AllUsersModule} from '../all-users/all-users.module';
+import { EditProfileStudentComponent } from './profile-student/edit-profile-student/edit-profile-student.component';
 
 
 
@@ -28,8 +32,11 @@ import { ModalAddProjectComponent } from './projects/modal-add-project/modal-add
     ModalDeleteProjectsComponent,
     RegisterTaskComponent,
     ModalViewAdvisesComponent,
-    GroupStudentComponent,
+    NewGroupStudentComponent,
     ModalAddProjectComponent,
+    GroupStudentComponent,
+    ProfileStudentComponent,
+    EditProfileStudentComponent,
   ],
   imports: [
     CommonModule,
@@ -40,7 +47,8 @@ import { ModalAddProjectComponent } from './projects/modal-add-project/modal-add
     UtilitiesModule,
     NgbModule,
     ReactiveFormsModule,
-    ComponentsModule
+    ComponentsModule,
+    AllUsersModule
   ]
 })
 export class StudentsModule { }

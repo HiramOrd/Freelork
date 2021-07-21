@@ -1,7 +1,9 @@
-import { Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {HttpClientService} from '../../../services/http-client.service';
+import {UtilitiesService} from '../../../utilities/utilities.service';
+import {ToastService} from '../../../utilities/toast.service';
 
 @Component({
   selector: 'app-register-task',
@@ -17,19 +19,23 @@ export class RegisterTaskComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private httpClientService: HttpClientService) { }
+    private httpClientService: HttpClientService,
+    private utilitiesService: UtilitiesService,
+    private el: ElementRef,
+    private toastService: ToastService,
+  ) { }
 
   ngOnInit(): void {
     // console.log(this.today);
     this.registerTaskForm = new FormGroup({
       // NULL Default
-      id: new FormControl(null),
-      idUser: new FormControl(1, [Validators.required]),
+      id: new FormControl(null, []),
+      idUser: new FormControl(this.utilitiesService.getId(), [Validators.required]),
       dateRegister: new FormControl(null, [Validators.required]),
       idProject: new FormControl(null, [Validators.required]),
       title: new FormControl(null, [Validators.required, Validators.minLength(10)]),
       timeRegister: new FormControl(null, [Validators.required]),
-      description: new FormControl(null, []), // Se manda como vacio y no nulo
+      description: new FormControl(null, []),
       file: new FormControl(null, []),
     });
 
@@ -41,27 +47,28 @@ export class RegisterTaskComponent implements OnInit {
   get file() {
     return this.registerTaskForm.get('file') as FormControl;
   }
-  get dateRegister() {
-    return this.registerTaskForm.get('dateRegister') as FormControl;
-  }
 
-  getImage(event) {
+  setImage(event) {
     this.file.setValue(event?.value ?? null);
   }
 
 
   validateForm() {
     (this.registerTaskForm.valid) ?
-      this.postTask() :  this.registerTaskForm.markAllAsTouched();
+      this.postTask() :  this.errorForm();
   }
 
   postTask() {
+    console.log(this.registerTaskForm.getRawValue());
     this.httpClientService.postTask(this.registerTaskForm.getRawValue()).subscribe( response => {
-      console.log('Accepted');
-      console.log(response);
+      this.toastService.show('Guardado Exitosamente' , { classname: 'bg-success text-white'});
+      this.return();
     }, (error) => {
-      console.log('Error');
-      console.log(error.status);
+      console.warn(error);
+      this.toastService.show('Error en el servidor, intenta mas tarde' , { classname: 'bg-danger text-white'});
+
+      // Test
+      this.return();
     } );
   }
 
@@ -71,5 +78,15 @@ export class RegisterTaskComponent implements OnInit {
       route = '/dash/std/home';
     }
     this.router.navigate([route]).then(() => {} );
+  }
+  errorForm() {
+    this.registerTaskForm.markAllAsTouched();
+    for (const key of Object.keys(this.registerTaskForm.controls)) {
+      if (this.registerTaskForm.controls[key].invalid) {
+        const invalidControl = this.el.nativeElement.querySelector('[formcontrolname="' + key + '"]');
+        invalidControl.focus();
+        break;
+      }
+    }
   }
 }

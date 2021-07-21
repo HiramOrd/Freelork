@@ -23,6 +23,7 @@ export class AuthenticationService {
   logout(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('role');
+    localStorage.removeItem('id');
     this.router.navigate(['/guest/login']);
   }
 }

@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { ClipboardModule } from 'ngx-clipboard';
 
 import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
 import { IconsComponent } from '../../pages/icons/icons.component';
 import { MapsComponent } from '../../pages/maps/maps.component';
-import { UserProfileComponent } from '../../pages/user-profile/user-profile.component';
 import { TablesComponent } from '../../pages/tables/tables.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {AdminLayoutComponent} from './admin-layout.component';
@@ -16,7 +15,7 @@ import {ComponentsModule} from '../../components/components.module';
 import {RouterModule} from '@angular/router';
 import {StudentsModule} from '../../pages/students/students.module';
 import {TeacherModule} from '../../pages/teacher/teacher.module';
-// import { ToastrModule } from 'ngx-toastr';
+import {AllUsersModule} from '../../pages/all-users/all-users.module';
 
 @NgModule({
   imports: [
@@ -28,12 +27,12 @@ import {TeacherModule} from '../../pages/teacher/teacher.module';
     ComponentsModule,
     RouterModule,
     StudentsModule,
-    TeacherModule
+    TeacherModule,
+    AllUsersModule
   ],
   declarations: [
     AdminLayoutComponent,
     DashboardComponent,
-    UserProfileComponent,
     TablesComponent,
     IconsComponent,
     MapsComponent
@@ -41,7 +40,6 @@ import {TeacherModule} from '../../pages/teacher/teacher.module';
   exports: [
     AdminLayoutComponent,
     DashboardComponent,
-    UserProfileComponent,
     TablesComponent,
     IconsComponent,
     MapsComponent
