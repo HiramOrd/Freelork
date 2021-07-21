@@ -30,6 +30,7 @@ import { StudentsListComponent } from '../pages/teacher/students/students-list/s
 import { StudentsProfileComponent } from '../pages/teacher/students/students-profile/students-profile.component';
 import {ProfileStudentComponent} from '../pages/students/profile-student/profile-student.component';
 import {EditProfileStudentComponent} from '../pages/students/profile-student/edit-profile-student/edit-profile-student.component';
+import { HomeTeacherComponent } from '../pages/teacher/home-teacher/home-teacher.component';
 
 
 const routes: Routes = [
@@ -85,6 +86,7 @@ const routes: Routes = [
       },
       {
         path: 'tch', children: [
+          {path: 'home', component: HomeTeacherComponent},
           {path: 'groups', component: GroupsComponent},
           {path: 'create-group', component: CreateGroupComponent},
           {path: 'students-list', component: StudentsListComponent},

@@ -9,10 +9,12 @@ import { CreateGroupComponent } from './groups/create-group/create-group.compone
 import { ModalDeleteGroupComponent } from './groups/modal-delete-group/modal-delete-group.component';
 import { StudentsListComponent } from './students/students-list/students-list.component';
 import { StudentsProfileComponent } from './students/students-profile/students-profile.component';
+import { HomeTeacherComponent } from './home-teacher/home-teacher.component';
+
 
 
 @NgModule({
-  declarations: [GroupsComponent, CreateGroupComponent, ModalDeleteGroupComponent, StudentsListComponent, StudentsProfileComponent],
+  declarations: [GroupsComponent, CreateGroupComponent, ModalDeleteGroupComponent, StudentsListComponent, StudentsProfileComponent, HomeTeacherComponent],
   imports: [
     CommonModule,
     FormsModule,
