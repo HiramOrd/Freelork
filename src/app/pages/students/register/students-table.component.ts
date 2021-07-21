@@ -4,6 +4,8 @@ import {Observable} from 'rxjs';
 import {NgbdSortableHeader, SortEvent} from '../../../utilities/tables/sortable.directive';
 import {TableService} from '../../../utilities/tables/table.service';
 import {COUNTRIES} from '../../../utilities/tables/countries';
+import {COUNTRIES2} from '../../../utilities/tables/countries2';
+import {UtilitiesService} from '../../../utilities/utilities.service';
 
 @Component({
   selector: 'app-register',
@@ -12,10 +14,9 @@ import {COUNTRIES} from '../../../utilities/tables/countries';
   providers: [TableService]
 })
 export class StudentsTableComponent implements OnInit {
-  today;
-  dateMinRange;
-  dateMaxRange;
-  dateDisabled = true;
+  today = new Date();
+  dateMinRange = null;
+  dateMaxRange = null;
   public isCollapsed = true;
 
   // Table
@@ -23,10 +24,7 @@ export class StudentsTableComponent implements OnInit {
   total$: Observable<number>;
   @ViewChildren(NgbdSortableHeader) headers: QueryList<NgbdSortableHeader>;
 
-  constructor(public studentsService: StudentsService, public tableService: TableService) {
-    this.today = Date.now();
-    this.dateMinRange = this.today;
-    this.dateMaxRange = this.today;
+  constructor(public studentsService: StudentsService, public tableService: TableService, public utilitiesService: UtilitiesService) {
   }
 
   ngOnInit(): void {
@@ -49,5 +47,19 @@ export class StudentsTableComponent implements OnInit {
 
     this.tableService.sortColumn = column;
     this.tableService.sortDirection = direction;
+  }
+
+  resetFilters () {
+    this.dateMinRange = null;
+    this.dateMaxRange = null;
+    this.tableService.searchTerm = '';
+    this.setTableInfo(COUNTRIES);
+  }
+
+  changeFilter () {
+    if (this.dateMaxRange === null) {
+    } else if (this.dateMaxRange && this.dateMinRange) {
+      this.setTableInfo(COUNTRIES2);
+    }
   }
 }

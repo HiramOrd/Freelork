@@ -53,27 +53,22 @@
               <div class="col-sm col-xl-auto form-group mb-2 mb-sm-3 mb-xl-2">
                 <label for="firstDate" class="form-control-label m-0">De: </label>
                 <input id="firstDate" type="date" class="form-control form-control-alternative"
-                       [max]="today | date: 'yyyy-MM-dd'"
-                       [(ngModel)]="dateMinRange">
+                       [max]="(dateMaxRange) ? dateMaxRange : utilitiesService.dateToString(today)"
+                       [(ngModel)]="dateMinRange" (change)="changeFilter()">
               </div>
 
               <!-- TODO: El input muestra pedazos de fecha -->
               <div class="col-sm col-xl-auto form-group mb-2 mb-sm-3 mb-xl-2">
                 <label for="secondDate" class="form-control-label m-0">Hasta:</label>
-                <input id="secondDate" type="date" class="form-control form-control-alternative"
-                       [min]="dateMinRange | date: 'yyyy-MM-dd'"
-                       [max]="today | date: 'yyyy-MM-dd'"
-                       [(ngModel)]="dateMaxRange">
+                <input id="secondDate" type="date" class="form-control form-control-alternative" [ngClass]="(dateMinRange && dateMaxRange === null) ? 'error-border' : ''"
+                       [min]="dateMinRange"
+                       [max]="utilitiesService.dateToString(today)"
+                       [(ngModel)]="dateMaxRange" [disabled]="!dateMinRange" (change)="changeFilter()">
               </div>
-
-              <div class="col-sm col-xl-auto form-group mb-3 mb-xl-2">
-                <label for="vpp" class="form-control-label m-0">Vistas:</label>
-                <select id="vpp" class="form-control form-control-range" name="pageSize" [(ngModel)]="tableService.pageSize">
-                  <option [ngValue]="5">5</option>
-                  <option [ngValue]="10">10</option>
-                  <option [ngValue]="20">20</option>
-                  <option [ngValue]="100000">Todos</option>
-                </select>
+              <div class="col col-sm-auto mb-3 mb-xl-2 d-flex align-items-end">
+                <button class="w-100 btn btn-neutral mb-0" (click)="resetFilters()">
+                  <i class="fas fa-redo-alt"></i>
+                </button>
               </div>
 
 
@@ -183,10 +178,28 @@
         <!-- End Register Table -->
 
         <!-- Start Pagination -->
-        <div class="card-footer py-4 bg-lighterBlue">
-          <ngb-pagination
-            [collectionSize]="(total$ | async)!" [(page)]="tableService.page" [pageSize]="tableService.pageSize">
-          </ngb-pagination>
+        <div class="card-footer py-4 px-0 bg-lighterBlue">
+          <div class="row m-0 p-0">
+            <div class="col-12 col-sm p-0 d-flex justify-content-center justify-content-sm-start">
+              <ngb-pagination
+                [collectionSize]="(total$ | async)!" [(page)]="tableService.page" [pageSize]="tableService.pageSize" maxSize="5" rotate="true" ellipses>
+              </ngb-pagination>
+            </div>
+
+
+            <div class="col-auto mx-auto mx-sm-0 p-0">
+              <div class="form-group d-flex align-items-center mb-0">
+                <label for="vpp" class="mr-2">Vistas: </label>
+                <select id="vpp" class="form-control form-control-range" name="pageSize" [(ngModel)]="tableService.pageSize">
+                  <option [ngValue]="5">5</option>
+                  <option [ngValue]="10">10</option>
+                  <option [ngValue]="20">20</option>
+                  <option [ngValue]="100000">Todos</option>
+                </select>
+              </div>
+            </div>
+
+          </div>
         </div>
         <!-- End Pagination -->
       </div>

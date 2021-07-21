@@ -36,4 +36,10 @@ export class UtilitiesService {
     }
     return route;
   }
+
+  dateToString (date, separator?): string {
+    return (date) ?
+      date.toISOString().slice(0, 10).replace(/-/g, separator ?? '-') :
+      '';
+  }
 }
