@@ -19,6 +19,7 @@ import { GroupStudentComponent } from './group-student/group-student.component';
 import { ProfileStudentComponent } from './profile-student/profile-student.component';
 import {AllUsersModule} from '../all-users/all-users.module';
 import { EditProfileStudentComponent } from './profile-student/edit-profile-student/edit-profile-student.component';
+import {FormsRegisterModule} from '../register/forms-register/forms-register.module';
 
 
 
@@ -38,17 +39,18 @@ import { EditProfileStudentComponent } from './profile-student/edit-profile-stud
     ProfileStudentComponent,
     EditProfileStudentComponent,
   ],
-  imports: [
-    CommonModule,
-    NgbDropdownModule,
-    FormsModule,
-    RouterModule,
-    NgbTooltipModule,
-    UtilitiesModule,
-    NgbModule,
-    ReactiveFormsModule,
-    ComponentsModule,
-    AllUsersModule
-  ]
+    imports: [
+        CommonModule,
+        NgbDropdownModule,
+        FormsModule,
+        RouterModule,
+        NgbTooltipModule,
+        UtilitiesModule,
+        NgbModule,
+        ReactiveFormsModule,
+        ComponentsModule,
+        AllUsersModule,
+        FormsRegisterModule
+    ]
 })
 export class StudentsModule { }

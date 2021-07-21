@@ -28,11 +28,12 @@ import { AdminComponent } from '../admin/admin.component';
     AllUsersComponent,
     AdminComponent
   ],
-  exports: [
-    TeacherComponent,
-    CompanyComponent,
-    StudentComponent,
-    RegisterComponent
-  ]
+    exports: [
+        TeacherComponent,
+        CompanyComponent,
+        StudentComponent,
+        RegisterComponent,
+        AllUsersComponent
+    ]
 })
 export class FormsRegisterModule { }

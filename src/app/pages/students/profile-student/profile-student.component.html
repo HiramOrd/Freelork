@@ -10,7 +10,7 @@
       <div class="card shadow">
 
         <!-- Start Edit Button -->
-        <button class=" btn btn-primary border-white m-0 add-button" routerLink="edit-user">
+        <button class=" btn btn-primary border-white m-0 add-button" routerLink="edit">
           <i class="fas fa-pencil-alt"></i>
         </button>
         <!-- End Edit Button -->
@@ -18,21 +18,27 @@
         <app-user-profile [name]="name" [email]="email" [photo]="photo" [role]="role"></app-user-profile>
 
         <div class="card-body">
+
+          <div class="text-center">
+            <b>Martícula</b>
+            <br>
+            201900075
+          </div>
           <div class="row">
             <div class="col">
               <div class="card-profile-stats d-flex justify-content-center">
                 <div class="row p-0 m-0 w-100">
-                  <div class="btn col-12 col-lg-4 m-0" routerLink="../group">
+                  <div class="btn col-12 col-lg-4 m-0" routerLink="/dash/std/group">
                     <i class="fas fa-building"></i>
                     <span class="heading font-weight-700 text-sm">Wayaweb</span>
                     <span class="description">Empresa</span>
                   </div>
-                  <div class="btn col-12 col-lg-4 m-0" routerLink="../group">
+                  <div class="btn col-12 col-lg-4 m-0" routerLink="/dash/std/group">
                     <i class="fas fa-graduation-cap"></i>
                     <span class="heading font-weight-700 text-sm">Ing. en Software</span>
                     <span class="description">Carrera</span>
                   </div>
-                  <div class="btn col-12 col-lg-4 m-0" routerLink="../group">
+                  <div class="btn col-12 col-lg-4 m-0" routerLink="/dash/std/group">
                     <i class="far fa-id-card"></i>
                     <span class="heading font-weight-700 text-sm">Marco Aguilar Martinez</span>
                     <span class="description">Asesor</span>

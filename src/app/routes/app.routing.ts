@@ -78,7 +78,7 @@ const routes: Routes = [
             ]},
           {path: 'profile', children: [
               {path: '', component: ProfileStudentComponent},
-              {path: 'edit-user', component: EditProfileStudentComponent},
+              {path: 'edit', component: EditProfileStudentComponent},
             ]},
           {path: '**', redirectTo: '/not/404' },
         ]

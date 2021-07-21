@@ -6,27 +6,64 @@
 
 <div class="container-fluid pt-3 pt-md-7">
   <div class="row">
-    <div class="col">
+    <div class="col-12">
       <div class="card shadow">
-        <div class="card-header">
+        <!-- Start Card Header -->
+        <div class="card-header bg-white border-0">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <div class="row p-0 m-0">
+                <a class="p-0 m-0 mr-3 mouse-pointer" routerLink="../">
+                  <i class="fas fa-arrow-left"></i>
+                </a>
+                <h3 class="mb-0">Editar Perfil</h3>
+              </div>
 
+            </div>
+          </div>
         </div>
+        <!-- End Card Header -->
+
+        <div class="card-body">
+          <div class="row p-0 m-0">
+            <div class="col-12 col-lg-auto p-0 text-center">
+              <label class="image-edit" for="profile-image" [formGroup]="studentProfile">
+                <picture class="btn p-0 m-0">
+                  <img [src]=" (imageShow) ? imageShow : '../../../../assets/img/defaults/default-user.png'" alt="" class="rounded">
+                </picture>
+                <input type="file" class="d-none" id="profile-image"  accept=".png, .jpg, .jpeg" (change)="onFileChange($event)">
+                <i class="fas fa-pencil-alt fa-2x mouse-pointer"></i>
+              </label>
+            </div>
+            <div class="col">
+              <div class="row p-0 m-0 mt-4 mt-lg-0 ml-lg-4">
+                <app-student [studentData]="'Example'" (studentDataOut)="setStudentData($event)"></app-student>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 mt-4">
+      <div class="card shadow">
+
         <div class="card-body">
           <div class="row">
             <div class="col">
               <div class="card-profile-stats d-flex justify-content-center">
                 <div class="row p-0 m-0 w-100">
-                  <div class="btn col-12 col-lg-4 m-0" routerLink="../group">
+                  <div class="btn col-12 col-lg-4 m-0" routerLink="/dash/std/group">
                     <i class="fas fa-building"></i>
                     <span class="heading font-weight-700 text-sm">Wayaweb</span>
                     <span class="description">Empresa</span>
                   </div>
-                  <div class="btn col-12 col-lg-4 m-0" routerLink="../group">
+                  <div class="btn col-12 col-lg-4 m-0" routerLink="/dash/std/group">
                     <i class="fas fa-graduation-cap"></i>
                     <span class="heading font-weight-700 text-sm">Ing. en Software</span>
                     <span class="description">Carrera</span>
                   </div>
-                  <div class="btn col-12 col-lg-4 m-0" routerLink="../group">
+                  <div class="btn col-12 col-lg-4 m-0" routerLink="/dash/std/group">
                     <i class="far fa-id-card"></i>
                     <span class="heading font-weight-700 text-sm">Marco Aguilar Martinez</span>
                     <span class="description">Asesor</span>
@@ -35,8 +72,8 @@
               </div>
             </div>
           </div>
-
         </div>
+
       </div>
     </div>
   </div>
