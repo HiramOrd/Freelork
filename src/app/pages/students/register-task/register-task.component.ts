@@ -1,6 +1,9 @@
-import { Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
+import {HttpClientService} from '../../../services/http-client.service';
+import {UtilitiesService} from '../../../utilities/utilities.service';
+import {ToastService} from '../../../utilities/toast.service';
 
 @Component({
   selector: 'app-register-task',
@@ -13,17 +16,27 @@ export class RegisterTaskComponent implements OnInit {
   private origin: string;
   public today = Date.now();
 
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private httpClientService: HttpClientService,
+    private utilitiesService: UtilitiesService,
+    private el: ElementRef,
+    private toastService: ToastService,
+  ) { }
 
   ngOnInit(): void {
-    console.log(this.today);
+    // console.log(this.today);
     this.registerTaskForm = new FormGroup({
-      date: new FormControl(null, [Validators.required]),
-      project: new FormControl(null, [Validators.required]),
+      // NULL Default
+      id: new FormControl(null, []),
+      idUser: new FormControl(this.utilitiesService.getId(), [Validators.required]),
+      dateRegister: new FormControl(null, [Validators.required]),
+      idProject: new FormControl(null, [Validators.required]),
       title: new FormControl(null, [Validators.required, Validators.minLength(10)]),
-      time: new FormControl(null, [Validators.required]),
+      timeRegister: new FormControl(null, [Validators.required]),
       description: new FormControl(null, []),
-      imageFile: new FormControl(null, []),
+      file: new FormControl(null, []),
     });
 
     this.route.queryParams.subscribe( params => {
@@ -31,18 +44,32 @@ export class RegisterTaskComponent implements OnInit {
     });
   }
 
-  get imageFile() {
-    return this.registerTaskForm.get('imageFile') as FormControl;
+  get file() {
+    return this.registerTaskForm.get('file') as FormControl;
   }
 
-  getImage(event) {
-    this.imageFile.setValue(event?.value ?? null);
+  setImage(event) {
+    this.file.setValue(event?.value ?? null);
+  }
+
+
+  validateForm() {
+    (this.registerTaskForm.valid) ?
+      this.postTask() :  this.errorForm();
   }
 
   postTask() {
-    (this.registerTaskForm.valid) ? console.log('guardando...') :  this.registerTaskForm.markAllAsTouched();
-    console.clear();
     console.log(this.registerTaskForm.getRawValue());
+    this.httpClientService.postTask(this.registerTaskForm.getRawValue()).subscribe( response => {
+      this.toastService.show('Guardado Exitosamente' , { classname: 'bg-success text-white'});
+      this.return();
+    }, (error) => {
+      console.warn(error);
+      this.toastService.show('Error en el servidor, intenta mas tarde' , { classname: 'bg-danger text-white'});
+
+      // Test
+      this.return();
+    } );
   }
 
   return(): void {
@@ -51,5 +78,15 @@ export class RegisterTaskComponent implements OnInit {
       route = '/dash/std/home';
     }
     this.router.navigate([route]).then(() => {} );
+  }
+  errorForm() {
+    this.registerTaskForm.markAllAsTouched();
+    for (const key of Object.keys(this.registerTaskForm.controls)) {
+      if (this.registerTaskForm.controls[key].invalid) {
+        const invalidControl = this.el.nativeElement.querySelector('[formcontrolname="' + key + '"]');
+        invalidControl.focus();
+        break;
+      }
+    }
   }
 }

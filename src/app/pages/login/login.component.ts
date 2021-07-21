@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {AuthenticationService} from '../../services/authentication.service';
 import {UtilitiesService} from '../../utilities/utilities.service';
+import {ToastService} from '../../utilities/toast.service';
 
 @Component({
   selector: 'app-login',
@@ -11,17 +12,18 @@ import {UtilitiesService} from '../../utilities/utilities.service';
 })
 export class LoginComponent implements OnInit, OnDestroy {
   loginForm: FormGroup;
-  loginError = false;
 
-  constructor( private router: Router, private authService: AuthenticationService, private utilitiesService: UtilitiesService) {
+  constructor(
+    private router: Router,
+    private authService: AuthenticationService,
+    private utilitiesService: UtilitiesService,
+    private toastService: ToastService
+  ) {
     this.loginForm = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null, [Validators.required, Validators.minLength(8)])
     });
   }
-
-  get email() {return this.loginForm.get('email'); }
-  get password() {return this.loginForm.get('email'); }
 
   ngOnInit() {
     this.authService.logout();
@@ -30,17 +32,20 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   getLogin() {
-    this.authService.login(this.email.value, this.password.value).subscribe((response) => {
-      this.loginError = false;
+    this.authService.login(this.loginForm.getRawValue()).subscribe((response) => {
       localStorage.setItem('token', response.token);
-      localStorage.setItem('role', response.role);
+      localStorage.setItem('role', response.user.role);
+      localStorage.setItem('id', response.user.id);
       this.router.navigate(['/dash/' + this.utilitiesService.getRoleRoute() + 'home']);
     }, (error) => {
-      // this.loginError = true;
-      // this.loginForm.reset();
-      localStorage.setItem('token', 'true');
-      localStorage.setItem('role', '1');
+      this.loginForm.reset();
+      console.warn(error);
+      this.toastService.show('Error en el servidor, intenta más tarde' , { classname: 'bg-danger text-white'});
 
+      // Test
+      localStorage.setItem('token', 'token');
+      localStorage.setItem('role', '1');
+      localStorage.setItem('id', '1');
       this.router.navigate(['/dash/' + this.utilitiesService.getRoleRoute() + 'home']);
     });
   }
@@ -48,5 +53,4 @@ export class LoginComponent implements OnInit, OnDestroy {
   loginSubmit(): void {
     (this.loginForm.valid) ? this.getLogin() :  this.loginForm.markAllAsTouched();
   }
-
 }

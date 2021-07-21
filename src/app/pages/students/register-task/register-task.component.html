@@ -3,7 +3,7 @@
     <div class="header-body">
 
       <!-- Start Form -->
-      <form (submit)="postTask()" [formGroup]="registerTaskForm">
+      <form (submit)="validateForm()" [formGroup]="registerTaskForm">
       <div class="row">
         <!-- Start Left Section -->
         <div class="col-xl-6 pb-4 pb-xl-0">
@@ -36,9 +36,9 @@
                     <div class="col-12 col-sm-6">
                       <div class="form-group m-sm-0">
                         <input type="date" class="form-control form-control-alternative"
-                               [ngClass]="(registerTaskForm.controls.date.invalid && registerTaskForm.controls.date.touched ) ? 'error-border' : ''"
-                               [max]="today | date: 'yyyy-MM-dd'" placeholder="Fecha" formControlName="date" />
-                        <div *ngIf="registerTaskForm.controls.date.invalid && registerTaskForm.controls.date.touched">
+                               [ngClass]="(registerTaskForm.controls.dateRegister.invalid && registerTaskForm.controls.dateRegister.touched ) ? 'error-border' : ''"
+                               [max]="today | date: 'yyyy-MM-dd'" placeholder="Fecha" formControlName="dateRegister" />
+                        <div *ngIf="registerTaskForm.controls.dateRegister.invalid && registerTaskForm.controls.dateRegister.touched">
                           <small class="error-text ml-2">*Ingresa la fecha</small>
                         </div>
                       </div>
@@ -51,12 +51,12 @@
                     <div class="col-12">
                       <div class="form-group">
                         <label class="form-control-label" for="select-project">Proyecto</label>
-                        <select [ngClass]="(registerTaskForm.controls.project.invalid && registerTaskForm.controls.project.touched ) ? 'error-border' : ''"
-                          id="select-project" class="form-control form-control-alternative" formControlName="project">
+                        <select [ngClass]="(registerTaskForm.controls.idProject.invalid && registerTaskForm.controls.idProject.touched ) ? 'error-border' : ''"
+                          id="select-project" class="form-control form-control-alternative" formControlName="idProject">
                           <option [value]="null" disabled hidden selected>¿En qué proyecto se trabajó?</option>
                           <option [value]="1">Ejemplo</option>
                         </select>
-                        <div *ngIf="registerTaskForm.controls.project.invalid && registerTaskForm.controls.project.touched">
+                        <div *ngIf="registerTaskForm.controls.idProject.invalid && registerTaskForm.controls.idProject.touched">
                           <small class="error-text ml-2">*Selecciona un proyecto</small>
                         </div>
                       </div>
@@ -84,10 +84,10 @@
                     <div class="col-lg-4">
                       <div class="form-group">
                         <label class="form-control-label" for="input-last-name">Tiempo</label>
-                        <input [ngClass]="(registerTaskForm.controls.time.invalid && registerTaskForm.controls.time.touched ) ? 'error-border' : ''"
+                        <input [ngClass]="(registerTaskForm.controls.timeRegister.invalid && registerTaskForm.controls.timeRegister.touched ) ? 'error-border' : ''"
                           type="number" id="input-last-name" class="form-control form-control-alternative"
-                          placeholder="¿Cuántas horas?" NumbersOnly formControlName="time">
-                        <div *ngIf="registerTaskForm.controls.time.invalid && registerTaskForm.controls.time.touched">
+                          placeholder="¿Cuántas horas?" NumbersOnly formControlName="timeRegister">
+                        <div *ngIf="registerTaskForm.controls.timeRegister.invalid && registerTaskForm.controls.timeRegister.touched">
                           <small class="error-text ml-2">*Horas obligatorias</small>
                         </div>
                       </div>
@@ -149,7 +149,7 @@
                   </div>
                 </div>
                 <!-- End Card Header -->
-                  <app-drag-and-drop [imageFile]="imageFile" (result)="getImage($event)"></app-drag-and-drop>
+                  <app-drag-and-drop [file]="file" (result)="setImage($event)"></app-drag-and-drop>
               </div>
             </div>
           </div>

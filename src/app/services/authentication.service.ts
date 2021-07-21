@@ -11,11 +11,10 @@ export class AuthenticationService {
 
   /**
    * Method to validate the login on the server
-   * @param user User field
-   * @param password Password field
+   * @param loginData User and Password
    */
-  login(user: string, password: string): any {
-    return this.httpClientService.login(user, password);
+  login(loginData: any): any {
+    return this.httpClientService.login(loginData);
   }
 
   /**
@@ -24,6 +23,7 @@ export class AuthenticationService {
   logout(): void {
     localStorage.removeItem('token');
     localStorage.removeItem('role');
+    localStorage.removeItem('id');
     this.router.navigate(['/guest/login']);
   }
 }

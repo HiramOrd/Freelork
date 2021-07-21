@@ -8,7 +8,7 @@ import {FormControl} from '@angular/forms';
 })
 export class DragAndDropComponent implements OnInit {
   ondrag = false;
-  @Input() imageFile: FormControl;
+  @Input() file: FormControl;
   @Output() result: EventEmitter<any>;
   imageShow;
 
@@ -26,14 +26,14 @@ export class DragAndDropComponent implements OnInit {
   getImage(files) {
     if (files.length > 0) {
       const file = files[0];
-      this.imageFile.setValue(file);
-      this.result.emit(this.imageFile);
+      this.file.setValue(file);
+      this.result.emit(this.file);
     }
     const reader = new FileReader();
     reader.onloadend = () => {
       this.imageShow = reader.result;
     };
-    reader.readAsDataURL(this.imageFile.value);
+    reader.readAsDataURL(this.file.value);
   }
 
   dropHandler(ev) {
@@ -69,7 +69,7 @@ export class DragAndDropComponent implements OnInit {
 
   deletePhoto(): void {
     this.imageShow = undefined;
-    this.imageFile.setValue(null);
+    this.file.setValue(null);
     this.result.emit(undefined);
   }
 

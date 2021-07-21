@@ -13,15 +13,22 @@ export class HttpClientService {
 
   /**
    * Get method that validates the login
-   * @param user User field
-   * @param password Password field
+   * @param loginData User and Password
    */
-  login(user: string, password: string): any {
+  // TODO: Add encoding
+  login(loginData: any): any {
     const body = new HttpParams()
-      .set('user', user)
-      // TODO: Add encoding
-      .set('password', password);
-    return this.http.get(API.SERVER + API.LOGIN + body);
+      .set('email', loginData.email)
+      .set('password', loginData.password);
+    return this.http.get(API.SERVER + API.LOGIN, {params: body});
+  }
+
+  postTask(body: any): any {
+    const formData = new FormData();
+    for ( const key in body ) {
+      formData.append(key, body[key]);
+    }
+    return this.http.post(API.SERVER + API.API + API.POST_TASK, formData);
   }
 
   // Pipe Example

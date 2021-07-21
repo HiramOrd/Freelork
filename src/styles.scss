@@ -41,6 +41,7 @@
   position: absolute !important;
   top: -10px;
   right: -10px;
+  z-index: 3;
 }
 
 // Secondary Button link
@@ -200,4 +201,11 @@
 }
 .table-title:hover div span{
   visibility: visible;
+}
+
+
+// Toast Global Config
+.toast-body{
+  width: 100%;
+  text-align: center!important;
 }

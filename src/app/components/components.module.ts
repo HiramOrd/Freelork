@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ContactTeamComponent } from './contact-team/contact-team.component';
 import { DragAndDropComponent } from './drag-and-drop/drag-and-drop.component';
+import { ToastComponent } from './toast/toast.component';
 
 @NgModule({
   imports: [
@@ -19,13 +20,15 @@ import { DragAndDropComponent } from './drag-and-drop/drag-and-drop.component';
     NavbarComponent,
     SidebarComponent,
     ContactTeamComponent,
-    DragAndDropComponent
+    DragAndDropComponent,
+    ToastComponent
   ],
   exports: [
     FooterComponent,
     NavbarComponent,
     SidebarComponent,
-    DragAndDropComponent
+    DragAndDropComponent,
+    ToastComponent
   ]
 })
 export class ComponentsModule { }

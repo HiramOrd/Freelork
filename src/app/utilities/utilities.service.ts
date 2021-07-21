@@ -11,6 +11,10 @@ export class UtilitiesService {
     return parseInt(localStorage.getItem('role'), 10);
   }
 
+  getId(): number {
+    return parseInt(localStorage.getItem('id'), 10);
+  }
+
   getRoleRoute(): string {
     let route = '';
     switch (this.getRole()) {
