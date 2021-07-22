@@ -110,7 +110,7 @@
                 </span>
                 </div>
               </th>
-              <th scope="col" sortable="project" (sort)="onSort($event)" class="table-title d-none d-lg-table-cell">
+              <th scope="col" sortable="nameProject" (sort)="onSort($event)" class="table-title d-none d-lg-table-cell">
                 <div>
                   Proyecto
                   <span>
@@ -119,7 +119,7 @@
                 </span>
                 </div>
               </th>
-              <th scope="col" sortable="date" (sort)="onSort($event)" class="table-title">
+              <th scope="col" sortable="dateRegister" (sort)="onSort($event)" class="table-title">
                 <div>
                   Fecha
                   <span>
@@ -128,7 +128,7 @@
                 </span>
                 </div>
               </th>
-              <th scope="col" sortable="time" (sort)="onSort($event)" class="table-title d-none d-lg-table-cell">
+              <th scope="col" sortable="timeRegister" (sort)="onSort($event)" class="table-title d-none d-lg-table-cell">
                 <div>
                   Duración
                   <span>
@@ -152,21 +152,23 @@
 
             <!-- Start Register Row -->
             <tr class="row-button" (click)="studentsService.viewRegister(1)" *ngFor="let data of arrayTable$ | async">
-              <th scope="row">
+              <td scope="row">
                 <span class="mb-0 text-sm"> {{data.title}} </span>
-              </th>
-              <td class="d-none d-lg-table-cell">
-                <a routerLink="../projects">{{data.project}}</a>
-              </td>
-              <td>
-                <span>{{data.date}}</span>
               </td>
               <td class="d-none d-lg-table-cell">
-                {{data.time}}
+                <a routerLink="../projects">{{data.nameProject}}</a>
               </td>
               <td>
-                <span class="badge badge-dot mr-4 text-orange">
-                    {{data.status}}
+                <span>{{data.dateRegister | date: 'dd/MM/yyyy'}}</span>
+              </td>
+              <td class="d-none d-lg-table-cell">
+                {{data.timeRegister}} horas
+              </td>
+              <td>
+                <span class="badge badge-dot mr-4 text-xs">
+                  <span class="text-danger">{{(data.status === 1) ? 'Rechazado' : ''}}</span>
+                  <span class="text-orange">{{(data.status === 2) ? 'Pendiente' : ''}}</span>
+                  <span class="text-success">{{(data.status === 3) ? 'Aceptado' : ''}}</span>
                 </span>
               </td>
             </tr>

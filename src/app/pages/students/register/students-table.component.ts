@@ -3,8 +3,8 @@ import {StudentsService} from '../students.service';
 import {Observable} from 'rxjs';
 import {NgbdSortableHeader, SortEvent} from '../../../utilities/tables/sortable.directive';
 import {TableService} from '../../../utilities/tables/table.service';
-import {COUNTRIES} from '../../../utilities/tables/countries';
-import {COUNTRIES2} from '../../../utilities/tables/countries2';
+import {Tasks} from '../../../variables/tasks';
+import {COUNTRIES2} from '../../../variables/countries2';
 import {UtilitiesService} from '../../../utilities/utilities.service';
 
 @Component({
@@ -28,7 +28,7 @@ export class StudentsTableComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.setTableInfo(COUNTRIES);
+    this.setTableInfo(Tasks);
   }
 
   setTableInfo(arrayTable) {
@@ -53,7 +53,7 @@ export class StudentsTableComponent implements OnInit {
     this.dateMinRange = null;
     this.dateMaxRange = null;
     this.tableService.searchTerm = '';
-    this.setTableInfo(COUNTRIES);
+    this.setTableInfo(Tasks);
   }
 
   changeFilter () {

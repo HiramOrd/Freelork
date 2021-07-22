@@ -2,7 +2,7 @@ import {Component, OnInit, QueryList, ViewChildren} from '@angular/core';
 import {TableService} from '../../../../utilities/tables/table.service';
 import {Observable} from 'rxjs';
 import {NgbdSortableHeader, SortEvent} from '../../../../utilities/tables/sortable.directive';
-import {COUNTRIES} from '../../../../utilities/tables/countries';
+import {Tasks} from '../../../../variables/tasks';
 import {StudentsService} from '../../../students/students.service';
 
 @Component({
@@ -30,7 +30,7 @@ export class StudentsProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.setTableInfo(COUNTRIES);
+    this.setTableInfo(Tasks);
   }
 
   setTableInfo(arrayTable) {
