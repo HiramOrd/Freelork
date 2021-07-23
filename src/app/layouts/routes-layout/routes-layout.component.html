@@ -1,7 +1,7 @@
 <div class="main-content">
-  <nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">
+  <nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark bg-gradient-lightBlue">
     <div class="container px-4">
-      <a class="navbar-brand" routerLinkActive="active" [routerLink]="['/dashboard']">
+      <a class="navbar-brand" routerLinkActive="active">
         <img src="assets/img/brand/logo.png" class="mr-3"/>
         <span class="text-uppercase text-white">Proyecto</span>
       </a>
@@ -14,7 +14,7 @@
         <div class="navbar-collapse-header d-md-none">
           <div class="row">
             <div class="col-6 collapse-brand">
-              <a routerLinkActive="active" [routerLink]="['/dashboard']">
+              <a routerLinkActive="active">
                 <img src="assets/img/brand/logo-dark.png"><span class="text-uppercase ml-3 font-weight-bold text-darkBlue">Proyecto</span>
               </a>
             </div>
@@ -29,13 +29,13 @@
         <!-- Navbar items -->
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link nav-link-icon" routerLinkActive="active" [routerLink]="['/register']">
+            <a class="nav-link nav-link-icon" routerLinkActive="active" [routerLink]="['/guest/register']">
               <i class="ni ni-circle-08"></i>
               <span class="nav-link-inner--text">Registro</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-link-icon" routerLinkActive="active" [routerLink]="['/login']">
+            <a class="nav-link nav-link-icon" routerLinkActive="active" [routerLink]="['/guest/login']">
               <i class="ni ni-key-25"></i>
               <span class="nav-link-inner--text">Iniciar Sesión</span>
             </a>
@@ -44,26 +44,5 @@
       </div>
     </div>
   </nav>
-  <router-outlet></router-outlet>
+    <router-outlet></router-outlet>
 </div>
-<footer class="py-5">
-  <div class="container">
-    <div class="row align-items-center justify-content-xl-between">
-      <div class="col-xl-6">
-        <div class="copyright text-center text-xl-left text-muted">
-          &copy; {{ test | date: "yyyy" }} <span class="font-weight-bold ml-1 text-primary" >FKVH Team</span>
-        </div>
-      </div>
-      <div class="col-xl-6">
-        <ul class="nav nav-footer justify-content-center justify-content-xl-end">
-          <li class="nav-item">
-            <a href="http://www.upqroo.edu.mx/" class="nav-link" target="_blank">UPQROO</a>
-          </li>
-          <li class="nav-item">
-            <a href="http://new.upqroo.edu.mx/nosotros" class="nav-link" target="_blank">Sobre nosotros</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</footer>

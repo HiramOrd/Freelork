@@ -74,6 +74,10 @@ export class TableService {
 
 
   initService(array: any[]) {
+    this._state.page = 1;
+    this._state.sortColumn = '';
+    this._state.sortDirection = '';
+    this._search$ = new Subject<void>();
     this._search$.pipe(
       tap(() => this._loading$.next(true)),
       debounceTime(200),
@@ -84,7 +88,6 @@ export class TableService {
       this._arrayTable$.next(result.arrayTable);
       this._total$.next(result.total);
     });
-
     this._search$.next();
   }
 

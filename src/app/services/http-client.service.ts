@@ -31,6 +31,18 @@ export class HttpClientService {
     return this.http.post(API.SERVER + API.API + API.POST_TASK, formData);
   }
 
+  getStudentProfile(id: number): any {
+    return this.http.get(API.SERVER + API.API + API.GET_STUDENT + id);
+  }
+
+  updateStudentProfile(body: any): any {
+    const formData = new FormData();
+    for ( const key in body ) {
+      formData.append(key, body[key]);
+    }
+    return this.http.put(API.SERVER + API.API + API.UPDATE_STUDENT, formData);
+  }
+
   // Pipe Example
   // postImage(idUser: number, Image: any): any{
   //   return this.http.post(API.SERVER + API.API + API.SAVE_IMAGE + idUser, {image: Image}, {observe: 'response'})

@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       localStorage.setItem('token', response.token);
       localStorage.setItem('role', response.user.role);
       localStorage.setItem('id', response.user.id);
+      localStorage.setItem('fullName', response.user.fullName);
       this.router.navigate(['/dash/' + this.utilitiesService.getRoleRoute() + 'home']);
     }, (error) => {
       this.loginForm.reset();
@@ -43,10 +44,10 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.toastService.show('Error en el servidor, intenta más tarde' , { classname: 'bg-danger text-white'});
 
       // Test
-      localStorage.setItem('token', 'token');
-      localStorage.setItem('role', '1');
-      localStorage.setItem('id', '1');
-      this.router.navigate(['/dash/' + this.utilitiesService.getRoleRoute() + 'home']);
+      // localStorage.setItem('token', 'token');
+      // localStorage.setItem('role', '1');
+      // localStorage.setItem('id', '1');
+      // this.router.navigate(['/dash/' + this.utilitiesService.getRoleRoute() + 'home']);
     });
   }
 
