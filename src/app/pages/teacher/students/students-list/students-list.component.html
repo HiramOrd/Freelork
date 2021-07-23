@@ -52,13 +52,13 @@
 
             <!-- Start Filters -->
             <div class="d-xl-inline-flex col-12 col-xl-auto m-0 p-0" id="collapseExample" [(ngbCollapse)]="isCollapsed">
-              
+
               <div class="col-sm d-flex align-items-center col-xl-auto form-group px-xl-0 px-sm-0 mb-0 mb-sm-0 mb-xl-0">
                 <p class="m-0" style="font-weight: 700;">Filtro</p>
               </div>
-                
+
               <div class="d-xl-inline-flex align-items-end col-sm col-xl-auto form-group mb-2 mb-sm-3 mb-xl-2">
-                <label for="firstDate" class="form-control-label my-auto pr-2">Horas:</label>       
+                <label for="firstDate" class="form-control-label my-auto pr-2">Horas:</label>
                 <input id="firstDate" type="text" class="form-control form-control-alternative">
               </div>
 
@@ -176,10 +176,10 @@
             <tbody>
 
             <!-- Start Register Row -->
-            <tr class="row-button" (click)="studentsService.viewRegister(1)" *ngFor="let data of arrayTable$ | async">
-              <th scope="row">
+            <tr class="row-button" routerLink="students-profile" *ngFor="let data of arrayTable$ | async">
+              <td scope="row">
                 <span class="mb-0 text-sm"> {{data.title}} </span>
-              </th>
+              </td>
               <td class="d-none d-lg-table-cell">
                 <a routerLink="../projects">{{data.project}}</a>
               </td>

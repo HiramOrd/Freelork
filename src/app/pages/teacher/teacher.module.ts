@@ -10,19 +10,21 @@ import { ModalDeleteGroupComponent } from './groups/modal-delete-group/modal-del
 import { StudentsListComponent } from './students/students-list/students-list.component';
 import { StudentsProfileComponent } from './students/students-profile/students-profile.component';
 import { HomeTeacherComponent } from './home-teacher/home-teacher.component';
+import {RouterModule} from '@angular/router';
 
 
 
 @NgModule({
   declarations: [GroupsComponent, CreateGroupComponent, ModalDeleteGroupComponent, StudentsListComponent, StudentsProfileComponent, HomeTeacherComponent],
-  imports: [
-    CommonModule,
-    FormsModule,
-    BrowserModule,
-    ReactiveFormsModule,
-    UtilitiesModule,
-    NgbModule,
-    NgbTooltipModule
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        BrowserModule,
+        ReactiveFormsModule,
+        UtilitiesModule,
+        NgbModule,
+        NgbTooltipModule,
+        RouterModule
+    ],
 })
 export class TeacherModule { }

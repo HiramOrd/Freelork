@@ -89,8 +89,10 @@ const routes: Routes = [
           {path: 'home', component: HomeTeacherComponent},
           {path: 'groups', component: GroupsComponent},
           {path: 'create-group', component: CreateGroupComponent},
-          {path: 'students-list', component: StudentsListComponent},
-          {path: 'students-profile', component: StudentsProfileComponent},
+          {path: 'students-list', children: [
+              {path: '', component: StudentsListComponent},
+              {path: 'students-profile', component: StudentsProfileComponent},
+            ]},
           {path: '**', redirectTo: '/not/404' },
         ]
       },

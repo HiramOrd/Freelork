@@ -17,7 +17,9 @@ export const ROUTES: RouteInfo[] = [
   { path: 'std/profile', title: 'Perfil',  icon: 'ni-single-02 text-primary', class: '' },
 
   { path: 'tch/home', title: 'Maestros',  icon: '', class: 'font-weight-bold' },
+  { path: 'tch/home', title: 'Dashboard',  icon: 'ni-books text-primary', class: '' },
   { path: 'tch/groups', title: 'Grupos',  icon: 'ni-books text-primary', class: '' },
+  { path: 'tch/students-list', title: 'Alumnos',  icon: 'ni-books text-primary', class: '' },
   // { path: 'std/register', title: 'Avisos',  icon: 'ni-notification-70 text-primary', class: '' },
   // {path: 'icons', title: 'Icons', icon: 'ni-planet text-blue', class: ''},
   // {path: 'maps', title: 'Maps', icon: 'ni-pin-3 text-orange', class: ''},
