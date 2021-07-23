@@ -15,7 +15,7 @@ export class NavbarComponent implements OnInit {
   public location: Location;
   roleRoute;
 
-  constructor(location: Location,  private element: ElementRef, private router: Router, private utilitiesService: UtilitiesService) {
+  constructor(location: Location,  private element: ElementRef, private router: Router, public utilitiesService: UtilitiesService) {
     this.location = location;
   }
 
