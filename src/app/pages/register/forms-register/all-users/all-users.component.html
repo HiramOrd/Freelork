@@ -39,8 +39,15 @@
   </div>
   <!-- End Email Input -->
 
-  <!-- Start password Input -->
-  <div class="row m-0 p-0 col-12">
+  <div class="custom-control custom-switch mb-3" [ngClass]="(edit === true) ? 'd-block' : 'd-none'">
+    <input type="checkbox" class="custom-control-input" id="customSwitch1" [(ngModel)]="changePassword"
+           [ngModelOptions]="{standalone: true}" (change)="changePasswordValidators()">
+    <label class="custom-control-label" for="customSwitch1">Cambiar contraseña</label>
+  </div>
+
+  <div class="row m-0 p-0 col-12" *ngIf="(changePassword === true && edit === true) || edit === false">
+
+    <!-- Start password Input -->
     <div class="form-group col-sm-6 p-0 pr-sm-2">
       <div class="input-group input-group-alternative" [ngClass]="(registerForm.controls.password.invalid && registerForm.controls.password.touched ) ? 'error-border' : ''">
         <div class="input-group-prepend">

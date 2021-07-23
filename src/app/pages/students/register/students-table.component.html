@@ -75,15 +75,15 @@
 
               <div class="col-sm-12 col-xl-auto form-group mb-2 d-flex align-items-end">
                 <div class="btn-group m-0 w-100">
-                  <button type="button" class="btn btn-primary">
+                  <button type="button" class="btn btn-primary" (click)="exportAll()">
                     <i class="fas fa-download"></i>
                     <span class="ml-2">Exportar</span>
                   </button>
                   <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
                     <button class="btn btn-primary dropdown-toggle-split" ngbDropdownToggle><i class="fas fa-chevron-down"></i></button>
                     <div class="dropdown-menu" ngbDropdownMenu>
-                      <button ngbDropdownItem>Exportar todo</button>
-                      <button ngbDropdownItem>Exportar por fecha</button>
+                      <button ngbDropdownItem (click)="exportAll()">Exportar todo</button>
+                      <button ngbDropdownItem (click)="exportByDate()">Exportar por fecha</button>
                     </div>
                   </div>
                 </div>
@@ -166,9 +166,9 @@
               </td>
               <td>
                 <span class="badge badge-dot mr-4 text-xs">
-                  <span class="text-danger">{{(data.status === 1) ? 'Rechazado' : ''}}</span>
-                  <span class="text-orange">{{(data.status === 2) ? 'Pendiente' : ''}}</span>
-                  <span class="text-success">{{(data.status === 3) ? 'Aceptado' : ''}}</span>
+                  <span class="text-danger" *ngIf="(data.status === 'Rechazado')">{{data.status}}</span>
+                  <span class="text-orange" *ngIf="(data.status === 'Pendiente')">{{data.status}}</span>
+                  <span class="text-success" *ngIf="(data.status === 'Aceptado')">{{data.status}}</span>
                 </span>
               </td>
             </tr>

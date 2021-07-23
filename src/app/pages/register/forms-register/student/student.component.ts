@@ -2,6 +2,8 @@ import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} f
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {AllUsersComponent} from '../all-users/all-users.component';
+import {HttpClientService} from '../../../../services/http-client.service';
+import {UtilitiesService} from '../../../../utilities/utilities.service';
 
 @Component({
   selector: 'app-student',
@@ -9,13 +11,20 @@ import {AllUsersComponent} from '../all-users/all-users.component';
   styleUrls: ['./student.component.css']
 })
 export class StudentComponent implements OnInit {
-  @Input() studentData;
+  @Input() edit = false;
   @Output() studentDataOut: EventEmitter<FormGroup>;
+  @Output() imageStudent: EventEmitter<string>;
   @ViewChild(AllUsersComponent, {static: true}) public registerFormComponent: AllUsersComponent;
   studentsForm: FormGroup;
 
-  constructor(private router: Router, private el: ElementRef) {
+  constructor(
+    private router: Router,
+    private el: ElementRef,
+    private httpClientService: HttpClientService,
+    private utilitiesService: UtilitiesService
+  ) {
     this.studentDataOut = new EventEmitter<FormGroup>();
+    this.imageStudent = new EventEmitter<string>();
   }
 
   ngOnInit(): void {
@@ -29,8 +38,19 @@ export class StudentComponent implements OnInit {
       .get('email')
       .setValidators([Validators.required, Validators.pattern(/^[a-z0-9._%+-]{9,}@estudiantes\.upqroo\.edu\.mx/)]);
 
-    // TODO: Set Student Data into FormGroup
-    if (this.studentData) {
+    console.log('ID: ' + this.utilitiesService.getId());
+    if (this.edit) {
+      this.httpClientService.getStudentProfile(this.utilitiesService.getId()).subscribe( response => {
+        console.log(response);
+        this.studentsForm.get('registerForm').get('fullName').setValue(response.fullName);
+        this.studentsForm.get('registerForm').get('email').setValue(response.email);
+        this.studentsForm.get('enrollment').setValue(response.enrollment);
+        if (response.imageUrl) {
+          this.imageStudent.emit(response.imageUrl);
+        }
+      }, error => {
+        console.log(error);
+      });
     }
   }
 
@@ -39,7 +59,7 @@ export class StudentComponent implements OnInit {
   }
 
   postStudent() {
-    if (this.studentData) {
+    if (this.edit) {
       this.studentDataOut.emit(this.studentsForm);
     } else {
       console.log(this.studentsForm.getRawValue());

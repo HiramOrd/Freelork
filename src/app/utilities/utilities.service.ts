@@ -15,6 +15,14 @@ export class UtilitiesService {
     return parseInt(localStorage.getItem('id'), 10);
   }
 
+  getName(): string {
+    return localStorage.getItem('fullName');
+  }
+
+  setName(fullName: string) {
+    localStorage.setItem('fullName', fullName);
+  }
+
   getRoleRoute(): string {
     let route = '';
     switch (this.getRole()) {
@@ -41,5 +49,34 @@ export class UtilitiesService {
     return (date) ?
       date.toISOString().slice(0, 10).replace(/-/g, separator ?? '-') :
       '';
+  }
+
+  deleteColumn(name: string, array: any[]): any[] {
+      return array.map( object => {
+        const objectCopy = {...object};
+        delete objectCopy[name];
+        return objectCopy;
+      });
+  }
+
+  statusTaskToString(array, name) {
+      return array.map( object => {
+        const objectCopy = {...object};
+        switch (objectCopy[name]) {
+          case 1:
+            objectCopy[name] = 'Rechazado';
+            break;
+          case 2:
+            objectCopy[name] = 'Pendiente';
+            break;
+          case 3:
+            objectCopy[name] = 'Aceptado';
+            break;
+          default:
+            objectCopy[name] = 'Desconocido';
+            break;
+        }
+        return objectCopy;
+      });
   }
 }

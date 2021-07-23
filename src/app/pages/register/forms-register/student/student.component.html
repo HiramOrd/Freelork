@@ -3,7 +3,7 @@
   <!-- Role Input -->
   <input type="hidden" formControlName="role">
 
-  <app-register-form></app-register-form>
+  <app-register-form [edit]="edit"></app-register-form>
 
   <div class="row m-0 p-0">
     <!-- Start Enrollment Input -->
@@ -25,9 +25,9 @@
 
   </div>
 
-  <div class="text-center" [ngClass]="(studentData) ? 'text-md-right' : ''" >
-    <button type="submit" class="btn btn-primary mt-4" [ngClass]="(studentData)? 'col-auto' : 'col-sm-8'" >
-      {{ (studentData) ? 'Guardar Cambios' : 'Crear Cuenta' }}
+  <div class="text-center" [ngClass]="(edit) ? 'text-md-right' : ''" >
+    <button type="submit" class="btn btn-primary mt-4" [ngClass]="(edit)? 'col-auto' : 'col-sm-8'" >
+      {{ (edit) ? 'Guardar Cambios' : 'Crear Cuenta' }}
     </button>
   </div>
 </form>

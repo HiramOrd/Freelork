@@ -1,7 +1,10 @@
-<div class="header py-7 py-lg-8">
-  <div class="text-center">
-    <p>Error 404</p>
-    <button [routerLink]="route" class="btn btn-primary">Regresar a {{name}}</button>
+<div class="py-7 py-lg-8 w-100 h-100vh position-relative bg-white">
+  <img src="assets/img/brand/logo-light.png" class="logo d-none d-md-block" alt="">
+  <div class="text-center text-primary">
+    <p class="title m-0">Ay no! Error</p>
+    <p class="error-number m-0">404</p>
+    <p class="description m-0">La página no fue encontrada</p>
+    <button [routerLink]="route" class="btn btn-primary button-to-home">Regresar a {{name}}</button>
   </div>
 </div>
 
