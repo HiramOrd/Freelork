@@ -7,94 +7,14 @@
   <div class="container-fluid">
     <div class="header-body">
 
-      <!-- Start Grid Cards Projects -->
+      <!-- Start Grid Cards Groups -->
       <div class="grid-cards">
-        <ng-template #tipContent let-greeting="greeting">{{greeting}}</ng-template>
-        <!-- Start Card Project -->
-        <div class="card card-stats mb-4 mb-xl-0">
-          <div class="card-body px-2 px-sm-4 p-lg-4">
-            <div class="d-flex justify-content-end align-items-center">
-              <a href="" class="m-0">
-                <i class="transform-icon text-xs fas fa-pen mr-3 text-white bg-purple rounded-circle p-2" title="Editar el proyecto"></i>
-              </a>
-              <i class="transform-icon text-xs fas fa-trash text-white bg-danger mouse-pointer rounded-circle p-2" title="Eliminar el proyecto" (click)="deleteGroup()"></i>
-            </div>
-            <p class="font-weight-bold pt-1 m-0 text-dark text-uppercase">IS61 SOFTWARE</p>
-            <p class="text-xs text-black-50 font-weight-bold">Fecha de creación: 12/06/2021</p>
-            <div class="row w-100 m-0 mb-sm-1 mb-md-2 mb-lg-3">
-                <p class="text-xs font-weight-normal text-dark font-weight-bold">Carrera:&nbsp;</p>
-                <p class="text-xs font-weight-normal text-dark">
-                  Ingeniería en Software
-                </p>
-            </div>
-            <div class="row w-100 m-0 align-content-center">
-                <p class="font-weight-bold font-code">Código:&nbsp;{{groupCode!==undefined?groupCode:'No disponible'}}&nbsp;</p>
-                <div class="d-flex align-content-center mouse-pointer copy-icon tooltip-icon" placement="top" [ngbTooltip]="tipContent"
-                triggers="manual" #t1="ngbTooltip" (mouseover)="openTooltipHover(t1, 'Copiar')" (mouseout)="closeTooltip(t1)" (click)="openTooltipClick(t1, 'Copiado')">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="32" height="32" style="width: 28px; padding-bottom: 1.3rem;" viewBox="0 0 24 24" stroke-width="1.5" stroke="#9A9CE5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                        <rect x="8" y="8" width="12" height="12" rx="2" />
-                        <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2" />
-                    </svg>
-                                
-                </div>
-            </div>
-            <div class="d-flex justify-content-between mt-2">
-                <div class="text-left">
-                    <p class="text-sm m-0 text-dark font-weight-bold">20 alumnos</p>
-                  </div>
-                <div class="text-right">
-                  <p class="text-sm m-0 font-weight-bold"> Status: <span class="text-green">Activo</span></p>
-                </div>
-            </div>        
-          </div>
-        </div>
-        <!-- End ard Project -->
 
-        <!-- Start Card Project -->
-        <div class="card card-stats mb-4 mb-xl-0">
-          <div class="card-body px-2 px-sm-4 p-lg-4">
-            <div class="d-flex justify-content-end align-items-center">
-              <a href="" class="m-0">
-                <i class="transform-icon text-xs fas fa-pen mr-3 text-white bg-purple rounded-circle p-2" title="Editar el proyecto"></i>
-              </a>
-              <i class="transform-icon text-xs fas fa-trash text-white bg-danger mouse-pointer rounded-circle p-2" title="Eliminar el proyecto" (click)="deleteGroup()"></i>
-            </div>
-            <p class="font-weight-bold pt-1 m-0 text-dark text-uppercase">IS61 SOFTWARE</p>
-            <p class="text-xs text-black-50 font-weight-bold">Fecha de creación: 12/06/2021</p>
-            <div class="row w-100 m-0 mb-sm-1 mb-md-2 mb-lg-3">
-                <p class="text-xs font-weight-normal text-dark font-weight-bold">Carrera:&nbsp;</p>
-                <p class="text-xs font-weight-normal text-dark">
-                  Ingeniería en Software
-                </p>
-            </div>
-            <div class="row w-100 m-0 align-content-center">
-                <p class="font-weight-bold font-code">Código:&nbsp;{{groupCode!==undefined?groupCode:'No disponible'}}&nbsp;</p>
-                <div class="d-flex align-content-center mouse-pointer copy-icon tooltip-icon" placement="top" [ngbTooltip]="tipContent"
-                triggers="manual" #t1="ngbTooltip" (mouseover)="openTooltipHover(t1, 'Copiar')" (mouseout)="closeTooltip(t1)" (click)="openTooltipClick(t1, 'Copiado')">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="32" height="32" style="width: 28px; padding-bottom: 1.3rem;" viewBox="0 0 24 24" stroke-width="1.5" stroke="#9A9CE5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                        <rect x="8" y="8" width="12" height="12" rx="2" />
-                        <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2" />
-                    </svg>
-                                
-                </div>
-            </div>
-            <div class="d-flex justify-content-between mt-2">
-                <div class="text-left">
-                    <p class="text-sm m-0 text-dark font-weight-bold">20 alumnos</p>
-                  </div>
-                <div class="text-right">
-                  <p class="text-sm m-0 font-weight-bold"> Status: <span class="text-green">Activo</span></p>
-                </div>
-            </div>        
-          </div>
-        </div>
-        <!-- End ard Project -->
-  
 
-        <!-- Start Card Project -->
-        <div class="card card-stats mb-4 mb-xl-0">
+        
+        <!-- Start Card Group -->
+        <div class="card card-stats mb-4 mb-xl-0" *ngFor="let group of groups; let i = index">
+          <ng-template #tipContent let-greeting="greeting">{{greeting}}</ng-template>
           <div class="card-body px-2 px-sm-4 p-lg-4">
             <div class="d-flex justify-content-end align-items-center">
               <a href="" class="m-0">
@@ -102,121 +22,50 @@
               </a>
               <i class="transform-icon text-xs fas fa-trash text-white bg-danger mouse-pointer rounded-circle p-2" title="Eliminar el proyecto" (click)="deleteGroup()"></i>
             </div>
-            <p class="font-weight-bold pt-1 m-0 text-dark text-uppercase">IS61 SOFTWARE</p>
-            <p class="text-xs text-black-50 font-weight-bold">Fecha de creación: 12/06/2021</p>
+            <p class="font-weight-bold pt-1 m-0 text-dark text-uppercase"> {{group.name}}<!-- IS61 SOFTWARE --></p>
+            <p class="text-xs text-black-50 font-weight-bold">Fecha de creación: {{group.date}}<!-- 12/06/2021 --></p>
             <div class="row w-100 m-0 mb-sm-1 mb-md-2 mb-lg-3">
                 <p class="text-xs font-weight-normal text-dark font-weight-bold">Carrera:&nbsp;</p>
                 <p class="text-xs font-weight-normal text-dark">
-                  Ingeniería en Software
+                  <!-- Ingeniería en Software -->
+                  {{group.name}}
                 </p>
             </div>
             <div class="row w-100 m-0 align-content-center">
-                <p class="font-weight-bold font-code">Código:&nbsp;{{groupCode!==undefined?groupCode:'No disponible'}}&nbsp;</p>
+                <p class="font-weight-bold font-code">Código:&nbsp;{{group.code!==undefined?group.code:'No disponible'}}&nbsp;</p>
                 <div class="d-flex align-content-center mouse-pointer copy-icon tooltip-icon" placement="top" [ngbTooltip]="tipContent"
-                triggers="manual" #t1="ngbTooltip" (mouseover)="openTooltipHover(t1, 'Copiar')" (mouseout)="closeTooltip(t1)" (click)="openTooltipClick(t1, 'Copiado')">
+                triggers="manual" #t1="ngbTooltip" (mouseover)="openTooltipHover(t1, 'Copiar')" (mouseout)="closeTooltip(t1)" (click)="openTooltipClick(t1, 'Copiado', i)">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="32" height="32" style="width: 28px; padding-bottom: 1.3rem;" viewBox="0 0 24 24" stroke-width="1.5" stroke="#9A9CE5" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                         <rect x="8" y="8" width="12" height="12" rx="2" />
                         <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2" />
-                    </svg>
-                                
+                    </svg>                           
                 </div>
             </div>
             <div class="d-flex justify-content-between mt-2">
                 <div class="text-left">
-                    <p class="text-sm m-0 text-dark font-weight-bold">20 alumnos</p>
+                    <p class="text-sm m-0 text-dark font-weight-bold">{{group.students}} Alumnos<!-- 20 alumnos --></p>
                   </div>
                 <div class="text-right">
-                  <p class="text-sm m-0 font-weight-bold"> Status: <span class="text-green">Activo</span></p>
+                  <p class="text-sm m-0 font-weight-bold"> Status: <span class="text-green">{{group.status}}<!-- Activo --></span></p>
                 </div>
             </div>        
           </div>
         </div>
-        <!-- End ard Project -->
-  
+        <!-- End Card Group -->    
+        
+        <!-- Start Card New Group -->
+        <div class="btn card card-stats mb-4 mb-xl-0 new-project py-4" routerLink="../create-group">
+          <div class="card-body px-2 px-sm-4 p-lg-4 d-flex align-content-center justify-content-center flex-column text-center">
+              <div class="rounded-circle p-3 new-button d-flex justify-content-center align-items-center mx-auto mb-3">
+                <i class="fas fa-lg fa-plus"></i>
+              </div>
 
-        <!-- Start Card Project -->
-        <div class="card card-stats mb-4 mb-xl-0">
-          <div class="card-body px-2 px-sm-4 p-lg-4">
-            <div class="d-flex justify-content-end align-items-center">
-              <a href="" class="m-0">
-                <i class="transform-icon text-xs fas fa-pen mr-3 text-white bg-purple rounded-circle p-2" title="Editar el proyecto"></i>
-              </a>
-              <i class="transform-icon text-xs fas fa-trash text-white bg-danger mouse-pointer rounded-circle p-2" title="Eliminar el proyecto" (click)="deleteGroup()"></i>
-            </div>
-            <p class="font-weight-bold pt-1 m-0 text-dark text-uppercase">IS61 SOFTWARE</p>
-            <p class="text-xs text-black-50 font-weight-bold">Fecha de creación: 12/06/2021</p>
-            <div class="row w-100 m-0 mb-sm-1 mb-md-2 mb-lg-3">
-                <p class="text-xs font-weight-normal text-dark font-weight-bold">Carrera:&nbsp;</p>
-                <p class="text-xs font-weight-normal text-dark">
-                  Ingeniería en Software
-                </p>
-            </div>
-            <div class="row w-100 m-0 align-content-center">
-                <p class="font-weight-bold font-code">Código:&nbsp;{{groupCode!==undefined?groupCode:'No disponible'}}&nbsp;</p>
-                <div class="d-flex align-content-center mouse-pointer copy-icon tooltip-icon" placement="top" [ngbTooltip]="tipContent"
-                triggers="manual" #t1="ngbTooltip" (mouseover)="openTooltipHover(t1, 'Copiar')" (mouseout)="closeTooltip(t1)" (click)="openTooltipClick(t1, 'Copiado')">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="32" height="32" style="width: 28px; padding-bottom: 1.3rem;" viewBox="0 0 24 24" stroke-width="1.5" stroke="#9A9CE5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                        <rect x="8" y="8" width="12" height="12" rx="2" />
-                        <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2" />
-                    </svg>
-                                
-                </div>
-            </div>
-            <div class="d-flex justify-content-between mt-2">
-                <div class="text-left">
-                    <p class="text-sm m-0 text-dark font-weight-bold">20 alumnos</p>
-                  </div>
-                <div class="text-right">
-                  <p class="text-sm m-0 font-weight-bold"> Status: <span class="text-green">Activo</span></p>
-                </div>
-            </div>        
+            <span class="text-uppercase font-weight-bold">Nuevo proyecto</span>
           </div>
         </div>
-        <!-- End ard Project -->
-  
+        <!-- End ard New Group -->
 
-        <!-- Start Card Project -->
-        <div class="card card-stats mb-4 mb-xl-0">
-          <div class="card-body px-2 px-sm-4 p-lg-4">
-            <div class="d-flex justify-content-end align-items-center">
-              <a href="" class="m-0">
-                <i class="transform-icon text-xs fas fa-pen mr-3 text-white bg-purple rounded-circle p-2" title="Editar el proyecto"></i>
-              </a>
-              <i class="transform-icon text-xs fas fa-trash text-white bg-danger mouse-pointer rounded-circle p-2" title="Eliminar el proyecto" (click)="deleteGroup()"></i>
-            </div>
-            <p class="font-weight-bold pt-1 m-0 text-dark text-uppercase">IS61 SOFTWARE</p>
-            <p class="text-xs text-black-50 font-weight-bold">Fecha de creación: 12/06/2021</p>
-            <div class="row w-100 m-0 mb-sm-1 mb-md-2 mb-lg-3">
-                <p class="text-xs font-weight-normal text-dark font-weight-bold">Carrera:&nbsp;</p>
-                <p class="text-xs font-weight-normal text-dark">
-                  Ingeniería en Software
-                </p>
-            </div>
-            <div class="row w-100 m-0 align-content-center">
-                <p class="font-weight-bold font-code">Código:&nbsp;{{groupCode!==undefined?groupCode:'No disponible'}}&nbsp;</p>
-                <div class="d-flex align-content-center mouse-pointer copy-icon tooltip-icon" placement="top" [ngbTooltip]="tipContent"
-                triggers="manual" #t1="ngbTooltip" (mouseover)="openTooltipHover(t1, 'Copiar')" (mouseout)="closeTooltip(t1)" (click)="openTooltipClick(t1, 'Copiado')">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" width="32" height="32" style="width: 28px; padding-bottom: 1.3rem;" viewBox="0 0 24 24" stroke-width="1.5" stroke="#9A9CE5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                        <rect x="8" y="8" width="12" height="12" rx="2" />
-                        <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2" />
-                    </svg>
-                                
-                </div>
-            </div>
-            <div class="d-flex justify-content-between mt-2">
-                <div class="text-left">
-                    <p class="text-sm m-0 text-dark font-weight-bold">20 alumnos</p>
-                  </div>
-                <div class="text-right">
-                  <p class="text-sm m-0 font-weight-bold"> Status: <span class="text-green">Activo</span></p>
-                </div>
-            </div>        
-          </div>
-        </div>
-        <!-- End ard Project -->
   
 
       </div>
