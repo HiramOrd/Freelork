@@ -33,9 +33,7 @@
 
           <form [formGroup]="adminForm" (ngSubmit)="teachersSubmit()">
 
-            <input type="hidden" formControlName="role">
-
-            <app-register-form></app-register-form>
+            <app-register-form [edit]="edit" [role]="0"></app-register-form>
 
             <div class="text-center">
               <button type="submit" class="col-sm-8 btn btn-primary mt-4">Crear cuenta</button>

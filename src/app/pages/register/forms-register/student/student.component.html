@@ -1,9 +1,6 @@
 <form [formGroup]="studentsForm" (ngSubmit)="studentsSubmit()">
 
-  <!-- Role Input -->
-  <input type="hidden" formControlName="role">
-
-  <app-register-form [edit]="edit"></app-register-form>
+  <app-register-form [edit]="edit" [role]="1"></app-register-form>
 
   <div class="row m-0 p-0">
     <!-- Start Enrollment Input -->

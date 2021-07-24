@@ -23,6 +23,19 @@ export class HttpClientService {
     return this.http.get(API.SERVER + API.LOGIN, {params: body});
   }
 
+  registerAdmin(body: any): any {
+    return this.http.post(API.SERVER + API.POST_ADMIN, body);
+  }
+  registerStudent(body: any): any {
+    return this.http.post(API.SERVER + API.POST_STUDENT, body);
+  }
+  registerTeacher(body: any): any {
+    return this.http.post(API.SERVER + API.POST_TEACHER, body);
+  }
+  registerCompany(body: any): any {
+    return this.http.post(API.SERVER + API.POST_COMPANY, body);
+  }
+
   postTask(body: any): any {
     const formData = new FormData();
     for ( const key in body ) {

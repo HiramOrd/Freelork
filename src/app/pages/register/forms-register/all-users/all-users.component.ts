@@ -9,11 +9,13 @@ import {Router} from '@angular/router';
 })
 export class AllUsersComponent implements OnInit {
   @Input() edit = false;
+  @Input() role;
   changePassword = false;
-  public registerForm: FormGroup;
+  public userEntity: FormGroup;
 
   constructor(private formBuilder: FormBuilder, public router: Router) {
-    this.registerForm = this.formBuilder.group({
+    this.userEntity = this.formBuilder.group({
+      role: new FormControl(null, [Validators.required]),
       fullName: new FormControl(null, [Validators.required, Validators.minLength(12)]),
       email: new FormControl(null, [Validators.required, Validators.pattern(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)]),
       password: new FormControl(null, [Validators.required, Validators.minLength(8)]),
@@ -25,6 +27,7 @@ export class AllUsersComponent implements OnInit {
 
   ngOnInit(): void {
     this.changePasswordValidators();
+    this.userEntity.get('role').setValue(this.role);
   }
 
   MustMatch(controlName: string, matchingControlName: string): ValidatorFn {
@@ -44,33 +47,33 @@ export class AllUsersComponent implements OnInit {
   }
 
   public createFormGroup(): FormGroup {
-    return this.registerForm;
+    return this.userEntity;
   }
 
   changePasswordValidators() {
     if ((this.changePassword === false && this.edit === true)) {
-      this.registerForm.get('password').clearValidators();
-      this.registerForm.get('confirmPassword').clearValidators();
+      this.userEntity.get('password').clearValidators();
+      this.userEntity.get('confirmPassword').clearValidators();
 
-      this.registerForm.get('password').updateValueAndValidity();
-      this.registerForm.get('confirmPassword').updateValueAndValidity();
+      this.userEntity.get('password').updateValueAndValidity();
+      this.userEntity.get('confirmPassword').updateValueAndValidity();
 
-      this.registerForm.clearValidators();
-      this.registerForm.updateValueAndValidity();
-      this.registerForm.get('password').setValue(null);
-      this.registerForm.get('confirmPassword').setValue(null);
+      this.userEntity.clearValidators();
+      this.userEntity.updateValueAndValidity();
+      this.userEntity.get('password').setValue(null);
+      this.userEntity.get('confirmPassword').setValue(null);
     } else {
-      this.registerForm.get('password').setValue(null);
-      this.registerForm.get('confirmPassword').setValue(null);
+      this.userEntity.get('password').setValue(null);
+      this.userEntity.get('confirmPassword').setValue(null);
 
-      this.registerForm.get('password').setValidators([Validators.required, Validators.minLength(8)]);
-      this.registerForm.get('confirmPassword').setValidators([Validators.required]);
+      this.userEntity.get('password').setValidators([Validators.required, Validators.minLength(8)]);
+      this.userEntity.get('confirmPassword').setValidators([Validators.required]);
 
-      this.registerForm.get('password').updateValueAndValidity();
-      this.registerForm.get('confirmPassword').updateValueAndValidity();
+      this.userEntity.get('password').updateValueAndValidity();
+      this.userEntity.get('confirmPassword').updateValueAndValidity();
 
-      this.registerForm.setValidators([this.MustMatch('password', 'confirmPassword')]);
-      this.registerForm.updateValueAndValidity();
+      this.userEntity.setValidators([this.MustMatch('password', 'confirmPassword')]);
+      this.userEntity.updateValueAndValidity();
     }
   }
 

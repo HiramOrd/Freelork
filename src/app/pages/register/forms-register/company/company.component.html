@@ -1,19 +1,16 @@
-<form [formGroup]="companysForm" (ngSubmit)="companysSubmit()">
+<form [formGroup]="companyForm" (ngSubmit)="companySubmit()">
 
-  <!-- Role input -->
-  <input type="hidden" formControlName="role">
-
-    <app-register-form></app-register-form>
+    <app-register-form [edit]="edit" [role]="3"></app-register-form>
 
     <div class="row m-0 p-0">
 
       <!-- Start Size Company Input -->
       <div class="form-group col-12 p-0">
-        <div class="input-group input-group-alternative" [ngClass]="(companysForm.controls.sizecompany.invalid && companysForm.controls.sizecompany.touched ) ? 'error-border' : ''">
+        <div class="input-group input-group-alternative" [ngClass]="(companyForm.controls.sizeCompany.invalid && companyForm.controls.sizeCompany.touched ) ? 'error-border' : ''">
           <div class="input-group-prepend">
             <span class="input-group-text"><i class="far fa-building"></i></span>
           </div>
-          <select class="form-control" formControlName="sizecompany">
+          <select class="form-control" formControlName="sizeCompany">
             <option [value]="null" disabled hidden>Tamaño de la empresa</option>
             <option value="0">0-10 empleados</option>
             <option value="1">11-50 empleados</option>
@@ -21,7 +18,7 @@
             <option value="3">+100 empleados</option>
           </select>
         </div>
-        <div *ngIf="companysForm.controls.sizecompany.errors?.required && companysForm.controls.sizecompany.touched">
+        <div *ngIf="companyForm.controls.sizeCompany.errors?.required && companyForm.controls.sizeCompany.touched">
           <small class="error-text ml-2">*Selecciona el tamaño de la empresa</small>
         </div>
       </div>
@@ -29,18 +26,18 @@
 
       <!-- Start Type Services Input -->
       <div class="form-group col-12 p-0">
-          <div class="input-group input-group-alternative" [ngClass]="(companysForm.controls.service.invalid && companysForm.controls.service.touched ) ? 'error-border' : ''">
+          <div class="input-group input-group-alternative" [ngClass]="(companyForm.controls.serviceType.invalid && companyForm.controls.serviceType.touched ) ? 'error-border' : ''">
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="fas fa-briefcase"></i></span>
             </div>
-            <select class="form-control" formControlName="service">
+            <select class="form-control" formControlName="serviceType">
               <option [value]="null" disabled hidden>Giro de la empresa</option>
               <option value="0">Industrial</option>
               <option value="1">Servicios</option>
               <option value="2">Comercial</option>
             </select>
           </div>
-          <div *ngIf="companysForm.controls.service.errors?.required && companysForm.controls.service.touched">
+          <div *ngIf="companyForm.controls.serviceType.errors?.required && companyForm.controls.serviceType.touched">
             <small class="error-text ml-2">*Selecciona el tipo de giro de la empresa</small>
           </div>
       </div>
@@ -48,16 +45,16 @@
 
       <!-- Start Address Input -->
       <div class="form-group col-12 p-0">
-        <div class="input-group input-group-alternative" [ngClass]="(companysForm.controls.address.invalid && companysForm.controls.address.touched ) ? 'error-border' : ''">
+        <div class="input-group input-group-alternative" [ngClass]="(companyForm.controls.address.invalid && companyForm.controls.address.touched ) ? 'error-border' : ''">
           <div class="input-group-prepend">
             <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
           </div>
           <input class="form-control" placeholder="Dirección de la empresa" type="text" formControlName="address" minlength="10">
         </div>
-        <div *ngIf="companysForm.controls.address.errors?.required && companysForm.controls.address.touched">
+        <div *ngIf="companyForm.controls.address.errors?.required && companyForm.controls.address.touched">
           <small class="error-text ml-2">*Ingresa la dirección de la empresa</small>
         </div>
-        <div *ngIf="companysForm.controls.address.errors?.minlength && companysForm.controls.address.touched">
+        <div *ngIf="companyForm.controls.address.errors?.minlength && companyForm.controls.address.touched">
           <small class="error-text ml-2">*La direción debe contener al menos 10 caracteres</small>
         </div>
       </div>

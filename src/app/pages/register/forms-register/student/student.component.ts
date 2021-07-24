@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {AllUsersComponent} from '../all-users/all-users.component';
 import {HttpClientService} from '../../../../services/http-client.service';
 import {UtilitiesService} from '../../../../utilities/utilities.service';
+import {ToastService} from '../../../../utilities/toast.service';
 
 @Component({
   selector: 'app-student',
@@ -21,7 +22,8 @@ export class StudentComponent implements OnInit {
     private router: Router,
     private el: ElementRef,
     private httpClientService: HttpClientService,
-    private utilitiesService: UtilitiesService
+    private utilitiesService: UtilitiesService,
+    private toastService: ToastService
   ) {
     this.studentDataOut = new EventEmitter<FormGroup>();
     this.imageStudent = new EventEmitter<string>();
@@ -29,21 +31,19 @@ export class StudentComponent implements OnInit {
 
   ngOnInit(): void {
     this.studentsForm = new FormGroup({
-      role: new FormControl('1'),
       enrollment: new FormControl(null, [Validators.required, Validators.minLength(9)]),
-      registerForm: this.registerFormComponent.createFormGroup(),
+      userEntity: this.registerFormComponent.createFormGroup(),
     });
     this.studentsForm
-      .get('registerForm')
+      .get('userEntity')
       .get('email')
       .setValidators([Validators.required, Validators.pattern(/^[a-z0-9._%+-]{9,}@estudiantes\.upqroo\.edu\.mx/)]);
 
-    console.log('ID: ' + this.utilitiesService.getId());
     if (this.edit) {
       this.httpClientService.getStudentProfile(this.utilitiesService.getId()).subscribe( response => {
         console.log(response);
-        this.studentsForm.get('registerForm').get('fullName').setValue(response.fullName);
-        this.studentsForm.get('registerForm').get('email').setValue(response.email);
+        this.studentsForm.get('userEntity').get('fullName').setValue(response.fullName);
+        this.studentsForm.get('userEntity').get('email').setValue(response.email);
         this.studentsForm.get('enrollment').setValue(response.enrollment);
         if (response.imageUrl) {
           this.imageStudent.emit(response.imageUrl);
@@ -63,7 +63,12 @@ export class StudentComponent implements OnInit {
       this.studentDataOut.emit(this.studentsForm);
     } else {
       console.log(this.studentsForm.getRawValue());
-      this.router.navigate(['/login']);
+      this.httpClientService.registerStudent(this.studentsForm.getRawValue()).subscribe( () => {
+        this.toastService.show('¡Se ha registrado exitosamente!' , { classname: 'bg-success text-white'});
+        this.router.navigate(['/guest/login']);
+      }, () => {
+        this.toastService.show('Error en el servidor, intenta más tarde' , { classname: 'bg-danger text-white'});
+      });
     }
   }
 
