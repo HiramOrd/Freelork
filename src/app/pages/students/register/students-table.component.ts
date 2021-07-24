@@ -3,11 +3,10 @@ import {StudentsService} from '../students.service';
 import {Observable} from 'rxjs';
 import {NgbdSortableHeader, SortEvent} from '../../../utilities/tables/sortable.directive';
 import {TableService} from '../../../utilities/tables/table.service';
-import {Tasks} from '../../../variables/tasks';
-import {COUNTRIES2} from '../../../variables/countries2';
 import {UtilitiesService} from '../../../utilities/utilities.service';
 import {ExportExcelService} from '../../../utilities/export-excel.service';
 import {ToastService} from '../../../utilities/toast.service';
+import {HttpClientService} from '../../../services/http-client.service';
 
 @Component({
   selector: 'app-register',
@@ -30,6 +29,7 @@ export class StudentsTableComponent implements OnInit {
   constructor(
     public studentsService: StudentsService,
     private toastService: ToastService,
+    private httpClientService: HttpClientService,
     // Table
     public tableService: TableService,
     public utilitiesService: UtilitiesService,
@@ -38,9 +38,28 @@ export class StudentsTableComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.setTableInfo(Tasks);
+    this.getTaskListAll();
     this.arrayTable$ = this.tableService.arrayTable$;
     this.total$ = this.tableService.total$;
+  }
+
+  getTaskListAll() {
+    this.httpClientService.getTaskList(this.utilitiesService.getId()).subscribe( response => {
+      console.log(response);
+      this.setTableInfo(response);
+    }, error => {
+      this.toastService.show('Error en el servidor, no se pudo cargar el contenido' , { classname: 'bg-danger text-white'});
+      console.warn(error);
+    });
+  }
+  getTaskListByDate() {
+    this.httpClientService.getTaskListByDate(this.utilitiesService.getId(), this.dateMinRange, this.dateMaxRange).subscribe( response => {
+      console.log(response);
+      this.setTableInfo(response);
+    }, error => {
+      this.toastService.show('Error en el servidor, no se pudo cargar el contenido' , { classname: 'bg-danger text-white'});
+      console.warn(error);
+    });
   }
 
   setTableInfo(arrayTable) {
@@ -65,31 +84,40 @@ export class StudentsTableComponent implements OnInit {
     this.dateMinRange = null;
     this.dateMaxRange = null;
     this.tableService.searchTerm = '';
-    this.setTableInfo(Tasks);
+    this.getTaskListAll();
   }
 
   changeFilter () {
     if (this.dateMaxRange === null) {
     } else if (this.dateMaxRange && this.dateMinRange) {
-      this.setTableInfo(COUNTRIES2);
+      this.getTaskListByDate();
     }
   }
 
   exportAll() {
-    // Endpoint To export
-    this.exportToExcel('Todo');
+    if (this.dateMaxRange && this.dateMinRange) {
+      this.httpClientService.getTaskList(this.utilitiesService.getId()).subscribe( response => {
+        console.log(response);
+        const table = this.utilitiesService.statusTaskToString(response, 'status');
+        this.exportToExcel('todo', table );
+      }, error => {
+        this.toastService.show('Error en el servidor, no se pudo cargar el contenido' , { classname: 'bg-danger text-white'});
+        console.warn(error);
+      });
+    } else {
+      this.exportToExcel('todo', this.table);
+    }
   }
   exportByDate() {
     if (this.dateMaxRange && this.dateMinRange) {
-      // Endpoint To export
-      this.exportToExcel('Por fecha');
+      this.exportToExcel('por_fecha', this.table);
     } else {
       this.toastService.show('No tienes un rango de fechas seleccionado' , { classname: 'bg-danger text-white'});
     }
 }
 
-  exportToExcel(type: string) {
-    let arrayToExport = this.table;
+  exportToExcel(type: string, table) {
+    let arrayToExport = table;
     arrayToExport = this.utilitiesService.deleteColumn('id', arrayToExport);
     arrayToExport = this.utilitiesService.deleteColumn('idProject', arrayToExport);
     const dataForExcel = [];
@@ -100,8 +128,8 @@ export class StudentsTableComponent implements OnInit {
     const reportData = {
       title: 'Estancias_' + type,
       data: dataForExcel,
-      headers: ['Titulo', 'Proyecto', 'Fecha', 'Horas', 'Estado'],
-      sizeColumns: [50, 25, 15, 10, 15]
+      headers: ['Titulo', 'Fecha', 'Horas', 'Proyecto', 'Estado'],
+      sizeColumns: [50, 15, 10, 25, 15]
     };
 
     this.exportExcelService.exportExcel(reportData);

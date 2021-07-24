@@ -14,4 +14,8 @@ export class API {
   static POST_STUDENT = 'register/student';
   static POST_TEACHER = 'register/teacher';
   static POST_COMPANY = 'register/company';
+
+  // Task
+  static GET_TASK_LIST = 'register/list/';
+  static GET_TASK = 'register/';
 }

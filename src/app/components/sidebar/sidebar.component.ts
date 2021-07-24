@@ -38,7 +38,7 @@ export class SidebarComponent implements OnInit {
   public isCollapsed = true;
   roleRoute;
 
-  constructor(private router: Router, private utilitiesService: UtilitiesService) { }
+  constructor(private router: Router, public utilitiesService: UtilitiesService) { }
 
   ngOnInit() {
     this.roleRoute = this.utilitiesService.getRoleRoute();

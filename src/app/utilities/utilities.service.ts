@@ -18,6 +18,10 @@ export class UtilitiesService {
   getName(): string {
     return localStorage.getItem('fullName');
   }
+  getImage(): string {
+    const image = localStorage.getItem('imageUrl');
+    return (image !== 'null') ? image : '/assets/img/defaults/default-user.png';
+  }
 
   setName(fullName: string) {
     localStorage.setItem('fullName', fullName);
@@ -43,6 +47,28 @@ export class UtilitiesService {
         break;
     }
     return route;
+  }
+
+  getRoleName(): string {
+    let role = '';
+    switch (this.getRole()) {
+      case 0:
+        role = 'Administrador';
+        break;
+
+      case 1:
+        role = 'Estudiante';
+        break;
+
+      case 2:
+        role = 'Profesor';
+        break;
+
+      case 3:
+        role = 'Empresa';
+        break;
+    }
+    return role;
   }
 
   dateToString (date, separator?): string {

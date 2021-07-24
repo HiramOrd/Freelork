@@ -15,7 +15,7 @@
         </button>
         <!-- End Edit Button -->
 
-        <app-user-profile [name]="name" [email]="email" [photo]="photo" [role]="role"></app-user-profile>
+        <app-user-profile [name]="student?.fullName" [email]="student?.email" [photo]="student?.imageUrl" [role]="utilitiesService.getRoleName()"></app-user-profile>
 
         <div class="card-body">
 

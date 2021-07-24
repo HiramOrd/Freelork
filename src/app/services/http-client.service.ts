@@ -11,10 +11,6 @@ export class HttpClientService {
 
   constructor(private http: HttpClient) { }
 
-  /**
-   * Get method that validates the login
-   * @param loginData User and Password
-   */
   // TODO: Add encoding
   login(loginData: any): any {
     const body = new HttpParams()
@@ -23,6 +19,7 @@ export class HttpClientService {
     return this.http.get(API.SERVER + API.LOGIN, {params: body});
   }
 
+  // Registrations
   registerAdmin(body: any): any {
     return this.http.post(API.SERVER + API.POST_ADMIN, body);
   }
@@ -36,6 +33,17 @@ export class HttpClientService {
     return this.http.post(API.SERVER + API.POST_COMPANY, body);
   }
 
+  // Task
+  getTask(id: number): any {
+    return this.http.get(API.SERVER + API.API + API.GET_TASK + id);
+  }
+  getTaskList(id: number): any {
+    return this.http.get(API.SERVER + API.API + API.GET_TASK_LIST + id);
+  }
+  getTaskListByDate(id: number, date1, date2): any {
+    return this.http.get(API.SERVER + API.API + API.GET_TASK_LIST + id + '/' + date1 + '/' + date2);
+  }
+
   postTask(body: any): any {
     const formData = new FormData();
     for ( const key in body ) {
@@ -44,11 +52,11 @@ export class HttpClientService {
     return this.http.post(API.SERVER + API.API + API.POST_TASK, formData);
   }
 
+  // Profiles
   getStudentProfile(id: number): any {
     return this.http.get(API.SERVER + API.API + API.GET_STUDENT + id);
   }
-
-  updateStudentProfile(body: any): any {
+  postStudentProfile(body: any): any {
     const formData = new FormData();
     for ( const key in body ) {
       formData.append(key, body[key]);

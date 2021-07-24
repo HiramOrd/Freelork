@@ -151,7 +151,7 @@
             <tbody>
 
             <!-- Start Register Row -->
-            <tr class="row-button" (click)="studentsService.viewRegister(1)" *ngFor="let data of arrayTable$ | async">
+            <tr class="row-button" (click)="studentsService.viewRegister(data.id)" *ngFor="let data of arrayTable$ | async">
               <td scope="row">
                 <span class="mb-0 text-sm"> {{data.title}} </span>
               </td>

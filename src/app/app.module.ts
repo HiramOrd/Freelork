@@ -1,5 +1,5 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { RouterModule } from '@angular/router';
@@ -16,6 +16,7 @@ import {CommonModule, DatePipe, DecimalPipe} from '@angular/common';
 import {UtilitiesModule} from './utilities/utilities.module';
 import {RoutesLayoutModule} from './layouts/routes-layout/routes-layout.module';
 import {AuthenticationInterceptor} from './services/authentication.interceptor';
+import {NgxSpinnerModule} from 'ngx-spinner';
 
 @NgModule({
   imports: [
@@ -31,6 +32,7 @@ import {AuthenticationInterceptor} from './services/authentication.interceptor';
     AdminLayoutModule,
     UtilitiesModule,
     RoutesLayoutModule,
+    NgxSpinnerModule
   ],
   declarations: [
     AppComponent
@@ -43,6 +45,8 @@ import {AuthenticationInterceptor} from './services/authentication.interceptor';
       multi: true
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+
 })
 export class AppModule { }

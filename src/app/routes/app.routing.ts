@@ -59,6 +59,7 @@ const routes: Routes = [
     path: 'dash', component: AdminLayoutComponent, canActivate: [AuthenticationGuard], children: [
       {
         path: 'adm', children: [
+          {path: 'home', component: HomeTeacherComponent},
           {path: 'projects', component: StudentsProjectsComponent},
           {path: '**', redirectTo: '/not/404' },
         ]
@@ -98,6 +99,7 @@ const routes: Routes = [
       },
       {
         path: 'comp', children: [
+          {path: 'home', component: HomeTeacherComponent},
           {path: '**', redirectTo: '/not/404' },
         ]
       },

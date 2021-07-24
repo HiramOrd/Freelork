@@ -44,7 +44,7 @@ export class EditProfileStudentComponent implements OnInit {
     const form = {...event.getRawValue(), ...userEntity};
     delete form.userEntity;
     console.log(form);
-    this.httpClientService.updateStudentProfile(form).subscribe( response => {
+    this.httpClientService.postStudentProfile(form).subscribe(response => {
       this.utilitiesService.setName(form.fullName);
       this.toastService.show('Perfil actualizado exitosamente' , { classname: 'bg-success text-white'});
       this.router.navigate(['/dash/std/profile']);

@@ -29,18 +29,29 @@ export class RegisterTaskComponent implements OnInit {
     // console.log(this.today);
     this.registerTaskForm = new FormGroup({
       // NULL Default
-      id: new FormControl(null, []),
+      id: new FormControl(0, []),
+      status: new FormControl(2, []),
       idUser: new FormControl(this.utilitiesService.getId(), [Validators.required]),
       dateRegister: new FormControl(null, [Validators.required]),
       idProject: new FormControl(null, [Validators.required]),
       title: new FormControl(null, [Validators.required, Validators.minLength(10)]),
       timeRegister: new FormControl(null, [Validators.required]),
       description: new FormControl(null, []),
-      file: new FormControl(null, []),
+      file: new FormControl(null, [])
     });
 
     this.route.queryParams.subscribe( params => {
       (params.origin) ? this.origin = params.origin : this.origin = '0';
+      if (params.id) { this.getTask(params.id); }
+    });
+  }
+
+  getTask(id: number) {
+    this.httpClientService.getTask(id).subscribe( response => {
+      console.log(response);
+    }, error => {
+      console.warn(error);
+      this.toastService.show('Error en el servidor, no se pudo cargar el contenido' , { classname: 'bg-danger text-white'});
     });
   }
 
@@ -66,9 +77,6 @@ export class RegisterTaskComponent implements OnInit {
     }, (error) => {
       console.warn(error);
       this.toastService.show('Error en el servidor, intenta mas tarde' , { classname: 'bg-danger text-white'});
-
-      // Test
-      this.return();
     } );
   }
 
