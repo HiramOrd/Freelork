@@ -3,15 +3,31 @@
     <app-register-form [edit]="edit" [role]="3"></app-register-form>
 
     <div class="row m-0 p-0">
+      <!-- Start Address Input -->
+      <div class="form-group col-12 p-0">
+        <div class="input-group input-group-alternative" [ngClass]="(companyForm.controls.address.invalid && companyForm.controls.address.touched ) ? 'error-border' : ''">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+          </div>
+          <input class="form-control" placeholder="Dirección de la empresa" type="text" formControlName="address" minlength="10">
+        </div>
+        <div *ngIf="companyForm.controls.address.errors?.required && companyForm.controls.address.touched">
+          <small class="error-text ml-2">*Ingresa la dirección de la empresa</small>
+        </div>
+        <div *ngIf="companyForm.controls.address.errors?.minlength && companyForm.controls.address.touched">
+          <small class="error-text ml-2">*La direción debe contener al menos 10 caracteres</small>
+        </div>
+      </div>
+      <!-- End Address Input -->
 
       <!-- Start Size Company Input -->
-      <div class="form-group col-12 p-0">
+      <div class="form-group col-sm-6 p-0 pr-sm-2">
         <div class="input-group input-group-alternative" [ngClass]="(companyForm.controls.sizeCompany.invalid && companyForm.controls.sizeCompany.touched ) ? 'error-border' : ''">
           <div class="input-group-prepend">
             <span class="input-group-text"><i class="far fa-building"></i></span>
           </div>
           <select class="form-control" formControlName="sizeCompany">
-            <option [value]="null" disabled hidden>Tamaño de la empresa</option>
+            <option [value]="null" disabled hidden>Tamaño de empresa</option>
             <option value="0">0-10 empleados</option>
             <option value="1">11-50 empleados</option>
             <option value="2">51-100 empleados</option>
@@ -25,7 +41,7 @@
       <!-- End Size Company Input -->
 
       <!-- Start Type Services Input -->
-      <div class="form-group col-12 p-0">
+      <div class="form-group col-sm-6 p-0 pl-sm-2">
           <div class="input-group input-group-alternative" [ngClass]="(companyForm.controls.serviceType.invalid && companyForm.controls.serviceType.touched ) ? 'error-border' : ''">
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="fas fa-briefcase"></i></span>
@@ -43,22 +59,69 @@
       </div>
       <!-- End Type Services Input -->
 
-      <!-- Start Address Input -->
-      <div class="form-group col-12 p-0">
-        <div class="input-group input-group-alternative" [ngClass]="(companyForm.controls.address.invalid && companyForm.controls.address.touched ) ? 'error-border' : ''">
-          <div class="input-group-prepend">
-            <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
-          </div>
-          <input class="form-control" placeholder="Dirección de la empresa" type="text" formControlName="address" minlength="10">
+      <div>
+        <div class="mt-2 mb-1">
+          <span class="font-weight-bold">Información de Contacto</span>
+          <i class="far fa-question-circle ml-1 text-sm"
+             placement="right" ngbTooltip="Estos datos solo seran visibles para los estudiantes con los que trabaja" tooltipClass="defaultTooltip"></i>
         </div>
-        <div *ngIf="companyForm.controls.address.errors?.required && companyForm.controls.address.touched">
-          <small class="error-text ml-2">*Ingresa la dirección de la empresa</small>
-        </div>
-        <div *ngIf="companyForm.controls.address.errors?.minlength && companyForm.controls.address.touched">
-          <small class="error-text ml-2">*La direción debe contener al menos 10 caracteres</small>
+
+        <div class="mb-3 text-sm">
+          <span>Recursos Humanos</span>
         </div>
       </div>
-      <!-- End Address Input -->
+
+      <!-- Start RH Name Input -->
+      <div class="form-group col-12 p-0">
+        <div class="input-group input-group-alternative" [ngClass]="(companyForm.controls.hrName.invalid && companyForm.controls.hrName.touched ) ? 'error-border' : ''">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-user-alt"></i></span>
+          </div>
+          <input class="form-control" placeholder="Nombre Completo" type="text" formControlName="hrName" minlength="10">
+        </div>
+        <div *ngIf="companyForm.controls.hrName.errors?.required && companyForm.controls.hrName.touched">
+          <small class="error-text ml-2">*Ingresa el nombre de la persona encargada de RH</small>
+        </div>
+        <div *ngIf="companyForm.controls.hrName.errors?.minlength && companyForm.controls.hrName.touched">
+          <small class="error-text ml-2">*Por favor, ingresa el nombre completo</small>
+        </div>
+      </div>
+      <!-- End RH Name Input -->
+
+      <!-- Start Phone RH Input -->
+      <div class="form-group col-12 p-0">
+        <div class="input-group input-group-alternative"  [ngClass]="(companyForm.controls.hrPhone.invalid && companyForm.controls.hrPhone.touched ) ? 'error-border' : ''">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-mobile-alt"></i></span>
+          </div>
+          <input class="form-control" placeholder="Número de teléfono" type="tel" formControlName="hrPhone" maxlength="10" NumbersOnly>
+        </div>
+        <div *ngIf="companyForm.controls.hrPhone.errors?.required && companyForm.controls.hrPhone.touched">
+          <small class="error-text ml-2">*Ingresa el número de teléfono</small>
+        </div>
+        <div *ngIf="companyForm.controls.hrPhone.errors?.pattern && companyForm.controls.hrPhone.touched">
+          <small class="error-text ml-2">*Por favor, ingresa un número de teléfono de 10 dígitos</small>
+        </div>
+      </div>
+      <!-- End Phone RH Input -->
+
+
+      <!-- Start Email RH Input -->
+      <div class="form-group col-12 p-0">
+        <div class="input-group input-group-alternative" [ngClass]="(companyForm.controls.hrEmail.invalid && companyForm.controls.hrEmail.touched ) ? 'error-border' : ''">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+          </div>
+          <input class="form-control" placeholder="Correo electrónico" type="email" formControlName="hrEmail">
+        </div>
+        <div *ngIf="companyForm.controls.hrEmail.errors?.required && companyForm.controls.hrEmail.touched">
+          <small class="error-text ml-2">*Ingresa el correo electrónico</small>
+        </div>
+        <div *ngIf="companyForm.controls.hrEmail.errors?.pattern && companyForm.controls.hrEmail.touched">
+          <small class="error-text ml-2">*Correo invalido. Formato: xxxxxxxxx@dominio.com</small>
+        </div>
+      </div>
+      <!-- End Email RH Input -->
 
     </div>
 

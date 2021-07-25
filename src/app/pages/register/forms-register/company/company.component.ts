@@ -33,10 +33,11 @@ export class CompanyComponent implements OnInit {
       sizeCompany: new FormControl(null, [Validators.required]),
       serviceType: new FormControl(null, [Validators.required]),
       address: new FormControl(null, [Validators.required, Validators.minLength(10)]),
-      hrName : new FormControl('Nombre HR', [Validators.required]),
-      hrLastname : new FormControl('Apellido HR', [Validators.required]),
-      hrPhone : new FormControl('9981220011', [Validators.required]),
-      hrEmail : new FormControl('correoRH@gmail.com', [Validators.required]),
+      hrName : new FormControl(null, [Validators.required]),
+      hrLastname : new FormControl(''),
+      hrPhone : new FormControl(null, [Validators.required, Validators.pattern('[0-9 ]{10}')]),
+      hrEmail : new FormControl(null,
+        [Validators.required, Validators.pattern(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)]),
       userEntity: this.registerFormComponent.createFormGroup(),
     });
   }
