@@ -16,7 +16,7 @@ export const studentTasks: any[] = [
     id: 2,
     title: 'Se agregaron algunos detalles',
     idStudent: 2,
-    student: 'Katherine González',
+    student: 'Hiram',
     company: 'Wayaweb',
     idProject: 1,
     nameProject: 'Vapemex',

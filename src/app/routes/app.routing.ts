@@ -101,8 +101,10 @@ const routes: Routes = [
       {
         path: 'tch', canActivate: [AuthenticationGuard], data: {roles: ['2'] }, children: [
           {path: 'home', component: HomeTeacherComponent},
-          {path: 'groups', component: GroupsComponent},
-          {path: 'create-group', component: CreateGroupComponent},
+          {path: 'groups', children: [
+              {path: '', component: GroupsComponent},
+              {path: 'create-group', component: CreateGroupComponent},
+            ]},
           {path: 'students-list', children: [
               {path: '', component: StudentsListComponent},
               {path: 'students-profile', component: StudentsProfileComponent},

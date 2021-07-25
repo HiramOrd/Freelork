@@ -27,7 +27,7 @@
             <div class="col-xl row m-0 mb-2">
               <div class="col p-0 mb-0 mr-2 form-group rounded overflow-hidden">
                 <div class="input-group input-group-alternative w-100">
-                  <input class="form-control" placeholder="Buscar registro..." type="text" [(ngModel)]="tableService.searchTerm">
+                  <input class="form-control" placeholder="Buscar actividad..." type="text" [(ngModel)]="tableService.searchTerm">
                   <!--                  <span class="ml-3" *ngIf="tableService.loading$ | async">Loading...</span>-->
                   <div class="input-group-prepend">
                     <span class="input-group-text text-primary"><i class="fas fa-search"></i></span>
@@ -95,47 +95,47 @@
             <tr>
               <th scope="col" sortable="title" (sort)="onSort($event)" class="table-title">
                 <div>
-                  Titulo
+                  Tarea
                   <span>
-                  <i class="fas fa-sort-up"></i>
-                  <i class="fas fa-sort-down"></i>
-                </span>
+                    <i class="fas fa-sort-up"></i>
+                    <i class="fas fa-sort-down"></i>
+                  </span>
                 </div>
               </th>
-              <th scope="col" sortable="nameProject" (sort)="onSort($event)" class="table-title d-none d-lg-table-cell">
+              <th scope="col" sortable="student" (sort)="onSort($event)" class="table-title">
+                <div>
+                  Estudiante
+                  <span>
+                    <i class="fas fa-sort-up"></i>
+                    <i class="fas fa-sort-down"></i>
+                  </span>
+                </div>
+              </th>
+              <th scope="col" sortable="nameProject" (sort)="onSort($event)" class="table-title">
                 <div>
                   Proyecto
                   <span>
-                  <i class="fas fa-sort-up"></i>
-                  <i class="fas fa-sort-down"></i>
-                </span>
-                </div>
-              </th>
-              <th scope="col" sortable="dateRegister" (sort)="onSort($event)" class="table-title">
-                <div>
-                  Fecha
-                  <span>
-                  <i class="fas fa-sort-up"></i>
-                  <i class="fas fa-sort-down"></i>
-                </span>
+                    <i class="fas fa-sort-up"></i>
+                    <i class="fas fa-sort-down"></i>
+                  </span>
                 </div>
               </th>
               <th scope="col" sortable="timeRegister" (sort)="onSort($event)" class="table-title d-none d-lg-table-cell">
                 <div>
-                  Duración
+                  Tiempo
                   <span>
-                  <i class="fas fa-sort-up"></i>
-                  <i class="fas fa-sort-down"></i>
-                </span>
+                    <i class="fas fa-sort-up"></i>
+                    <i class="fas fa-sort-down"></i>
+                  </span>
                 </div>
               </th>
               <th scope="col" sortable="status" (sort)="onSort($event)" class="table-title">
                 <div class="table-title">
-                  Estado
+                  Status
                   <span>
-                  <i class="fas fa-sort-up"></i>
-                  <i class="fas fa-sort-down"></i>
-                </span>
+                    <i class="fas fa-sort-up"></i>
+                    <i class="fas fa-sort-down"></i>
+                  </span>
                 </div>
               </th>
             </tr>
@@ -143,36 +143,37 @@
             <tbody>
 
             <!-- Start Register Row -->
-            <tr class="row-button" (click)="studentsService.viewRegister(data.id)" *ngFor="let data of arrayTable$ | async">
+            <tr class="row-button" (click)="studentsService.viewRegister(1)" *ngFor="let data of arrayTable$ | async">
               <td scope="row">
                 <div class="d-inline-flex">
                   <div class="content-image">
-                    <img [src]="(data.image) ? data.image : 'assets/img/defaults/default-user.png' " alt="" class="img-fluid aux-image" alt="image-profile">
+                    <img src="../../../../assets/img/defaults/default-user.png" class="img-fluid aux-image" alt="image-profile">
                   </div>
                   <div class="d-block my-auto ml-2">
                     <p class="mb-0" style="color: #18187A; font-size: .85rem; font-weight: 600;">{{data.title}}</p>
-                    <div class="d-inline-flex">
-                      <p class="text-sm mb-0 pl-1">{{data.student}}</p>
+                    <div class="d-inline-flex align-items-center">
+                      <i class="far fa-calendar"></i>
+                      <p class="text-sm mb-0 pl-1 font-weight-normal">{{data.dateRegister}}</p>
                     </div>
                   </div>
                 </div>
                 <!-- <span class="mb-0 text-sm"> {{data.title}} </span> -->
               </td>
               <td class="d-none d-lg-table-cell">
-                <a routerLink="../projects">{{data.nameProject}}</a>
+                <span class="btn-link mouse-pointer" routerLink="/dash/comp/students/student/1">{{data.student}}</span>
               </td>
-              <td>
-                <span>{{data.dateRegister | date: 'dd/MM/yyyy'}}</span>
+              <td class="d-none d-lg-table-cell">
+                {{data.nameProject}}
               </td>
               <td class="d-none d-lg-table-cell">
                 {{data.timeRegister}} horas
               </td>
               <td>
-                <span class="badge badge-dot mr-4 text-xs">
-                  <span class="text-danger" *ngIf="(data.status === 'Rechazado')">{{data.status}}</span>
-                  <span class="text-orange" *ngIf="(data.status === 'Pendiente')">{{data.status}}</span>
-                  <span class="text-success" *ngIf="(data.status === 'Aceptado')">{{data.status}}</span>
-                </span>
+                  <span class="badge badge-dot mr-4 text-xs">
+                    <span class="text-danger" *ngIf="(data.status === 'Rechazado')">{{data.status}}</span>
+                    <span class="text-orange" *ngIf="(data.status === 'Pendiente')">{{data.status}}</span>
+                    <span class="text-success" *ngIf="(data.status === 'Aceptado')">{{data.status}}</span>
+                  </span>
               </td>
             </tr>
             <!-- End Register Row -->

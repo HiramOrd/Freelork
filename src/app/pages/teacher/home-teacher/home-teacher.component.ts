@@ -13,7 +13,8 @@ import {ToastService} from '../../../utilities/toast.service';
 @Component({
   selector: 'app-home-teacher',
   templateUrl: './home-teacher.component.html',
-  styleUrls: ['./home-teacher.component.css']
+  styleUrls: ['./home-teacher.component.css'],
+  providers: [TableService]
 })
 export class HomeTeacherComponent implements OnInit {
   today = new Date();

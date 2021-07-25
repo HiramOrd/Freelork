@@ -11,7 +11,8 @@ import {ToastService} from '../../../../utilities/toast.service';
 @Component({
   selector: 'app-students-list',
   templateUrl: './students-list.component.html',
-  styleUrls: ['./students-list.component.css']
+  styleUrls: ['./students-list.component.css'],
+  providers: [TableService]
 })
 export class StudentsListComponent implements OnInit {
   today = new Date();
@@ -58,7 +59,7 @@ export class StudentsListComponent implements OnInit {
     this.tableService.sortColumn = column;
     this.tableService.sortDirection = direction;
   }
-/* 
+/*
   resetFilters () {
     this.dateMinRange = null;
     this.dateMaxRange = null;
