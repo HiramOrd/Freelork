@@ -15,7 +15,7 @@
                 <div class="d-inline-flex justify-content-around px-0 px-xl-1 col-12 col-sm-6 col-xl-3">
                   <div class="d-inline-flex col-10">             
                     <div class="d-flex align-items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="57" height="56" viewBox="0 0 57 56">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" viewBox="0 0 57 56">
                             <g id="Grupo_102" data-name="Grupo 102" transform="translate(0.089 -0.471)">
                             <ellipse id="Elipse_20" data-name="Elipse 20" cx="28.5" cy="28" rx="28.5" ry="28" transform="translate(-0.089 0.471)" fill="#6c50f7"/>
                             <g id="Grupo_44" data-name="Grupo 44" transform="translate(14.562 14.621)">
@@ -42,7 +42,7 @@
                 <div class="d-inline-flex justify-content-around px-0 px-xl-1 col-12 col-sm-6 col-xl-3">
                     <div class="d-inline-flex col-10">             
                       <div class="d-flex align-items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" viewBox="0 0 56 56">
                             <g id="Grupo_103" data-name="Grupo 103" transform="translate(-781.001 -276)">
                               <g id="Grupo_63" data-name="Grupo 63" transform="translate(780.859 275.529)">
                                 <circle id="Elipse_20" data-name="Elipse 20" cx="28" cy="28" r="28" transform="translate(0.142 0.471)" fill="#22d94d"/>
@@ -72,7 +72,7 @@
                 <div class="d-inline-flex justify-content-around px-0 px-xl-1 col-12 col-sm-6 col-xl-3">
                     <div class="d-inline-flex col-10">             
                       <div class="d-flex align-items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" viewBox="0 0 56 56">
                             <g id="Grupo_105" data-name="Grupo 105" transform="translate(-0.142 -0.471)">
                               <g id="Grupo_104" data-name="Grupo 104">
                                 <circle id="Elipse_20" data-name="Elipse 20" cx="28" cy="28" r="28" transform="translate(0.142 0.471)" fill="#aba8f3"/>
@@ -101,7 +101,7 @@
                 <div class="d-inline-flex justify-content-around px-0 px-xl-1 col-12 col-sm-6 col-xl-3">
                     <div class="d-inline-flex col-10">             
                       <div class="d-flex align-items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" viewBox="0 0 56 56">
                             <g id="Grupo_106" data-name="Grupo 106" transform="translate(-1514 -277)">
                               <circle id="Elipse_20" data-name="Elipse 20" cx="28" cy="28" r="28" transform="translate(1514 277)" fill="#f8385f"/>
                               <g id="Grupo_49" data-name="Grupo 49" transform="translate(1527 290)">
@@ -145,13 +145,6 @@
         <!-- Start Table Card -->
         <div class="card shadow px-2 px-sm-3 bg-lighterBlue">
   
-          <!-- Start Add Button -->
-          <button class=" btn btn-primary border-white m-0 add-button" routerLink="create-task"
-                  placement="left" openDelay="400" ngbTooltip="Crear nuevo registro" tooltipClass="defaultTooltip">
-            <i class="fas fa-plus"></i>
-          </button>
-          <!-- End Add Button -->
-  
           <div class="card-header bg-lighterBlue px-0 pb-0">
   
             <!-- Start First Row -->
@@ -189,17 +182,18 @@
                 <!-- Start Export -->
                 <div class="col-sm-12 col-xl-auto form-group mb-2 d-flex align-items-end">
                   <div class="btn-group m-0 w-100">
-                    <button type="button" class="btn btn-primary">
+                    <button type="button" class="btn btn-primary" (click)="exportAll()">
                       <i class="fas fa-download"></i>
                       <span class="ml-2">Exportar</span>
                     </button>
-                    <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+                    <!-- Export for dates -->
+<!--                     <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
                       <button class="btn btn-primary dropdown-toggle-split" ngbDropdownToggle><i class="fas fa-chevron-down"></i></button>
                       <div class="dropdown-menu" ngbDropdownMenu>
-                        <button ngbDropdownItem>Exportar todo</button>
-                        <button ngbDropdownItem>Exportar por fecha</button>
+                        <button ngbDropdownItem (click)="exportAll()">Exportar todo</button>
+                        <button ngbDropdownItem (click)="exportByDate()">Exportar por fecha</button>
                       </div>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               <!-- End Export -->
@@ -217,7 +211,7 @@
             <table class="table align-items-center table-flush">
               <thead class="thead-light">
               <tr>
-                <th scope="col" sortable="enrollment" (sort)="onSort($event)" class="table-title">
+                <th scope="col" sortable="title" (sort)="onSort($event)" class="table-title">
                   <div>
                     Tarea
                     <span>
@@ -226,7 +220,7 @@
                   </span>
                   </div>
                 </th>
-                <th scope="col" sortable="name" (sort)="onSort($event)" class="table-title d-none d-lg-table-cell">
+                <th scope="col" sortable="company" (sort)="onSort($event)" class="table-title d-none d-lg-table-cell">
                   <div>
                     Empresa
                     <span>
@@ -235,7 +229,7 @@
                   </span>
                   </div>
                 </th>
-                <th scope="col" sortable="group" (sort)="onSort($event)" class="table-title">
+                <th scope="col" sortable="nameProject" (sort)="onSort($event)" class="table-title">
                   <div>
                     Proyecto
                     <span>
@@ -244,7 +238,7 @@
                   </span>
                   </div>
                 </th>
-                <th scope="col" sortable="company" (sort)="onSort($event)" class="table-title d-none d-lg-table-cell">
+                <th scope="col" sortable="timeRegister" (sort)="onSort($event)" class="table-title d-none d-lg-table-cell">
                   <div>
                     Tiempo
                     <span>
@@ -253,7 +247,7 @@
                   </span>
                   </div>
                 </th>
-                <th scope="col" sortable="asesor" (sort)="onSort($event)" class="table-title">
+                <th scope="col" sortable="status" (sort)="onSort($event)" class="table-title">
                   <div class="table-title">
                     Status
                     <span>
@@ -262,7 +256,7 @@
                   </span>
                   </div>
                 </th>
-                <th scope="col" sortable="worked-hours" (sort)="onSort($event)" class="table-title">
+                <th scope="col" sortable="idStudent:" (sort)="onSort($event)" class="table-title">
                   <div class="table-title">
                     Ver
                     <span>
@@ -283,7 +277,7 @@
                             <img src="../../../../assets/img/defaults/default-user.png" class="img-fluid aux-image" alt="image-profile">
                       </div>
                       <div class="d-block my-auto ml-2">
-                        <p class="mb-0" style="color: #18187A; font-size: .85rem; font-weight: 600;">Diseño de dashboard - Katherine González</p>
+                        <p class="mb-0" style="color: #18187A; font-size: .85rem; font-weight: 600;">{{data.title}} - {{data.student}}</p>
                         <div class="d-inline-flex">
                             <svg id="Grupo_37" data-name="Grupo 37" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
                                 <path id="Trazado_98" data-name="Trazado 98" d="M0,0H24V24H0Z" fill="none"/>
@@ -293,27 +287,29 @@
                                 <line id="Línea_45" data-name="Línea 45" x2="16" transform="translate(4 11)" fill="none" stroke="#5d47ac" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
                                 <rect id="Rectángulo_96" data-name="Rectángulo 96" width="2" height="2" transform="translate(8 15)" fill="none" stroke="#5d47ac" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
                             </svg>                  
-                            <p class="text-sm mb-0 pl-1" style="color: #18187A;">24/06/2021</p>
+                            <p class="text-sm mb-0 pl-1" style="color: #18187A;">{{data.dateRegister}}</p>
                         </div>
                       </div>  
                     </div>
                   <!-- <span class="mb-0 text-sm"> {{data.title}} </span> -->
                 </td>
                 <td class="d-none d-lg-table-cell">
-                  <a routerLink="../projects">{{data.project}}</a>
-                </td>
-                <td>
-                  <span>{{data.date}}</span>
+                  {{data.company}}
                 </td>
                 <td class="d-none d-lg-table-cell">
-                  {{data.time}}
+                  {{data.nameProject}}
+                </td>
+                <td class="d-none d-lg-table-cell">
+                  {{data.timeRegister}} horas
                 </td>
                 <td>
-                  <span class="badge badge-dot mr-4 text-green">
-                      {{data.status}}
+                  <span class="badge badge-dot mr-4 text-xs">
+                    <span class="text-danger" *ngIf="(data.status === 'Rechazado')">{{data.status}}</span>
+                    <span class="text-orange" *ngIf="(data.status === 'Pendiente')">{{data.status}}</span>
+                    <span class="text-success" *ngIf="(data.status === 'Aceptado')">{{data.status}}</span>
                   </span>
                 </td>
-                <td class="d-none d-lg-table-cell">
+                <td class="d-none d-lg-table-cell" routerLink="../students-list/students-profile">
                     {{data.time}}
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 29 29">
                       <g id="Grupo_51" data-name="Grupo 51" transform="translate(-0.142 -0.471)">

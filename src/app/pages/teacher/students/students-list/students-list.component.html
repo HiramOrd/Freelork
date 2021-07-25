@@ -12,13 +12,6 @@
       <!-- Start Table Card -->
       <div class="card shadow px-2 px-sm-3 bg-lighterBlue">
 
-        <!-- Start Add Button -->
-        <button class=" btn btn-primary border-white m-0 add-button" routerLink="create-task"
-                placement="left" openDelay="400" ngbTooltip="Crear nuevo registro" tooltipClass="defaultTooltip">
-          <i class="fas fa-plus"></i>
-        </button>
-        <!-- End Add Button -->
-
         <div class="card-header bg-lighterBlue px-0 pb-0">
 
           <!-- Start First Row -->
@@ -59,47 +52,35 @@
 
               <div class="d-xl-inline-flex align-items-end col-sm col-xl-auto form-group mb-2 mb-sm-3 mb-xl-2">
                 <label for="firstDate" class="form-control-label my-auto pr-2">Horas:</label>
-                <input id="firstDate" type="text" class="form-control form-control-alternative">
+                <input class="form-control" type="number" [(ngModel)]="tableService.searchTerm" NumbersOnly>
               </div>
 
               <!-- TODO: El input muestra pedazos de fecha -->
               <div class="d-xl-inline-flex align-items-end col-xl-auto form-group mb-2 mb-sm-3 mb-xl-2">
                 <label for="secondDate" class="form-control-label my-auto pr-2">Grupo:</label>
-                <div ngbDropdown class="d-xl-inline-block d-sm-inline-flex col-sm-12 p-sm-0">
-                    <button class="btn btn-outline-primary col-sm-12 col-xl-auto" id="dropdownBasic1" ngbDropdownToggle>Todos</button>
-                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                      <button ngbDropdownItem>IS61-XRP</button>
-                      <button ngbDropdownItem>IS21-BTC</button>
-                      <button ngbDropdownItem>IS81-ETH</button>
-                    </div>
+                <div class="input-group">
+                  <select id="grade" class="form-control form-control-alternative bg-lightblue-border">
+                    <option [value]="null" disabled selected>Selecciona el grupo</option>
+                    <option>IS61-Software</option>
+                    <option>IB41-Biotecnologia</option>
+                    <option>IT51-Terapia</option>
+                  </select>
                 </div>
               </div>
-
-                <!--    <div class="col-sm col-xl-auto form-group mb-3 mb-xl-2">
-                <label for="vpp" class="form-control-label m-0">Vistas:</label>
-                <select id="vpp" class="form-control form-control-range" name="pageSize" [(ngModel)]="tableService.pageSize">
-                  <option [ngValue]="5">5</option>
-                  <option [ngValue]="10">10</option>
-                  <option [ngValue]="20">20</option>
-                  <option [ngValue]="100000">Todos</option>
-                </select>
-                </div> -->
-
-
               <!-- Start Export -->
               <div class="col-sm-12 col-xl-auto form-group mb-2 d-flex align-items-end">
                 <div class="btn-group m-0 w-100">
-                  <button type="button" class="btn btn-primary">
+                  <button type="button" class="btn btn-primary" (click)="exportAll()">
                     <i class="fas fa-download"></i>
                     <span class="ml-2">Exportar</span>
                   </button>
-                  <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+              <!--     <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
                     <button class="btn btn-primary dropdown-toggle-split" ngbDropdownToggle><i class="fas fa-chevron-down"></i></button>
                     <div class="dropdown-menu" ngbDropdownMenu>
                       <button ngbDropdownItem>Exportar todo</button>
                       <button ngbDropdownItem>Exportar por fecha</button>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
               </div>
             <!-- End Export -->
@@ -126,7 +107,7 @@
                 </span>
                 </div>
               </th>
-              <th scope="col" sortable="name" (sort)="onSort($event)" class="table-title d-none d-lg-table-cell">
+              <th scope="col" sortable="student" (sort)="onSort($event)" class="table-title d-none d-lg-table-cell">
                 <div>
                   Nombre
                   <span>
@@ -153,7 +134,7 @@
                 </span>
                 </div>
               </th>
-              <th scope="col" sortable="asesor" (sort)="onSort($event)" class="table-title">
+              <th scope="col" sortable="advisor" (sort)="onSort($event)" class="table-title">
                 <div class="table-title">
                   Asesor
                   <span>
@@ -162,7 +143,7 @@
                 </span>
                 </div>
               </th>
-              <th scope="col" sortable="worked-hours" (sort)="onSort($event)" class="table-title">
+              <th scope="col" sortable="totalWork" (sort)="onSort($event)" class="table-title">
                 <div class="table-title">
                   Horas trabajadas
                   <span>
@@ -178,21 +159,27 @@
             <!-- Start Register Row -->
             <tr class="row-button" routerLink="students-profile" *ngFor="let data of arrayTable$ | async">
               <td scope="row">
-                <span class="mb-0 text-sm"> {{data.title}} </span>
+                <div class="d-inline-flex justify-content-center">
+                  <div class="content-image">
+                        <img src="../../../../assets/img/defaults/default-user.png" class="img-fluid aux-image" alt="image-profile">
+                  </div>
+                  <span class="my-auto pl-1">{{data.enrollment}}</span>
+              </div>
               </td>
               <td class="d-none d-lg-table-cell">
-                <a routerLink="../projects">{{data.project}}</a>
+                {{data.student}}
               </td>
               <td>
-                <span>{{data.date}}</span>
+                {{data.group}}
               </td>
               <td class="d-none d-lg-table-cell">
-                {{data.time}}
+                {{data.company}}
               </td>
               <td>
-                <span class="badge badge-dot mr-4 text-orange">
-                    {{data.status}}
-                </span>
+                {{data.advisor}}
+              </td>
+              <td>
+                {{data.totalWork}}
               </td>
             </tr>
             <!-- End Register Row -->
