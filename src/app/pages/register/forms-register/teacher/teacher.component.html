@@ -1,26 +1,21 @@
 <form [formGroup]="teachersForm" (ngSubmit)="teachersSubmit()">
 
-  <!-- Role Input -->
-  <input type="hidden" formControlName="role">
-
-    <app-register-form></app-register-form>
-
-
+    <app-register-form [edit]="edit" [role]="2"></app-register-form>
 
     <div class="row m-0 p-0">
 
       <!-- Start Phone Input -->
       <div class="form-group col-12 p-0">
-        <div class="input-group input-group-alternative"  [ngClass]="(teachersForm.controls.cellphone.invalid && teachersForm.controls.cellphone.touched ) ? 'error-border' : ''">
+        <div class="input-group input-group-alternative"  [ngClass]="(teachersForm.controls.phone.invalid && teachersForm.controls.phone.touched ) ? 'error-border' : ''">
           <div class="input-group-prepend">
             <span class="input-group-text"><i class="fas fa-mobile-alt"></i></span>
           </div>
-          <input class="form-control" placeholder="Número de teléfono" type="tel" formControlName="cellphone" maxlength="10" NumbersOnly>
+          <input class="form-control" placeholder="Número de teléfono" type="tel" formControlName="phone" maxlength="10" NumbersOnly>
         </div>
-        <div *ngIf="teachersForm.controls.cellphone.errors?.required && teachersForm.controls.cellphone.touched">
+        <div *ngIf="teachersForm.controls.phone.errors?.required && teachersForm.controls.phone.touched">
           <small class="error-text ml-2">*Ingresa tu número de teléfono</small>
         </div>
-        <div *ngIf="teachersForm.controls.cellphone.errors?.pattern && teachersForm.controls.cellphone.touched">
+        <div *ngIf="teachersForm.controls.phone.errors?.pattern && teachersForm.controls.phone.touched">
           <small class="error-text ml-2">*Por favor, ingresa tu número de teléfono de 10 dígitos</small>
         </div>
       </div>
@@ -34,14 +29,14 @@
           </div>
           <select class="form-control" formControlName="grade">
             <option [value]="null" disabled hidden>Título académico</option>
-            <option value="0">Lic.</option>
-            <option value="1">Ing.</option>
-            <option value="2">Arq.</option>
-            <option value="3">Dr.</option>
-            <option value="4">Dra.</option>
-            <option value="5">C.P.T.</option>
-            <option value="5">Profe.</option>
-            <option value="5">Profa.</option>
+            <option [value]="0">Lic.</option>
+            <option [value]="1">Ing.</option>
+            <option [value]="2">Arq.</option>
+            <option [value]="3">Dr.</option>
+            <option [value]="4">Dra.</option>
+            <option [value]="5">C.P.T.</option>
+            <option [value]="5">Profe.</option>
+            <option [value]="5">Profa.</option>
           </select>
         </div>
         <div *ngIf="teachersForm.controls.grade.errors?.required && teachersForm.controls.grade.touched">

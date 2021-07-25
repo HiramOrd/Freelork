@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
+import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,7 @@ import {NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 export class AppComponent {
   title = 'argon-dashboard-angular';
 
-  constructor() {
+  constructor(private spinner: NgxSpinnerService) {
     NgbModalRef.prototype['c'] = NgbModalRef.prototype.close;
     NgbModalRef.prototype.close = function (reason: string) {
       document.querySelector('.modal-backdrop').classList.remove('show');

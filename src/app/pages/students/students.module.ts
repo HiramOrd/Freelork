@@ -20,6 +20,8 @@ import { ProfileStudentComponent } from './profile-student/profile-student.compo
 import {AllUsersModule} from '../all-users/all-users.module';
 import { EditProfileStudentComponent } from './profile-student/edit-profile-student/edit-profile-student.component';
 import {FormsRegisterModule} from '../register/forms-register/forms-register.module';
+import { DeleteGroupStudentComponent } from './group-student/delete-group-student/delete-group-student.component';
+import { CompanyStudentComponent } from './company-student/company-student.component';
 
 
 
@@ -38,6 +40,8 @@ import {FormsRegisterModule} from '../register/forms-register/forms-register.mod
     GroupStudentComponent,
     ProfileStudentComponent,
     EditProfileStudentComponent,
+    DeleteGroupStudentComponent,
+    CompanyStudentComponent,
   ],
     imports: [
         CommonModule,

@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       localStorage.setItem('role', response.user.role);
       localStorage.setItem('id', response.user.id);
       localStorage.setItem('fullName', response.user.fullName);
+      localStorage.setItem('imageUrl', response.user.imageUrl);
       this.router.navigate(['/dash/' + this.utilitiesService.getRoleRoute() + 'home']);
     }, (error) => {
       this.loginForm.reset();

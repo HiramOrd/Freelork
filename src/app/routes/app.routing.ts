@@ -31,6 +31,15 @@ import { StudentsProfileComponent } from '../pages/teacher/students/students-pro
 import {ProfileStudentComponent} from '../pages/students/profile-student/profile-student.component';
 import {EditProfileStudentComponent} from '../pages/students/profile-student/edit-profile-student/edit-profile-student.component';
 import { HomeTeacherComponent } from '../pages/teacher/home-teacher/home-teacher.component';
+import {CompanyStudentComponent} from '../pages/students/company-student/company-student.component';
+import {DashboardCompanyComponent} from '../pages/company/dashboard-company/dashboard-company.component';
+import {ProjectsCompanyComponent} from '../pages/company/projects-company/projects-company.component';
+import {NewProjectCompanyComponent} from '../pages/company/projects-company/new-project-company/new-project-company.component';
+import {AllRegistersCompanyComponent} from '../pages/company/all-registers-company/all-registers-company.component';
+import {StudentsTableCompanyComponent} from '../pages/company/students-table-company/students-table-company.component';
+import {ProfileCompanyComponent} from '../pages/company/profile-company/profile-company.component';
+import {EditProfileCompanyComponent} from '../pages/company/profile-company/edit-profile-company/edit-profile-company.component';
+import {StudentInfoCompanyComponent} from '../pages/company/student-info-company/student-info-company.component';
 
 
 const routes: Routes = [
@@ -56,15 +65,16 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'dash', component: AdminLayoutComponent, canActivate: [AuthenticationGuard], children: [
+    path: 'dash', component: AdminLayoutComponent, children: [
       {
         path: 'adm', children: [
+          {path: 'home', component: HomeTeacherComponent},
           {path: 'projects', component: StudentsProjectsComponent},
           {path: '**', redirectTo: '/not/404' },
         ]
       },
       {
-        path: 'std', children: [
+        path: 'std', canActivate: [AuthenticationGuard], data: {roles: ['1'] }, children: [
           {path: 'home', component: HomeComponent},
           {path: 'register', children: [
               {path: '', component: StudentsTableComponent},
@@ -77,7 +87,11 @@ const routes: Routes = [
               {path: '', component: GroupStudentComponent},
               {path: 'new', component: NewGroupStudentComponent},
             ]},
-          {path: 'profile', children: [
+          {path: 'company', children: [
+              {path: '', component: CompanyStudentComponent},
+              {path: 'new', component: NewGroupStudentComponent},
+          ]},
+              {path: 'profile', children: [
               {path: '', component: ProfileStudentComponent},
               {path: 'edit', component: EditProfileStudentComponent},
             ]},
@@ -85,7 +99,7 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'tch', children: [
+        path: 'tch', canActivate: [AuthenticationGuard], data: {roles: ['2'] }, children: [
           {path: 'home', component: HomeTeacherComponent},
           {path: 'groups', component: GroupsComponent},
           {path: 'create-group', component: CreateGroupComponent},
@@ -97,7 +111,23 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'comp', children: [
+        path: 'comp', canActivate: [AuthenticationGuard], data: {roles: ['3'] }, children: [
+          {path: 'home', component: DashboardCompanyComponent},
+          {path: 'projects', children: [
+              {path: '', component: ProjectsCompanyComponent},
+              {path: 'new', component: NewProjectCompanyComponent},
+              {path: 'edit/:id', component: NewProjectCompanyComponent},
+            ]},
+          {path: 'all-list', component: AllRegistersCompanyComponent},
+          {path: 'students', children: [
+              {path: '', component: StudentsTableCompanyComponent},
+              {path: 'student/:id', component: StudentInfoCompanyComponent},
+            ]},
+          {path: 'profile', children: [
+              {path: '', component: ProfileCompanyComponent},
+              {path: 'edit', component: EditProfileCompanyComponent},
+            ]},
+
           {path: '**', redirectTo: '/not/404' },
         ]
       },

@@ -1,0 +1,23 @@
+<div class="modal-header pt-3 pb-0 d-flex align-items-center justify-content-end">
+
+  <button class="btn px-3 text-gray" tabindex="-1" (click)="activeModal.dismiss('Cross click')">
+    <i class="fas fa-times"></i>
+  </button>
+</div>
+<div class="modal-body pt-0">
+  <div class="d-flex pt-4 pb-5">
+    <p class="text-sm font-weight-normal font-weight-light">
+      ¿Estás seguro que deseas salir del grupo?
+    </p>
+  </div>
+
+  <div class="d-flex justify-content-end">
+    <button class="btn mr-3 secondary" name="button" tabindex="-1" (click)="activeModal.dismiss('Cross click')">
+      No
+    </button>
+
+    <button class="btn danger" tabindex="0" name="button" (click)="deleteGroup()">
+      Si, Salir
+    </button>
+  </div>
+</div>

@@ -40,10 +40,11 @@ export class EditProfileStudentComponent implements OnInit {
     event.addControl('file', this.studentProfile.get('file'));
     event.addControl('id', new FormControl(this.utilitiesService.getId()));
 
-    const {registerForm} = event.getRawValue();
-    const form = {...event.getRawValue(), ...registerForm};
-    delete form.registerForm;
-    this.httpClientService.updateStudentProfile(form).subscribe( response => {
+    const {userEntity} = event.getRawValue();
+    const form = {...event.getRawValue(), ...userEntity};
+    delete form.userEntity;
+    console.log(form);
+    this.httpClientService.postStudentProfile(form).subscribe(response => {
       this.utilitiesService.setName(form.fullName);
       this.toastService.show('Perfil actualizado exitosamente' , { classname: 'bg-success text-white'});
       this.router.navigate(['/dash/std/profile']);

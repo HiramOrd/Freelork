@@ -3,23 +3,30 @@ import { Router } from '@angular/router';
 import {UtilitiesService} from '../../utilities/utilities.service';
 
 declare interface RouteInfo {
+    role: string;
     path: string;
     title: string;
     icon: string;
     class: string;
 }
 export const ROUTES: RouteInfo[] = [
-  { path: 'std/home', title: 'Estudiantes',  icon: '', class: 'font-weight-bold' },
-  { path: 'std/home', title: 'Dashboard',  icon: 'ni-tv-2 text-primary', class: '' },
-  { path: 'std/register', title: 'Registro',  icon: 'ni-bullet-list-67 text-primary', class: '' },
-  { path: 'std/projects', title: 'Proyectos',  icon: 'ni-archive-2 text-primary', class: '' },
-  { path: 'std/group', title: 'Grupo',  icon: 'ni-hat-3 text-primary', class: '' },
-  { path: 'std/profile', title: 'Perfil',  icon: 'ni-single-02 text-primary', class: '' },
+  { role: '1', path: 'std/home', title: 'Dashboard',  icon: 'ni-tv-2 text-primary', class: '' },
+  { role: '1', path: 'std/register', title: 'Registro',  icon: 'ni-bullet-list-67 text-primary', class: '' },
+  { role: '1', path: 'std/projects', title: 'Proyectos',  icon: 'ni-archive-2 text-primary', class: '' },
+  { role: '1', path: 'std/company', title: 'Empresa',  icon: 'ni-building text-primary', class: '' },
+  { role: '1', path: 'std/group', title: 'Grupo',  icon: 'ni-hat-3 text-primary', class: '' },
+  { role: '1', path: 'std/profile', title: 'Perfil',  icon: 'ni-single-02 text-primary', class: '' },
 
-  { path: 'tch/home', title: 'Maestros',  icon: '', class: 'font-weight-bold' },
-  { path: 'tch/home', title: 'Dashboard',  icon: 'ni-books text-primary', class: '' },
-  { path: 'tch/groups', title: 'Grupos',  icon: 'ni-books text-primary', class: '' },
-  { path: 'tch/students-list', title: 'Alumnos',  icon: 'ni-books text-primary', class: '' },
+  { role: '2', path: 'tch/home', title: 'Dashboard',  icon: 'ni-books text-primary', class: '' },
+  { role: '2', path: 'tch/groups', title: 'Grupos',  icon: 'ni-books text-primary', class: '' },
+  { role: '2', path: 'tch/students-list', title: 'Alumnos',  icon: 'ni-books text-primary', class: '' },
+
+  { role: '3', path: 'comp/home', title: 'Dashboard',  icon: 'ni-books text-primary', class: ''  },
+  { role: '3', path: 'comp/projects', title: 'Proyectos',  icon: 'ni-books text-primary', class: ''  },
+  { role: '3', path: 'comp/all-list', title: 'Tareas',  icon: 'ni-books text-primary', class: ''  },
+  { role: '3', path: 'comp/students', title: 'Estudintes',  icon: 'ni-books text-primary', class: ''  },
+  { role: '3', path: 'comp/profile', title: 'Perfil',  icon: 'ni-books text-primary', class: ''  },
+
   // { path: 'std/register', title: 'Avisos',  icon: 'ni-notification-70 text-primary', class: '' },
   // {path: 'icons', title: 'Icons', icon: 'ni-planet text-blue', class: ''},
   // {path: 'maps', title: 'Maps', icon: 'ni-pin-3 text-orange', class: ''},
@@ -38,7 +45,7 @@ export class SidebarComponent implements OnInit {
   public isCollapsed = true;
   roleRoute;
 
-  constructor(private router: Router, private utilitiesService: UtilitiesService) { }
+  constructor(private router: Router, public utilitiesService: UtilitiesService) { }
 
   ngOnInit() {
     this.roleRoute = this.utilitiesService.getRoleRoute();
