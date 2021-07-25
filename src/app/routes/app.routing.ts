@@ -122,8 +122,8 @@ const routes: Routes = [
             ]},
           {path: 'all-list', component: AllRegistersCompanyComponent},
           {path: 'students', children: [
-              {path: '', component: StudentsTableCompanyComponent},
-              {path: 'student/:id', component: StudentsProfileComponent},
+              {path: '', component: StudentsListComponent},
+              {path: 'students-profile', component: StudentsProfileComponent},
             ]},
           {path: 'profile', children: [
               {path: '', component: ProfileCompanyComponent},

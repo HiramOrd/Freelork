@@ -11,7 +11,7 @@ import { ModalDeleteProjectCompanyComponent } from './projects-company/modal-del
 import { EditProfileCompanyComponent } from './profile-company/edit-profile-company/edit-profile-company.component';
 import {FormsModule} from '@angular/forms';
 import {UtilitiesModule} from '../../utilities/utilities.module';
-import {NgbDropdownModule, NgbPaginationModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbCollapseModule, NgbDropdownModule, NgbPaginationModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
 import {RouterModule} from '@angular/router';
 
 
@@ -25,7 +25,8 @@ import {RouterModule} from '@angular/router';
     NgbPaginationModule,
     RouterModule,
     NgbTooltipModule,
-    NgbDropdownModule
+    NgbDropdownModule,
+    NgbCollapseModule
   ]
 })
 export class CompanyModule { }
