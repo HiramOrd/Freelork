@@ -36,12 +36,13 @@ export class GroupsComponent implements OnInit {
 
     groups: any[] = [
       {
-        "name": "IS61 SOFTWARE",
-        "date": "12/06/2021",
-        "career": "Ingeniería en Software ",
-        "students": 23,
-        "code": "333333",
-        "status": "Activo"
+        /* careerName (Nombre del grupo) */"name": "IS61 SOFTWARE",
+        /* dateCreated-classroom */"date": "12/06/2021",
+        /* careerName-class */"career": "Ingeniería en Software ",
+        /* totalStudents-studentclassroom (Contabilizar el total de estudiantes) */"students": 23,
+        /* code-classroom */"code": 333333,
+        /* status-classroom */"status": "Activo"
+
       },
       {
         "name": "IS31 TERAPIA",

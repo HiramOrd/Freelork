@@ -1,13 +1,13 @@
 /* Teacher Home */
 export const studentList: any[] = [
   {
-    idStudent: 1,
-    enrollment: 201900043,
-    student: 'Katherine González',
-    group: 'IS61-Software' ,
-    advisor: 'Isay Gonzales', 
-    company: 'Wayaweb',
-    totalWork: 6,
+   /* idStudent */ idStudent: 1,
+   /* enrollmente (matricula) */enrollment: 201900043,
+   /* fullName-student */student: 'Katherine González',
+   /* careerName (Nombre del grupo)*/group: 'IS61-Software' ,
+   /* fullName-advisor */ advisor: 'Isay Gonzales', 
+   /* fullName-company (Nombre de la empresa) */ company: 'Wayaweb',
+   /* time-register (Tiempo total trabajado) */totalWork: 6,
   },
   {
     idStudent: 2,
