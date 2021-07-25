@@ -4,6 +4,7 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import { ModalDeleteRegisterStudentComponent } from '../modal-delete-register-student/modal-delete-register-student.component';
 import {ToastService} from '../../../../utilities/toast.service';
 import {HttpClientService} from '../../../../services/http-client.service';
+import {UtilitiesService} from '../../../../utilities/utilities.service';
 
 @Component({
   selector: 'app-modal-view-register-student',
@@ -19,6 +20,7 @@ export class ModalViewRegisterStudentComponent implements OnInit {
     public activeModal: NgbActiveModal,
     private toastService: ToastService,
     private httpClientService: HttpClientService,
+    public utilitiesService: UtilitiesService
   ) { }
 
   ngOnInit(): void {

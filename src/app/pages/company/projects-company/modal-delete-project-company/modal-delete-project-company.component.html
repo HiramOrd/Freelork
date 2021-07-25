@@ -1,1 +1,24 @@
-<p>modal-delete-project-company works!</p>
+<div class="modal-header pt-3 pb-0 d-flex align-items-center justify-content-end">
+
+  <button class="btn px-3 text-gray" tabindex="-1" (click)="activeModal.dismiss('Cross click')">
+    <i class="fas fa-times"></i>
+  </button>
+</div>
+<div class="modal-body pt-0">
+  <h2 class="modal-head">Eliminar este proyecto</h2>
+  <div class="pt-4 pb-5">
+    <p class="text-sm font-weight-normal font-weight-light m-0">
+      Las tareas realiazadas en este proyeto no se veran afectadas, pero el proyecto dejara de ser visible para todos los usuarios.
+    </p>
+  </div>
+
+  <div class="d-flex justify-content-end">
+    <button class="btn mr-3 secondary" tabindex="-1" name="button" (click)="activeModal.dismiss('Cross click')">
+      Cancelar
+    </button>
+
+    <button class="btn danger" name="button" (click)="deleteProject()">
+      Eliminar
+    </button>
+  </div>
+</div>

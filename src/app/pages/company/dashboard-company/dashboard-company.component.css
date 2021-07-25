@@ -1,0 +1,17 @@
+.var-text{
+  /* font-size: ; */
+  color: #9E9E9E;
+  font-weight: 800;
+}
+.var-number{
+  font-size: 1.3rem;
+  color: black;
+  font-weight: 900;
+}
+
+@media (max-width: 1200px) {
+  /*   .content-image{
+        margin-top: 2.5rem !important;
+        margin-left: 5vw !important;
+    } */
+}

@@ -1,1 +1,250 @@
-<p>dashboard-company works!</p>
+<!-- Start Background Color -->
+<div class="bg-gradient-lightBlue background-default">
+</div>
+<!-- End Background Color -->
+
+<!-- Start Page content -->
+<div class="container-fluid pt-3 pt-md-7">
+
+
+  <div class="row">
+
+    <div class="col-xl-3 col-lg-6">
+      <div class="card card-stats mb-4 mb-xl-0">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <h5 class="card-title text-uppercase text-muted mb-0">Alumnos</h5>
+              <span class="h2 font-weight-bold mb-0">35</span>
+            </div>
+            <div class="col-auto">
+              <div class="icon icon-shape bg-purple text-white rounded-circle shadow">
+                <i class="fas fa-graduation-cap"></i>
+              </div>
+            </div>
+          </div>
+          <p class="mt-3 mb-0 text-muted text-sm">
+            <span class="text-nowrap font-weight-normal">IS61 Software</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-lg-6">
+      <div class="card card-stats mb-4 mb-xl-0">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <h5 class="card-title text-uppercase text-muted mb-0">Horas</h5>
+              <span class="h2 font-weight-bold mb-0">35</span>
+            </div>
+            <div class="col-auto">
+              <div class="icon icon-shape bg-blue text-white rounded-circle shadow">
+                <i class="fas fa-clock"></i>
+              </div>
+            </div>
+          </div>
+          <p class="mt-3 mb-0 text-muted text-sm">
+            <span class="text-green font-weight-bold">31% </span><span class="text-nowrap font-weight-normal">Completadas</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-lg-6">
+      <div class="card card-stats mb-4 mb-xl-0">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <h5 class="card-title text-uppercase text-muted mb-0">Pendientes</h5>
+              <span class="h2 font-weight-bold mb-0">35</span>
+            </div>
+            <div class="col-auto">
+              <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
+                <i class="fas fa-list"></i>
+              </div>
+            </div>
+          </div>
+          <p class="mt-3 mb-0 text-sm">
+            <span class="font-weight-bold ">8 alumnos </span><span class="text-muted text-nowrap font-weight-normal">en espera</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-lg-6">
+      <div class="card card-stats mb-4 mb-xl-0">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <h5 class="card-title text-uppercase text-muted mb-0">Aceptadas</h5>
+              <span class="h2 font-weight-bold mb-0">35</span>
+            </div>
+            <div class="col-auto">
+              <div class="icon icon-shape bg-green text-white rounded-circle shadow">
+                <i class="fas fa-list"></i>
+              </div>
+            </div>
+          </div>
+          <p class="mt-3 mb-0 text-muted text-sm">
+            <span class="text-green font-weight-bold">31% </span><span class="text-nowrap font-weight-normal">Completadas</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 mt-4">
+      <!-- Start Table Card -->
+      <div class="card shadow px-2 px-sm-3 bg-lighterBlue">
+
+        <div class="card-header bg-lighterBlue px-0 pb-0">
+
+          <!-- Start First Row -->
+          <div class="row align-items-center mb-3 ">
+            <h3 class="col-auto mb-0">Últimas actividades pendientes</h3>
+          </div>
+          <!-- End First Row -->
+
+          <!-- Start Second Row -->
+          <div class="row align-items-end mb-0">
+
+            <!-- Start Search Input -->
+            <div class="col-xl col-sm-12 row m-0 mb-2">
+              <div class="col p-0 mb-0 mr-2 form-group rounded overflow-hidden">
+                <div class="input-group input-group-alternative w-100">
+                  <input class="form-control" placeholder="Lista de tareas..." type="text" [(ngModel)]="tableService.searchTerm">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text text-primary"><i class="fas fa-search"></i></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End Search Input -->
+          </div>
+          <!-- End Second Row -->
+
+        </div>
+
+        <!-- Start Register Table -->
+        <div class="table-responsive bg-white rounded">
+          <table class="table align-items-center table-flush">
+            <thead class="thead-light">
+            <tr>
+              <th scope="col" sortable="title" (sort)="onSort($event)" class="table-title">
+                <div>
+                  Tarea
+                  <span>
+                    <i class="fas fa-sort-up"></i>
+                    <i class="fas fa-sort-down"></i>
+                  </span>
+                </div>
+              </th>
+              <th scope="col" sortable="nameProject" (sort)="onSort($event)" class="table-title">
+                <div>
+                  Proyecto
+                  <span>
+                    <i class="fas fa-sort-up"></i>
+                    <i class="fas fa-sort-down"></i>
+                  </span>
+                </div>
+              </th>
+              <th scope="col" sortable="timeRegister" (sort)="onSort($event)" class="table-title d-none d-lg-table-cell">
+                <div>
+                  Tiempo
+                  <span>
+                    <i class="fas fa-sort-up"></i>
+                    <i class="fas fa-sort-down"></i>
+                  </span>
+                </div>
+              </th>
+              <th scope="col" sortable="status" (sort)="onSort($event)" class="table-title">
+                <div class="table-title">
+                  Status
+                  <span>
+                    <i class="fas fa-sort-up"></i>
+                    <i class="fas fa-sort-down"></i>
+                  </span>
+                </div>
+              </th>
+              <th scope="col" sortable="idStudent:" (sort)="onSort($event)" class="table-title">
+                <div class="table-title">
+                  Ver
+                  <span>
+                    <i class="fas fa-sort-up"></i>
+                    <i class="fas fa-sort-down"></i>
+                  </span>
+                </div>
+              </th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <!-- Start Register Row -->
+            <tr class="row-button" (click)="studentsService.viewRegister(1)" *ngFor="let data of arrayTable$ | async">
+              <td scope="row">
+                <div class="d-inline-flex">
+                  <div class="content-image">
+                    <img src="../../../../assets/img/defaults/default-user.png" class="img-fluid aux-image" alt="image-profile">
+                  </div>
+                  <div class="d-block my-auto ml-2">
+                    <p class="mb-0" style="color: #18187A; font-size: .85rem; font-weight: 600;">{{data.title}} - {{data.student}}</p>
+                    <div class="d-inline-flex">
+                      <svg id="Grupo_37" data-name="Grupo 37" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                        <path id="Trazado_98" data-name="Trazado 98" d="M0,0H24V24H0Z" fill="none"/>
+                        <rect id="Rectángulo_95" data-name="Rectángulo 95" width="16" height="16" rx="2" transform="translate(4 5)" fill="none" stroke="#5d47ac" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                        <line id="Línea_43" data-name="Línea 43" y2="4" transform="translate(16 3)" fill="none" stroke="#5d47ac" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                        <line id="Línea_44" data-name="Línea 44" y2="4" transform="translate(8 3)" fill="none" stroke="#5d47ac" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                        <line id="Línea_45" data-name="Línea 45" x2="16" transform="translate(4 11)" fill="none" stroke="#5d47ac" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                        <rect id="Rectángulo_96" data-name="Rectángulo 96" width="2" height="2" transform="translate(8 15)" fill="none" stroke="#5d47ac" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                      </svg>
+                      <p class="text-sm mb-0 pl-1" style="color: #18187A;">{{data.dateRegister}}</p>
+                    </div>
+                  </div>
+                </div>
+                <!-- <span class="mb-0 text-sm"> {{data.title}} </span> -->
+              </td>
+              <td class="d-none d-lg-table-cell">
+                {{data.nameProject}}
+              </td>
+              <td class="d-none d-lg-table-cell">
+                {{data.timeRegister}} horas
+              </td>
+              <td>
+                  <span class="badge badge-dot mr-4 text-xs">
+                    <span class="text-danger" *ngIf="(data.status === 'Rechazado')">{{data.status}}</span>
+                    <span class="text-orange" *ngIf="(data.status === 'Pendiente')">{{data.status}}</span>
+                    <span class="text-success" *ngIf="(data.status === 'Aceptado')">{{data.status}}</span>
+                  </span>
+              </td>
+              <td class="d-none d-lg-table-cell" routerLink="../students-list/students-profile">
+                {{data.time}}
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 29 29">
+                  <g id="Grupo_51" data-name="Grupo 51" transform="translate(-0.142 -0.471)">
+                    <circle id="Elipse_20" data-name="Elipse 20" cx="14.5" cy="14.5" r="14.5" transform="translate(0.142 0.471)" fill="#6c50f7"/>
+                    <g id="Grupo_52" data-name="Grupo 52" transform="translate(5.302 6.13)">
+                      <path id="Trazado_118" data-name="Trazado 118" d="M0,0H18.681V18.681H0Z" fill="none"/>
+                      <circle id="Elipse_23" data-name="Elipse 23" cx="1.5" cy="1.5" r="1.5" transform="translate(8 7.681)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                      <path id="Trazado_119" data-name="Trazado 119" d="M17.567,10.449Q14.453,15.9,9.784,15.9T2,10.449Q5.114,5,9.784,5t7.784,5.449" transform="translate(-0.443 -1.108)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                    </g>
+                  </g>
+                </svg>
+              </td>
+            </tr>
+            <!-- End Register Row -->
+
+            </tbody>
+          </table>
+        </div>
+        <!-- End Register Table -->
+
+        <!-- Start Pagination -->
+        <div class="card-footer py-4 bg-lighterBlue">
+          <ngb-pagination
+            [collectionSize]="(total$ | async)!" [(page)]="tableService.page" [pageSize]="tableService.pageSize">
+          </ngb-pagination>
+        </div>
+        <!-- End Pagination -->
+      </div>
+      <!-- End Table Card -->
+
+    </div>
+  </div>
+
+</div>

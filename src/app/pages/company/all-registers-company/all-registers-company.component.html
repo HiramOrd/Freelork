@@ -1,1 +1,216 @@
-<p>all-registers-company works!</p>
+<!-- Start Background Color -->
+<div class="bg-gradient-lightBlue background-default">
+</div>
+<!-- End Background Color -->
+
+<!-- Start Page content -->
+<div class="container-fluid pt-3 pt-md-7">
+
+
+  <div class="row">
+    <div class="col">
+      <!-- Start Table Card -->
+      <div class="card shadow px-2 px-sm-3 bg-lighterBlue">
+        <div class="card-header bg-lighterBlue px-0 pb-0">
+
+          <!-- Start First Row -->
+          <div class="row align-items-center mb-3 ">
+            <h3 class="col-auto mb-0">Tareas</h3>
+          </div>
+          <!-- End First Row -->
+
+          <!-- Start Second Row -->
+          <div class="row align-items-end mb-0">
+
+            <!-- Start Date Range Export-->
+            <!-- Start Search Input -->
+            <div class="col-xl row m-0 mb-2">
+              <div class="col p-0 mb-0 mr-2 form-group rounded overflow-hidden">
+                <div class="input-group input-group-alternative w-100">
+                  <input class="form-control" placeholder="Buscar registro..." type="text" [(ngModel)]="tableService.searchTerm">
+                  <!--                  <span class="ml-3" *ngIf="tableService.loading$ | async">Loading...</span>-->
+                  <div class="input-group-prepend">
+                    <span class="input-group-text text-primary"><i class="fas fa-search"></i></span>
+                  </div>
+                </div>
+              </div>
+
+              <button class="btn btn-neutral text-primary d-xl-none" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+                <i class="fas fa-sliders-h"></i>
+              </button>
+
+            </div>
+            <!-- End Search Input -->
+            <div class="row d-xl-inline-flex col-12 col-xl-auto m-0 p-0" id="collapseExample" [(ngbCollapse)]="isCollapsed">
+              <div class="col-sm col-xl-auto form-group mb-2 mb-sm-3 mb-xl-2">
+                <label for="firstDate" class="form-control-label m-0">De: </label>
+                <input id="firstDate" type="date" class="form-control form-control-alternative"
+                       [max]="(dateMaxRange) ? dateMaxRange : utilitiesService.dateToString(today)"
+                       [(ngModel)]="dateMinRange" (change)="changeFilter()">
+              </div>
+
+              <!-- TODO: El input muestra pedazos de fecha -->
+              <div class="col-sm col-xl-auto form-group mb-2 mb-sm-3 mb-xl-2">
+                <label for="secondDate" class="form-control-label m-0">Hasta:</label>
+                <input id="secondDate" type="date" class="form-control form-control-alternative" [ngClass]="(dateMinRange && dateMaxRange === null) ? 'error-border' : ''"
+                       [min]="dateMinRange"
+                       [max]="utilitiesService.dateToString(today)"
+                       [(ngModel)]="dateMaxRange" [disabled]="!dateMinRange" (change)="changeFilter()">
+              </div>
+              <div class="col col-sm-auto mb-3 mb-xl-2 d-flex align-items-end">
+                <button class="w-100 btn btn-neutral mb-0" (click)="resetFilters()">
+                  <i class="fas fa-redo-alt"></i>
+                </button>
+              </div>
+
+
+
+              <div class="col-sm-12 col-xl-auto form-group mb-2 d-flex align-items-end">
+                <div class="btn-group m-0 w-100">
+                  <button type="button" class="btn btn-primary" (click)="exportAll()">
+                    <i class="fas fa-download"></i>
+                    <span class="ml-2">Exportar</span>
+                  </button>
+                  <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+                    <button class="btn btn-primary dropdown-toggle-split" ngbDropdownToggle><i class="fas fa-chevron-down"></i></button>
+                    <div class="dropdown-menu" ngbDropdownMenu>
+                      <button ngbDropdownItem (click)="exportAll()">Exportar todo</button>
+                      <button ngbDropdownItem (click)="exportByDate()">Exportar por fecha</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Start Date Range Export-->
+
+          </div>
+          <!-- End Second Row -->
+
+        </div>
+
+        <!-- Start Register Table -->
+        <div class="table-responsive bg-white rounded">
+          <table class="table align-items-center table-flush">
+            <thead class="thead-light">
+            <tr>
+              <th scope="col" sortable="title" (sort)="onSort($event)" class="table-title">
+                <div>
+                  Titulo
+                  <span>
+                  <i class="fas fa-sort-up"></i>
+                  <i class="fas fa-sort-down"></i>
+                </span>
+                </div>
+              </th>
+              <th scope="col" sortable="nameProject" (sort)="onSort($event)" class="table-title d-none d-lg-table-cell">
+                <div>
+                  Proyecto
+                  <span>
+                  <i class="fas fa-sort-up"></i>
+                  <i class="fas fa-sort-down"></i>
+                </span>
+                </div>
+              </th>
+              <th scope="col" sortable="dateRegister" (sort)="onSort($event)" class="table-title">
+                <div>
+                  Fecha
+                  <span>
+                  <i class="fas fa-sort-up"></i>
+                  <i class="fas fa-sort-down"></i>
+                </span>
+                </div>
+              </th>
+              <th scope="col" sortable="timeRegister" (sort)="onSort($event)" class="table-title d-none d-lg-table-cell">
+                <div>
+                  Duración
+                  <span>
+                  <i class="fas fa-sort-up"></i>
+                  <i class="fas fa-sort-down"></i>
+                </span>
+                </div>
+              </th>
+              <th scope="col" sortable="status" (sort)="onSort($event)" class="table-title">
+                <div class="table-title">
+                  Estado
+                  <span>
+                  <i class="fas fa-sort-up"></i>
+                  <i class="fas fa-sort-down"></i>
+                </span>
+                </div>
+              </th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <!-- Start Register Row -->
+            <tr class="row-button" (click)="studentsService.viewRegister(data.id)" *ngFor="let data of arrayTable$ | async">
+              <td scope="row">
+                <div class="d-inline-flex">
+                  <div class="content-image">
+                    <img [src]="(data.image) ? data.image : 'assets/img/defaults/default-user.png' " alt="" class="img-fluid aux-image" alt="image-profile">
+                  </div>
+                  <div class="d-block my-auto ml-2">
+                    <p class="mb-0" style="color: #18187A; font-size: .85rem; font-weight: 600;">{{data.title}}</p>
+                    <div class="d-inline-flex">
+                      <p class="text-sm mb-0 pl-1">{{data.student}}</p>
+                    </div>
+                  </div>
+                </div>
+                <!-- <span class="mb-0 text-sm"> {{data.title}} </span> -->
+              </td>
+              <td class="d-none d-lg-table-cell">
+                <a routerLink="../projects">{{data.nameProject}}</a>
+              </td>
+              <td>
+                <span>{{data.dateRegister | date: 'dd/MM/yyyy'}}</span>
+              </td>
+              <td class="d-none d-lg-table-cell">
+                {{data.timeRegister}} horas
+              </td>
+              <td>
+                <span class="badge badge-dot mr-4 text-xs">
+                  <span class="text-danger" *ngIf="(data.status === 'Rechazado')">{{data.status}}</span>
+                  <span class="text-orange" *ngIf="(data.status === 'Pendiente')">{{data.status}}</span>
+                  <span class="text-success" *ngIf="(data.status === 'Aceptado')">{{data.status}}</span>
+                </span>
+              </td>
+            </tr>
+            <!-- End Register Row -->
+
+            </tbody>
+          </table>
+        </div>
+        <!-- End Register Table -->
+
+        <!-- Start Pagination -->
+        <div class="card-footer py-4 px-0 bg-lighterBlue">
+          <div class="row m-0 p-0">
+            <div class="col-12 col-sm p-0 d-flex justify-content-center justify-content-sm-start">
+              <ngb-pagination
+                [collectionSize]="(total$ | async)!" [(page)]="tableService.page" [pageSize]="tableService.pageSize" maxSize="5" rotate="true" ellipses>
+              </ngb-pagination>
+            </div>
+
+
+            <div class="col-auto mx-auto mx-sm-0 p-0">
+              <div class="form-group d-flex align-items-center mb-0">
+                <label for="vpp" class="mr-2">Vistas: </label>
+                <select id="vpp" class="form-control form-control-range" name="pageSize" [(ngModel)]="tableService.pageSize">
+                  <option [ngValue]="5">5</option>
+                  <option [ngValue]="10">10</option>
+                  <option [ngValue]="20">20</option>
+                  <option [ngValue]="100000">Todos</option>
+                </select>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <!-- End Pagination -->
+      </div>
+      <!-- End Table Card -->
+
+    </div>
+  </div>
+
+</div>

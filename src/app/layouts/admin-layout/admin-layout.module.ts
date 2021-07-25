@@ -16,6 +16,7 @@ import {RouterModule} from '@angular/router';
 import {StudentsModule} from '../../pages/students/students.module';
 import {TeacherModule} from '../../pages/teacher/teacher.module';
 import {AllUsersModule} from '../../pages/all-users/all-users.module';
+import {CompanyModule} from '../../pages/company/company.module';
 
 @NgModule({
   imports: [
@@ -28,6 +29,7 @@ import {AllUsersModule} from '../../pages/all-users/all-users.module';
     RouterModule,
     StudentsModule,
     TeacherModule,
+    CompanyModule,
     AllUsersModule
   ],
   declarations: [

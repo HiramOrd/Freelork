@@ -9,13 +9,23 @@ import { StudentInfoCompanyComponent } from './student-info-company/student-info
 import { ProfileCompanyComponent } from './profile-company/profile-company.component';
 import { ModalDeleteProjectCompanyComponent } from './projects-company/modal-delete-project-company/modal-delete-project-company.component';
 import { EditProfileCompanyComponent } from './profile-company/edit-profile-company/edit-profile-company.component';
+import {FormsModule} from '@angular/forms';
+import {UtilitiesModule} from '../../utilities/utilities.module';
+import {NgbDropdownModule, NgbPaginationModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
+import {RouterModule} from '@angular/router';
 
 
 
 @NgModule({
   declarations: [DashboardCompanyComponent, ProjectsCompanyComponent, NewProjectCompanyComponent, AllRegistersCompanyComponent, StudentsTableCompanyComponent, StudentInfoCompanyComponent, ProfileCompanyComponent, ModalDeleteProjectCompanyComponent, EditProfileCompanyComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    UtilitiesModule,
+    NgbPaginationModule,
+    RouterModule,
+    NgbTooltipModule,
+    NgbDropdownModule
   ]
 })
 export class CompanyModule { }
