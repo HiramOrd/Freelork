@@ -1,21 +1,21 @@
 /* Teacher Home */
 export const studentTasks: any[] = [
   {
-    id: 1,
-    title: 'Primera tarea que se realizó',
-    idStudent: 1,
-    student: 'Katherine González',
-    company: 'Wayaweb',
-    idProject: 1,
-    nameProject: 'AmmaClub',
-    dateRegister: '2021-08-19',
-    timeRegister: 6,
-    status: 1,
+    /* idRegister */id: 1,
+    /*  desccription */title: 'Primera tarea que se realizó',
+    /* idStudent */idStudent: 1,
+    /* fullName-student */student: 'Katherine González',
+    /* fullName-company (Nombre de la empresa) */company: 'Wayaweb',
+    /* idProject */idProject: 1,
+    /* Name-projects */nameProject: 'AmmaClub',
+    /* dateCreated-register */dateRegister: '2021-08-19',
+    /* time-register */timeRegister: 6,
+    /* status-register */status: 1,
   },
   {
     id: 2,
     title: 'Se agregaron algunos detalles',
-    idStudent: 1,
+    idStudent: 2,
     student: 'Katherine González',
     company: 'Wayaweb',
     idProject: 1,
@@ -27,7 +27,7 @@ export const studentTasks: any[] = [
   {
     id: 3,
     title: 'La parte del front esta casi lista',
-    idStudent: 1,
+    idStudent: 3,
     student: 'Katherine González',
     company: 'Wayaweb',
     idProject: 1,
@@ -39,7 +39,7 @@ export const studentTasks: any[] = [
   {
     id: 4,
     title: 'La base de datos se ha completado',
-    idStudent: 1,
+    idStudent: 4,
     student: 'Katherine González',
     company: 'Wayaweb',
     idProject: 1,
@@ -51,7 +51,7 @@ export const studentTasks: any[] = [
   {
     id: 5,
     title: 'Faltan algunos detalles visuales',
-    idStudent: 1,
+    idStudent: 5,
     student: 'Katherine González',
     company: 'Wayaweb',
     idProject: 1,
@@ -63,7 +63,7 @@ export const studentTasks: any[] = [
   {
     id: 6,
     title: 'Se completo el apartado de registro',
-    idStudent: 1,
+    idStudent: 6,
     student: 'Katherine González',
     company: 'Wayaweb',
     idProject: 1,
@@ -75,7 +75,7 @@ export const studentTasks: any[] = [
   {
     id: 7,
     title: 'Los detalles fueron corregidos',
-    idStudent: 1,
+    idStudent: 7,
     student: 'Katherine González',
     company: 'Wayaweb',
     idProject: 1,
@@ -87,7 +87,7 @@ export const studentTasks: any[] = [
   {
     id: 8,
     title: 'Practicamente ya está lista la aplicación',
-    idStudent: 1,
+    idStudent: 8,
     student: 'Katherine González',
     company: 'Wayaweb',
     idProject: 1,
@@ -99,7 +99,7 @@ export const studentTasks: any[] = [
   {
     id: 9,
     title: 'Faltan algunos detalles visuales',
-    idStudent: 1,
+    idStudent: 9,
     student: 'Katherine González',
     company: 'Wayaweb',
     idProject: 1,
@@ -111,7 +111,7 @@ export const studentTasks: any[] = [
   {
     id: 10,
     title: 'Se completo el apartado de registro',
-    idStudent: 1,
+    idStudent: 10,
     student: 'Katherine González',
     company: 'Wayaweb',
     idProject: 1,
@@ -123,7 +123,7 @@ export const studentTasks: any[] = [
   {
     id: 11,
     title: 'Los detalles fueron corregidos',
-    idStudent: 1,
+    idStudent: 11,
     student: 'Katherine González',
     company: 'Wayaweb',
     idProject: 1,
@@ -135,7 +135,7 @@ export const studentTasks: any[] = [
   {
     id: 12,
     title: 'Practicamente ya está lista la aplicación',
-    idStudent: 1,
+    idStudent: 12,
     student: 'Katherine González',
     company: 'Wayaweb',
     idProject: 1,
