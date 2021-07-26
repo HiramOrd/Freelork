@@ -4,6 +4,9 @@ import {Router} from '@angular/router';
 import {AuthenticationService} from '../../services/authentication.service';
 import {UtilitiesService} from '../../utilities/utilities.service';
 import {ToastService} from '../../utilities/toast.service';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {DeleteCompanyStudentComponent} from '../students/company-student/delete-company-student/delete-company-student.component';
+import {RetrievePasswordModalComponent} from './retrieve-password-modal/retrieve-password-modal.component';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +20,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     private router: Router,
     private authService: AuthenticationService,
     private utilitiesService: UtilitiesService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private modalService: NgbModal
   ) {
     this.loginForm = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
@@ -54,5 +58,9 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   loginSubmit(): void {
     (this.loginForm.valid) ? this.getLogin() :  this.loginForm.markAllAsTouched();
+  }
+
+  openRetriveModal() {
+    const modalRef = this.modalService.open(RetrievePasswordModalComponent);
   }
 }

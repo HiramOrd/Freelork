@@ -17,6 +17,8 @@ import {UtilitiesModule} from './utilities/utilities.module';
 import {RoutesLayoutModule} from './layouts/routes-layout/routes-layout.module';
 import {AuthenticationInterceptor} from './services/authentication.interceptor';
 import {NgxSpinnerModule} from 'ngx-spinner';
+import { RetrievePasswordModalComponent } from './pages/login/retrieve-password-modal/retrieve-password-modal.component';
+import {Title} from '@angular/platform-browser';
 
 @NgModule({
   imports: [
@@ -35,10 +37,12 @@ import {NgxSpinnerModule} from 'ngx-spinner';
     NgxSpinnerModule
   ],
   declarations: [
-    AppComponent
+    AppComponent,
+    RetrievePasswordModalComponent
   ],
   providers: [
     DecimalPipe,
+    Title,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthenticationInterceptor,

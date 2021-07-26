@@ -42,6 +42,7 @@ import {EditProfileCompanyComponent} from '../pages/company/profile-company/edit
 import {StudentInfoCompanyComponent} from '../pages/company/student-info-company/student-info-company.component';
 import {ProfileTeacherComponent} from '../pages/teacher/profile-teacher/profile-teacher.component';
 import {EditProfileTeacherComponent} from '../pages/teacher/profile-teacher/edit-profile-teacher/edit-profile-teacher.component';
+import {NewCompanyStudentComponent} from '../pages/students/company-student/new-company-student/new-company-student.component';
 
 
 const routes: Routes = [
@@ -49,12 +50,12 @@ const routes: Routes = [
   {
     path: 'guest', component: AuthLayoutComponent, children: [
       {path: '', pathMatch: 'full', redirectTo: 'login'},
-      {path: 'login', component: LoginComponent},
+      {path: 'login', component: LoginComponent, data : {title: 'Freelork - Login'}},
       {path: 'register', component: RegisterComponent, children: [
           {path: '', pathMatch: 'full', redirectTo: 'student'},
-          {path: 'teacher', component: TeacherComponent},
-          {path: 'company', component: CompanyComponent},
-          {path: 'student', component: StudentComponent},
+          {path: 'teacher', component: TeacherComponent, data : {title: 'Freelork - Registo de Maestros'}},
+          {path: 'company', component: CompanyComponent, data : {title: 'Freelork - Registro de Empresas'}},
+          {path: 'student', component: StudentComponent, data : {title: 'Freelork - Registro de Estudiantes'}},
           {path: '**', redirectTo: '/not/404', data: { error: 2 }},
         ]},
       {path: '**', redirectTo: '/not/404', data: { error: 2 }},
@@ -62,7 +63,7 @@ const routes: Routes = [
   },
   {
     path: 'admin-guest/register', component: AuthLayoutComponent, children: [
-      {path: '42hbjhv34345nj', component: AdminComponent},
+      {path: '42hbjhv34345nj', component: AdminComponent, data : {title: 'Freelork - Registro de Administradores'}},
       {path: '**', redirectTo: '/not/404/error/unknown'}
     ]
   },
@@ -70,86 +71,86 @@ const routes: Routes = [
     path: 'dash', component: AdminLayoutComponent, children: [
       {
         path: 'adm', children: [
-          {path: 'home', component: HomeTeacherComponent},
-          {path: 'projects', component: StudentsProjectsComponent},
+          {path: 'home', component: HomeTeacherComponent, data : {title: 'Administrador - Dashboard'}},
+          {path: 'projects', component: StudentsProjectsComponent, data : {title: 'Administrador - Proyectos'}},
           {path: '**', redirectTo: '/not/404' },
         ]
       },
       {
-        path: 'std', canActivate: [AuthenticationGuard], data: {roles: ['1'] }, children: [
-          {path: 'home', component: HomeComponent},
+        path: 'std', canActivate: [AuthenticationGuard], data: {roles: ['1']}, children: [
+          {path: 'home', component: HomeComponent, data : {title: 'Estudiantes - Dashboard'}},
           {path: 'register', children: [
-              {path: '', component: StudentsTableComponent},
-              {path: 'create-task', component: RegisterTaskComponent},
-              {path: 'edit-task', component: RegisterTaskComponent},
+              {path: '', component: StudentsTableComponent, data : {title: 'Estudiantes - Tareas'}},
+              {path: 'create-task', component: RegisterTaskComponent, data : {title: 'Estudiantes - Nueva Tarea'}},
+              {path: 'edit-task', component: RegisterTaskComponent, data : {title: 'Estudiantes - Editar Tarea'}},
               {path: '**', redirectTo: '/not/404' },
             ]},
-          {path: 'projects', component: StudentsProjectsComponent},
+          {path: 'projects', component: StudentsProjectsComponent, data : {title: 'Estudiantes - Proyectos'}},
           {path: 'group', children: [
-              {path: '', component: GroupStudentComponent},
-              {path: 'new', component: NewGroupStudentComponent},
+              {path: '', component: GroupStudentComponent, data : {title: 'Estudiantes - Grupo'}},
+              {path: 'new', component: NewGroupStudentComponent, data : {title: 'Estudiantes - Unirse a grupo'}},
             ]},
           {path: 'company', children: [
-              {path: '', component: CompanyStudentComponent},
-              {path: 'new', component: NewGroupStudentComponent},
+              {path: '', component: CompanyStudentComponent, data : {title: 'Estudiantes - Empresa'}},
+              {path: 'new', component: NewCompanyStudentComponent, data : {title: 'Estudiantes - Unirse a empresa'}},
           ]},
               {path: 'profile', children: [
-              {path: '', component: ProfileStudentComponent},
-              {path: 'edit', component: EditProfileStudentComponent},
+              {path: '', component: ProfileStudentComponent, data : {title: 'Estudiantes - Perfil'}},
+              {path: 'edit', component: EditProfileStudentComponent, data : {title: 'Estudiantes - Editar perfil'}},
             ]},
           {path: '**', redirectTo: '/not/404' },
         ]
       },
       {
         path: 'tch', canActivate: [AuthenticationGuard], data: {roles: ['2'] }, children: [
-          {path: 'home', component: HomeTeacherComponent},
+          {path: 'home', component: HomeTeacherComponent, data : {title: 'Profesores - Dashboard'}},
           {path: 'groups', children: [
-              {path: '', component: GroupsComponent},
-              {path: 'create-group', component: CreateGroupComponent},
+              {path: '', component: GroupsComponent, data : {title: 'Profesores - Grupos'}},
+              {path: 'create-group', component: CreateGroupComponent, data : {title: 'Profesores - Crear Grupo'}},
             ]},
           {path: 'students-list', children: [
-              {path: '', component: StudentsListComponent},
-              {path: 'students-profile/:id', component: StudentsProfileComponent},
+              {path: '', component: StudentsListComponent, data : {title: 'Profesores - Estudiantes'}},
+              {path: 'students-profile/:id', component: StudentsProfileComponent, data : {title: 'Profesores - Perfil Estudiante'}},
             ]},
           {path: 'profile', children: [
-              {path: '', component: ProfileTeacherComponent},
-              {path: 'edit', component: EditProfileTeacherComponent},
+              {path: '', component: ProfileTeacherComponent, data : {title: 'Profesores - Perfil'}},
+              {path: 'edit', component: EditProfileTeacherComponent, data : {title: 'Profesores - Editar Perfil'}},
             ]},
           {path: '**', redirectTo: '/not/404' },
         ]
       },
       {
         path: 'comp', canActivate: [AuthenticationGuard], data: {roles: ['3'] }, children: [
-          {path: 'home', component: DashboardCompanyComponent},
+          {path: 'home', component: DashboardCompanyComponent, data : {title: 'Empresa - Dashboard'}},
           {path: 'projects', children: [
-              {path: '', component: ProjectsCompanyComponent},
-              {path: 'new', component: NewProjectCompanyComponent},
-              {path: 'edit/:id', component: NewProjectCompanyComponent},
+              {path: '', component: ProjectsCompanyComponent, data : {title: 'Empresa - Proyectos'}},
+              {path: 'new', component: NewProjectCompanyComponent, data : {title: 'Empresa - Nuevo Proyecto'}},
+              {path: 'edit/:id', component: NewProjectCompanyComponent, data : {title: 'Empresa - Editar Proyecto'}},
             ]},
-          {path: 'all-list', component: AllRegistersCompanyComponent},
+          {path: 'all-list', component: AllRegistersCompanyComponent, data : {title: 'Empresa - Tareas'}},
           {path: 'students', children: [
-              {path: '', component: StudentsListComponent},
-              {path: 'students-profile', component: StudentsProfileComponent},
+              {path: '', component: StudentsListComponent, data : {title: 'Empresa - Estudiantes'}},
+              {path: 'students-profile', component: StudentsProfileComponent, data : {title: 'Empresa - Perfil de estudiante'}},
             ]},
           {path: 'profile', children: [
-              {path: '', component: ProfileCompanyComponent},
-              {path: 'edit', component: EditProfileCompanyComponent},
+              {path: '', component: ProfileCompanyComponent, data : {title: 'Empresa - Perfil'}},
+              {path: 'edit', component: EditProfileCompanyComponent, data : {title: 'Empresa - Editar Perfil'}},
             ]},
 
           {path: '**', redirectTo: '/not/404' },
         ]
       },
       {path: '', pathMatch: 'full', redirectTo: 'home'},
-      {path: 'user-profile', component: UserProfileComponent},
-      {path: 'tables', component: TablesComponent},
-      {path: 'icons', component: IconsComponent},
-      {path: 'maps', component: MapsComponent},
+      {path: 'user-profile', component: UserProfileComponent, data : {title: 'Estudiantes - Dashboard'}},
+      {path: 'tables', component: TablesComponent, data : {title: 'Estudiantes - Dashboard'}},
+      {path: 'icons', component: IconsComponent, data : {title: 'Estudiantes - Dashboard'}},
+      {path: 'maps', component: MapsComponent, data : {title: 'Estudiantes - Dashboard'}},
       {path: '**', redirectTo: '/not/404'},
     ]
   },
   {path: 'not', component: RoutesLayoutComponent, children: [
       {path: '', pathMatch: 'full', redirectTo: '404'},
-      {path: '404', component: Page404Component},
+      {path: '404', component: Page404Component, data : {title: 'Error 404'}},
       {path: '**', redirectTo: '404'},
     ]},
   {path: '**', redirectTo: 'not'}

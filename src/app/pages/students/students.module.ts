@@ -22,6 +22,8 @@ import { EditProfileStudentComponent } from './profile-student/edit-profile-stud
 import {FormsRegisterModule} from '../register/forms-register/forms-register.module';
 import { DeleteGroupStudentComponent } from './group-student/delete-group-student/delete-group-student.component';
 import { CompanyStudentComponent } from './company-student/company-student.component';
+import { NewCompanyStudentComponent } from './company-student/new-company-student/new-company-student.component';
+import { DeleteCompanyStudentComponent } from './company-student/delete-company-student/delete-company-student.component';
 
 
 
@@ -42,6 +44,8 @@ import { CompanyStudentComponent } from './company-student/company-student.compo
     EditProfileStudentComponent,
     DeleteGroupStudentComponent,
     CompanyStudentComponent,
+    NewCompanyStudentComponent,
+    DeleteCompanyStudentComponent,
   ],
     imports: [
         CommonModule,

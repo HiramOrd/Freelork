@@ -26,7 +26,7 @@
         <a class="nav-link" role="button" ngbDropdownToggle>
           <div class="media align-items-center">
             <span class="avatar avatar-sm rounded-circle">
-              <img alt="Image placeholder" [src]="utilitiesService.getImage()">
+              <img alt="Image placeholder img-objet-fit" [src]="utilitiesService.getImage()" style="object-fit: cover;height: 36px;width: 36px;">
             </span>
           </div>
         </a>
@@ -53,7 +53,7 @@
         <div class="row">
           <div class="col-6 collapse-brand">
             <a  routerLinkActive="active" [routerLink]="['/dash/' + roleRoute+ 'home']">
-              <img src="./assets/img/brand/blue.png">
+              <img src="./assets/img/brand/logo-dark.png"><span class="text-uppercase ml-3 font-weight-bold text-darkBlue">Freelork</span>
             </a>
           </div>
           <div class="col-6 collapse-close">
