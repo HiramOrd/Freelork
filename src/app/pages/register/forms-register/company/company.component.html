@@ -125,7 +125,9 @@
 
     </div>
 
-    <div class="text-center">
-      <button type="submit" class="col-sm-8 btn btn-primary mt-4">Crear cuenta</button>
-    </div>
+  <div class="text-center" [ngClass]="(edit) ? 'text-md-right' : ''" >
+    <button type="submit" class="btn btn-primary mt-4" [ngClass]="(edit)? 'col-auto' : 'col-sm-8'" >
+      {{ (edit) ? 'Guardar Cambios' : 'Crear Cuenta' }}
+    </button>
+  </div>
   </form>

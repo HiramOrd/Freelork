@@ -26,6 +26,8 @@ export class CompanyComponent implements OnInit {
     private utilitiesService: UtilitiesService,
     private toastService: ToastService
   ) {
+    this.companyDataOut = new EventEmitter<FormGroup>();
+    this.imageCompany = new EventEmitter<string>();
   }
 
   ngOnInit(): void {
@@ -43,7 +45,7 @@ export class CompanyComponent implements OnInit {
   }
 
   companySubmit(): void {
-    console.log(this.companyForm.getRawValue());
+    // console.log(this.companyForm.getRawValue());
     (this.companyForm.valid) ? this.postCompany() : this.errorForm();
   }
 

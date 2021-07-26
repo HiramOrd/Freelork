@@ -15,6 +15,7 @@ import {NgbCollapseModule, NgbDropdownModule, NgbPaginationModule, NgbTooltipMod
 import {RouterModule} from '@angular/router';
 import {AllUsersModule} from '../all-users/all-users.module';
 import {ComponentsModule} from '../../components/components.module';
+import {FormsRegisterModule} from '../register/forms-register/forms-register.module';
 
 
 
@@ -31,7 +32,8 @@ import {ComponentsModule} from '../../components/components.module';
     NgbCollapseModule,
     AllUsersModule,
     ComponentsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsRegisterModule
   ]
 })
 export class CompanyModule { }
