@@ -12,4 +12,7 @@ export class CompanyStudentComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  openModalDelete() {
+  }
+
 }
