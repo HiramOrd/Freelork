@@ -14,12 +14,12 @@ export const ROUTES: RouteInfo[] = [
   { role: '1', path: 'std/register', title: 'Registro',  icon: 'ni-bullet-list-67 text-primary', class: '' },
   { role: '1', path: 'std/projects', title: 'Proyectos',  icon: 'ni-archive-2 text-primary', class: '' },
   { role: '1', path: 'std/company', title: 'Empresa',  icon: 'ni-building text-primary', class: '' },
-  { role: '1', path: 'std/group', title: 'Grupo',  icon: 'ni-hat-3 text-primary', class: '' },
+  { role: '1', path: 'std/group', title: 'Grupo',  icon: 'fas fa-users text-primary', class: '' },
   { role: '1', path: 'std/profile', title: 'Perfil',  icon: 'ni-single-02 text-primary', class: '' },
 
   { role: '2', path: 'tch/home', title: 'Dashboard',  icon: 'ni-books text-primary', class: '' },
-  { role: '2', path: 'tch/groups', title: 'Grupos',  icon: 'ni-books text-primary', class: '' },
-  { role: '2', path: 'tch/students-list', title: 'Alumnos',  icon: 'ni-books text-primary', class: '' },
+  { role: '2', path: 'tch/groups', title: 'Grupos',  icon: 'fas fa-users text-primary', class: '' },
+  { role: '2', path: 'tch/students-list', title: 'Estudiantes',  icon: 'ni-hat-3 text-primary', class: '' },
 
   { role: '3', path: 'comp/home', title: 'Dashboard',  icon: 'ni-books text-primary', class: ''  },
   { role: '3', path: 'comp/projects', title: 'Proyectos',  icon: 'ni-archive-2 text-primary', class: ''  },
