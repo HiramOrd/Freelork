@@ -14,7 +14,7 @@
 
 /* Main Container */
 #image-container{
-  min-height: 30rem;
+  min-height: 15rem;
   background-color: var(--secondary);
 }
 

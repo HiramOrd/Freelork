@@ -1,1 +1,80 @@
-<p>new-project-company works!</p>
+<div class="header bg-gradient-lightBlue pb-5 pt-3 pt-md-7">
+  <div class="container-fluid">
+    <div class="header-body">
+
+      <!-- Start Form -->
+      <form (submit)="validateForm()" [formGroup]="registerTaskForm">
+        <div class="row">
+          <div class="col-12">
+            <!-- Start Cards section -->
+            <div class="card">
+
+              <!-- Start Card Header -->
+              <div class="card-header bg-white border-0">
+                <div class="row align-items-center p-0 m-0">
+                  <a class="p-0 m-0 mr-3 mouse-pointer" routerLink="/dash/comp/projects">
+                    <i class="fas fa-arrow-left"></i>
+                  </a>
+                  <h3 class="mb-0">Proyecto</h3>
+                </div>
+              </div>
+              <!-- End Card Header -->
+
+              <!-- Start Card Body -->
+              <div class="card-body p-xl-3 bg-secondary">
+                <div class="row p-0 m-0">
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-first-name">Nombre del Proyecto</label>
+                      <input
+                        [ngClass]="(registerTaskForm.controls.title.invalid && registerTaskForm.controls.title.touched ) ? 'error-border' : ''"
+                        type="text" id="input-first-name" class="form-control form-control-alternative"
+                        placeholder="¿Cómo se llama el proyecto?" formControlName="title" maxlength="50">
+                      <div
+                        *ngIf="registerTaskForm.controls.title.invalid && registerTaskForm.controls.title.touched">
+                        <small class="error-text ml-2">*Agrega el nombre del proyecto</small>
+                      </div>
+                    </div>
+                    <!-- Start Description Input -->
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="form-group mb-lg-0">
+                          <label class="form-control-label" for="project-description">Objetivo</label>
+                          <textarea class="form-control form-control-alternative"
+                                    id="project-description" rows="7" maxlength="500" formControlName="description"
+                                    placeholder="En que consiste el proyecto..."></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- End Description Input -->
+                  </div>
+                  <div class="col-lg-6">
+                    <label class="form-control-label">Logo del Proyecto</label>
+                    <app-drag-and-drop [file]="file" (result)="setImage($event)"></app-drag-and-drop>
+                  </div>
+                </div>
+
+                <!-- Start Submit Desktop -->
+                <div class="row justify-content-end mt-5">
+                  <div class="col-md-auto">
+                    <div class="form-group">
+                      <button type="submit" class="btn btn-primary w-100">Aceptar</button>
+                    </div>
+                  </div>
+                </div>
+                <!-- End Submit Desktop -->
+
+              </div>
+              <!-- End Card Body -->
+
+            </div>
+            <!-- End Cards section -->
+
+          </div>
+        </div>
+      </form>
+      <!-- End Form -->
+
+    </div>
+  </div>
+</div>
