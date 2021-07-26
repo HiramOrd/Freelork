@@ -7,12 +7,12 @@
 <div class="container-fluid pt-3 pt-md-7">
   <div class="row">
     <div class="col">
-      <div class="card shadow">
-
-        <!-- Start Edit Button -->
-        <button class=" btn btn-primary border-white m-0 add-button" routerLink="edit">
+      <div class="card shadow" style="position: relative;">
+        <button class="btn btn-primary border-white m-0 add-button" routerLink="edit" style="position: absolute; z-index: 1;">
           <i class="fas fa-pencil-alt"></i>
         </button>
+        <!-- Start Edit Button -->
+       
         <!-- End Edit Button -->
 
         <app-user-profile [name]="'Armando Vivanco'" [email]="'emailemail.com'" [photo]="''" [role]="utilitiesService.getRoleName()"></app-user-profile>

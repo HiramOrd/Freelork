@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {HttpClientService} from '../../../../services/http-client.service';
+import {ToastService} from '../../../../utilities/toast.service';
+
 @Component({
   selector: 'app-create-group',
   templateUrl: './create-group.component.html',
@@ -8,8 +11,14 @@ import {Router} from '@angular/router';
 })
 export class CreateGroupComponent implements OnInit {
   createGroupForm: FormGroup;
+  private origin: string;
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router, 
+    private route: ActivatedRoute,
+    private httpClientService: HttpClientService,
+    private toastService: ToastService,
+  ) { }
 
   ngOnInit(): void {
     this.createGroupForm = new FormGroup({
@@ -20,6 +29,28 @@ export class CreateGroupComponent implements OnInit {
       schedule: new FormControl(null, [Validators.required]),
     });
 
+/*     this.route.queryParams.subscribe( params => {
+      (params.origin) ? this.origin = params.origin : this.origin = '0';
+      if (params.id) { this.getGroup(params.id); }
+    }); */
+
+  }
+
+/*   getGroup(id: number) {
+    this.httpClientService.getGroup(id).subscribe( response => {
+      console.log(response);
+    }, error => {
+      console.warn(error);
+      this.toastService.show('Error en el servidor, no se pudo cargar el contenido' , { classname: 'bg-danger text-white'});
+    });
+  }
+ */
+  return(): void {
+    let route = '/dash/std/register';
+    if (this.origin === '1') {
+      route = '/dash/std/home';
+    }
+    this.router.navigate([route]).then(() => {} );
   }
 
   createGroupSubmit(): void {
