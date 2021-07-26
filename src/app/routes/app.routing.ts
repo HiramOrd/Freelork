@@ -89,15 +89,18 @@ const routes: Routes = [
           {path: 'group', children: [
               {path: '', component: GroupStudentComponent, data : {title: 'Estudiantes - Grupo'}},
               {path: 'new', component: NewGroupStudentComponent, data : {title: 'Estudiantes - Unirse a grupo'}},
+              {path: '**', redirectTo: '/not/404' },
             ]},
           {path: 'company', children: [
               {path: '', component: CompanyStudentComponent, data : {title: 'Estudiantes - Empresa'}},
               {path: 'new', component: NewCompanyStudentComponent, data : {title: 'Estudiantes - Unirse a empresa'}},
-          ]},
+              {path: '**', redirectTo: '/not/404' },
+            ]},
               {path: 'profile', children: [
               {path: '', component: ProfileStudentComponent, data : {title: 'Estudiantes - Perfil'}},
               {path: 'edit', component: EditProfileStudentComponent, data : {title: 'Estudiantes - Editar perfil'}},
-            ]},
+                  {path: '**', redirectTo: '/not/404' },
+                ]},
           {path: '**', redirectTo: '/not/404' },
         ]
       },
@@ -107,14 +110,18 @@ const routes: Routes = [
           {path: 'groups', children: [
               {path: '', component: GroupsComponent, data : {title: 'Profesores - Grupos'}},
               {path: 'create-group', component: CreateGroupComponent, data : {title: 'Profesores - Crear Grupo'}},
+              {path: 'edit-group', component: CreateGroupComponent, data : {title: 'Profesores - Editar Grupo'}},
+              {path: '**', redirectTo: '/not/404' },
             ]},
           {path: 'students-list', children: [
               {path: '', component: StudentsListComponent, data : {title: 'Profesores - Estudiantes'}},
               {path: 'students-profile/:id', component: StudentsProfileComponent, data : {title: 'Profesores - Perfil Estudiante'}},
+              {path: '**', redirectTo: '/not/404' },
             ]},
           {path: 'profile', children: [
               {path: '', component: ProfileTeacherComponent, data : {title: 'Profesores - Perfil'}},
               {path: 'edit', component: EditProfileTeacherComponent, data : {title: 'Profesores - Editar Perfil'}},
+              {path: '**', redirectTo: '/not/404' },
             ]},
           {path: '**', redirectTo: '/not/404' },
         ]
@@ -126,15 +133,18 @@ const routes: Routes = [
               {path: '', component: ProjectsCompanyComponent, data : {title: 'Empresa - Proyectos'}},
               {path: 'new', component: NewProjectCompanyComponent, data : {title: 'Empresa - Nuevo Proyecto'}},
               {path: 'edit/:id', component: NewProjectCompanyComponent, data : {title: 'Empresa - Editar Proyecto'}},
+              {path: '**', redirectTo: '/not/404' },
             ]},
           {path: 'all-list', component: AllRegistersCompanyComponent, data : {title: 'Empresa - Tareas'}},
           {path: 'students', children: [
               {path: '', component: StudentsListComponent, data : {title: 'Empresa - Estudiantes'}},
               {path: 'students-profile', component: StudentsProfileComponent, data : {title: 'Empresa - Perfil de estudiante'}},
+              {path: '**', redirectTo: '/not/404' },
             ]},
           {path: 'profile', children: [
               {path: '', component: ProfileCompanyComponent, data : {title: 'Empresa - Perfil'}},
               {path: 'edit', component: EditProfileCompanyComponent, data : {title: 'Empresa - Editar Perfil'}},
+              {path: '**', redirectTo: '/not/404' },
             ]},
 
           {path: '**', redirectTo: '/not/404' },

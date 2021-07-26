@@ -11,15 +11,13 @@
       <div class="grid-cards">
 
 
-        
+
         <!-- Start Card Group -->
         <div class="card card-stats mb-4 mb-xl-0" *ngFor="let group of groups; let i = index">
           <ng-template #tipContent let-greeting="greeting">{{greeting}}</ng-template>
           <div class="card-body px-2 px-sm-4 p-lg-4">
             <div class="d-flex justify-content-end align-items-center">
-              <a href="" class="m-0">
-                <i class="transform-icon text-xs fas fa-pen mr-3 text-white bg-purple rounded-circle p-2" title="Editar el proyecto" routerLink="../create-group"></i>
-              </a>
+              <i class="transform-icon text-xs fas fa-pen mouse-pointer mr-3 text-white bg-purple rounded-circle p-2" title="Editar el proyecto" routerLink="edit-group"></i>
               <i class="transform-icon text-xs fas fa-trash text-white bg-danger mouse-pointer rounded-circle p-2" title="Eliminar el proyecto" (click)="deleteGroup()"></i>
             </div>
             <p class="font-weight-bold pt-1 m-0 text-dark text-uppercase"> {{group.name}}<!-- IS61 SOFTWARE --></p>
@@ -39,7 +37,7 @@
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                         <rect x="8" y="8" width="12" height="12" rx="2" />
                         <path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2" />
-                    </svg>                           
+                    </svg>
                 </div>
             </div>
             <div class="d-flex justify-content-between mt-2">
@@ -49,11 +47,11 @@
                 <div class="text-right">
                   <p class="text-sm m-0 font-weight-bold"> Status: <span class="text-green">{{group.status}}<!-- Activo --></span></p>
                 </div>
-            </div>        
+            </div>
           </div>
         </div>
-        <!-- End Card Group -->    
-        
+        <!-- End Card Group -->
+
         <!-- Start Card New Group -->
         <div class="btn card card-stats mb-4 mb-xl-0 new-project py-4" routerLink="../create-group">
           <div class="card-body px-2 px-sm-4 p-lg-4 d-flex align-content-center justify-content-center flex-column text-center">
@@ -66,7 +64,7 @@
         </div>
         <!-- End ard New Group -->
 
-  
+
 
       </div>
       <!-- End Grid Cards Projects -->
