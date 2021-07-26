@@ -107,7 +107,7 @@ const routes: Routes = [
             ]},
           {path: 'students-list', children: [
               {path: '', component: StudentsListComponent},
-              {path: 'students-profile', component: StudentsProfileComponent},
+              {path: 'students-profile/:id', component: StudentsProfileComponent},
             ]},
           {path: '**', redirectTo: '/not/404' },
         ]
