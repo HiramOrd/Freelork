@@ -12,11 +12,14 @@ import { StudentsProfileComponent } from './students/students-profile/students-p
 import { HomeTeacherComponent } from './home-teacher/home-teacher.component';
 import {RouterModule} from '@angular/router';
 import {AllUsersModule} from '../all-users/all-users.module';
+import { ProfileTeacherComponent } from './profile-teacher/profile-teacher.component';
+import { EditProfileTeacherComponent } from './profile-teacher/edit-profile-teacher/edit-profile-teacher.component';
+import {FormsRegisterModule} from '../register/forms-register/forms-register.module';
 
 
 
 @NgModule({
-  declarations: [GroupsComponent, CreateGroupComponent, ModalDeleteGroupComponent, StudentsListComponent, StudentsProfileComponent, HomeTeacherComponent],
+  declarations: [GroupsComponent, CreateGroupComponent, ModalDeleteGroupComponent, StudentsListComponent, StudentsProfileComponent, HomeTeacherComponent, ProfileTeacherComponent, EditProfileTeacherComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -26,7 +29,8 @@ import {AllUsersModule} from '../all-users/all-users.module';
     NgbModule,
     NgbTooltipModule,
     RouterModule,
-    AllUsersModule
+    AllUsersModule,
+    FormsRegisterModule
   ],
 })
 export class TeacherModule { }

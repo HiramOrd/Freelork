@@ -1,0 +1,44 @@
+<!-- Start Background Color -->
+<div class="bg-gradient-lightBlue background-default">
+</div>
+<!-- End Background Color -->
+
+
+<div class="container-fluid pt-3 pt-md-7">
+  <div class="row">
+    <div class="col">
+      <div class="card shadow">
+
+        <!-- Start Edit Button -->
+        <button class=" btn btn-primary border-white m-0 add-button" routerLink="edit">
+          <i class="fas fa-pencil-alt"></i>
+        </button>
+        <!-- End Edit Button -->
+
+        <app-user-profile [name]="'Armando Vivanco'" [email]="'emailemail.com'" [photo]="''" [role]="utilitiesService.getRoleName()"></app-user-profile>
+
+        <div class="card-body">
+                    <div class="row">
+            <div class="col">
+              <div class="card-profile-stats d-flex justify-content-center">
+                <div class="row p-0 m-0 w-100">
+                  <div class="col-12 col-lg-6 m-0">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span class="heading font-weight-700 text-sm">Ingeniería</span>
+                    <span class="description">Grado de Estudios</span>
+                  </div>
+                  <div class="col-12 col-lg-6 m-0">
+                    <i class="fas fa-phone"></i>
+                    <span class="heading font-weight-700 text-sm">9999833453</span>
+                    <span class="description">Teléfono</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

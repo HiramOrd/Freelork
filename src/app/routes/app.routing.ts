@@ -40,6 +40,8 @@ import {StudentsTableCompanyComponent} from '../pages/company/students-table-com
 import {ProfileCompanyComponent} from '../pages/company/profile-company/profile-company.component';
 import {EditProfileCompanyComponent} from '../pages/company/profile-company/edit-profile-company/edit-profile-company.component';
 import {StudentInfoCompanyComponent} from '../pages/company/student-info-company/student-info-company.component';
+import {ProfileTeacherComponent} from '../pages/teacher/profile-teacher/profile-teacher.component';
+import {EditProfileTeacherComponent} from '../pages/teacher/profile-teacher/edit-profile-teacher/edit-profile-teacher.component';
 
 
 const routes: Routes = [
@@ -108,6 +110,10 @@ const routes: Routes = [
           {path: 'students-list', children: [
               {path: '', component: StudentsListComponent},
               {path: 'students-profile/:id', component: StudentsProfileComponent},
+            ]},
+          {path: 'profile', children: [
+              {path: '', component: ProfileTeacherComponent},
+              {path: 'edit', component: EditProfileTeacherComponent},
             ]},
           {path: '**', redirectTo: '/not/404' },
         ]

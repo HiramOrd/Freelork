@@ -1,0 +1,48 @@
+<!-- Start Background Color -->
+<div class="bg-gradient-lightBlue background-default">
+</div>
+<!-- End Background Color -->
+
+
+<div class="container-fluid pt-3 pt-md-7">
+  <div class="row">
+    <div class="col-12">
+      <div class="card shadow">
+        <!-- Start Card Header -->
+        <div class="card-header bg-white border-0">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <div class="row p-0 m-0">
+                <a class="p-0 m-0 mr-3 mouse-pointer" routerLink="../">
+                  <i class="fas fa-arrow-left"></i>
+                </a>
+                <h3 class="mb-0">Editar Perfil</h3>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!-- End Card Header -->
+
+        <div class="card-body">
+          <div class="row p-0 m-0">
+            <div class="col-12 col-lg-auto p-0 text-center">
+              <label class="image-edit" for="profile-image" [formGroup]="teacherProfile">
+                <picture class="btn p-0 m-0">
+                  <img [src]=" (imageShow) ? imageShow : '../../../../assets/img/defaults/default-user.png'" alt="" class="rounded">
+                </picture>
+                <input type="file" class="d-none" id="profile-image"  accept=".png, .jpg, .jpeg" (change)="onFileChange($event)">
+                <i class="fas fa-pencil-alt fa-2x mouse-pointer"></i>
+              </label>
+            </div>
+            <div class="col">
+              <div class="row p-0 m-0 mt-4 mt-lg-0 ml-lg-4">
+                <app-teacher [edit]="true" (imageTeacher)="imageShow = $event" (teacherDataOut)="setTeacherData($event)"></app-teacher>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
