@@ -50,17 +50,12 @@
                 <p class="m-0" style="font-weight: 700;">Filtro</p>
               </div>
 
-              <div class="d-xl-inline-flex align-items-end col-sm col-xl-auto form-group mb-2 mb-sm-3 mb-xl-2">
-                <label for="firstDate" class="form-control-label my-auto pr-2">Horas:</label>
-                <input class="form-control" type="number" [(ngModel)]="tableService.searchTerm" NumbersOnly>
-              </div>
-
               <!-- TODO: El input muestra pedazos de fecha -->
               <div class="d-xl-inline-flex align-items-end col-xl-auto form-group mb-2 mb-sm-3 mb-xl-2">
                 <label for="secondDate" class="form-control-label my-auto pr-2">Grupo:</label>
                 <div class="input-group">
-                  <select id="grade" class="form-control form-control-alternative bg-lightblue-border">
-                    <option [value]="null" disabled selected>Selecciona el grupo</option>
+                  <select id="grade" class="form-control form-control-alternative bg-lightblue-border" [(ngModel)]="tableService.searchTerm">
+                    <option [value]="null" disabled selected autofocus>Selecciona el grupo</option>
                     <option>IS61-Software</option>
                     <option>IB41-Biotecnologia</option>
                     <option>IT51-Terapia</option>
