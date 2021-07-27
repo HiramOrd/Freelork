@@ -7,6 +7,7 @@ export class API {
   static LOGIN = 'login';
   static POST_TASK = 'register/';
   static GET_STUDENT = 'student/';
+  static GET_TEACHER = 'teacher/';
   static UPDATE_STUDENT = 'student/update';
 
   // Register Account
@@ -18,4 +19,8 @@ export class API {
   // Task
   static GET_TASK_LIST = 'register/list/';
   static GET_TASK = 'register/';
+
+
+  // Teacher
+  static GET_SUMMARY_LIST = 'summary/';
 }
