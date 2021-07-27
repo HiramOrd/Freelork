@@ -109,10 +109,10 @@
               <td scope="row">
                 <div class="d-inline-flex">
                   <div class="content-image">
-                    <img src="../../../../assets/img/defaults/default-user.png" class="img-fluid aux-image" alt="image-profile">
+                    <img src="{{data.image ? data.image : '../../../../assets/img/defaults/default-user.png'}}" class="img-fluid aux-image" alt="image-profile">
                   </div>
                   <div class="d-block my-auto ml-2">
-                    <p class="mb-0" style="color: #18187A; font-size: .85rem; font-weight: 600;">{{data.student}}</p>
+                    <p class="mb-0" style="color: #18187A; font-size: .85rem; font-weight: 600;">{{data.fullName}}</p>
                     <div class="d-inline-flex align-items-center">
                       <p class="text-sm mb-0 pl-1 font-weight-normal">{{data.enrollment}}</p>
                     </div>
@@ -121,7 +121,7 @@
               </td>
 
               <td>
-                {{data.group}}
+                {{data.classroom}}
               </td>
               <td *ngIf="utilitiesService.getRole() !==3" class="d-none d-lg-table-cell">
                 {{data.company}}
@@ -129,10 +129,14 @@
               <td>
                 {{data.advisor}}
               </td>
-              <td class="text-center">
-                {{data.totalWork}}
+              <td>
+                {{!data?.hours || data?.hours?.length === 0}}
               </td>
             </tr>
+
+            <div>
+
+            </div>
             <!-- End Register Row -->
 
             </tbody>
