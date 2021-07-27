@@ -24,7 +24,7 @@
                     <div class="col text-center text-sm-left">
                       <div class="row flex-column flex-sm-row">
                         <span class="h2 col font-weight-bold mb-0">Avisos</span>
-                        <span class="col-auto">9 avisos</span>
+<!--                        <span class="col-auto">9 avisos</span>-->
                       </div>
                     </div>
                   </div>
@@ -35,12 +35,16 @@
                   <div class="card mb-4 advises-table bg-lightPurple border-0">
 
                     <!-- Start Advises Row -->
-                    <div class="col py-3 border-bottom flex-grow-0 row-button" (click)="viewAdviseModal()">
+                    <div class="col py-3 border-bottom flex-grow-0 row-button" *ngFor="let advise of serviceData?.advises" (click)="viewAdviseModal()">
                           <span class="d-block font-weight-bold text-purple text-sm">Entrega de documentos carta de presentación</span>
                           <i class="far fa-calendar-alt mr-3"></i><small class="font-weight-bold text-xs mr-2">20-10-2021 - 13-10-2021</small>
                           <span class="d-none d-md-inline-flex text-xs"> Favor de entregar el formato de proyecto, carta de registro...</span>
                     </div>
                     <!-- End Advises Row -->
+
+                    <div *ngIf="!serviceData?.advises || serviceData?.advises?.length === 0" class="flex-grow-1 d-flex m-0 p-0 align-items-center justify-content-center">
+                      <span>Sin avisos</span>
+                    </div>
 
                   </div>
                   <!-- End Advises Table -->
@@ -56,12 +60,12 @@
                   <div class="row">
                     <div class="col">
                       <h5 class="card-title text-uppercase text-muted mb-0">Horas</h5>
-                      <span class="h2 font-weight-bold mb-0">32</span>
+                      <span class="h2 font-weight-bold mb-0">{{serviceData?.hours}} hrs</span>
                     </div>
                   </div>
                   <p class="mt-3 mb-0 text-muted text-sm font-weight-bold">
-                    <span class="text-success mr-2">26%</span>
-                    <span class="text-nowrap">completadas</span>
+<!--                    <span class="text-success mr-2">26%</span>-->
+                    <span class="text-nowrap">Total de horas</span>
                   </p>
                 </div>
               </div>
@@ -77,18 +81,18 @@
                       <div class="row">
                         <div class="col">
                           <h5 class="card-title text-uppercase text-muted mb-0">Tareas</h5>
-                          <span class="h2 font-weight-bold mb-0">19</span>
+                          <span class="h2 font-weight-bold mb-0">{{serviceData?.projects[counterProject]?.registers}}</span>
                         </div>
                       </div>
                       <p class="mt-3 mb-0 text-muted text-sm">
-                        <span class="text-success mr-2 font-weight-bold">Ammaclub</span>
+                        <span class="text-success mr-2 font-weight-bold">{{serviceData?.projects[counterProject]?.nameProject}}</span>
                       </p>
                     </div>
 
                     <div class="col-auto d-flex justify-content-center align-items-center">
                       <div class="row flex-column">
-                        <i class="fas fa-lg fa-sort-up mouse-pointer"></i>
-                        <i class="fas fa-lg fa-sort-down mouse-pointer"></i>
+                        <i class="fas fa-lg fa-sort-up mouse-pointer" (click)="nextProject()"></i>
+                        <i class="fas fa-lg fa-sort-down mouse-pointer" (click)="previousProject()"></i>
                       </div>
 
                     </div>
@@ -125,17 +129,21 @@
                     <div class="card mb-4 task-table">
 
                       <!-- Start Task Row -->
-                      <div class="col py-3 border-bottom flex-grow-0 row-button" (click)="studentsService.viewRegister(1, 1)">
+                      <div class="col py-3 border-bottom flex-grow-0 row-button" *ngFor="let register of serviceData?.registers" (click)="studentsService.viewRegister(1, 1)">
                         <div class="row align-items-center">
                           <div class="col">
-                            <span class="d-block font-weight-bold text-purple text-sm">Cambios en la base de datos</span>
-                            <small class="font-weight-bold text-xs">(AmmaClub) </small>
-                            <span class="d-none d-md-inline-flex text-xs"> Se realizaron cambios en la base de datos de la aplicacion</span>
+                            <span class="d-block font-weight-bold text-purple text-sm">{{register.title}}</span>
+                            <small class="font-weight-bold text-xs">({{register?.nameProject}}) </small>
+                            <span class="d-none d-md-inline-flex text-xs"> {{register?.description | slice:0:50}}{{(register?.description?.length > 50) ? '...' : ''}} </span>
                           </div>
-                          <span class="col-auto text-sm font-weight-bold text-darker">1H</span>
+                          <span class="col-auto text-sm font-weight-bold text-darker">{{register?.timeRegister}} hrs</span>
                         </div>
                       </div>
                       <!-- End Task Row -->
+
+                      <div *ngIf="!serviceData?.registers || serviceData?.registers?.length === 0" class="flex-grow-1 d-flex m-0 p-0 align-items-center justify-content-center">
+                        <span>Sin Tareas</span>
+                      </div>
 
                     </div>
                     <!-- End Task Table -->
