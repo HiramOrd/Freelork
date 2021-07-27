@@ -34,6 +34,7 @@ export class API {
   static POST_PROJECT2 = 'project/';
   static DELETE_PROJECT = 'student/delete/';
   static DELETE_PROJECT2 = 'project/';
+  static DELETE_REGISTER = 'register/delete/';
   static GET_STUDENT_COMPANY = 'student/company/';
   static POST_STUDENT_COMPANY = 'student/';
   static POST_STUDENT_COMPANY2 = 'company/';

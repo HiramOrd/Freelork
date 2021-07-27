@@ -150,12 +150,12 @@
             <tbody>
 
             <!-- Start Register Row -->
-            <tr class="row-button" (click)="studentsService.viewRegister(data.id)" *ngFor="let data of arrayTable$ | async">
+            <tr class="row-button" (click)="openModal(data)" *ngFor="let data of arrayTable$ | async">
               <td scope="row">
                 <span class="mb-0 text-sm"> {{data.title}} </span>
               </td>
               <td class="d-none d-lg-table-cell">
-                <a routerLink="../projects">{{data.nameProject}}</a>
+                <a routerLink="/dash/std/projects">{{data.nameProject}}</a>
               </td>
               <td>
                 <span>{{data.dateRegister | date: 'dd/MM/yyyy'}}</span>

@@ -26,9 +26,7 @@ export class ModalViewRegisterStudentComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log('id:' + this.id);
     this.getTask(this.id);
-    console.log('origin: ' + this.origin);
   }
 
   getTask(id: number) {
@@ -42,8 +40,7 @@ export class ModalViewRegisterStudentComponent implements OnInit {
   }
 
   deleteRegister() {
-    this.activeModal.dismiss('Change Modal');
-    const modalRef = this.modalService.open(ModalDeleteRegisterStudentComponent);
+    this.activeModal.close(this.id);
   }
 
 }

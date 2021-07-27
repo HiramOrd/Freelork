@@ -99,6 +99,10 @@ export class HttpClientService {
     return this.http.get(API.SERVER + API.API + API.DELETE_PROJECT + idStudent + API.DELETE_PROJECT2 + idProject );
   }
 
+  deleteStudentRegister(idRegister: number): any {
+    return this.http.put(API.SERVER + API.API + API.DELETE_REGISTER + idRegister, null );
+  }
+
   getStudentCompany(id: number): any {
     return this.http.get(API.SERVER + API.API + API.GET_STUDENT_COMPANY + id);
   }
