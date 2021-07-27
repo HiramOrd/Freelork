@@ -7,6 +7,7 @@ export class API {
   static LOGIN = 'login';
   static POST_TASK = 'register/';
   static GET_STUDENT = 'student/';
+  static GET_TEACHER = 'teacher/';
   static UPDATE_STUDENT = 'student/update';
 
   // Register Account
@@ -19,6 +20,27 @@ export class API {
   static GET_TASK_LIST = 'register/list/';
   static GET_TASK = 'register/';
 
+
+  // Teacher
+  static GET_SUMMARY_LIST = 'summary/';
+  static GET_GROUPS = 'classrooms/';
+  static GET_ALL_STUDENTS = 'students/';
+
   // Student
   static STUDENT_SUMMARY = 'student/summary/';
+  static GET_STUDENT_PROJECTS = 'student/projects/';
+  static GET_COMPANY_PROJECT = 'student/projects/company/';
+  static POST_PROJECT = 'student/';
+  static POST_PROJECT2 = 'project/';
+  static DELETE_PROJECT = 'student/delete/';
+  static DELETE_PROJECT2 = 'project/';
+  static GET_STUDENT_COMPANY = 'student/company/';
+  static POST_STUDENT_COMPANY = 'student/';
+  static POST_STUDENT_COMPANY2 = 'company/';
+  static GET_STUDENT_CLASSROOM = 'student/classroom';
+  static POST_STUDENT_CLASSROOM = 'student/';
+  static POST_STUDENT_CLASSROOM2 = 'classroom/';
+
+
+
 }

@@ -7,6 +7,7 @@ import {StudentsService} from '../../../students/students.service';
 import {UtilitiesService} from '../../../../utilities/utilities.service';
 import {ExportExcelService} from '../../../../utilities/export-excel.service';
 import {ToastService} from '../../../../utilities/toast.service';
+import {HttpClientService} from '../../../../services/http-client.service';
 
 @Component({
   selector: 'app-students-list',
@@ -15,6 +16,8 @@ import {ToastService} from '../../../../utilities/toast.service';
   providers: [TableService]
 })
 export class StudentsListComponent implements OnInit {
+  serviceData;
+
   today = new Date();
   dateMinRange = null;
   dateMaxRange = null;
@@ -29,6 +32,7 @@ export class StudentsListComponent implements OnInit {
   constructor(
     public studentsService: StudentsService,
     private toastService: ToastService,
+    private  httpClientService: HttpClientService,
     // Table
     public tableService: TableService,
     public utilitiesService: UtilitiesService,
@@ -37,9 +41,20 @@ export class StudentsListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.setTableInfo(studentList);
+    this.getAllStudents();
     this.arrayTable$ = this.tableService.arrayTable$;
     this.total$ = this.tableService.total$;
+  }
+  /* API for GET All Students in Dashboard StudentList Teacher */
+  getAllStudents () {
+    this.httpClientService.getAllStudents(9).subscribe( response => {
+      console.log(response);
+      this.serviceData=response;
+      this.setTableInfo(this.serviceData);
+    }, error => {
+      console.warn(error);
+      this.toastService.show('Error en el servidor, no se pudo cargar el contenido' , { classname: 'bg-danger text-white'});
+    });
   }
 
   setTableInfo(arrayTable) {
