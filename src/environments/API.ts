@@ -18,4 +18,7 @@ export class API {
   // Task
   static GET_TASK_LIST = 'register/list/';
   static GET_TASK = 'register/';
+
+  // Student
+  static STUDENT_SUMMARY = 'student/summary/';
 }
