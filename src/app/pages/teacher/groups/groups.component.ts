@@ -3,18 +3,33 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { ModalDeleteGroupComponent } from './modal-delete-group/modal-delete-group.component';
 import {NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
 import { ClipboardService } from 'ngx-clipboard';
+import {HttpClientService} from '../../../services/http-client.service';
+import {ToastService} from '../../../utilities/toast.service';
 @Component({
   selector: 'app-groups',
   templateUrl: './groups.component.html',
   styleUrls: ['./groups.component.css']
 })
 export class GroupsComponent implements OnInit {
-
-  constructor(private modalService: NgbModal,  private clipboardApi: ClipboardService) {
-   }
+  serviceData;
+  constructor(
+    private modalService: NgbModal,  
+    private clipboardApi: ClipboardService,
+    private  httpClientService: HttpClientService,
+    private toastService: ToastService,
+    ) {}
 
   ngOnInit(): void {
-    console.log(this.groups[2].code);
+    this.getAllGroups ();
+  }
+  /* API for GET All Groups in Dashboard Groups Teacher */
+  getAllGroups () {
+    this.httpClientService.getAllGroups(9).subscribe( response => {
+      this.serviceData=response;
+    }, error => {
+      console.warn(error);
+      this.toastService.show('Error en el servidor, no se pudo cargar el contenido' , { classname: 'bg-danger text-white'});
+    });
   }
 
   openTooltipHover(tooltip, greeting: string) {
@@ -24,7 +39,7 @@ export class GroupsComponent implements OnInit {
   openTooltipClick(tooltip, greeting: string, i) {
     tooltip.close();
     tooltip.open({ greeting });
-    this.clipboardApi.copyFromContent(this.groups[i].code)
+    this.clipboardApi.copyFromContent(this.serviceData[i].code)
   }
   closeTooltip(tooltip) {
     tooltip.close();
@@ -33,43 +48,4 @@ export class GroupsComponent implements OnInit {
     const modalRef = this.modalService.open(ModalDeleteGroupComponent);
     modalRef.componentInstance.name = 'World';
   }
-
-    groups: any[] = [
-      {
-        /* careerName (Nombre del grupo) */"name": "IS61 SOFTWARE",
-        /* dateCreated-classroom */"date": "12/06/2021",
-        /* careerName-class */"career": "Ingeniería en Software ",
-        /* totalStudents-studentclassroom (Contabilizar el total de estudiantes) */"students": 23,
-        /* code-classroom */"code": 333333,
-        /* status-classroom */"status": "Activo"
-
-      },
-      {
-        "name": "IS31 TERAPIA",
-        "date": "05/07/2021",
-        "career": "Terapia Fisica",
-        "students": 20,
-        "code": "77777",
-        "status": "Activo"
-      },
-      {
-        "name": "IS41 BIOTECNOLOGIA",
-        "date": "01/08/2021",
-        "career": "Ingeniería en Biotecnologia",
-        "students": 15,
-        "code": "555555",
-        "status": "Activo"
-      },
-      {
-        "name": "IS81 SOFTWARE",
-        "date": "13/06/2021",
-        "career": "Ingeniería en Software ",
-        "students": 17,
-        "code": "444444",
-        "status": "Activo"
-      }
-    ];
-  
-
-
 }

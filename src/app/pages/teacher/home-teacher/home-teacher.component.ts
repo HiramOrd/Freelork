@@ -7,7 +7,7 @@ import {studentTasks} from '../../../variables/studentTasks';
 import {UtilitiesService} from '../../../utilities/utilities.service';
 import {ExportExcelService} from '../../../utilities/export-excel.service';
 import {ToastService} from '../../../utilities/toast.service';
-
+import {HttpClientService} from '../../../services/http-client.service';
 
 
 @Component({
@@ -17,6 +17,7 @@ import {ToastService} from '../../../utilities/toast.service';
   providers: [TableService]
 })
 export class HomeTeacherComponent implements OnInit {
+  serviceData;
   today = new Date();
   dateMinRange = null;
   dateMaxRange = null;
@@ -31,6 +32,7 @@ export class HomeTeacherComponent implements OnInit {
   constructor(
     public studentsService: StudentsService,
     private toastService: ToastService,
+    private  httpClientService: HttpClientService,
     // Table
     public tableService: TableService,
     public utilitiesService: UtilitiesService,
@@ -39,9 +41,20 @@ export class HomeTeacherComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.setTableInfo(studentTasks);
+    this.getTaskSummary();
     this.arrayTable$ = this.tableService.arrayTable$;
     this.total$ = this.tableService.total$;
+  }
+  /* API for GET Summary Tasks in Dashboard Home Teacher */
+  getTaskSummary () {
+    this.httpClientService.getTaskSummary(9).subscribe( response => {
+      this.serviceData=response;
+      //console.log(response);
+      this.setTableInfo(this.serviceData.registers);
+    }, error => {
+      console.warn(error);
+      this.toastService.show('Error en el servidor, no se pudo cargar el contenido' , { classname: 'bg-danger text-white'});
+    });
   }
 
   setTableInfo(arrayTable) {

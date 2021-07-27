@@ -43,8 +43,18 @@ export class HttpClientService {
   getTaskListByDate(id: number, date1, date2): any {
     return this.http.get(API.SERVER + API.API + API.GET_TASK_LIST + id + '/' + date1 + '/' + date2);
   }
+
+  // Teacher Summary
   getTaskSummary(id: number){
     return this.http.get(API.SERVER + API.API + API.GET_TEACHER + API.GET_SUMMARY_LIST + id);
+  }
+  getAllGroups (id: number) {
+    return this.http.get(API.SERVER + API.API + API.GET_TEACHER + API.GET_GROUPS + id);
+  }
+
+  //Teacher
+  getAllStudents(id: number){
+    return this.http.get(API.SERVER + API.API + API.GET_TEACHER + API.GET_ALL_STUDENTS + id);
   }
 
   postTask(body: any): any {
