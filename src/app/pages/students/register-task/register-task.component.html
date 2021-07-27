@@ -37,7 +37,7 @@
                       <div class="form-group m-sm-0">
                         <input type="date" class="form-control form-control-alternative"
                                [ngClass]="(registerTaskForm.controls.dateRegister.invalid && registerTaskForm.controls.dateRegister.touched ) ? 'error-border' : ''"
-                               [max]="today | date: 'yyyy-MM-dd'" placeholder="Fecha" formControlName="dateRegister" />
+                               [max]="today | date: 'yyyy-MM-dd'" placeholder="Fecha" formControlName="dateRegister"/>
                         <div *ngIf="registerTaskForm.controls.dateRegister.invalid && registerTaskForm.controls.dateRegister.touched">
                           <small class="error-text ml-2">*Ingresa la fecha</small>
                         </div>
@@ -149,7 +149,7 @@
                   </div>
                 </div>
                 <!-- End Card Header -->
-                  <app-drag-and-drop [file]="file" (result)="setImage($event)"></app-drag-and-drop>
+                  <app-drag-and-drop [file]="file" (result)="setImage($event)" [imageShow]="serviceData?.imageUrl" (deleteEdit)="deleteEditImage($event)"></app-drag-and-drop>
               </div>
             </div>
           </div>

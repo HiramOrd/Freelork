@@ -13,8 +13,7 @@
       <div class="card shadow px-2 px-sm-3 bg-lighterBlue">
 
         <!-- Start Add Button -->
-        <button class=" btn btn-primary border-white m-0 add-button" routerLink="create-task"
-                placement="left" openDelay="400" ngbTooltip="Crear nuevo registro" tooltipClass="defaultTooltip">
+        <button class=" btn btn-primary border-white m-0 add-button" routerLink="create-task">
           <i class="fas fa-plus"></i>
         </button>
         <!-- End Add Button -->
@@ -49,7 +48,7 @@
 
             </div>
             <!-- End Search Input -->
-            <div class="row d-xl-inline-flex col-12 col-xl-auto m-0 p-0" id="collapseExample" [(ngbCollapse)]="isCollapsed">
+            <div class="row d-xl-inline-flex col-12 col-xl-auto m-0 p-0" id="collapseExample" [ngbCollapse]="isCollapsed">
               <div class="col-sm col-xl-auto form-group mb-2 mb-sm-3 mb-xl-2">
                 <label for="firstDate" class="form-control-label m-0">De: </label>
                 <input id="firstDate" type="date" class="form-control form-control-alternative"
@@ -98,7 +97,7 @@
 
         <!-- Start Register Table -->
         <div class="table-responsive bg-white rounded">
-          <table class="table align-items-center table-flush">
+          <table class="table align-items-center table-flush" *ngIf="table?.length > 0">
             <thead class="thead-light">
             <tr>
               <th scope="col" sortable="title" (sort)="onSort($event)" class="table-title">
@@ -176,6 +175,9 @@
 
             </tbody>
           </table>
+          <div class="d-flex p-0 m-0 justify-content-center align-items-center" *ngIf="!table || table?.length === 0" style="height: 200px">
+            <span>No se encontraron datos</span>
+          </div>
         </div>
         <!-- End Register Table -->
 

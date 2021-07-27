@@ -9,11 +9,13 @@ import {FormControl} from '@angular/forms';
 export class DragAndDropComponent implements OnInit {
   ondrag = false;
   @Input() file: FormControl;
+  @Input() imageShow;
   @Output() result: EventEmitter<any>;
-  imageShow;
+  @Output() deleteEdit: EventEmitter<any>;
 
   constructor() {
     this.result = new EventEmitter();
+    this.deleteEdit = new EventEmitter();
   }
 
   ngOnInit(): void {
@@ -71,6 +73,7 @@ export class DragAndDropComponent implements OnInit {
     this.imageShow = undefined;
     this.file.setValue(null);
     this.result.emit(undefined);
+    this.deleteEdit.emit(null);
   }
 
 }

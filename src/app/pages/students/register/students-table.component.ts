@@ -45,7 +45,6 @@ export class StudentsTableComponent implements OnInit {
 
   getTaskListAll() {
     this.httpClientService.getTaskList(this.utilitiesService.getId()).subscribe( response => {
-      console.log(response);
       this.setTableInfo(response);
     }, error => {
       this.toastService.show('Error en el servidor, no se pudo cargar el contenido' , { classname: 'bg-danger text-white'});
@@ -54,7 +53,6 @@ export class StudentsTableComponent implements OnInit {
   }
   getTaskListByDate() {
     this.httpClientService.getTaskListByDate(this.utilitiesService.getId(), this.dateMinRange, this.dateMaxRange).subscribe( response => {
-      console.log(response);
       this.setTableInfo(response);
     }, error => {
       this.toastService.show('Error en el servidor, no se pudo cargar el contenido' , { classname: 'bg-danger text-white'});

@@ -105,4 +105,22 @@ export class UtilitiesService {
         return objectCopy;
       });
   }
+
+  statusToString(status) {
+      switch (status) {
+        case 1:
+          status = 'Rechazado';
+          break;
+        case 2:
+          status = 'Pendiente';
+          break;
+        case 3:
+          status = 'Aceptado';
+          break;
+        default:
+          status = 'Desconocido';
+          break;
+      }
+      return status;
+  }
 }
