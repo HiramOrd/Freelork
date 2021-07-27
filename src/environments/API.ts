@@ -28,4 +28,12 @@ export class API {
 
   // Student
   static STUDENT_SUMMARY = 'student/summary/';
+  static GET_STUDENT_PROJECTS = 'student/projects/';
+  static GET_COMPANY_PROJECT = 'student/projects/company/';
+  static POST_PROJECT = 'student/';
+  static POST_PROJECT2 = 'project/';
+  static DELETE_PROJECT = 'student/delete/';
+  static DELETE_PROJECT2 = 'project/';
+
+
 }
