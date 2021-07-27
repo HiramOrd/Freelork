@@ -20,13 +20,12 @@
               <i class="transform-icon text-xs fas fa-pen mouse-pointer mr-3 text-white bg-purple rounded-circle p-2" title="Editar el proyecto" routerLink="edit-group"></i>
               <i class="transform-icon text-xs fas fa-trash text-white bg-danger mouse-pointer rounded-circle p-2" title="Eliminar el proyecto" (click)="deleteGroup()"></i>
             </div>
-            <p class="font-weight-bold pt-1 m-0 text-dark text-uppercase"> {{group.name}}<!-- IS61 SOFTWARE --></p>
-            <p class="text-xs text-black-50 font-weight-bold">Fecha de creación: {{group.dateCreated}}<!-- 12/06/2021 --></p>
+            <p class="font-weight-bold pt-1 m-0 text-dark text-uppercase">{{group.name?group.name:'No disponible'}}</p>
+            <p class="text-xs text-black-50 font-weight-bold">Fecha de creación: {{group.dateCreated?group.name:'2021-01-01'}}</p>
             <div class="row w-100 m-0 mb-sm-1 mb-md-2 mb-lg-3">
-                <p class="text-xs font-weight-normal text-dark font-weight-bold">Carrera:&nbsp;</p>
-                <p class="text-xs font-weight-normal text-dark">
-                  <!-- Ingeniería en Software -->
-                  {{group.name}}
+                <p class="text-s font-weight-normal text-dark font-weight-bold">Carrera:&nbsp;</p>
+                <p class="text-s font-weight-normal text-dark">
+                  {{group.career?group.career:'No disponible'}}
                 </p>
             </div>
             <div class="row w-100 m-0 align-content-center">
@@ -42,10 +41,13 @@
             </div>
             <div class="d-flex justify-content-between mt-2">
                 <div class="text-left">
-                    <p class="text-sm m-0 text-dark font-weight-bold">{{group.students}} Alumnos<!-- 20 alumnos --></p>
+                    <p class="text-sm m-0 text-dark font-weight-bold">{{group.students?group.students:'No disponible'}} Alumnos</p>
                   </div>
                 <div class="text-right">
-                  <p class="text-sm m-0 font-weight-bold"> Status: <span class="text-green">{{group.status}}<!-- Activo --></span></p>
+                  <p class="text-sm m-0 font-weight-bold"> Status:
+                    <span class="text-green" *ngIf="(group.status == 0)">{{group.status?'No Activo':'No disponible'}}</span>
+                    <span class="text-green" *ngIf="(group.status == 1)">{{group.status?'Activo':'No disponible'}}</span>
+                  </p>
                 </div>
             </div>
           </div>

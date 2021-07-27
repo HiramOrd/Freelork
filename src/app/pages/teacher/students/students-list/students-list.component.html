@@ -64,7 +64,7 @@
                 </span>
                 </div>
               </th>
-              <th scope="col" sortable="group" (sort)="onSort($event)" class="table-title">
+              <th scope="col" sortable="classroom" (sort)="onSort($event)" class="table-title">
                 <div>
                   Grupo
                   <span>
@@ -82,16 +82,7 @@
                 </span>
                 </div>
               </th>
-              <th scope="col" sortable="advisor" (sort)="onSort($event)" class="table-title">
-                <div class="table-title">
-                  Asesor
-                  <span>
-                  <i class="fas fa-sort-up"></i>
-                  <i class="fas fa-sort-down"></i>
-                </span>
-                </div>
-              </th>
-              <th scope="col" sortable="totalWork" (sort)="onSort($event)" class="table-title">
+              <th scope="col" sortable="hours" (sort)="onSort($event)" class="table-title">
                 <div class="table-title">
                   Horas trabajadas
                   <span>
@@ -105,41 +96,43 @@
             <tbody>
 
             <!-- Start Register Row -->
-            <tr class="row-button" routerLink="students-profile" *ngFor="let data of arrayTable$ | async">
+            <tr class="row-button flex-grow-0" routerLink="students-profile" *ngFor="let data of arrayTable$ | async">
               <td scope="row">
                 <div class="d-inline-flex">
                   <div class="content-image">
                     <img src="{{data.image ? data.image : '../../../../assets/img/defaults/default-user.png'}}" class="img-fluid aux-image" alt="image-profile">
                   </div>
                   <div class="d-block my-auto ml-2">
-                    <p class="mb-0" style="color: #18187A; font-size: .85rem; font-weight: 600;">{{data.fullName}}</p>
+                    <p class="mb-0" style="color: #18187A; font-size: .85rem; font-weight: 600;">{{data.fullName?data.fullName:'No disponible'}}</p>
                     <div class="d-inline-flex align-items-center">
-                      <p class="text-sm mb-0 pl-1 font-weight-normal">{{data.enrollment}}</p>
+                      <p class="text-sm mb-0 pl-1 font-weight-normal">{{data.enrollment?data.enrollment:'No disponible'}}</p>
                     </div>
                   </div>
                 </div>
               </td>
 
               <td>
-                {{data.classroom}}
+                {{data.classroom?data.classroom:'No disponible'}}
               </td>
               <td *ngIf="utilitiesService.getRole() !==3" class="d-none d-lg-table-cell">
-                {{data.company}}
+                {{data.company?data.company:'No disponible'}}
               </td>
               <td>
-                {{data.advisor}}
-              </td>
-              <td>
-                {{!data?.hours || data?.hours?.length === 0}}
+                {{data.hours?data.hours:'No disponible'}}
               </td>
             </tr>
 
-            <div>
-
-            </div>
+            <tr>
+              <td colspan="4">
+                <div *ngIf="!serviceData || serviceData?.length === 0" class="flex-grow-1 d-flex m-0 p-0 align-items-center justify-content-start justify-content-md-center w-100">
+                  <span style="font-size: 1.4rem;">Sin estudiantes</span>
+                </div>
+              </td>
+            </tr>
             <!-- End Register Row -->
-
+            
             </tbody>
+           
           </table>
         </div>
         <!-- End Register Table -->

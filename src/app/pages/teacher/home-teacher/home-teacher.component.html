@@ -14,7 +14,7 @@
           <div class="row">
             <div class="col">
               <h5 class="card-title text-uppercase text-muted mb-0">Estudiantes</h5>
-              <span class="h2 font-weight-bold mb-0">{{serviceData?.students}}</span>
+              <span class="h2 font-weight-bold mb-0">{{serviceData.students?serviceData.students:'No disponible'}}</span>
             </div>
             <div class="col-auto">
               <div class="icon icon-shape bg-purple text-white rounded-circle shadow">
@@ -48,7 +48,7 @@
           <div class="row">
             <div class="col">
               <h5 class="card-title text-uppercase text-muted mb-0">Grupos</h5>
-              <span class="h2 font-weight-bold mb-0">{{serviceData?.groups}}</span>
+              <span class="h2 font-weight-bold mb-0">{{serviceData.groups?serviceData.groups:'No disponible'}}</span>
             </div>
             <div class="col-auto">
               <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
@@ -65,7 +65,7 @@
           <div class="row">
             <div class="col">
               <h5 class="card-title text-uppercase text-muted mb-0">Tareas</h5>
-              <span class="h2 font-weight-bold mb-0">{{serviceData?.tasks}}</span>
+              <span class="h2 font-weight-bold mb-0">{{serviceData.tasks?serviceData.tasks:'No disponible'}}</span>
             </div>
             <div class="col-auto">
               <div class="icon icon-shape bg-green text-white rounded-circle shadow">
@@ -206,32 +206,32 @@
               <tbody>
   
               <!-- Start Register Row -->
-              <tr class="row-button" (click)="studentsService.viewRegister(data.id)" *ngFor="let data of arrayTable$ | async">
+              <tr class="row-button flex-grow-0" (click)="studentsService.viewRegister(data.id)" *ngFor="let data of arrayTable$ | async">
                 <td scope="row">
                   <div class="d-inline-flex">
                     <div class="content-image">
-                      <img src="../../../../assets/img/defaults/default-user.png" class="img-fluid aux-image" alt="image-profile">
+                      <img src="{{data.image ? data.image : '../../../../assets/img/defaults/default-user.png'}}" class="img-fluid aux-image" alt="image-profile">
                     </div>
                     <div class="d-block my-auto ml-2">
                       <p class="mb-0" style="color: #18187A; font-size: .85rem; font-weight: 600;">{{data.title}}</p>
                       <div class="d-inline-flex align-items-center">
                         <i class="far fa-calendar"></i>
-                        <p class="text-sm mb-0 pl-1 font-weight-normal">{{data.dateRegister}}</p>
+                        <p class="text-sm mb-0 pl-1 font-weight-normal">{{data.dateRegister?data.dateRegister:'No disponible'}}</p>
                       </div>
                     </div>
                   </div>
                 </td>
                 <td class="d-none d-lg-table-cell">
-                  <span class="btn-link mouse-pointer" routerLink="/dash/tch/students-list/students-profile/1">{{data.student}}</span>
+                  <span class="btn-link mouse-pointer" routerLink="/dash/tch/students-list/students-profile/1">{{data.student?data.student:'No disponible'}}</span>
                 </td>
                 <td class="d-none d-lg-table-cell">
-                  {{data.company}}
+                  {{data.company?data.company:'No disponible'}}
                 </td>
                 <td class="d-none d-lg-table-cell">
-                  {{data.nameProject}}
+                  {{data.nameProject?data.nameProject:'No disponible'}}
                 </td>
                 <td class="d-none d-lg-table-cell">
-                  {{data.timeRegister}} horas
+                  {{data.timeRegister?data.timeRegister:'No disponible'}} horas
                 </td>
                 <td>
                   <span class="badge badge-dot mr-4 text-xs">
@@ -239,6 +239,14 @@
                     <span class="text-orange" *ngIf="(data.status === 'Pendiente')">{{data.status}}</span>
                     <span class="text-success" *ngIf="(data.status === 'Aceptado')">{{data.status}}</span>
                   </span>
+                </td>
+              </tr>
+
+              <tr>
+                <td colspan="6">
+                  <div *ngIf="!serviceData || serviceData?.length === 0" class="flex-grow-1 d-flex m-0 p-0 align-items-center justify-content-start justify-content-md-center w-100">
+                    <span style="font-size: 1.4rem;">Sin estudiantes</span>
+                  </div>
                 </td>
               </tr>
               <!-- End Register Row -->
