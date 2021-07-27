@@ -12,6 +12,9 @@ import {ToastService} from '../../../utilities/toast.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  serviceData;
+  counterProject = 0;
+  projectsLength = 0;
 
   constructor(
     public studentsService: StudentsService,
@@ -29,8 +32,18 @@ export class HomeComponent implements OnInit {
     const modalRef = this.modalService.open(ModalViewAdvisesComponent);
   }
 
+  nextProject() {
+    (this.counterProject < this.projectsLength - 1) ? this.counterProject++ : this.counterProject = 0;
+  }
+
+  previousProject() {
+    (this.counterProject > 0) ? this.counterProject-- : this.counterProject = this.counterProject = this.projectsLength - 1;
+  }
+
   getStudentSummary () {
     this.httpClientService.getStudentSummary(this.utilitiesService.getId()).subscribe( response => {
+      this.serviceData = response;
+      this.projectsLength = this.serviceData.projects.length;
       console.log(response);
     }, error => {
       console.warn(error);
