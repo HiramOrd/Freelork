@@ -96,7 +96,7 @@
             <tbody>
 
             <!-- Start Register Row -->
-            <tr class="row-button flex-grow-0" routerLink="students-profile" *ngFor="let data of arrayTable$ | async">
+            <tr class="row-button flex-grow-0" routerLink="/dash/tch/students-list/students-profile/{{data.id}}" *ngFor="let data of arrayTable$ | async">
               <td scope="row">
                 <div class="d-inline-flex">
                   <div class="content-image">
@@ -125,14 +125,14 @@
             <tr>
               <td colspan="4">
                 <div *ngIf="!serviceData || serviceData?.length === 0" class="flex-grow-1 d-flex m-0 p-0 align-items-center justify-content-start justify-content-md-center w-100">
-                  <span style="font-size: 1.4rem;">Sin estudiantes</span>
+                  <span class="my-5">Sin estudiantes</span>
                 </div>
               </td>
             </tr>
             <!-- End Register Row -->
-            
+
             </tbody>
-           
+
           </table>
         </div>
         <!-- End Register Table -->

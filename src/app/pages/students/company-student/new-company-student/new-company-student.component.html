@@ -14,15 +14,18 @@
 
         <div class="card-header"></div>
 
-        <form class="card-body px-0 pb-0 text-center" (submit)="submitForm()">
+        <div class="card-body px-0 pb-0 text-center">
           <p class="font-weight-normal">Uy! Parece que no estas en ningúna Empresa</p>
           <div class="d-flex mx-auto mb-3 align-items-center" id="code-input">
-            <input type="text" class="form-control form-control-blue mr-2"  placeholder="Ingresa la empresa">
+            <select  class="form-control mouse-pointer" [(ngModel)]="companyId">
+              <option [value]="null" hidden selected>Selecciona una empresa</option>
+              <option *ngFor="let company of serviceData" [value]="company?.id">{{company?.name}}</option>
+            </select>
             <i class="far fa-question-circle ml-1 text-sm mouse-pointer"
                placement="right" ngbTooltip="Ingresa el nombre de la empresa" tooltipClass="defaultTooltip"></i>
           </div>
-          <button type="submit" class="btn btn-primary px-5" (click)="click()">Ingresar</button>
-        </form>
+          <button class="btn btn-primary px-5" (click)="postCompany()">Ingresar</button>
+        </div>
         <div class="card-footer"></div>
 
 

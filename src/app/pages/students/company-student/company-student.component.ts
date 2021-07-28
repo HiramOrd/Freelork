@@ -7,6 +7,7 @@ import {HttpClientService} from '../../../services/http-client.service';
 import {UtilitiesService} from '../../../utilities/utilities.service';
 import {ModalDeleteProjectsComponent} from '../projects/modal-delete-projects/modal-delete-projects.component';
 import {ModalAddProjectComponent} from '../projects/modal-add-project/modal-add-project.component';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-company-student',
@@ -16,10 +17,13 @@ import {ModalAddProjectComponent} from '../projects/modal-add-project/modal-add-
 export class CompanyStudentComponent implements OnInit {
   serviceData;
 
-  constructor(private modalService: NgbModal,
-  private  httpClientService: HttpClientService,
-  private utilitiesService: UtilitiesService,
-  private toastService: ToastService, ) { }
+  constructor(
+    private modalService: NgbModal,
+    private httpClientService: HttpClientService,
+    private utilitiesService: UtilitiesService,
+    private toastService: ToastService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.getStudentCompany();
@@ -27,12 +31,7 @@ export class CompanyStudentComponent implements OnInit {
 
   openModalDelete() {
     const modalRef = this.modalService.open(DeleteCompanyStudentComponent);
-    modalRef.result.then( response => {
-      if (response === 200) {
-        this.getStudentCompany();
-      }
-    } ).catch();
-
+    modalRef.componentInstance.id = this.serviceData.id;
   }
 
   getStudentCompany() {
@@ -40,8 +39,13 @@ export class CompanyStudentComponent implements OnInit {
       this.serviceData = response;
       console.log(response);
     }, error => {
-      console.warn(error);
-      this.toastService.show('Error en el servidor, no se pudo cargar el contenido' , { classname: 'bg-danger text-white'});
+      if ( error !== 200 ) {
+        this.router.navigate(['/dash/std/company/new']);
+      } else {
+        console.warn(error);
+        this.toastService.show('Error en el servidor, no se pudo cargar el contenido' , { classname: 'bg-danger text-white'});
+      }
+
     });
   }
 

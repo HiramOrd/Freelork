@@ -122,6 +122,10 @@ export class RegisterTaskComponent implements OnInit {
   getProjects() {
     this.httpClientService.getStudentProjects(this.utilitiesService.getId()).subscribe( response => {
       this.projects = response;
+      if (this.projects.length <= 0) {
+        this.toastService.show('Primero unete a un proyecto para empezar a trabajar' , { classname: 'bg-danger text-white'});
+        this.router.navigate(['/dash/std/projects']);
+      }
     }, (error) => {
       console.warn(error);
       this.toastService.show('Error en el servidor, intenta mas tarde' , { classname: 'bg-danger text-white'});

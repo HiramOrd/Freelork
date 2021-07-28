@@ -14,6 +14,7 @@ export class TeacherComponent implements OnInit {
   @Input() edit = false;
   @Output() teacherDataOut: EventEmitter<FormGroup>;
   @Output() imageTeacher: EventEmitter<string>;
+  serviceData;
 
   @ViewChild(AllUsersComponent, {static: true}) public registerFormComponent: AllUsersComponent;
   teachersForm: FormGroup;
@@ -39,6 +40,22 @@ export class TeacherComponent implements OnInit {
       .get('userEntity')
       .get('email')
       .setValidators([Validators.required, Validators.pattern(/^[a-z0-9._%+-]{4,20}@docentes\.upqroo\.edu\.mx/)]);
+
+    if (this.edit) {
+      this.httpClientService.getTeacherProfile(this.utilitiesService.getId()).subscribe( response => {
+        this.serviceData = response;
+        console.log(this.serviceData);
+        this.teachersForm.get('userEntity').get('fullName').setValue(this.serviceData.fullName);
+        this.teachersForm.get('userEntity').get('email').setValue(this.serviceData.email);
+        this.teachersForm.get('phone').setValue(this.serviceData.phone);
+        this.teachersForm.get('grade').setValue(this.serviceData.grade);
+        if (this.serviceData.image) {
+          this.imageTeacher.emit(this.serviceData.image);
+        }
+      }, error => {
+        console.log(error);
+      });
+    }
   }
 
   teachersSubmit(): void {

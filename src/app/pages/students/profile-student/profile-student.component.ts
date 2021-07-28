@@ -10,13 +10,8 @@ import {ToastService} from '../../../utilities/toast.service';
 })
 export class ProfileStudentComponent implements OnInit {
   student;
-  // Temp
-  email = '201900075@estudiantes.upqroo.edu.mx';
-  name = 'Katherine Sarahid Gonzalez Ramirez';
-  photo = null;
-  // tslint:disable-next-line:max-line-length
-  // photo = 'https://laverdadnoticias.com/__export/1611983421030/sites/laverdad/img/2021/01/30/wandavision_serie_wanda_maximoff_poderes.jpg_366579991.jpg';
-  role = 'Estudiante';
+  company;
+  class;
 
   constructor(
     private httpClientService: HttpClientService,
@@ -26,6 +21,8 @@ export class ProfileStudentComponent implements OnInit {
 
   ngOnInit(): void {
     this.getStudent();
+    this.getStudentCompany();
+    this.getStudentClassroom();
   }
 
   getStudent () {
@@ -36,6 +33,22 @@ export class ProfileStudentComponent implements OnInit {
       console.warn(error);
       this.toastService.show('Error en el servidor, intenta más tarde' , { classname: 'bg-danger text-white'});
     });
+  }
+
+  getStudentCompany() {
+    this.httpClientService.getStudentCompany(this.utilitiesService.getId()).subscribe( response => {
+      this.company = response;
+      console.log(response);
+    }, error => {
+        console.warn(error);
+    });
+  }
+
+  getStudentClassroom() {
+    this.httpClientService.getStudentClassroom(this.utilitiesService.getId()).subscribe( response => {
+      this.class = response;
+      console.log(response);
+    }, error => {});
   }
 
 }

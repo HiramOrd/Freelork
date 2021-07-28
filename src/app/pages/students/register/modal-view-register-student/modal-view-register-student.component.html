@@ -31,7 +31,7 @@
 
   <div *ngIf="utilitiesService.getRole() === 3">
     <i class="fas fa-user-alt mr-3"></i>
-    <span class="text-sm font-weight-normal font-weight-light">Katherine Sarahid Gonzalez Ramirez</span>
+    <span class="text-sm font-weight-normal font-weight-light">{{serviceData?.student}}</span>
     <br>
     <br>
   </div>
@@ -56,11 +56,11 @@
   </div>
 
   <div *ngIf="utilitiesService.getRole() === 3" class="mt-3 row p-0 m-0 justify-content-around">
-      <button class="btn btn-danger" tabindex="-1">
+      <button class="btn btn-danger" tabindex="-1" (click)="changeStatusTask(1)">
         <i class="fas fa-times mr-2"></i>
         Rechazar
       </button>
-      <button class="btn btn-success" tabindex="-1">
+      <button class="btn btn-success" tabindex="-1" (click)="changeStatusTask(3)">
         <i class="fas fa-check mr-2"></i>
         Aceptar
       </button>

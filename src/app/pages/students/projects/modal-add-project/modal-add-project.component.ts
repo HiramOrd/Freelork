@@ -4,6 +4,7 @@ import {Subject} from 'rxjs';
 import {HttpClientService} from '../../../../services/http-client.service';
 import {UtilitiesService} from '../../../../utilities/utilities.service';
 import {ToastService} from '../../../../utilities/toast.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-modal-add-project',
@@ -23,6 +24,7 @@ export class ModalAddProjectComponent implements OnInit {
     private httpClientService: HttpClientService,
     private utilitiesService: UtilitiesService,
     private toastService: ToastService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -32,6 +34,12 @@ export class ModalAddProjectComponent implements OnInit {
   getProjects () {
     this.httpClientService.getCompanyProject(this.utilitiesService.getId()).subscribe( response => {
       this.serviceData = response;
+      console.log(response);
+      if (this.serviceData.length <= 0) {
+        this.toastService.show('Primero registrate en una empresa' , { classname: 'bg-danger text-white'});
+        this.activeModal.close(200);
+        this.router.navigate(['dash/std/company']);
+      }
     }, error => {
       console.warn(error);
       this.toastService.show('Error en el servidor, no se pudo cargar el contenido' , { classname: 'bg-danger text-white'});

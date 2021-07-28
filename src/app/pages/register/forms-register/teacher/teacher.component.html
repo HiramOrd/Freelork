@@ -29,14 +29,12 @@
           </div>
           <select class="form-control" formControlName="grade">
             <option [value]="null" disabled hidden>Título académico</option>
-            <option [value]="0">Lic.</option>
-            <option [value]="1">Ing.</option>
-            <option [value]="2">Arq.</option>
-            <option [value]="3">Dr.</option>
-            <option [value]="4">Dra.</option>
-            <option [value]="5">C.P.T.</option>
-            <option [value]="5">Profe.</option>
-            <option [value]="5">Profa.</option>
+            <option value="Licenciado(a)">Licenciado(a)</option>
+            <option value="Ingeniero(a)">Ingeniero(a)</option>
+            <option value="Arquitecto(a)">Arquitecto(a)</option>
+            <option value="Doctor(a)">Doctor(a)</option>
+            <option value="C.P.T.">C.P.T.</option>
+            <option value="Profesor(a)">Profesor(a)</option>
           </select>
         </div>
         <div *ngIf="teachersForm.controls.grade.errors?.required && teachersForm.controls.grade.touched">

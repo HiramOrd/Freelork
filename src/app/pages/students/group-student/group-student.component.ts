@@ -41,9 +41,10 @@ export class GroupStudentComponent implements OnInit {
     }, error => {
       if ( error !== 200 ) {
         this.router.navigate(['dash/std/group/new']);
+      } else {
+        console.warn(error);
+        this.toastService.show('Error en el servidor, no se pudo cargar el contenido' , { classname: 'bg-danger text-white'});
       }
-      console.warn(error);
-      this.toastService.show('Error en el servidor, no se pudo cargar el contenido' , { classname: 'bg-danger text-white'});
     });
   }
 

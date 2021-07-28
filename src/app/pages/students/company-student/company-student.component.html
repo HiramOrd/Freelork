@@ -16,48 +16,44 @@
           <div class="row p-0 m-0">
             <div class="col-lg-6 d-flex flex-column justify-content-around text-center">
               <div class="mb-5">
-                <span class="text-lg font-weight-bold text-primary">Wayaweb</span>
+                <span class="text-lg font-weight-bold text-primary">{{serviceData?.name}}</span>
                 <br>
                 <span class="text-sm font-weight-bold">Tipo de Servicio:</span>
-                <span class="text-sm pl-1">Marketing Digital</span>
+                <span class="text-sm pl-1">{{serviceData?.serviceType}}</span>
               </div>
 
               <div class="mb-5 text-left">
                 <span class="text-sm font-weight-bold">Direccion:</span>
-                <span class="text-sm pl-1">Av. Nichupté 28, Torres del Bosque II, 51, 77533 Cancún, Q.R. <a href="wayaweb.com"></a></span>
+                <span class="text-sm pl-1">{{serviceData?.address}}</span>
                 <br>
-                <span class="text-sm font-weight-bold">Correo:</span>
-                <span class="text-sm pl-1">wayaweb@wayaweb.com</span>
-                <br>
-                <span class="text-sm font-weight-bold">Celular:</span>
-                <span class="text-sm pl-1">998 241 1054</span>
+                <span class="text-sm font-weight-bold">Tamaño de compañia:</span>
+                <span class="text-sm pl-1">{{serviceData?.sizeCompany}}</span>
               </div>
 
             </div>
 
             <div class="row p-0 m-0 col-lg-6 bg-lightPurple p-4 py-2 rounded">
-              <div class="col text-center p-0 py-2">
+              <div class="col-12 p-0">
+                <span class="font-weight-bold mb-3">Recursos Humanos</span>
+              </div>
+
+              <div class="col-auto text-center p-0 py-2">
                 <img src="assets/img/theme/team-3-800x800.jpg" class="rounded" alt="" width="150">
               </div>
               <div class="col-auto py-2">
                 <div class="mb-2">
-                  <span class="font-weight-bold text-sm">Asesor: </span>
-                  <span class="text-sm">Armando Vivanco</span>
+                  <span class="font-weight-bold text-sm">Nombre: </span>
+                  <span class="text-sm">{{serviceData?.hrFullName}}</span>
                 </div>
 
                 <div class="mb-2">
                   <span class="font-weight-bold text-sm">Correo: </span>
-                  <span class="text-sm">armado2014@gmail.com</span>
+                  <span class="text-sm">{{serviceData?.hrEmail}}</span>
                 </div>
 
                 <div class="mb-2">
                   <span class="font-weight-bold text-sm">Celular: </span>
-                  <span class="text-sm">999983454</span>
-                </div>
-
-                <div class="mb-2">
-                  <span class="font-weight-bold text-sm">Nivel de Estudios: </span>
-                  <span class="text-sm">Ingeniero</span>
+                  <span class="text-sm">{{serviceData?.hrPhone}}</span>
                 </div>
               </div>
             </div>

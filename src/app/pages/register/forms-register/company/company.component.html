@@ -28,10 +28,10 @@
           </div>
           <select class="form-control" formControlName="sizeCompany">
             <option [value]="null" disabled hidden>Tamaño de empresa</option>
-            <option value="0">0-10 empleados</option>
-            <option value="1">11-50 empleados</option>
-            <option value="2">51-100 empleados</option>
-            <option value="3">+100 empleados</option>
+            <option value="0-10 empleados">0-10 empleados</option>
+            <option value="11-50 empleados">11-50 empleados</option>
+            <option value="51-100 empleados">51-100 empleados</option>
+            <option value="+100 empleados">+100 empleados</option>
           </select>
         </div>
         <div *ngIf="companyForm.controls.sizeCompany.errors?.required && companyForm.controls.sizeCompany.touched">
@@ -48,9 +48,16 @@
             </div>
             <select class="form-control" formControlName="serviceType">
               <option [value]="null" disabled hidden>Giro de la empresa</option>
-              <option value="0">Industrial</option>
-              <option value="1">Servicios</option>
-              <option value="2">Comercial</option>
+              <option value="Comercial">Comercial</option>
+              <option value="Construcción">Construcción</option>
+              <option value="Derecho">Derecho</option>
+              <option value="Diseño y publicidad">Diseño y publicidad</option>
+              <option value="Educación">Educación</option>
+              <option value="Servicios de Salud">Servicios de Salud</option>
+              <option value="Software">Software</option>
+              <option value="Telecomunicaciones">Telecomunicaciones</option>
+              <option value="Transporte">Transporte</option>
+              <option value="Turismo">Turismo</option>
             </select>
           </div>
           <div *ngIf="companyForm.controls.serviceType.errors?.required && companyForm.controls.serviceType.touched">
@@ -73,16 +80,16 @@
 
       <!-- Start RH Name Input -->
       <div class="form-group col-12 p-0">
-        <div class="input-group input-group-alternative" [ngClass]="(companyForm.controls.hrName.invalid && companyForm.controls.hrName.touched ) ? 'error-border' : ''">
+        <div class="input-group input-group-alternative" [ngClass]="(companyForm.controls.hrFullName.invalid && companyForm.controls.hrFullName.touched ) ? 'error-border' : ''">
           <div class="input-group-prepend">
             <span class="input-group-text"><i class="fas fa-user-alt"></i></span>
           </div>
-          <input class="form-control" placeholder="Nombre Completo" type="text" formControlName="hrName" minlength="10">
+          <input class="form-control" placeholder="Nombre Completo" type="text" formControlName="hrFullName" minlength="10">
         </div>
-        <div *ngIf="companyForm.controls.hrName.errors?.required && companyForm.controls.hrName.touched">
+        <div *ngIf="companyForm.controls.hrFullName.errors?.required && companyForm.controls.hrFullName.touched">
           <small class="error-text ml-2">*Ingresa el nombre de la persona encargada de RH</small>
         </div>
-        <div *ngIf="companyForm.controls.hrName.errors?.minlength && companyForm.controls.hrName.touched">
+        <div *ngIf="companyForm.controls.hrFullName.errors?.minlength && companyForm.controls.hrFullName.touched">
           <small class="error-text ml-2">*Por favor, ingresa el nombre completo</small>
         </div>
       </div>

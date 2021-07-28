@@ -43,16 +43,18 @@ export class EditProfileTeacherComponent implements OnInit {
     const {userEntity} = event.getRawValue();
     const form = {...event.getRawValue(), ...userEntity};
     delete form.userEntity;
+    form.name = form.fullName;
+    form.idUser = form.id;
     console.log(form);
 
-    // this.httpClientService.postStudentProfile(form).subscribe(response => {
-    //   this.utilitiesService.setName(form.fullName);
-    //   this.toastService.show('Perfil actualizado exitosamente' , { classname: 'bg-success text-white'});
-    //   this.router.navigate(['/dash/std/profile']);
-    //
-    // }, error => {
-    //   console.log(error);
-    // });
+    this.httpClientService.postTeacherProfile(form).subscribe(response => {
+      this.utilitiesService.setName(form.fullName);
+      this.toastService.show('Perfil actualizado exitosamente' , { classname: 'bg-success text-white'});
+      this.router.navigate(['/dash/tch/profile']);
+
+    }, error => {
+      console.log(error);
+    });
   }
 
 }

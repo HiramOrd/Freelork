@@ -6,6 +6,8 @@ import {ToastService} from '../../../utilities/toast.service';
 import {TableService} from '../../../utilities/tables/table.service';
 import {UtilitiesService} from '../../../utilities/utilities.service';
 import {studentTasks} from '../../../variables/studentTasks';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {HttpClientService} from '../../../services/http-client.service';
 
 @Component({
   selector: 'app-dashboard-company',
@@ -14,6 +16,7 @@ import {studentTasks} from '../../../variables/studentTasks';
   providers: [TableService]
 })
 export class DashboardCompanyComponent implements OnInit {
+  serviceData;
   // Table
   table;
   arrayTable$: Observable<any[]>;
@@ -26,10 +29,13 @@ export class DashboardCompanyComponent implements OnInit {
     // Table
     public tableService: TableService,
     public utilitiesService: UtilitiesService,
+
+    private modalService: NgbModal,
+    private  httpClientService: HttpClientService,
   ) { }
 
   ngOnInit(): void {
-    this.setTableInfo(studentTasks);
+    this.getCompanySummary();
     this.arrayTable$ = this.tableService.arrayTable$;
     this.total$ = this.tableService.total$;
   }
@@ -50,5 +56,16 @@ export class DashboardCompanyComponent implements OnInit {
 
     this.tableService.sortColumn = column;
     this.tableService.sortDirection = direction;
+  }
+
+  getCompanySummary () {
+    this.httpClientService.getCompanySummary(this.utilitiesService.getId()).subscribe( response => {
+      this.serviceData = response;
+      this.setTableInfo(this.serviceData.registers);
+      console.log(response);
+    }, error => {
+      console.warn(error);
+      this.toastService.show('Error en el servidor, no se pudo cargar el contenido' , { classname: 'bg-danger text-white'});
+    });
   }
 }

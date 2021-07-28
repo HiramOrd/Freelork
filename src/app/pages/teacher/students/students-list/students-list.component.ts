@@ -47,9 +47,10 @@ export class StudentsListComponent implements OnInit {
   }
   /* API for GET All Students in Dashboard StudentList Teacher */
   getAllStudents () {
-    this.httpClientService.getAllStudents(9).subscribe( response => {
-      this.serviceData=response;
+    this.httpClientService.getAllStudents(this.utilitiesService.getId()).subscribe( response => {
+      this.serviceData = response;
       this.setTableInfo(this.serviceData);
+      console.log(this.serviceData);
     }, error => {
       console.warn(error);
       this.toastService.show('Error en el servidor, no se pudo cargar el contenido' , { classname: 'bg-danger text-white'});

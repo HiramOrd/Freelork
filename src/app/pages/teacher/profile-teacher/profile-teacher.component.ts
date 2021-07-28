@@ -9,6 +9,7 @@ import {ToastService} from '../../../utilities/toast.service';
   styleUrls: ['./profile-teacher.component.css']
 })
 export class ProfileTeacherComponent implements OnInit {
+  serviceData;
 
   constructor(
     private httpClientService: HttpClientService,
@@ -17,6 +18,17 @@ export class ProfileTeacherComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getProfileTeacher();
+  }
+
+  getProfileTeacher () {
+    this.httpClientService.getTeacherProfile(this.utilitiesService.getId()).subscribe( response => {
+      this.serviceData = response;
+      console.log(response);
+    }, error => {
+      console.warn(error);
+      this.toastService.show('Error en el servidor, no se pudo cargar el contenido' , { classname: 'bg-danger text-white'});
+    });
   }
 
 }

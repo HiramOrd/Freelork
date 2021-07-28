@@ -12,10 +12,10 @@
           <i class="fas fa-pencil-alt"></i>
         </button>
         <!-- Start Edit Button -->
-       
+
         <!-- End Edit Button -->
 
-        <app-user-profile [name]="'Armando Vivanco'" [email]="'emailemail.com'" [photo]="''" [role]="utilitiesService.getRoleName()"></app-user-profile>
+        <app-user-profile [name]="serviceData?.fullName" [email]="serviceData?.email" [photo]="serviceData?.image" [role]="utilitiesService.getRoleName()"></app-user-profile>
 
         <div class="card-body">
                     <div class="row">
@@ -24,12 +24,12 @@
                 <div class="row p-0 m-0 w-100">
                   <div class="col-12 col-lg-6 m-0">
                     <i class="fas fa-graduation-cap"></i>
-                    <span class="heading font-weight-700 text-sm">Ingeniería</span>
+                    <span class="heading font-weight-700 text-sm">{{serviceData?.grade}}</span>
                     <span class="description">Grado de Estudios</span>
                   </div>
                   <div class="col-12 col-lg-6 m-0">
                     <i class="fas fa-phone"></i>
-                    <span class="heading font-weight-700 text-sm">9999833453</span>
+                    <span class="heading font-weight-700 text-sm">{{serviceData?.phone}}</span>
                     <span class="description">Teléfono</span>
                   </div>
                 </div>

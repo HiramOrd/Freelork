@@ -3,7 +3,7 @@
     <div class="header-body">
 
       <!-- Start Form -->
-      <form (submit)="validateForm()" [formGroup]="registerTaskForm">
+      <form (submit)="validateForm()" [formGroup]="projectCompanyForm">
         <div class="row">
           <div class="col-12">
             <!-- Start Cards section -->
@@ -27,11 +27,11 @@
                     <div class="form-group">
                       <label class="form-control-label" for="input-first-name">Nombre del Proyecto</label>
                       <input
-                        [ngClass]="(registerTaskForm.controls.title.invalid && registerTaskForm.controls.title.touched ) ? 'error-border' : ''"
+                        [ngClass]="(projectCompanyForm.controls.name.invalid && projectCompanyForm.controls.name.touched ) ? 'error-border' : ''"
                         type="text" id="input-first-name" class="form-control form-control-alternative"
-                        placeholder="¿Cómo se llama el proyecto?" formControlName="title" maxlength="50">
+                        placeholder="¿Cómo se llama el proyecto?" formControlName="name" maxlength="50">
                       <div
-                        *ngIf="registerTaskForm.controls.title.invalid && registerTaskForm.controls.title.touched">
+                        *ngIf="projectCompanyForm.controls.name.invalid && projectCompanyForm.controls.name.touched">
                         <small class="error-text ml-2">*Agrega el nombre del proyecto</small>
                       </div>
                     </div>
@@ -41,7 +41,7 @@
                         <div class="form-group mb-lg-0">
                           <label class="form-control-label" for="project-description">Objetivo</label>
                           <textarea class="form-control form-control-alternative"
-                                    id="project-description" rows="7" maxlength="500" formControlName="description"
+                                    id="project-description" rows="7" maxlength="500" formControlName="objectives"
                                     placeholder="En que consiste el proyecto..."></textarea>
                         </div>
                       </div>

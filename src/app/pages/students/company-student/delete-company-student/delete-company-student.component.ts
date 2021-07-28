@@ -3,6 +3,7 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {HttpClientService} from '../../../../services/http-client.service';
 import {UtilitiesService} from '../../../../utilities/utilities.service';
 import {ToastService} from '../../../../utilities/toast.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-delete-company-student',
@@ -12,10 +13,13 @@ import {ToastService} from '../../../../utilities/toast.service';
 export class DeleteCompanyStudentComponent implements OnInit {
   @Input() id;
 
-  constructor(public activeModal: NgbActiveModal,
-              private  httpClientService: HttpClientService,
-              private utilitiesService: UtilitiesService,
-              private toastService: ToastService, ) { }
+  constructor(
+    public activeModal: NgbActiveModal,
+    private httpClientService: HttpClientService,
+    private utilitiesService: UtilitiesService,
+    private toastService: ToastService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
@@ -23,6 +27,7 @@ export class DeleteCompanyStudentComponent implements OnInit {
   deleteCompany() {
     this.httpClientService.deleteStudentCompany(this.utilitiesService.getId(), this.id).subscribe( response => {
       this.toastService.show('Se ha desvinculado con exito' , { classname: 'bg-success text-white'});
+      this.router.navigate(['dash/std/company/new']);
       this.activeModal.close(200);
     }, error => {
       console.warn(error);
