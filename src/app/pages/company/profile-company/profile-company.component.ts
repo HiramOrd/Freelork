@@ -25,6 +25,7 @@ export class ProfileCompanyComponent implements OnInit {
     this.httpClientService.getCompanyProfile(this.utilitiesService.getId()).subscribe( response => {
       console.log(response);
       this.serviceData = response;
+      this.utilitiesService.setImage(this.serviceData.image);
     }, error => {
       console.warn(error);
       this.toastService.show('Error en el servidor, intenta más tarde' , { classname: 'bg-danger text-white'});

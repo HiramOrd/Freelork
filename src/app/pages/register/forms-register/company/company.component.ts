@@ -41,6 +41,25 @@ export class CompanyComponent implements OnInit {
         [Validators.required, Validators.pattern(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)]),
       userEntity: this.registerFormComponent.createFormGroup(),
     });
+
+    if (this.edit) {
+      this.httpClientService.getCompanyProfile(this.utilitiesService.getId()).subscribe( response => {
+        console.log(response);
+        this.companyForm.get('userEntity').get('fullName').setValue(response.name);
+        this.companyForm.get('userEntity').get('email').setValue(response.email);
+        this.companyForm.get('sizeCompany').setValue(response.sizeCompany);
+        this.companyForm.get('serviceType').setValue(response.serviceType);
+        this.companyForm.get('address').setValue(response.address);
+        this.companyForm.get('hrFullName').setValue(response.hrFullName);
+        this.companyForm.get('hrPhone').setValue(response.hrPhone);
+        this.companyForm.get('hrEmail').setValue(response.hrEmail);
+        if (response.image) {
+          this.imageCompany.emit(response.image);
+        }
+      }, error => {
+        console.log(error);
+      });
+    }
   }
 
   companySubmit(): void {

@@ -44,14 +44,13 @@ export class EditProfileCompanyComponent implements OnInit {
     delete form.userEntity;
     console.log(form);
 
-    // this.httpClientService.postStudentProfile(form).subscribe(response => {
-    //   this.utilitiesService.setName(form.fullName);
-    //   this.toastService.show('Perfil actualizado exitosamente' , { classname: 'bg-success text-white'});
-    //   this.router.navigate(['/dash/std/profile']);
-    //
-    // }, error => {
-    //   console.log(error);
-    // });
+    this.httpClientService.postCompany(form).subscribe(response => {
+      this.utilitiesService.setName(form.fullName);
+      this.toastService.show('Perfil actualizado exitosamente' , { classname: 'bg-success text-white'});
+      this.router.navigate(['/dash/comp/profile']);
+    }, error => {
+      console.log(error);
+    });
   }
 
 }

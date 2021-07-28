@@ -27,6 +27,10 @@ export class UtilitiesService {
     localStorage.setItem('fullName', fullName);
   }
 
+  setImage(url: string) {
+    localStorage.setItem('imageUrl', url);
+  }
+
   getRoleRoute(): string {
     let route = '';
     switch (this.getRole()) {

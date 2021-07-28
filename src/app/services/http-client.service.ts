@@ -154,7 +154,11 @@ export class HttpClientService {
 
   // Company
   postCompany(body: any): any {
-    return this.http.put(API.SERVER + API.API + API.GET_COMPANY + API.UPDATE_COMPANY, body);
+    const formData = new FormData();
+    for ( const key in body ) {
+      formData.append(key, body[key]);
+    }
+    return this.http.put(API.SERVER + API.API + API.UPDATE_COMPANY, formData);
   }
   getCompanySummary(id: number) {
     return this.http.get(API.SERVER + API.API + API.GET_COMPANY + API.GET_COMPANY_SUMMARY + id);

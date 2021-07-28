@@ -24,6 +24,8 @@ export class ProfileTeacherComponent implements OnInit {
   getProfileTeacher () {
     this.httpClientService.getTeacherProfile(this.utilitiesService.getId()).subscribe( response => {
       this.serviceData = response;
+      this.utilitiesService.setImage(this.serviceData.image);
+
       console.log(response);
     }, error => {
       console.warn(error);

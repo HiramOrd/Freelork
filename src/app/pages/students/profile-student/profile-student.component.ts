@@ -29,6 +29,7 @@ export class ProfileStudentComponent implements OnInit {
     this.httpClientService.getStudentProfile(this.utilitiesService.getId()).subscribe( response => {
       console.log(response);
       this.student = response;
+      this.utilitiesService.setImage(this.student.imageUrl);
     }, error => {
       console.warn(error);
       this.toastService.show('Error en el servidor, intenta más tarde' , { classname: 'bg-danger text-white'});
