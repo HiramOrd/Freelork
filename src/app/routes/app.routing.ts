@@ -138,7 +138,7 @@ const routes: Routes = [
           {path: 'all-list', component: AllRegistersCompanyComponent, data : {title: 'Empresa - Tareas'}},
           {path: 'students', children: [
               {path: '', component: StudentsListComponent, data : {title: 'Empresa - Estudiantes'}},
-              {path: 'students-profile', component: StudentsProfileComponent, data : {title: 'Empresa - Perfil de estudiante'}},
+              {path: 'student-profile:id', component: StudentsProfileComponent, data : {title: 'Empresa - Perfil de estudiante'}},
               {path: '**', redirectTo: '/not/404' },
             ]},
           {path: 'profile', children: [
