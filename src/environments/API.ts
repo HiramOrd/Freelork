@@ -8,6 +8,7 @@ export class API {
   static POST_TASK = 'register/';
   static GET_STUDENT = 'student/';
   static GET_TEACHER = 'teacher/';
+  static GET_COMPANY = 'company/';
   static UPDATE_STUDENT = 'student/update';
 
   // Register Account
@@ -50,6 +51,9 @@ export class API {
 
 
 
-
-
+  // Company
+  static UPDATE_COMPANY = 'update';
+  static GET_COMPANY_SUMMARY = 'summary/';
+  static GET_COMPANY_PROJECTS = 'projects/';
+  static POST_COMPANY_PROJECT = 'project';
 }

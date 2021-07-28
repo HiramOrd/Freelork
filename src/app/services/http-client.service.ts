@@ -133,6 +133,24 @@ export class HttpClientService {
     return this.http.get(API.SERVER + API.API + API.POST_STUDENT_CLASSROOM + idStudent + API.POST_STUDENT_CLASSROOM2 + idClassroom );
   }
 
+  //Company
+  postCompany(body: any): any {
+    return this.http.put(API.SERVER + API.API + API.GET_COMPANY + API.UPDATE_COMPANY, body);
+  }
+  getCompanySummary(id: number){
+    return this.http.get(API.SERVER + API.API + API.GET_COMPANY + API.GET_COMPANY_SUMMARY + id);
+  }
+  getCompanyProjects(id: number){
+    return this.http.get(API.SERVER + API.API + API.GET_COMPANY + API.GET_COMPANY_PROJECTS + id);
+  }
+  postProjects(body: any){
+    return this.http.post(API.SERVER + API.API + API.GET_COMPANY + API.POST_COMPANY_PROJECT, body);
+  }
+
+
+
+
+
   deleteStudentClassroom(id: number): any {
     return this.http.put(API.SERVER + API.API + API.DELETE_STUDENT_CLASSROOM + id, null );
   }
