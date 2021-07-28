@@ -19,4 +19,6 @@ export class NewGroupStudentComponent implements OnInit {
   submitForm() {
     this.router.navigate(['/dash/std/group']);
   }
+
+
 }

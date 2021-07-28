@@ -121,6 +121,10 @@ export class HttpClientService {
     return this.http.get(API.SERVER + API.API + API.POST_STUDENT_COMPANY + idStudent + API.POST_STUDENT_COMPANY2 + idCompany );
   }
 
+  deleteStudentCompany(idStudent: number, idCompany: number): any {
+    return this.http.put(API.SERVER + API.API + API.DELETE_STUDENT_COMPANY + idStudent + API.DELETE_STUDENT_COMPANY2 + idCompany, null );
+  }
+
   getStudentClassroom(id: number): any {
     return this.http.get(API.SERVER + API.API + API.GET_STUDENT_CLASSROOM + id);
   }
@@ -128,6 +132,12 @@ export class HttpClientService {
   postStudentClassroom(idStudent: number, idClassroom: number): any {
     return this.http.get(API.SERVER + API.API + API.POST_STUDENT_CLASSROOM + idStudent + API.POST_STUDENT_CLASSROOM2 + idClassroom );
   }
+
+  deleteStudentClassroom(id: number): any {
+    return this.http.put(API.SERVER + API.API + API.DELETE_STUDENT_CLASSROOM + id, null );
+  }
+
+
   // Pipe Example
   // postImage(idUser: number, Image: any): any{
   //   return this.http.post(API.SERVER + API.API + API.SAVE_IMAGE + idUser, {image: Image}, {observe: 'response'})

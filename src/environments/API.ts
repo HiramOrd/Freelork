@@ -41,9 +41,14 @@ export class API {
   static GET_STUDENT_COMPANY = 'student/company/';
   static POST_STUDENT_COMPANY = 'student/';
   static POST_STUDENT_COMPANY2 = 'company/';
+  static DELETE_STUDENT_COMPANY = 'student/delete/';
+  static DELETE_STUDENT_COMPANY2 = 'company/';
   static GET_STUDENT_CLASSROOM = 'student/classroom';
   static POST_STUDENT_CLASSROOM = 'student/';
   static POST_STUDENT_CLASSROOM2 = 'classroom/';
+  static DELETE_STUDENT_CLASSROOM = 'student/delete/classroom/';
+
+
 
 
 
