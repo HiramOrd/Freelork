@@ -104,7 +104,7 @@ export class HomeTeacherComponent implements OnInit {
   exportToExcel(type: string) {
     let arrayToExport = this.table;
     arrayToExport = this.utilitiesService.deleteColumn('id', arrayToExport);
-    arrayToExport = this.utilitiesService.deleteColumn('idProject', arrayToExport);
+   /*  arrayToExport = this.utilitiesService.deleteColumn('dateRegister', arrayToExport); */
     const dataForExcel = [];
     arrayToExport.forEach((row: any) => {
       dataForExcel.push(Object.values(row));
@@ -113,8 +113,8 @@ export class HomeTeacherComponent implements OnInit {
     const reportData = {
       title: 'Estancias_' + type,
       data: dataForExcel,
-      headers: ['Titulo', 'Alumno', 'Empresa', 'Proyecto', 'Fecha', 'Horas', 'Estado'],
-      sizeColumns: [50, 25, 15, 20, 10, 5, 15]
+      headers: ['Titulo', 'Fecha', 'Alumno', 'Empresa', 'Tiempo', 'Proyecto', 'Estado'],
+      sizeColumns: [50, 10, 25, 15, 10, 20, 20]
     };
 
     this.exportExcelService.exportExcel(reportData);

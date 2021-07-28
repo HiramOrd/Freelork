@@ -53,9 +53,14 @@
                         <div class="form-group col-12">
                           <label class="form-control-label" for="career">Carrera</label>
                           <div class="input-group">
-                            <select id="career" class="form-control form-control-alternative bg-lightblue-border" formControlName="career">
-                              <option [value]="null" disabled hidden selected>Selecciona la carreras</option>
-                              <option>Ingenieria en software</option>
+                            <select (change)="confirmDataForm()" id="career" class="form-control form-control-alternative bg-lightblue-border" formControlName="career">
+                              <option [value]="null" hidden selected>Selecciona la carreras</option>
+                              <option value="Ingeniería en Software">Ingeniería en Software</option>
+                              <option value="Ingenieria Financiera">Ingeniería Financiera</option>
+                              <option value="Ingenieria en Biomedica">Ingeniería en Biomédica</option>
+                              <option value="Licenciatura en Administracion y Gestion de PyMEs">Licenciatura en Administración y Gestión de PyMEs</option>
+                              <option value="Ingenieria en Biotecnologia">Ingeniería en Biotecnología</option>
+                              <option value="Licenciatura en Terapia Fisica">Licenciatura en Terapia Física</option>
                             </select>
                           </div>
                           <div *ngIf="createGroupForm.controls.career.errors?.required && createGroupForm.controls.career.touched">
@@ -68,9 +73,13 @@
                       <div class="form-group col-12">
                         <label class="form-control-label" for="grade">Cuatrimestre</label>
                         <div class="input-group">
-                          <select id="grade" class="form-control form-control-alternative bg-lightblue-border" formControlName="grade">
+                          <select (change)="confirmDataForm()" id="grade" class="form-control form-control-alternative bg-lightblue-border" formControlName="grade">
                             <option [value]="null" disabled hidden>Selecciona el cuatrimestre</option>
-                            <option>6to cuatrimestre</option>
+                            <option value="6">6to cuatrimestre</option>
+                            <option value="7">7mo cuatrimestre</option>
+                            <option value="8">8vo cuatrimestre</option>
+                            <option value="9">9no cuatrimestre</option>
+                            <option value="10">10mo cuatrimestre</option>
                           </select>
                         </div>
                         <div *ngIf="createGroupForm.controls.grade.errors?.required && createGroupForm.controls.grade.touched">
@@ -84,9 +93,10 @@
                       <div class="form-group col-12">
                         <label class="form-control-label" for="schedule">Turno</label>
                         <div class="input-group">                     
-                          <select id="schedule" class="form-control bg-lightblue-border" formControlName="schedule">
+                          <select (change)="confirmDataForm()" id="schedule" class="form-control bg-lightblue-border" formControlName="schedule">
                             <option [value]="null" disabled hidden selected>Selecciona el turno</option>
                             <option>Matutino</option>
+                            <option>Vespertino</option>
                           </select>
                         </div>
                         <div *ngIf="createGroupForm.controls.schedule.errors?.required && createGroupForm.controls.schedule.touched">
@@ -101,7 +111,7 @@
                         <div class="input-group">
                           <select id="group" class="form-control form-control-alternative bg-lightblue-border" formControlName="group">
                             <option [value]="null" disabled hidden selected>Selecciona el grupo</option>
-                            <option>IS63</option>
+                            <option *ngFor="let group of groups" [ngValue]="group.name">{{group.name}}</option>
                           </select>
                         </div>
                         <div *ngIf="createGroupForm.controls.group.errors?.required && createGroupForm.controls.group.touched">

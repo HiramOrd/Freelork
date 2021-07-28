@@ -56,6 +56,9 @@ export class HttpClientService {
   getAllStudents(id: number){
     return this.http.get(API.SERVER + API.API + API.GET_TEACHER + API.GET_ALL_STUDENTS + id);
   }
+  postGroup(career: string, quarter: number, schedule: string){
+    return this.http.get(API.SERVER + API.API + API.GET_TEACHER + API.CLASS + career + '/' + quarter + '/' + schedule);
+  }
 
   postTask(body: any): any {
     const formData = new FormData();

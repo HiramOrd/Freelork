@@ -165,7 +165,7 @@
                   </span>
                   </div>
                 </th>
-                <th scope="col" sortable="company" (sort)="onSort($event)" class="table-title d-none d-lg-table-cell">
+                <th scope="col" sortable="nameCompany" (sort)="onSort($event)" class="table-title d-none d-lg-table-cell">
                   <div>
                     Empresa
                     <span>
@@ -225,7 +225,7 @@
                   <span class="btn-link mouse-pointer" routerLink="/dash/tch/students-list/students-profile/1">{{data.student?data.student:'No disponible'}}</span>
                 </td>
                 <td class="d-none d-lg-table-cell">
-                  {{data.company?data.company:'No disponible'}}
+                  {{data.nameCompany?data.nameCompany:'No disponible'}}
                 </td>
                 <td class="d-none d-lg-table-cell">
                   {{data.nameProject?data.nameProject:'No disponible'}}
@@ -245,7 +245,7 @@
               <tr>
                 <td colspan="6">
                   <div *ngIf="!serviceData || serviceData?.length === 0" class="flex-grow-1 d-flex m-0 p-0 align-items-center justify-content-start justify-content-md-center w-100">
-                    <span style="font-size: 1.4rem;">Sin estudiantes</span>
+                    <span style="font-size: 1.4rem;">Sin tareas por revisar</span>
                   </div>
                 </td>
               </tr>

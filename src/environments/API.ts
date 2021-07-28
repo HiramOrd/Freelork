@@ -25,6 +25,7 @@ export class API {
   static GET_SUMMARY_LIST = 'summary/';
   static GET_GROUPS = 'classrooms/';
   static GET_ALL_STUDENTS = 'students/';
+  static CLASS = 'class/';
 
   // Student
   static STUDENT_SUMMARY = 'student/summary/';
