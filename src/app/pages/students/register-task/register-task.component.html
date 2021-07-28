@@ -37,7 +37,7 @@
                       <div class="form-group m-sm-0">
                         <input type="date" class="form-control form-control-alternative"
                                [ngClass]="(registerTaskForm.controls.dateRegister.invalid && registerTaskForm.controls.dateRegister.touched ) ? 'error-border' : ''"
-                               [max]="today | date: 'yyyy-MM-dd'" placeholder="Fecha" formControlName="dateRegister" />
+                               [max]="today | date: 'yyyy-MM-dd'" placeholder="Fecha" formControlName="dateRegister"/>
                         <div *ngIf="registerTaskForm.controls.dateRegister.invalid && registerTaskForm.controls.dateRegister.touched">
                           <small class="error-text ml-2">*Ingresa la fecha</small>
                         </div>
@@ -54,7 +54,7 @@
                         <select [ngClass]="(registerTaskForm.controls.idProject.invalid && registerTaskForm.controls.idProject.touched ) ? 'error-border' : ''"
                           id="select-project" class="form-control form-control-alternative" formControlName="idProject">
                           <option [value]="null" disabled hidden selected>¿En qué proyecto se trabajó?</option>
-                          <option [value]="1">Ejemplo</option>
+                          <option [value]="project.id" *ngFor="let project of projects">{{project?.name}}</option>
                         </select>
                         <div *ngIf="registerTaskForm.controls.idProject.invalid && registerTaskForm.controls.idProject.touched">
                           <small class="error-text ml-2">*Selecciona un proyecto</small>
@@ -149,7 +149,7 @@
                   </div>
                 </div>
                 <!-- End Card Header -->
-                  <app-drag-and-drop [file]="file" (result)="setImage($event)"></app-drag-and-drop>
+                  <app-drag-and-drop [file]="file" (result)="setImage($event)" [imageShow]="serviceData?.imageUrl" (deleteEdit)="deleteEditImage($event)"></app-drag-and-drop>
               </div>
             </div>
           </div>

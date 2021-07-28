@@ -1,16 +1,9 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgbActiveModal, NgbTypeahead} from '@ng-bootstrap/ng-bootstrap';
-import {merge, Observable, OperatorFunction, Subject} from 'rxjs';
-import {debounceTime, distinctUntilChanged, filter, map} from 'rxjs/operators';
-
-const states = ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'California', 'Colorado',
-  'Connecticut', 'Delaware', 'District Of Columbia', 'Federated States Of Micronesia', 'Florida', 'Georgia',
-  'Guam', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine',
-  'Marshall Islands', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana',
-  'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota',
-  'Northern Mariana Islands', 'Ohio', 'Oklahoma', 'Oregon', 'Palau', 'Pennsylvania', 'Puerto Rico', 'Rhode Island',
-  'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virgin Islands', 'Virginia',
-  'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
+import {Subject} from 'rxjs';
+import {HttpClientService} from '../../../../services/http-client.service';
+import {UtilitiesService} from '../../../../utilities/utilities.service';
+import {ToastService} from '../../../../utilities/toast.service';
 
 @Component({
   selector: 'app-modal-add-project',
@@ -18,25 +11,46 @@ const states = ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'C
   styleUrls: ['./modal-add-project.component.css']
 })
 export class ModalAddProjectComponent implements OnInit {
+  serviceData;
+  valueSelected = null;
   @ViewChild('instance', {static: true}) instance: NgbTypeahead;
   focus$ = new Subject<string>();
   click$ = new Subject<string>();
   model: any;
 
-  constructor(public activeModal: NgbActiveModal) { }
+  constructor(
+    public activeModal: NgbActiveModal,
+    private httpClientService: HttpClientService,
+    private utilitiesService: UtilitiesService,
+    private toastService: ToastService,
+  ) { }
 
   ngOnInit(): void {
+    this.getProjects();
   }
 
-  search: OperatorFunction<string, readonly string[]> = (text$: Observable<string>) => {
-    const debouncedText$ = text$.pipe(debounceTime(200), distinctUntilChanged());
-    const clicksWithClosedPopup$ = this.click$.pipe(filter(() => !this.instance.isPopupOpen()));
-    const inputFocus$ = this.focus$;
+  getProjects () {
+    this.httpClientService.getCompanyProject(this.utilitiesService.getId()).subscribe( response => {
+      this.serviceData = response;
+    }, error => {
+      console.warn(error);
+      this.toastService.show('Error en el servidor, no se pudo cargar el contenido' , { classname: 'bg-danger text-white'});
+    });
+  }
 
-    return merge(debouncedText$, inputFocus$, clicksWithClosedPopup$).pipe(
-      map(term => (term === '' ? states
-        : states.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1)).slice(0, 10))
-    );
+  addProject() {
+    if (this.valueSelected) {
+      this.httpClientService.postStudentProject(this.utilitiesService.getId(), this.valueSelected).subscribe( response => {
+        this.toastService.show('Se agregó el proyecto con éxito' , { classname: 'bg-success text-white'});
+        this.activeModal.close(200);
+      }, error => {
+        console.warn(error);
+        this.toastService.show('Error en el servidor, no se pudo cargar el contenido' , { classname: 'bg-danger text-white'});
+      });
+    } else {
+      this.toastService.show('Selecciona un nuevo proyecto' , { classname: 'bg-danger text-white'});
+    }
+
   }
 
 }

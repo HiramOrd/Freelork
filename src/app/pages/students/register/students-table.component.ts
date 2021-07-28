@@ -7,6 +7,8 @@ import {UtilitiesService} from '../../../utilities/utilities.service';
 import {ExportExcelService} from '../../../utilities/export-excel.service';
 import {ToastService} from '../../../utilities/toast.service';
 import {HttpClientService} from '../../../services/http-client.service';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {ModalDeleteRegisterStudentComponent} from './modal-delete-register-student/modal-delete-register-student.component';
 
 @Component({
   selector: 'app-register',
@@ -30,6 +32,7 @@ export class StudentsTableComponent implements OnInit {
     public studentsService: StudentsService,
     private toastService: ToastService,
     private httpClientService: HttpClientService,
+    private modalService: NgbModal,
     // Table
     public tableService: TableService,
     public utilitiesService: UtilitiesService,
@@ -54,7 +57,6 @@ export class StudentsTableComponent implements OnInit {
   }
   getTaskListByDate() {
     this.httpClientService.getTaskListByDate(this.utilitiesService.getId(), this.dateMinRange, this.dateMaxRange).subscribe( response => {
-      console.log(response);
       this.setTableInfo(response);
     }, error => {
       this.toastService.show('Error en el servidor, no se pudo cargar el contenido' , { classname: 'bg-danger text-white'});
@@ -65,6 +67,11 @@ export class StudentsTableComponent implements OnInit {
   setTableInfo(arrayTable) {
     this.table = arrayTable;
     this.table = this.utilitiesService.statusTaskToString(this.table, 'status');
+    this.tableService.initService(this.table);
+  }
+
+  refreshTableInfo(arrayTable) {
+    this.table = arrayTable;
     this.tableService.initService(this.table);
   }
 
@@ -133,5 +140,18 @@ export class StudentsTableComponent implements OnInit {
     };
 
     this.exportExcelService.exportExcel(reportData);
+  }
+
+  openModal(data) {
+    this.studentsService.viewRegister(data.id).then( response => {
+      if (response > 0) {
+        const modalRef = this.modalService.open(ModalDeleteRegisterStudentComponent);
+        modalRef.componentInstance.id = response;
+        modalRef.result.then( result => {
+            const resultTable = this.table.filter(row => row.id !== result);
+          this.refreshTableInfo(resultTable);
+        }).catch();
+      }
+    }).catch();
   }
 }

@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {HttpClientService} from '../../../services/http-client.service';
 import {UtilitiesService} from '../../../utilities/utilities.service';
 import {ToastService} from '../../../utilities/toast.service';
+import {formatDate} from '@angular/common';
 
 @Component({
   selector: 'app-register-task',
@@ -12,9 +13,12 @@ import {ToastService} from '../../../utilities/toast.service';
 })
 export class RegisterTaskComponent implements OnInit {
   public registerTaskForm: FormGroup;
+  public projects;
   public imageShow;
   private origin: string;
   public today = Date.now();
+
+  serviceData;
 
   constructor(
     private router: Router,
@@ -26,13 +30,13 @@ export class RegisterTaskComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // console.log(this.today);
+    this.getProjects();
     this.registerTaskForm = new FormGroup({
       // NULL Default
       id: new FormControl(0, []),
       status: new FormControl(2, []),
       idUser: new FormControl(this.utilitiesService.getId(), [Validators.required]),
-      dateRegister: new FormControl(null, [Validators.required]),
+      dateRegister: new FormControl(formatDate(new Date(), 'yyyy-MM-dd', 'en'), [Validators.required]),
       idProject: new FormControl(null, [Validators.required]),
       title: new FormControl(null, [Validators.required, Validators.minLength(10)]),
       timeRegister: new FormControl(null, [Validators.required]),
@@ -49,7 +53,17 @@ export class RegisterTaskComponent implements OnInit {
   getTask(id: number) {
     this.httpClientService.getTask(id).subscribe( response => {
       console.log(response);
-    }, error => {
+      this.serviceData = response;
+      this.registerTaskForm.get('id').setValue(this.serviceData.id);
+      this.registerTaskForm.get('dateRegister').setValue(formatDate(this.serviceData.dateRegister, 'yyyy-MM-dd', 'en'));
+      this.registerTaskForm.get('idProject').setValue(this.serviceData.idProject);
+      this.registerTaskForm.get('title').setValue(this.serviceData.title);
+      this.registerTaskForm.get('timeRegister').setValue(this.serviceData.timeRegister);
+      this.registerTaskForm.get('description').setValue(this.serviceData.description);
+      this.registerTaskForm.setControl( 'imageId', new FormControl( this.serviceData.imageId));
+      this.registerTaskForm.setControl( 'imageUrl', new FormControl( this.serviceData.imageUrl));
+      console.log(this.registerTaskForm.getRawValue());
+      }, error => {
       console.warn(error);
       this.toastService.show('Error en el servidor, no se pudo cargar el contenido' , { classname: 'bg-danger text-white'});
     });
@@ -96,5 +110,21 @@ export class RegisterTaskComponent implements OnInit {
         break;
       }
     }
+  }
+
+  deleteEditImage(event) {
+    if (this.registerTaskForm.get('imageUrl')) {
+      this.registerTaskForm.get('imageUrl').setValue(event);
+    }
+    console.log(this.registerTaskForm.getRawValue());
+  }
+
+  getProjects() {
+    this.httpClientService.getStudentProjects(this.utilitiesService.getId()).subscribe( response => {
+      this.projects = response;
+    }, (error) => {
+      console.warn(error);
+      this.toastService.show('Error en el servidor, intenta mas tarde' , { classname: 'bg-danger text-white'});
+    } );
   }
 }

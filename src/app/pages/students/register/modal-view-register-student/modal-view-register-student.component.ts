@@ -14,6 +14,8 @@ import {UtilitiesService} from '../../../../utilities/utilities.service';
 export class ModalViewRegisterStudentComponent implements OnInit {
   @Input() id;
   @Input() origin;
+  serviceData;
+  status;
 
   constructor(
     private modalService: NgbModal,
@@ -24,12 +26,12 @@ export class ModalViewRegisterStudentComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log('id:' + this.id);
-    console.log('origin: ' + this.origin);
+    this.getTask(this.id);
   }
 
   getTask(id: number) {
     this.httpClientService.getTask(id).subscribe( response => {
+      this.serviceData = response;
       console.log(response);
     }, error => {
       console.warn(error);
@@ -38,8 +40,7 @@ export class ModalViewRegisterStudentComponent implements OnInit {
   }
 
   deleteRegister() {
-    this.activeModal.dismiss('Change Modal');
-    const modalRef = this.modalService.open(ModalDeleteRegisterStudentComponent);
+    this.activeModal.close(this.id);
   }
 
 }

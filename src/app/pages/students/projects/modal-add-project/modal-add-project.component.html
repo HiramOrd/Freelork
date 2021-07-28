@@ -7,16 +7,10 @@
   <div class="modal-body pt-0">
     <label for="typeahead-focus" class="font-weight-bold">Busca un nuevo proyecto:</label>
     <div class="row p-0 m-0 align-items-center">
-      <input
-        id="typeahead-focus"
-        type="text" tabindex="-1"
-        class="form-control form-control-blue col"
-        [(ngModel)]="model"
-        [ngbTypeahead]="search"
-        (focus)="focus$.next($any($event).target.value)"
-        (click)="click$.next($any($event).target.value)"
-        #instance="ngbTypeahead"
-      />
+      <select id="typeahead-focus" class="form-select form-control form-control-blue col" aria-label="Default select example" [(ngModel)]="valueSelected">
+        <option selected hidden [value]="null">Selecciona un proyecto</option>
+        <option *ngFor="let project of serviceData" [value]="project?.id">{{project?.nameProject}}</option>
+      </select>
       <i class="far fa-question-circle ml-2 p-0 col-auto" placement="bottom" ngbTooltip="Puedes buscar proyectos de la empresa en donde realizas tus prácticas" tooltipClass="defaultTooltip"></i>
     </div>
 
@@ -26,7 +20,7 @@
     Cancelar
   </button>
 
-  <button class="btn btn-primary" name="button">
+  <button class="btn btn-primary" name="button" (click)="addProject()">
     Agregar Proyecto
   </button>
 </div>

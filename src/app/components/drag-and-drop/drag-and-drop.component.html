@@ -6,12 +6,12 @@
 <div class="p-3 h-100" id="image-container">
 
   <div class="h-100 d-flex justify-content-center align-items-center flex-column text-center" id="image-box"
-       [ngClass]="[(ondrag === true) ? 'ondrag': '', (imageShow !== undefined) ? '' : 'border-active' ]"
+       [ngClass]="[(ondrag === true) ? 'ondrag': '', (imageShow && imageShow !== null) ? '' : 'border-active' ]"
        (drop)="dropHandler($event)"
        (dragleave)="dragExit()"
        (dragover)="dragOverHandler($event);">
 
-    <ng-container *ngIf="imageShow === undefined; else image">
+    <ng-container *ngIf="!imageShow || imageShow === null; else image">
       <label class="btn btn-primary image-button mb-2" for="newPhoto" id="upload-button">
         <i class="fas fa-upload"></i>
       </label>

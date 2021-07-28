@@ -29,4 +29,20 @@ export class API {
 
   // Student
   static STUDENT_SUMMARY = 'student/summary/';
+  static GET_STUDENT_PROJECTS = 'student/projects/';
+  static GET_COMPANY_PROJECT = 'student/projects/company/';
+  static POST_PROJECT = 'student/';
+  static POST_PROJECT2 = '/project/';
+  static DELETE_PROJECT = 'student/delete/';
+  static DELETE_PROJECT2 = '/project/';
+  static DELETE_REGISTER = 'register/delete/';
+  static GET_STUDENT_COMPANY = 'student/company/';
+  static POST_STUDENT_COMPANY = 'student/';
+  static POST_STUDENT_COMPANY2 = 'company/';
+  static GET_STUDENT_CLASSROOM = 'student/classroom';
+  static POST_STUDENT_CLASSROOM = 'student/';
+  static POST_STUDENT_CLASSROOM2 = 'classroom/';
+
+
+
 }
