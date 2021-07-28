@@ -8,6 +8,7 @@ import {UtilitiesService} from '../../../../utilities/utilities.service';
 import {ExportExcelService} from '../../../../utilities/export-excel.service';
 import {ToastService} from '../../../../utilities/toast.service';
 import {HttpClientService} from '../../../../services/http-client.service';
+import { Router, Routes } from '@angular/router';
 
 @Component({
   selector: 'app-students-list',
@@ -33,6 +34,7 @@ export class StudentsListComponent implements OnInit {
     public studentsService: StudentsService,
     private toastService: ToastService,
     private  httpClientService: HttpClientService,
+    private router: Router,
     // Table
     public tableService: TableService,
     public utilitiesService: UtilitiesService,
@@ -41,16 +43,32 @@ export class StudentsListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAllStudents();
     this.arrayTable$ = this.tableService.arrayTable$;
     this.total$ = this.tableService.total$;
+    if(this.router.url === '/dash/tch/students-list'){
+      this.getAllStudents();
+    }
+    if(this.router.url === '/dash/comp/students'){
+      this.getAllStudentsCompany();
+    }
   }
   /* API for GET All Students in Dashboard StudentList Teacher */
   getAllStudents () {
     this.httpClientService.getAllStudents(this.utilitiesService.getId()).subscribe( response => {
       this.serviceData = response;
       this.setTableInfo(this.serviceData);
-      console.log(this.serviceData);
+      /* console.log(this.serviceData); */
+    }, error => {
+      console.warn(error);
+      this.toastService.show('Error en el servidor, no se pudo cargar el contenido' , { classname: 'bg-danger text-white'});
+    });
+  }
+
+  getAllStudentsCompany() {
+    this.httpClientService.getStudentsCompany(this.utilitiesService.getId()).subscribe( response => {
+      this.serviceData = response;
+      this.setTableInfo(this.serviceData);
+      /* console.log(this.serviceData); */
     }, error => {
       console.warn(error);
       this.toastService.show('Error en el servidor, no se pudo cargar el contenido' , { classname: 'bg-danger text-white'});
@@ -111,13 +129,27 @@ export class StudentsListComponent implements OnInit {
       dataForExcel.push(Object.values(row));
     });
 
-    const reportData = {
-      title: 'Lista_Alumnos_' + type,
-      data: dataForExcel,
-      headers: ['Matricula', 'Alumno', 'Grupo', 'Empresa', 'Hrs trabajadas'],
-      sizeColumns: [15, 25, 15, 20, 15]
-    };
+    if(this.router.url === '/dash/tch/students-list'){
+      const reportData = {
+        title: 'Lista_Alumnos_' + type,
+        data: dataForExcel,
+        headers: ['Matricula', 'Alumno', 'Grupo', 'Empresa', 'Hrs trabajadas'],
+        sizeColumns: [15, 25, 15, 20, 15]
+      };
+      this.exportExcelService.exportExcel(reportData);
+    }
+    if(this.router.url === '/dash/comp/students'){
+      const reportData = {
+        title: 'Lista_Alumnos_' + type,
+        data: dataForExcel,
+        headers: ['Alumno', 'Matricula', 'Correo', 'Grupo', 'Hrs trabajadas'],
+        sizeColumns: [25, 15, 25, 15, 15]
+      };
+      this.exportExcelService.exportExcel(reportData);
+    }
 
-    this.exportExcelService.exportExcel(reportData);
+    
+
+    
   }
 }

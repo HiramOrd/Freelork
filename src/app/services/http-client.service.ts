@@ -161,7 +161,6 @@ export class HttpClientService {
   }
   getCompanyProjectToPost(id: number) {
     return this.http.get(API.SERVER + API.API + API.GET_COMPANY + API.GET_COMPANY_PROJECT_TO_POST + id);
-
   }
   postProjects(body: any) {
     const formData = new FormData();
@@ -177,6 +176,9 @@ export class HttpClientService {
 
   changeStatusTask(id: number, status: number) {
     return this.http.put( API.SERVER + API.API + API.CHANGE_TASK_STATUS + id + API.CHANGE_TASK_STATUS2 + status, null);
+  }
+  getStudentsCompany(id: number){
+    return this.http.get(API.SERVER + API.API + API.GET_COMPANY + API.GET_COMPANY_SUTDENTS + id );
   }
 
 

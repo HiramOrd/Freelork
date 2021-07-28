@@ -111,8 +111,11 @@
                 </div>
               </td>
 
-              <td>
+              <td *ngIf="this.router.url === '/dash/tch/students-list'">
                 {{data.classroom?data.classroom:'No disponible'}}
+              </td>
+              <td *ngIf="this.router.url === '/dash/comp/students'">
+                {{data.group?data.group:'No disponible'}}
               </td>
               <td *ngIf="utilitiesService.getRole() !==3" class="d-none d-lg-table-cell">
                 {{data.company?data.company:'No disponible'}}
