@@ -187,9 +187,12 @@ export class HttpClientService {
   getStudentsCompany(id: number){
     return this.http.get(API.SERVER + API.API + API.GET_COMPANY + API.GET_COMPANY_SUTDENTS + id );
   }
-
-
-
+  getTaskCompany(id: number){
+    return this.http.get(API.SERVER + API.API + API.GET_COMPANY + API.GET_TASK_COMPANY + id);
+  }
+  getTaskCompanyByDate(id: number, date1, date2){
+    return this.http.get(API.SERVER + API.API + API.GET_COMPANY + API.GET_TASK_COMPANY + id + '/' + date1 + '/' + date2);
+  }
 
 
   deleteStudentClassroom(id: number): any {

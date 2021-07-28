@@ -7,7 +7,6 @@ import {HttpClientService} from '../../../services/http-client.service';
 import {TableService} from '../../../utilities/tables/table.service';
 import {UtilitiesService} from '../../../utilities/utilities.service';
 import {ExportExcelService} from '../../../utilities/export-excel.service';
-import {studentTasks} from '../../../variables/studentTasks';
 
 @Component({
   selector: 'app-all-registers-company',
@@ -20,6 +19,7 @@ export class AllRegistersCompanyComponent implements OnInit {
   dateMinRange = null;
   dateMaxRange = null;
   public isCollapsed = true;
+  studentTasks;
 
   // Table
   table;
@@ -44,18 +44,18 @@ export class AllRegistersCompanyComponent implements OnInit {
   }
 
   getTaskListAll() {
-    this.httpClientService.getTaskList(11).subscribe( response => {
-      console.log(response);
-      this.setTableInfo(studentTasks);
+    this.httpClientService.getTaskCompany(this.utilitiesService.getId()).subscribe( response => {
+      this.studentTasks = response; 
+      this.setTableInfo(this.studentTasks);
     }, error => {
       this.toastService.show('Error en el servidor, no se pudo cargar el contenido' , { classname: 'bg-danger text-white'});
       console.warn(error);
     });
   }
-  getTaskListByDate() {
-    this.httpClientService.getTaskListByDate(11, this.dateMinRange, this.dateMaxRange).subscribe( response => {
-      console.log(response);
-      this.setTableInfo(studentTasks);
+  getTaskCompanyByDate() {
+    this.httpClientService.getTaskCompanyByDate(this.utilitiesService.getId(), this.dateMinRange, this.dateMaxRange).subscribe( response => {
+      this.studentTasks = response; 
+      this.setTableInfo(this.studentTasks);
     }, error => {
       this.toastService.show('Error en el servidor, no se pudo cargar el contenido' , { classname: 'bg-danger text-white'});
       console.warn(error);
@@ -90,7 +90,7 @@ export class AllRegistersCompanyComponent implements OnInit {
   changeFilter () {
     if (this.dateMaxRange === null) {
     } else if (this.dateMaxRange && this.dateMinRange) {
-      this.getTaskListByDate();
+      this.getTaskCompanyByDate();
     }
   }
 
@@ -99,7 +99,7 @@ export class AllRegistersCompanyComponent implements OnInit {
       this.httpClientService.getTaskList(this.utilitiesService.getId()).subscribe( response => {
         console.log(response);
         const table = this.utilitiesService.statusTaskToString(response, 'status');
-        this.exportToExcel('todo', studentTasks );
+        this.exportToExcel('todo', this.studentTasks );
       }, error => {
         this.toastService.show('Error en el servidor, no se pudo cargar el contenido' , { classname: 'bg-danger text-white'});
         console.warn(error);
@@ -118,8 +118,11 @@ export class AllRegistersCompanyComponent implements OnInit {
 
   exportToExcel(type: string, table) {
     let arrayToExport = table;
+
     arrayToExport = this.utilitiesService.deleteColumn('id', arrayToExport);
+    arrayToExport = this.utilitiesService.deleteColumn('imageStudent', arrayToExport);
     arrayToExport = this.utilitiesService.deleteColumn('idProject', arrayToExport);
+    
     const dataForExcel = [];
     arrayToExport.forEach((row: any) => {
       dataForExcel.push(Object.values(row));
@@ -128,10 +131,18 @@ export class AllRegistersCompanyComponent implements OnInit {
     const reportData = {
       title: 'Estancias_' + type,
       data: dataForExcel,
-      headers: ['Titulo', 'Fecha', 'Horas', 'Proyecto', 'Estado'],
-      sizeColumns: [50, 15, 10, 25, 15]
+      headers: ['Titulo', 'Fecha', 'Estudiante', 'Proyecto', 'Estado', 'Horas'],
+      sizeColumns: [50, 15, 25, 20, 15 , 5]
     };
 
     this.exportExcelService.exportExcel(reportData);
+  }
+
+  openModal(id) {
+    this.studentsService.viewRegister(id).then( response => {
+      if (response === 250) {
+        this.getTaskListAll();
+      }
+    }).catch();
   }
 }

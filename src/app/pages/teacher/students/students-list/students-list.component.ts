@@ -56,6 +56,7 @@ export class StudentsListComponent implements OnInit {
   getAllStudents () {
     this.httpClientService.getAllStudents(this.utilitiesService.getId()).subscribe( response => {
       this.serviceData = response;
+      console.log(this.serviceData[0].id);
       this.setTableInfo(this.serviceData);
       /* console.log(this.serviceData); */
     }, error => {
