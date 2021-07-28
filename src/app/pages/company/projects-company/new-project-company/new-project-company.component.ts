@@ -11,7 +11,8 @@ import {ToastService} from '../../../../utilities/toast.service';
   styleUrls: ['./new-project-company.component.css']
 })
 export class NewProjectCompanyComponent implements OnInit {
-  public registerTaskForm: FormGroup;
+  serviceData;
+  public projectCompanyForm: FormGroup;
   public imageShow;
   private origin: string;
   public today = Date.now();
@@ -26,18 +27,21 @@ export class NewProjectCompanyComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.registerTaskForm = new FormGroup({
+    this.projectCompanyForm = new FormGroup({
       // NULL Default
       id: new FormControl(0, []),
-      status: new FormControl(1, []),
-      title: new FormControl(null, [Validators.required, Validators.minLength(10)]),
-      description: new FormControl(null, []),
+      name: new FormControl(null, [Validators.required]),
+      objectives: new FormControl(null),
+      idUser: new FormControl(this.utilitiesService.getId(), [Validators.required]),
       file: new FormControl(null, [])
     });
+
+    const routeParams = this.route.snapshot.paramMap;
+    if (routeParams.get('id')) { this.getProject(routeParams.get('id')); }
   }
 
   get file() {
-    return this.registerTaskForm.get('file') as FormControl;
+    return this.projectCompanyForm.get('file') as FormControl;
   }
 
   setImage(event) {
@@ -45,26 +49,45 @@ export class NewProjectCompanyComponent implements OnInit {
   }
 
   validateForm() {
-    (this.registerTaskForm.valid) ?
+    (this.projectCompanyForm.valid) ?
       this.postTask() :  this.errorForm();
+  }
+  getProject(id) {
+    this.httpClientService.getCompanyProjectToPost(id).subscribe(response => {
+      console.log(response);
+      this.serviceData = response;
+      this.projectCompanyForm.get('id').setValue(id);
+      this.projectCompanyForm.get('name').setValue(this.serviceData.name);
+      this.projectCompanyForm.get('objectives').setValue(this.serviceData.objectives);
+      this.projectCompanyForm.setControl( 'imageId', new FormControl( this.serviceData.imageId));
+      this.projectCompanyForm.setControl( 'imageUrl', new FormControl( this.serviceData.imageUrl));
+
+    }, (error) => {
+      console.warn(error);
+      this.toastService.show('Error en el servidor, intenta mas tarde' , { classname: 'bg-danger text-white'});
+    } );
   }
 
   postTask() {
-    console.log(this.registerTaskForm.getRawValue());
-    this.httpClientService.postTask(this.registerTaskForm.getRawValue()).subscribe( response => {
+    this.httpClientService.postProjects(this.projectCompanyForm.getRawValue()).subscribe(response => {
       this.toastService.show('Guardado Exitosamente' , { classname: 'bg-success text-white'});
       this.router.navigate(['/dash/comp/projects']);
     }, (error) => {
       console.warn(error);
       this.toastService.show('Error en el servidor, intenta mas tarde' , { classname: 'bg-danger text-white'});
-      this.router.navigate(['/dash/comp/projects']);
     } );
   }
 
+  deleteEditImage(event) {
+    if (this.projectCompanyForm.get('imageUrl')) {
+      this.projectCompanyForm.get('imageUrl').setValue(event);
+    }
+  }
+
   errorForm() {
-    this.registerTaskForm.markAllAsTouched();
-    for (const key of Object.keys(this.registerTaskForm.controls)) {
-      if (this.registerTaskForm.controls[key].invalid) {
+    this.projectCompanyForm.markAllAsTouched();
+    for (const key of Object.keys(this.projectCompanyForm.controls)) {
+      if (this.projectCompanyForm.controls[key].invalid) {
         const invalidControl = this.el.nativeElement.querySelector('[formcontrolname="' + key + '"]');
         invalidControl.focus();
         break;

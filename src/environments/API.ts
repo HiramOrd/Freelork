@@ -30,6 +30,7 @@ export class API {
   static DELETE_GROUP_TEACHER = 'teacher/delete/classroom/';
   static POST_CLASSROOM = 'classroom';
   static TEACHER_PROFILE = 'teacher/profile/';
+  static TEACHER_UPDATE_PROFILE = 'teacher/update';
 
   // Student
   static STUDENT_SUMMARY = 'student/summary/';
@@ -49,6 +50,7 @@ export class API {
   static POST_STUDENT_CLASSROOM = 'student/';
   static POST_STUDENT_CLASSROOM2 = 'classroom/';
   static DELETE_STUDENT_CLASSROOM = 'student/delete/classroom/';
+  static GET_COMPANIES_LIST = 'student/companies';
 
 
 
@@ -57,4 +59,8 @@ export class API {
   static GET_COMPANY_SUMMARY = 'summary/';
   static GET_COMPANY_PROJECTS = 'projects/';
   static POST_COMPANY_PROJECT = 'project';
+  static CHANGE_TASK_STATUS = 'company/register/';
+  static CHANGE_TASK_STATUS2 = '/status/';
+  static DELETE_PROJECT_COMPANY = 'company/delete/project/';
+  static GET_COMPANY_PROJECT_TO_POST = 'project/';
 }

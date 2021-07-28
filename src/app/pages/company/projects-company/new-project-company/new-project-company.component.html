@@ -50,7 +50,7 @@
                   </div>
                   <div class="col-lg-6">
                     <label class="form-control-label">Logo del Proyecto</label>
-                    <app-drag-and-drop [file]="file" (result)="setImage($event)"></app-drag-and-drop>
+                    <app-drag-and-drop [file]="file" (result)="setImage($event)" [imageShow]="serviceData?.imageUrl" (deleteEdit)="deleteEditImage($event)"></app-drag-and-drop>
                   </div>
                 </div>
 

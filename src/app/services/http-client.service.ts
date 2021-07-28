@@ -89,6 +89,13 @@ export class HttpClientService {
     }
     return this.http.put(API.SERVER + API.API + API.UPDATE_STUDENT, formData);
   }
+  postTeacherProfile(body: any): any {
+    const formData = new FormData();
+    for ( const key in body ) {
+      formData.append(key, body[key]);
+    }
+    return this.http.put(API.SERVER + API.API + API.TEACHER_UPDATE_PROFILE, formData);
+  }
 
   // Student Summary
   getStudentSummary(id: number): any {
@@ -121,15 +128,20 @@ export class HttpClientService {
   }
 
   postStudentCompany(idStudent: number, idCompany: number): any {
-    return this.http.get(API.SERVER + API.API + API.POST_STUDENT_COMPANY + idStudent + API.POST_STUDENT_COMPANY2 + idCompany );
+    return this.http.post(API.SERVER + API.API + API.POST_STUDENT_COMPANY + idStudent + '/' + API.POST_STUDENT_COMPANY2 + idCompany, null);
   }
 
   deleteStudentCompany(idStudent: number, idCompany: number): any {
-    return this.http.put(API.SERVER + API.API + API.DELETE_STUDENT_COMPANY + idStudent + API.DELETE_STUDENT_COMPANY2 + idCompany, null );
+    return this.http.put(API.SERVER + API.API + API.DELETE_STUDENT_COMPANY + idStudent + '/' +
+      API.DELETE_STUDENT_COMPANY2 + idCompany, null );
   }
 
   getStudentClassroom(id: number): any {
     return this.http.get(API.SERVER + API.API + API.GET_STUDENT_CLASSROOM + '/' + id);
+  }
+
+  getCompaniesList(): any {
+    return this.http.get(API.SERVER + API.API + API.GET_COMPANIES_LIST);
   }
 
   postStudentClassroom(idStudent: number, idClassroom: number): any {
@@ -147,8 +159,24 @@ export class HttpClientService {
   getCompanyProjects(id: number) {
     return this.http.get(API.SERVER + API.API + API.GET_COMPANY + API.GET_COMPANY_PROJECTS + id);
   }
+  getCompanyProjectToPost(id: number) {
+    return this.http.get(API.SERVER + API.API + API.GET_COMPANY + API.GET_COMPANY_PROJECT_TO_POST + id);
+
+  }
   postProjects(body: any) {
-    return this.http.post(API.SERVER + API.API + API.GET_COMPANY + API.POST_COMPANY_PROJECT, body);
+    const formData = new FormData();
+    for ( const key in body ) {
+      formData.append(key, body[key]);
+    }
+    return this.http.post(API.SERVER + API.API + API.GET_COMPANY + API.POST_COMPANY_PROJECT, formData);
+  }
+
+  deleteProjectCompany(id: number): any {
+    return this.http.put(API.SERVER + API.API + API.DELETE_PROJECT_COMPANY + id, null );
+  }
+
+  changeStatusTask(id: number, status: number) {
+    return this.http.put( API.SERVER + API.API + API.CHANGE_TASK_STATUS + id + API.CHANGE_TASK_STATUS2 + status, null);
   }
 
 
