@@ -26,6 +26,7 @@ export class API {
   static GET_GROUPS = 'classrooms/';
   static GET_ALL_STUDENTS = 'students/';
   static CLASS = 'class/';
+  static DELETE_GROUP_TEACHER = 'teacher/delete/classroom/';
   static POST_CLASSROOM = 'classroom';
 
   // Student

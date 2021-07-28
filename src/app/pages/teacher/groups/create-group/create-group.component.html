@@ -19,7 +19,7 @@
                   <!-- Start title Header -->
                   <div class="row mb-4">
                     <div class="col text-center text-sm-left px-1">
-                    
+
                       <div class="row">
                         <a class="ml-4 my-auto p-0 m-0 mouse-pointer" routerLink="../../groups">
                           <i class="fas fa-arrow-left"></i>
@@ -31,18 +31,18 @@
                   <!-- End title Header -->
 
                   <!-- Start form -->
-                  <form [formGroup]="createGroupForm" (ngSubmit)="createGroupSubmit()">
+                  <form [formGroup]="createGroupForm" (submit)="createGroupSubmit()">
 
                     <div class="row">
                       <div class="form-group col-12">
                         <label class="form-control-label" for="input-first-name">Nombre del grupo</label>
-                        <div class="input-group" [ngClass]="(createGroupForm.controls.nameGroup.invalid && createGroupForm.controls.nameGroup.touched ) ? 'error-border' : ''">
-                          <input type="text" id="input-first-name" class="form-control form-control-alternative bg-lightblue" formControlName="nameGroup">
+                        <div class="input-group" [ngClass]="(createGroupForm.controls.name.invalid && createGroupForm.controls.name.touched ) ? 'error-border' : ''">
+                          <input type="text" id="input-first-name" class="form-control form-control-alternative bg-lightblue" formControlName="name">
                         </div>
-                        <div *ngIf="createGroupForm.controls.nameGroup.errors?.required && createGroupForm.controls.nameGroup.touched">
+                        <div *ngIf="createGroupForm.controls.name.errors?.required && createGroupForm.controls.name.touched">
                           <small class="error-text ml-2">*Ingresa el nombre del grupo</small>
                         </div>
-                        <div *ngIf="createGroupForm.controls.nameGroup.errors?.minlength && createGroupForm.controls.nameGroup.touched">
+                        <div *ngIf="createGroupForm.controls.name.errors?.minlength && createGroupForm.controls.name.touched">
                           <small class="error-text ml-2">*El nombre del grupo debe tener al menos 6 caracteres</small>
                         </div>
                       </div>
@@ -86,13 +86,13 @@
                           <small class="error-text ml-2">*Selecciona el cuatrimestre del grupo</small>
                         </div>
                       </div>
-                      
+
                     </div>
 
                     <div class="row">
                       <div class="form-group col-12">
                         <label class="form-control-label" for="schedule">Turno</label>
-                        <div class="input-group">                     
+                        <div class="input-group">
                           <select (change)="confirmDataForm()" id="schedule" class="form-control bg-lightblue-border" formControlName="schedule">
                             <option [value]="null" disabled hidden selected>Selecciona el turno</option>
                             <option>Matutino</option>
@@ -109,12 +109,12 @@
                       <div class="form-group col-12">
                         <label class="form-control-label" for="group">Grupo</label>
                         <div class="input-group">
-                          <select id="group" class="form-control form-control-alternative bg-lightblue-border" formControlName="group">
-                            <option [value]="null" disabled hidden selected>Selecciona el grupo</option>
-                            <option *ngFor="let group of groups" [ngValue]="group.name">{{group.name}}</option>
+                          <select id="group" class="form-control form-control-alternative bg-lightblue-border" formControlName="idClazz">
+                            <option [value]="null" hidden selected>Selecciona el grupo</option>
+                            <option *ngFor="let group of groups" [value]="group.id">{{group.name}}</option>
                           </select>
                         </div>
-                        <div *ngIf="createGroupForm.controls.group.errors?.required && createGroupForm.controls.group.touched">
+                        <div *ngIf="createGroupForm.controls.idClazz.errors?.required && createGroupForm.controls.idClazz.touched">
                           <small class="error-text ml-2">*Selecciona el grupo</small>
                         </div>
                       </div>

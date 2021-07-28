@@ -1,6 +1,6 @@
 <div class="modal-header pt-3 pb-0 d-flex align-items-center justify-content-end">
-  
-    <button class="btn px-3 text-gray" title="Cerrar Ventana" (click)="activeModal.dismiss('Cross click')">
+
+    <button class="btn px-3 text-gray" tabindex="-1" title="Cerrar Ventana" (click)="activeModal.dismiss('Cross click')">
       <i class="fas fa-times"></i>
     </button>
   </div>
@@ -13,11 +13,11 @@
     </div>
 
     <div class="d-flex justify-content-end">
-        <button class="cancel-button pr-5" name="button" (click)="activeModal.dismiss('Cross click')">
+        <button class="btn mr-3 secondary" tabindex="-1" name="button" (click)="activeModal.dismiss('Cross click')">
             Cancelar
         </button>
 
-        <button class="cancel-accept" name="button" (click)="deleteGroup()">
+        <button class="btn danger" name="button" (click)="deleteGroup()">
             Aceptar
         </button>
       </div>

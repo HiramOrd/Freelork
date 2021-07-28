@@ -18,12 +18,11 @@ export class CreateGroupComponent implements OnInit {
   groups;
   getGroup;
   idGroup;
-  sendClassrooom;
+  sendClassroom;
   private origin: string;
 
-  
   constructor(
-    private router: Router, 
+    private router: Router,
     private route: ActivatedRoute,
     private httpClientService: HttpClientService,
     private toastService: ToastService,
@@ -32,38 +31,31 @@ export class CreateGroupComponent implements OnInit {
 
   ngOnInit(): void {
     this.createGroupForm = new FormGroup({
-      nameGroup: new FormControl(null, [Validators.required, Validators.minLength(6)]),
-
+      name: new FormControl(null, [Validators.required, Validators.minLength(6)]),
       career: new FormControl(null, [Validators.required]),
       grade: new FormControl(null, [Validators.required]),
       schedule: new FormControl(null, [Validators.required]),
-
-      group: new FormControl(null, [Validators.required]),
-
-      
-      
+      idClazz: new FormControl(null, [Validators.required]),
+      idUser: new FormControl(this.utilitiesService.getId(), [Validators.required]),
     });
-
- 
-
-/*     this.route.queryParams.subscribe( params => {
-      (params.origin) ? this.origin = params.origin : this.origin = '0';
-      if (params.id) { this.getGroup(params.id); }
-    }); */
-
   }
 
-  confirmDataForm(){
-    if(this.createGroupForm.get('career').value && this.createGroupForm.get('grade').value && this.createGroupForm.get('schedule').value){
-      this.chargeCareer = this.createGroupForm.get('career').value;
-      this.chargeGrade = this.createGroupForm.get('grade').value;
-      this.chargeSchedule = this.createGroupForm.get('schedule').value;
+  get career() {
+    return this.createGroupForm.get('career') as FormControl;
+  }
+  get grade() {
+    return this.createGroupForm.get('grade') as FormControl;
+  }
+  get schedule() {
+    return this.createGroupForm.get('schedule') as FormControl;
+  }
 
-      this.httpClientService.getGroup(this.chargeCareer, this.chargeGrade, this.chargeSchedule).subscribe( response => {
+  confirmDataForm() {
+    if (this.career.value && this.grade.value && this.schedule.value) {
+
+      this.httpClientService.getGroup( this.career.value, this.grade.value, this.schedule.value).subscribe( response => {
         this.groups = response;
-        console.log(this.groups)
-        this.idGroup = response[0].id;
-        
+        console.log(this.groups);
         }, error => {
           console.warn(error);
           this.toastService.show('Error en el servidor, no se pudo cargar el contenido' , { classname: 'bg-danger text-white'});
@@ -71,27 +63,6 @@ export class CreateGroupComponent implements OnInit {
     }
   }
 
-
-/* 
-  getTaskSummary () {
-    this.httpClientService.getTaskSummary(9).subscribe( response => {
-      this.serviceData = response;
-      this.setTableInfo(this.serviceData.registers);
-    }, error => {
-      console.warn(error);
-      this.toastService.show('Error en el servidor, no se pudo cargar el contenido' , { classname: 'bg-danger text-white'});
-    });
-  } */
-
-/*   getGroup(id: number) {
-    this.httpClientService.getGroup(id).subscribe( response => {
-      console.log(response);
-    }, error => {
-      console.warn(error);
-      this.toastService.show('Error en el servidor, no se pudo cargar el contenido' , { classname: 'bg-danger text-white'});
-    });
-  }
- */
   return(): void {
     let route = '/dash/std/register';
     if (this.origin === '1') {
@@ -106,14 +77,8 @@ export class CreateGroupComponent implements OnInit {
     delete this.getGroup.career;
     delete this.getGroup.grade;
     delete this.getGroup.schedule;
-    
-    console.log(this.idGroup);
-    console.log(this.getGroup);
 
-    this.sendClassrooom=[
-      
-    ]
-    
+    console.log(this.getGroup);
     this.httpClientService.registerGroup(this.idGroup, this.getGroup.nameGroup, this.utilitiesService.getId()).subscribe( response => {
       console.log(this.idGroup, this.getGroup.nameGroup, 1);
       this.toastService.show('Guardado Exitosamente' , { classname: 'bg-success text-white'});
@@ -122,11 +87,6 @@ export class CreateGroupComponent implements OnInit {
       console.warn(error);
       this.toastService.show('Error en el servidor, intenta mas tarde' , { classname: 'bg-danger text-white'});
     } );
-
-
-   /*  (this.createGroupForm.valid) ? this.router.navigate(['/login']) : this.createGroupForm.markAllAsTouched(); */
   }
-
-  
 
 }

@@ -63,6 +63,10 @@ export class HttpClientService {
     return this.http.post(API.SERVER + API.API + API.GET_TEACHER + API.POST_CLASSROOM, idClazz, name, idUser );
   }
 
+  deleteGroup(id: number) {
+    return this.http.put(API.SERVER + API.API + API.DELETE_GROUP_TEACHER + id, null);
+  }
+
   postTask(body: any): any {
     const formData = new FormData();
     for ( const key in body ) {
