@@ -7,7 +7,6 @@ import {HttpClientService} from '../../../services/http-client.service';
 import {TableService} from '../../../utilities/tables/table.service';
 import {UtilitiesService} from '../../../utilities/utilities.service';
 import {ExportExcelService} from '../../../utilities/export-excel.service';
-import {studentTasks} from '../../../variables/studentTasks';
 
 @Component({
   selector: 'app-all-registers-company',
@@ -65,7 +64,7 @@ export class AllRegistersCompanyComponent implements OnInit {
 
   setTableInfo(arrayTable) {
     this.table = arrayTable;
-    /* this.table = this.utilitiesService.statusTaskToString(this.table, 'status'); */
+    this.table = this.utilitiesService.statusTaskToString(this.table, 'status');
     this.tableService.initService(this.table);
   }
 
@@ -119,12 +118,10 @@ export class AllRegistersCompanyComponent implements OnInit {
 
   exportToExcel(type: string, table) {
     let arrayToExport = table;
-    arrayToExport = this.utilitiesService.statusTaskToString(arrayToExport, 'status');
 
     arrayToExport = this.utilitiesService.deleteColumn('id', arrayToExport);
     arrayToExport = this.utilitiesService.deleteColumn('imageStudent', arrayToExport);
     arrayToExport = this.utilitiesService.deleteColumn('idProject', arrayToExport);
-    
     
     const dataForExcel = [];
     arrayToExport.forEach((row: any) => {
