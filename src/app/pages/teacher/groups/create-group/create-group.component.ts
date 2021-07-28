@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {HttpClientService} from '../../../../services/http-client.service';
 import {ToastService} from '../../../../utilities/toast.service';
+import {UtilitiesService} from '../../../../utilities/utilities.service';
 
 @Component({
   selector: 'app-create-group',
@@ -16,6 +17,8 @@ export class CreateGroupComponent implements OnInit {
   chargeSchedule;
   groups;
   getGroup;
+  idGroup;
+  sendClassrooom;
   private origin: string;
 
   
@@ -24,6 +27,7 @@ export class CreateGroupComponent implements OnInit {
     private route: ActivatedRoute,
     private httpClientService: HttpClientService,
     private toastService: ToastService,
+    public utilitiesService: UtilitiesService,
   ) { }
 
   ngOnInit(): void {
@@ -51,18 +55,19 @@ export class CreateGroupComponent implements OnInit {
 
   confirmDataForm(){
     if(this.createGroupForm.get('career').value && this.createGroupForm.get('grade').value && this.createGroupForm.get('schedule').value){
-    
       this.chargeCareer = this.createGroupForm.get('career').value;
       this.chargeGrade = this.createGroupForm.get('grade').value;
       this.chargeSchedule = this.createGroupForm.get('schedule').value;
 
-      this.httpClientService.postGroup(this.chargeCareer, this.chargeGrade, this.chargeSchedule).subscribe( response => {
+      this.httpClientService.getGroup(this.chargeCareer, this.chargeGrade, this.chargeSchedule).subscribe( response => {
         this.groups = response;
+        console.log(this.groups)
+        this.idGroup = response[0].id;
+        
         }, error => {
           console.warn(error);
           this.toastService.show('Error en el servidor, no se pudo cargar el contenido' , { classname: 'bg-danger text-white'});
       });
-      
     }
   }
 
@@ -95,17 +100,33 @@ export class CreateGroupComponent implements OnInit {
     this.router.navigate([route]).then(() => {} );
   }
 
+
   createGroupSubmit(): void {
-    console.log(this.createGroupForm.getRawValue());
     this.getGroup = this.createGroupForm.getRawValue();
     delete this.getGroup.career;
     delete this.getGroup.grade;
     delete this.getGroup.schedule;
     
-
+    console.log(this.idGroup);
     console.log(this.getGroup);
+
+    this.sendClassrooom=[
+      
+    ]
+    
+    this.httpClientService.registerGroup(this.idGroup, this.getGroup.nameGroup, this.utilitiesService.getId()).subscribe( response => {
+      console.log(this.idGroup, this.getGroup.nameGroup, 1);
+      this.toastService.show('Guardado Exitosamente' , { classname: 'bg-success text-white'});
+      this.return();
+    }, (error) => {
+      console.warn(error);
+      this.toastService.show('Error en el servidor, intenta mas tarde' , { classname: 'bg-danger text-white'});
+    } );
+
 
    /*  (this.createGroupForm.valid) ? this.router.navigate(['/login']) : this.createGroupForm.markAllAsTouched(); */
   }
+
+  
 
 }

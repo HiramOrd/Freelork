@@ -56,8 +56,11 @@ export class HttpClientService {
   getAllStudents(id: number) {
     return this.http.get(API.SERVER + API.API + API.GET_TEACHER + API.GET_ALL_STUDENTS + id);
   }
-  postGroup(career: string, quarter: number, schedule: string){
+  getGroup(career: string, quarter: number, schedule: string){
     return this.http.get(API.SERVER + API.API + API.GET_TEACHER + API.CLASS + career + '/' + quarter + '/' + schedule);
+  }
+  registerGroup(idClazz: number, name: string, idUser: number){
+    return this.http.post(API.SERVER + API.API + API.GET_TEACHER + API.POST_CLASSROOM, idClazz, name, idUser );
   }
 
   postTask(body: any): any {
