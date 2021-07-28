@@ -13,6 +13,7 @@ import {formatDate} from '@angular/common';
 })
 export class RegisterTaskComponent implements OnInit {
   public registerTaskForm: FormGroup;
+  public projects;
   public imageShow;
   private origin: string;
   public today = Date.now();
@@ -29,6 +30,7 @@ export class RegisterTaskComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getProjects();
     this.registerTaskForm = new FormGroup({
       // NULL Default
       id: new FormControl(0, []),
@@ -115,5 +117,14 @@ export class RegisterTaskComponent implements OnInit {
       this.registerTaskForm.get('imageUrl').setValue(event);
     }
     console.log(this.registerTaskForm.getRawValue());
+  }
+
+  getProjects() {
+    this.httpClientService.getStudentProjects(this.utilitiesService.getId()).subscribe( response => {
+      this.projects = response;
+    }, (error) => {
+      console.warn(error);
+      this.toastService.show('Error en el servidor, intenta mas tarde' , { classname: 'bg-danger text-white'});
+    } );
   }
 }

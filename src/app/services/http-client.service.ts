@@ -92,11 +92,11 @@ export class HttpClientService {
   }
 
   postStudentProject(idStudent: number, idProject: number): any {
-    return this.http.get(API.SERVER + API.API + API.POST_PROJECT + idStudent + API.POST_PROJECT2 + idProject );
+    return this.http.post(API.SERVER + API.API + API.POST_PROJECT + idStudent + API.POST_PROJECT2 + idProject, null);
   }
 
   deleteStudentProject(idStudent: number, idProject: number): any {
-    return this.http.get(API.SERVER + API.API + API.DELETE_PROJECT + idStudent + API.DELETE_PROJECT2 + idProject );
+    return this.http.put(API.SERVER + API.API + API.DELETE_PROJECT + idStudent + API.DELETE_PROJECT2 + idProject, null );
   }
 
   deleteStudentRegister(idRegister: number): any {

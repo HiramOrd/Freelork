@@ -54,7 +54,7 @@
                         <select [ngClass]="(registerTaskForm.controls.idProject.invalid && registerTaskForm.controls.idProject.touched ) ? 'error-border' : ''"
                           id="select-project" class="form-control form-control-alternative" formControlName="idProject">
                           <option [value]="null" disabled hidden selected>¿En qué proyecto se trabajó?</option>
-                          <option [value]="1">Ejemplo</option>
+                          <option [value]="project.id" *ngFor="let project of projects">{{project?.name}}</option>
                         </select>
                         <div *ngIf="registerTaskForm.controls.idProject.invalid && registerTaskForm.controls.idProject.touched">
                           <small class="error-text ml-2">*Selecciona un proyecto</small>
