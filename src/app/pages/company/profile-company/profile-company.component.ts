@@ -9,6 +9,7 @@ import {ToastService} from '../../../utilities/toast.service';
   styleUrls: ['./profile-company.component.css']
 })
 export class ProfileCompanyComponent implements OnInit {
+  serviceData;
 
   constructor(
     private httpClientService: HttpClientService,
@@ -17,6 +18,17 @@ export class ProfileCompanyComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getCompany();
+  }
+
+  getCompany () {
+    this.httpClientService.getCompanyProfile(this.utilitiesService.getId()).subscribe( response => {
+      console.log(response);
+      this.serviceData = response;
+    }, error => {
+      console.warn(error);
+      this.toastService.show('Error en el servidor, intenta más tarde' , { classname: 'bg-danger text-white'});
+    });
   }
 
 }

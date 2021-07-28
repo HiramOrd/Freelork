@@ -30,6 +30,7 @@ export class GroupStudentComponent implements OnInit {
 
   openModalDelete() {
     const modalRef = this.modalService.open(DeleteGroupStudentComponent);
+    modalRef.componentInstance.id = this.utilitiesService.getId();
   }
 
 

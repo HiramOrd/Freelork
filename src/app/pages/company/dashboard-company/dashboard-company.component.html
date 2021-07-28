@@ -108,7 +108,7 @@
 
             <!-- Start Search Input -->
             <div class="col-xl col-sm-12 row m-0 mb-2">
-              <div class="col p-0 mb-0 mr-2 form-group rounded overflow-hidden">
+              <div class="col p-0 mb-0 form-group rounded overflow-hidden">
                 <div class="input-group input-group-alternative w-100">
                   <input class="form-control" placeholder="Buscar actividad..." type="text" [(ngModel)]="tableService.searchTerm">
                   <div class="input-group-prepend">
@@ -125,7 +125,7 @@
 
         <!-- Start Register Table -->
         <div class="table-responsive bg-white rounded">
-          <table class="table align-items-center table-flush">
+          <table class="table align-items-center table-flush" *ngIf="(serviceData?.registers && serviceData?.registers.length > 0); else emptyNotification">
             <thead class="thead-light">
             <tr>
               <th scope="col" sortable="title" (sort)="onSort($event)" class="table-title">
@@ -178,7 +178,7 @@
             <tbody>
 
             <!-- Start Register Row -->
-            <tr class="row-button" (click)="studentsService.viewRegister(data.id)" *ngFor="let data of arrayTable$ | async">
+            <tr class="row-button" (click)="openModal(data.id)" *ngFor="let data of arrayTable$ | async">
               <td scope="row">
                 <div class="d-inline-flex">
                   <div class="content-image">
@@ -215,6 +215,11 @@
 
             </tbody>
           </table>
+          <ng-template #emptyNotification>
+            <div class="py-5 text-center text-sm">
+              <span>No tienes tareas pendientes</span>
+            </div>
+          </ng-template>
         </div>
         <!-- End Register Table -->
 

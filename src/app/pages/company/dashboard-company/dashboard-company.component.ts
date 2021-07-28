@@ -8,6 +8,7 @@ import {UtilitiesService} from '../../../utilities/utilities.service';
 import {studentTasks} from '../../../variables/studentTasks';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {HttpClientService} from '../../../services/http-client.service';
+import {ModalDeleteRegisterStudentComponent} from '../../students/register/modal-delete-register-student/modal-delete-register-student.component';
 
 @Component({
   selector: 'app-dashboard-company',
@@ -61,11 +62,20 @@ export class DashboardCompanyComponent implements OnInit {
   getCompanySummary () {
     this.httpClientService.getCompanySummary(this.utilitiesService.getId()).subscribe( response => {
       this.serviceData = response;
+      console.log(response);
       this.setTableInfo(this.serviceData.registers);
       console.log(response);
     }, error => {
       console.warn(error);
       this.toastService.show('Error en el servidor, no se pudo cargar el contenido' , { classname: 'bg-danger text-white'});
     });
+  }
+
+  openModal(id) {
+    this.studentsService.viewRegister(id).then( response => {
+      if (response === 250) {
+        this.getCompanySummary();
+      }
+    }).catch();
   }
 }

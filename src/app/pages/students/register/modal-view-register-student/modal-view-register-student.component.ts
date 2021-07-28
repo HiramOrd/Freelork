@@ -43,7 +43,7 @@ export class ModalViewRegisterStudentComponent implements OnInit {
     this.httpClientService.changeStatusTask(this.id, status).subscribe( response => {
       console.log(response);
       this.toastService.show('Estado modificado exitosamente' , { classname: 'bg-success text-white'});
-      this.activeModal.close(status);
+      this.activeModal.close(250);
     }, error => {
       console.warn(error);
       this.toastService.show('Error en el servidor, no se pudo cargar el contenido' , { classname: 'bg-danger text-white'});

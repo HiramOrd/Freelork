@@ -82,6 +82,9 @@ export class HttpClientService {
   getStudentProfile(id: number): any {
     return this.http.get(API.SERVER + API.API + API.GET_STUDENT + id);
   }
+  getCompanyProfile(id): any {
+    return this.http.get(API.SERVER + API.API + API.COMPANY_PROFILE + id);
+  }
   postStudentProfile(body: any): any {
     const formData = new FormData();
     for ( const key in body ) {

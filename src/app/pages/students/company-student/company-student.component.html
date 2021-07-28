@@ -38,7 +38,7 @@
               </div>
 
               <div class="col-auto text-center p-0 py-2">
-                <img src="assets/img/theme/team-3-800x800.jpg" class="rounded" alt="" width="150">
+                <img [src]="(serviceData?.image) ? serviceData?.image : 'assets/img/brand/logo-dark.png'" class="rounded" alt="" width="150">
               </div>
               <div class="col-auto py-2">
                 <div class="mb-2">

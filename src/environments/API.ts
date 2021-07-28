@@ -63,4 +63,5 @@ export class API {
   static CHANGE_TASK_STATUS2 = '/status/';
   static DELETE_PROJECT_COMPANY = 'company/delete/project/';
   static GET_COMPANY_PROJECT_TO_POST = 'project/';
+  static COMPANY_PROFILE = 'company/profile/';
 }
