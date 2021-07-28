@@ -49,5 +49,5 @@ export class API {
   static UPDATE_COMPANY = 'update';
   static GET_COMPANY_SUMMARY = 'summary/';
   static GET_COMPANY_PROJECTS = 'projects/';
-
+  static POST_COMPANY_PROJECT = 'project';
 }

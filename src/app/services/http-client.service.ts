@@ -135,6 +135,9 @@ export class HttpClientService {
   getCompanyProjects(id: number){
     return this.http.get(API.SERVER + API.API + API.GET_COMPANY + API.GET_COMPANY_PROJECTS + id);
   }
+  postProjects(body: any){
+    return this.http.post(API.SERVER + API.API + API.GET_COMPANY + API.POST_COMPANY_PROJECT, body);
+  }
 
   
 
