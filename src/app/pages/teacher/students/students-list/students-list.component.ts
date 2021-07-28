@@ -149,8 +149,8 @@ export class StudentsListComponent implements OnInit {
       this.exportExcelService.exportExcel(reportData);
     }
 
-    
 
-    
+
+
   }
 }

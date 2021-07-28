@@ -79,7 +79,12 @@ export class HttpClientService {
   }
 
   getTeacherStudent(id: number) {
-    return this.http.get(API.SERVER + API.API + API.GET_TEACHER_STUDENT + '/' + id );
+    return this.http.get(API.SERVER + API.API + API.GET_TEACHER_STUDENT + id );
+  }
+
+  getStudentInfo(id) {
+    return this.http.get(API.SERVER + API.API + API.GET_PROFILE_STUDENT + id );
+
   }
 
   // Profiles

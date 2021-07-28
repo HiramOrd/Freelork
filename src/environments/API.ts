@@ -32,6 +32,7 @@ export class API {
   static TEACHER_PROFILE = 'teacher/profile/';
   static TEACHER_UPDATE_PROFILE = 'teacher/update';
   static GET_TEACHER_STUDENT = 'teacher/students/';
+  static GET_PROFILE_STUDENT = 'teacher/student/profile/';
 
   // Student
   static STUDENT_SUMMARY = 'student/summary/';

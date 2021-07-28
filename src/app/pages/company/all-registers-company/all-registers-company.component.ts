@@ -45,7 +45,8 @@ export class AllRegistersCompanyComponent implements OnInit {
 
   getTaskListAll() {
     this.httpClientService.getTaskCompany(this.utilitiesService.getId()).subscribe( response => {
-      this.studentTasks = response; 
+      this.studentTasks = response;
+      console.log(response);
       this.setTableInfo(this.studentTasks);
     }, error => {
       this.toastService.show('Error en el servidor, no se pudo cargar el contenido' , { classname: 'bg-danger text-white'});
@@ -54,7 +55,7 @@ export class AllRegistersCompanyComponent implements OnInit {
   }
   getTaskCompanyByDate() {
     this.httpClientService.getTaskCompanyByDate(this.utilitiesService.getId(), this.dateMinRange, this.dateMaxRange).subscribe( response => {
-      this.studentTasks = response; 
+      this.studentTasks = response;
       this.setTableInfo(this.studentTasks);
     }, error => {
       this.toastService.show('Error en el servidor, no se pudo cargar el contenido' , { classname: 'bg-danger text-white'});
@@ -122,7 +123,7 @@ export class AllRegistersCompanyComponent implements OnInit {
     arrayToExport = this.utilitiesService.deleteColumn('id', arrayToExport);
     arrayToExport = this.utilitiesService.deleteColumn('imageStudent', arrayToExport);
     arrayToExport = this.utilitiesService.deleteColumn('idProject', arrayToExport);
-    
+
     const dataForExcel = [];
     arrayToExport.forEach((row: any) => {
       dataForExcel.push(Object.values(row));

@@ -17,26 +17,26 @@
             <div class="col-12 mb-xl-3">
               <div class="card mb-4 mb-xl-0">
 
-                <app-user-profile [role]="'Estudiante'" [photo]="" [email]="'201900059@estudiantes.upqroo.edu.mx'" [name]="'Katherine Sarahid González Ramírez'"></app-user-profile>
+                <app-user-profile [role]="'Estudiante'" [photo]="serviceData?.student?.image" [email]="serviceData?.student?.email" [name]="serviceData?.student?.fullName"></app-user-profile>
 
                 <div class="card-body px-2 px-sm-4 p-lg-4">
                   <div class="d-flex justify-content-center">
                     <div class="d-md-flex d-sm-inline-flex justify-content-around w-75">
                       <div class="col-md-auto col-xs-12 pb-2 pb-sm-0 text-center">
                         <i class="far fa-building"></i>
-                        <p class="font-weight-700 heading text-sm m-0">Wayaweb</p>
+                        <p class="font-weight-700 heading text-sm m-0">{{serviceData?.student?.company}}</p>
                         <small class="description">Empresa</small>
                       </div>
                       <div class="col-md-auto col-xs-12 pb-2 pb-sm-0 text-center">
                         <i class="fas fa-graduation-cap"></i>
-                        <p class="font-weight-700 heading text-sm m-0">Ingenieria En Software</p>
+                        <p class="font-weight-700 heading text-sm m-0">{{serviceData?.student?.career}}</p>
                         <small class="description">Carrera</small>
                       </div>
-                      <div class="col-md-auto col-xs-12 pb-2 pb-sm-0 text-center">
-                        <i class="far fa-address-card"></i>
-                        <p class="font-weight-700 heading text-sm m-0">Isay Gonzales</p>
-                        <small class="description">Advisor</small>
-                      </div>
+<!--                      <div class="col-md-auto col-xs-12 pb-2 pb-sm-0 text-center">-->
+<!--                        <i class="far fa-address-card"></i>-->
+<!--                        <p class="font-weight-700 heading text-sm m-0">Isay Gonzales</p>-->
+<!--                        <small class="description">Advisor</small>-->
+<!--                      </div>-->
                     </div>
                   </div>
                 </div>
@@ -57,12 +57,12 @@
                     <div class="col">
                       <h5 class="card-title text-uppercase text-muted mb-0">Horas</h5>
                       <br>
-                      <span class="h2 font-weight-bold mb-0">32</span>
+                      <span class="h2 font-weight-bold mb-0">{{serviceData?.student.hours}} hrs</span>
                     </div>
                   </div>
                   <p class="mt-3 mb-0 text-muted text-sm font-weight-bold">
-                    <span class="text-success mr-2">26%</span>
-                    <span class="text-nowrap">completadas</span>
+<!--                    <span class="text-success mr-2">26%</span>-->
+                    <span class="text-nowrap">Completadas</span>
                   </p>
                 </div>
               </div>
@@ -79,18 +79,17 @@
                         <div class="col">
                           <h5 class="card-title text-uppercase text-muted mb-0">Tareas</h5>
                           <br>
-                          <span class="h2 font-weight-bold mb-0">19</span>
-                        </div>
+                          <span class="h2 font-weight-bold mb-0">{{(serviceData?.projects[counterProject]?.registers) ? serviceData?.projects[counterProject]?.registers : 0}}</span>                        </div>
                       </div>
                       <p class="mt-3 mb-0 text-muted text-sm">
-                        <span class="text-success mr-2 font-weight-bold">Ammaclub</span>
+                        <span class="text-success mr-2 font-weight-bold">{{(serviceData?.projects[counterProject]?.nameProject) ? serviceData?.projects[counterProject]?.nameProject : 'NA'}}</span>
                       </p>
                     </div>
 
                     <div class="col-auto d-flex justify-content-center align-items-center">
                       <div class="row flex-column">
-                        <i class="fas fa-lg fa-sort-up mouse-pointer"></i>
-                        <i class="fas fa-lg fa-sort-down mouse-pointer"></i>
+                        <i class="fas fa-lg fa-sort-up mouse-pointer" (click)="nextProject()"></i>
+                        <i class="fas fa-lg fa-sort-down mouse-pointer" (click)="previousProject()"></i>
                       </div>
 
                     </div>
@@ -240,7 +239,7 @@
                   <tbody>
 
                   <!-- Start Register Row -->
-                  <tr class="row-button" (click)="studentsService.viewRegister(data.id)" *ngFor="let data of arrayTable$ | async">
+                  <tr class="row-button" (click)="openModal(data.id)" *ngFor="let data of arrayTable$ | async">
                     <td scope="row">
                       <span class="mb-0 text-sm"> {{data.title}} </span>
                     </td>

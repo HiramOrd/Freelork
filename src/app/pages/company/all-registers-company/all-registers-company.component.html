@@ -147,20 +147,20 @@
               <td scope="row">
                 <div class="d-inline-flex">
                   <div class="content-image">
-                    <img src="../../../../assets/img/defaults/default-user.png" class="img-fluid aux-image" alt="image-profile">
+                    <img [src]="(data?.imageStudent) ? data?.imageStudent : '/assets/img/defaults/default-user.png'" class="img-fluid aux-image" alt="image-profile">
                   </div>
                   <div class="d-block my-auto ml-2">
                     <p class="mb-0" style="color: #18187A; font-size: .85rem; font-weight: 600;">{{data.title}}</p>
                     <div class="d-inline-flex align-items-center">
                       <i class="far fa-calendar"></i>
-                      <p class="text-sm mb-0 pl-1 font-weight-normal">{{data.dateCreated}}</p>
+                      <p class="text-sm mb-0 pl-1 font-weight-normal">{{data.dateCreated | date: 'dd/MM/yyyy'}}</p>
                     </div>
                   </div>
                 </div>
                 <!-- <span class="mb-0 text-sm"> {{data.title}} </span> -->
               </td>
               <td class="d-none d-lg-table-cell">
-                <span class="btn-link mouse-pointer" routerLink="/dash/comp/students/student/{{data.id}}">{{data.nameStudent}}</span>
+                <span class="btn-link mouse-pointer" routerLink="/dash/{{utilitiesService.getRoleRoute()}}/students/students-profile/{{data.idUser}}">{{data.nameStudent}}</span>
               </td>
               <td class="d-none d-lg-table-cell">
                 {{data.nameProject}}

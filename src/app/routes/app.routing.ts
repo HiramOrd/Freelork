@@ -113,7 +113,7 @@ const routes: Routes = [
               {path: 'edit-group', component: CreateGroupComponent, data : {title: 'Profesores - Editar Grupo'}},
               {path: '**', redirectTo: '/not/404' },
             ]},
-          {path: 'students-list', children: [
+          {path: 'students', children: [
               {path: '', component: StudentsListComponent, data : {title: 'Profesores - Estudiantes'}},
               {path: 'students-profile/:id', component: StudentsProfileComponent, data : {title: 'Profesores - Perfil Estudiante'}},
               {path: '**', redirectTo: '/not/404' },
@@ -138,7 +138,7 @@ const routes: Routes = [
           {path: 'all-list', component: AllRegistersCompanyComponent, data : {title: 'Empresa - Tareas'}},
           {path: 'students', children: [
               {path: '', component: StudentsListComponent, data : {title: 'Empresa - Estudiantes'}},
-              {path: 'student-profile:id', component: StudentsProfileComponent, data : {title: 'Empresa - Perfil de estudiante'}},
+              {path: 'students-profile/:id', component: StudentsProfileComponent, data : {title: 'Empresa - Perfil de estudiante'}},
               {path: '**', redirectTo: '/not/404' },
             ]},
           {path: 'profile', children: [

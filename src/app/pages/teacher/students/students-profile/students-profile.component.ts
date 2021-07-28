@@ -19,6 +19,9 @@ import {FormControl} from '@angular/forms';
 })
 export class StudentsProfileComponent implements OnInit {
   idUser;
+  counterProject = 0;
+  projectsLength = 0;
+
   today = new Date();
   dateMinRange = null;
   dateMaxRange = null;
@@ -57,7 +60,6 @@ export class StudentsProfileComponent implements OnInit {
 
   getTaskListAll() {
     this.httpClientService.getTaskList(this.idUser).subscribe( response => {
-      console.log(response);
       this.setTableInfo(response);
     }, error => {
       this.toastService.show('Error en el servidor, no se pudo cargar el contenido' , { classname: 'bg-danger text-white'});
@@ -74,8 +76,16 @@ export class StudentsProfileComponent implements OnInit {
     });
   }
 
+  nextProject() {
+    (this.counterProject < this.projectsLength - 1) ? this.counterProject++ : this.counterProject = 0;
+  }
+
+  previousProject() {
+    (this.counterProject > 0) ? this.counterProject-- : this.counterProject = this.counterProject = this.projectsLength - 1;
+  }
+
   getStudent () {
-    this.httpClientService.getTeacherStudent(this.idUser).subscribe( response => {
+    this.httpClientService.getStudentInfo(this.idUser).subscribe( response => {
       this.serviceData = response;
       console.log(response);
     }, error => {
@@ -107,6 +117,15 @@ export class StudentsProfileComponent implements OnInit {
     this.dateMaxRange = null;
     this.tableService.searchTerm = '';
     this.getTaskListAll();
+  }
+
+  openModal(id) {
+    this.studentsService.viewRegister(id).then( response => {
+      if (response === 250) {
+        this.resetFilters();
+        this.getStudent();
+      }
+    }).catch();
   }
 
   changeFilter () {

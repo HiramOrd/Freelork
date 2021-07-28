@@ -96,7 +96,7 @@
             <tbody>
 
             <!-- Start Register Row -->
-            <tr class="row-button flex-grow-0" routerLink="/dash/tch/students-list/students-profile/{{data.id}}" *ngFor="let data of arrayTable$ | async">
+            <tr class="row-button flex-grow-0" routerLink="/dash/{{utilitiesService.getRoleRoute()}}/students/students-profile/{{data.id}}" *ngFor="let data of arrayTable$ | async">
               <td scope="row">
                 <div class="d-inline-flex">
                   <div class="content-image">
@@ -111,7 +111,7 @@
                 </div>
               </td>
 
-              <td *ngIf="this.router.url === '/dash/tch/students-list'">
+              <td *ngIf="this.router.url === '/dash/tch/students'">
                 {{data.classroom?data.classroom:'No disponible'}}
               </td>
               <td *ngIf="this.router.url === '/dash/comp/students'">
