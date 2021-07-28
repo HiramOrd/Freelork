@@ -46,7 +46,11 @@ export class LoginComponent implements OnInit, OnDestroy {
     }, (error) => {
       this.loginForm.reset();
       console.warn(error);
-      this.toastService.show('Error en el servidor, intenta más tarde' , { classname: 'bg-danger text-white'});
+      if (error.status === 417) {
+        this.toastService.show('Usuario o contraseña incorrectos' , { classname: 'bg-danger text-white'});
+      } else {
+        this.toastService.show('Error en el servidor, intenta más tarde' , { classname: 'bg-danger text-white'});
+      }
 
       // Test
       // localStorage.setItem('token', 'token');

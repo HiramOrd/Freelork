@@ -14,15 +14,15 @@
 
         <div class="card-header"></div>
 
-        <form class="card-body px-0 pb-0 text-center" (submit)="submitForm()">
+        <div class="card-body px-0 pb-0 text-center">
           <p class="font-weight-normal">Uy! Parece que no estas en ningún grupo</p>
           <div class="d-flex mx-auto mb-3 align-items-center" id="code-input">
-            <input type="text" class="form-control form-control-blue mr-2"  placeholder="Ingresa un codigo de grupo">
+            <input type="text" class="form-control form-control-blue mr-2"  placeholder="Ingresa un codigo de grupo" [(ngModel)]="idClassroom">
             <i class="far fa-question-circle ml-1 text-sm mouse-pointer"
                placement="right" ngbTooltip="Tu asesor académico te proporcionará un código para ingresar a la clase" tooltipClass="defaultTooltip"></i>
           </div>
-          <button type="submit" class="btn btn-primary px-5">Ingresar</button>
-        </form>
+          <button class="btn btn-primary px-5" (click)="submitForm()">Ingresar</button>
+        </div>
         <div class="card-footer"></div>
 
 

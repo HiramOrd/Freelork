@@ -66,6 +66,9 @@ export class HttpClientService {
   deleteGroup(id: number) {
     return this.http.put(API.SERVER + API.API + API.DELETE_GROUP_TEACHER + id, null);
   }
+  getTeacherProfile( id: number) {
+    return this.http.get( API.SERVER + API.API + API.TEACHER_PROFILE + id);
+  }
 
   postTask(body: any): any {
     const formData = new FormData();
@@ -126,24 +129,25 @@ export class HttpClientService {
   }
 
   getStudentClassroom(id: number): any {
-    return this.http.get(API.SERVER + API.API + API.GET_STUDENT_CLASSROOM + id);
+    return this.http.get(API.SERVER + API.API + API.GET_STUDENT_CLASSROOM + '/' + id);
   }
 
   postStudentClassroom(idStudent: number, idClassroom: number): any {
-    return this.http.get(API.SERVER + API.API + API.POST_STUDENT_CLASSROOM + idStudent + API.POST_STUDENT_CLASSROOM2 + idClassroom );
+    return this.http.post(API.SERVER + API.API + API.POST_STUDENT_CLASSROOM + idStudent +
+      '/' + API.POST_STUDENT_CLASSROOM2 + idClassroom, null );
   }
 
-  //Company
+  // Company
   postCompany(body: any): any {
     return this.http.put(API.SERVER + API.API + API.GET_COMPANY + API.UPDATE_COMPANY, body);
   }
-  getCompanySummary(id: number){
+  getCompanySummary(id: number) {
     return this.http.get(API.SERVER + API.API + API.GET_COMPANY + API.GET_COMPANY_SUMMARY + id);
   }
-  getCompanyProjects(id: number){
+  getCompanyProjects(id: number) {
     return this.http.get(API.SERVER + API.API + API.GET_COMPANY + API.GET_COMPANY_PROJECTS + id);
   }
-  postProjects(body: any){
+  postProjects(body: any) {
     return this.http.post(API.SERVER + API.API + API.GET_COMPANY + API.POST_COMPANY_PROJECT, body);
   }
 
