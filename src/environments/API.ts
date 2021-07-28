@@ -65,4 +65,6 @@ export class API {
   static GET_COMPANY_PROJECT_TO_POST = 'project/';
   static COMPANY_PROFILE = 'company/profile/';
   static GET_COMPANY_SUTDENTS = 'students/';
+  static GET_TASK_COMPANY = 'registers/';
+
 }

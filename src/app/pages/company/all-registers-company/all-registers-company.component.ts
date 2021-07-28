@@ -20,6 +20,7 @@ export class AllRegistersCompanyComponent implements OnInit {
   dateMinRange = null;
   dateMaxRange = null;
   public isCollapsed = true;
+  studentTasks;
 
   // Table
   table;
@@ -44,18 +45,18 @@ export class AllRegistersCompanyComponent implements OnInit {
   }
 
   getTaskListAll() {
-    this.httpClientService.getTaskList(11).subscribe( response => {
-      console.log(response);
-      this.setTableInfo(studentTasks);
+    this.httpClientService.getTaskCompany(this.utilitiesService.getId()).subscribe( response => {
+      this.studentTasks = response; 
+      this.setTableInfo(this.studentTasks);
     }, error => {
       this.toastService.show('Error en el servidor, no se pudo cargar el contenido' , { classname: 'bg-danger text-white'});
       console.warn(error);
     });
   }
   getTaskListByDate() {
-    this.httpClientService.getTaskListByDate(11, this.dateMinRange, this.dateMaxRange).subscribe( response => {
+    this.httpClientService.getTaskListByDate(this.utilitiesService.getId(), this.dateMinRange, this.dateMaxRange).subscribe( response => {
       console.log(response);
-      this.setTableInfo(studentTasks);
+      this.setTableInfo(this.studentTasks);
     }, error => {
       this.toastService.show('Error en el servidor, no se pudo cargar el contenido' , { classname: 'bg-danger text-white'});
       console.warn(error);
@@ -99,7 +100,7 @@ export class AllRegistersCompanyComponent implements OnInit {
       this.httpClientService.getTaskList(this.utilitiesService.getId()).subscribe( response => {
         console.log(response);
         const table = this.utilitiesService.statusTaskToString(response, 'status');
-        this.exportToExcel('todo', studentTasks );
+        this.exportToExcel('todo', this.studentTasks );
       }, error => {
         this.toastService.show('Error en el servidor, no se pudo cargar el contenido' , { classname: 'bg-danger text-white'});
         console.warn(error);
