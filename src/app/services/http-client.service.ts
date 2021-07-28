@@ -78,6 +78,10 @@ export class HttpClientService {
     return this.http.post(API.SERVER + API.API + API.POST_TASK, formData);
   }
 
+  getTeacherStudent(id: number) {
+    return this.http.get(API.SERVER + API.API + API.GET_TEACHER_STUDENT + '/' + id );
+  }
+
   // Profiles
   getStudentProfile(id: number): any {
     return this.http.get(API.SERVER + API.API + API.GET_STUDENT + id);
@@ -180,7 +184,7 @@ export class HttpClientService {
   changeStatusTask(id: number, status: number) {
     return this.http.put( API.SERVER + API.API + API.CHANGE_TASK_STATUS + id + API.CHANGE_TASK_STATUS2 + status, null);
   }
-  getStudentsCompany(id: number){
+  getStudentsCompany(id: number) {
     return this.http.get(API.SERVER + API.API + API.GET_COMPANY + API.GET_COMPANY_SUTDENTS + id );
   }
   getTaskCompany(id: number){
@@ -189,6 +193,7 @@ export class HttpClientService {
   getTaskCompanyByDate(id: number, date1, date2){
     return this.http.get(API.SERVER + API.API + API.GET_COMPANY + API.GET_TASK_COMPANY + id + '/' + date1 + '/' + date2);
   }
+
 
 
   deleteStudentClassroom(id: number): any {

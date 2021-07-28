@@ -8,6 +8,8 @@ import {ToastService} from '../../../../utilities/toast.service';
 import {HttpClientService} from '../../../../services/http-client.service';
 import {UtilitiesService} from '../../../../utilities/utilities.service';
 import {ExportExcelService} from '../../../../utilities/export-excel.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-students-profile',
@@ -16,9 +18,11 @@ import {ExportExcelService} from '../../../../utilities/export-excel.service';
   providers: [TableService]
 })
 export class StudentsProfileComponent implements OnInit {
+  idUser;
   today = new Date();
   dateMinRange = null;
   dateMaxRange = null;
+  serviceData;
   public isCollapsed = true;
 
   // Table
@@ -28,6 +32,8 @@ export class StudentsProfileComponent implements OnInit {
   @ViewChildren(NgbdSortableHeader) headers: QueryList<NgbdSortableHeader>;
 
   constructor(
+    private router: Router,
+    private route: ActivatedRoute,
     public studentsService: StudentsService,
     private toastService: ToastService,
     private httpClientService: HttpClientService,
@@ -39,13 +45,18 @@ export class StudentsProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getTaskListAll();
     this.arrayTable$ = this.tableService.arrayTable$;
     this.total$ = this.tableService.total$;
+    const routeParams = this.route.snapshot.paramMap;
+    if (routeParams.get('id')) {
+      this.idUser = routeParams.get('id');
+      this.getStudent();
+      this.getTaskListAll();
+    }
   }
 
   getTaskListAll() {
-    this.httpClientService.getTaskList(11).subscribe( response => {
+    this.httpClientService.getTaskList(this.idUser).subscribe( response => {
       console.log(response);
       this.setTableInfo(response);
     }, error => {
@@ -54,12 +65,22 @@ export class StudentsProfileComponent implements OnInit {
     });
   }
   getTaskListByDate() {
-    this.httpClientService.getTaskListByDate(11, this.dateMinRange, this.dateMaxRange).subscribe( response => {
+    this.httpClientService.getTaskListByDate(this.idUser, this.dateMinRange, this.dateMaxRange).subscribe( response => {
       console.log(response);
       this.setTableInfo(response);
     }, error => {
       this.toastService.show('Error en el servidor, no se pudo cargar el contenido' , { classname: 'bg-danger text-white'});
       console.warn(error);
+    });
+  }
+
+  getStudent () {
+    this.httpClientService.getTeacherStudent(this.idUser).subscribe( response => {
+      this.serviceData = response;
+      console.log(response);
+    }, error => {
+      console.warn(error);
+      this.toastService.show('Error en el servidor, no se pudo cargar el contenido' , { classname: 'bg-danger text-white'});
     });
   }
 
@@ -97,7 +118,7 @@ export class StudentsProfileComponent implements OnInit {
 
   exportAll() {
     if (this.dateMaxRange && this.dateMinRange) {
-      this.httpClientService.getTaskList(11).subscribe( response => {
+      this.httpClientService.getTaskList(this.idUser).subscribe( response => {
         console.log(response);
         const table = this.utilitiesService.statusTaskToString(response, 'status');
         this.exportToExcel('todo', table );
