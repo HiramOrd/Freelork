@@ -48,7 +48,6 @@ export class StudentsListComponent implements OnInit {
   /* API for GET All Students in Dashboard StudentList Teacher */
   getAllStudents () {
     this.httpClientService.getAllStudents(9).subscribe( response => {
-      console.log(response);
       this.serviceData=response;
       this.setTableInfo(this.serviceData);
     }, error => {
@@ -104,7 +103,8 @@ export class StudentsListComponent implements OnInit {
 
   exportToExcel(type: string) {
     let arrayToExport = this.table;
-    arrayToExport = this.utilitiesService.deleteColumn('idStudent', arrayToExport);
+    arrayToExport = this.utilitiesService.deleteColumn('id', arrayToExport);
+    arrayToExport = this.utilitiesService.deleteColumn('image', arrayToExport);
     const dataForExcel = [];
     arrayToExport.forEach((row: any) => {
       dataForExcel.push(Object.values(row));
@@ -113,8 +113,8 @@ export class StudentsListComponent implements OnInit {
     const reportData = {
       title: 'Lista_Alumnos_' + type,
       data: dataForExcel,
-      headers: ['Matricula', 'Alumno', 'Grupo', 'Empresa', 'Asesor', 'Horas trabajadas'],
-      sizeColumns: [15, 25, 15, 20, 10, 25]
+      headers: ['Matricula', 'Alumno', 'Grupo', 'Empresa', 'Hrs trabajadas'],
+      sizeColumns: [15, 25, 15, 20, 15]
     };
 
     this.exportExcelService.exportExcel(reportData);

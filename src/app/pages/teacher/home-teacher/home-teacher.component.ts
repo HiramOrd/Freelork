@@ -48,8 +48,7 @@ export class HomeTeacherComponent implements OnInit {
   /* API for GET Summary Tasks in Dashboard Home Teacher */
   getTaskSummary () {
     this.httpClientService.getTaskSummary(9).subscribe( response => {
-      this.serviceData=response;
-      //console.log(response);
+      this.serviceData = response;
       this.setTableInfo(this.serviceData.registers);
     }, error => {
       console.warn(error);
