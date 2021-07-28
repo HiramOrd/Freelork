@@ -14,7 +14,7 @@
           <div class="row">
             <div class="col">
               <h5 class="card-title text-uppercase text-muted mb-0">Estudiantes</h5>
-              <span class="h2 font-weight-bold mb-0">{{serviceData.students?serviceData.students:'No disponible'}}</span>
+              <span class="h2 font-weight-bold mb-0">{{(serviceData?.students) ? serviceData?.students : 'No disponible'}}</span>
             </div>
             <div class="col-auto">
               <div class="icon icon-shape bg-purple text-white rounded-circle shadow">
@@ -48,7 +48,7 @@
           <div class="row">
             <div class="col">
               <h5 class="card-title text-uppercase text-muted mb-0">Grupos</h5>
-              <span class="h2 font-weight-bold mb-0">{{serviceData.groups?serviceData.groups:'No disponible'}}</span>
+              <span class="h2 font-weight-bold mb-0">{{(serviceData?.groups) ? serviceData?.groups:'No disponible'}}</span>
             </div>
             <div class="col-auto">
               <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
@@ -65,7 +65,7 @@
           <div class="row">
             <div class="col">
               <h5 class="card-title text-uppercase text-muted mb-0">Tareas</h5>
-              <span class="h2 font-weight-bold mb-0">{{serviceData.tasks?serviceData.tasks:'No disponible'}}</span>
+              <span class="h2 font-weight-bold mb-0">{{(serviceData?.tasks) ? serviceData?.tasks : 'No disponible'}}</span>
             </div>
             <div class="col-auto">
               <div class="icon icon-shape bg-green text-white rounded-circle shadow">
@@ -80,22 +80,22 @@
     <div class="col">
         <!-- Start Table Card -->
         <div class="card shadow px-2 px-sm-3 bg-lighterBlue">
-  
+
           <div class="card-header bg-lighterBlue px-0 pb-0">
-  
+
             <!-- Start First Row -->
             <div class="row align-items-center mb-3 ">
               <h3 class="col-auto mb-0">Actividades realizadas</h3>
             </div>
             <!-- End First Row -->
-  
+
             <!-- Start Second Row -->
             <div class="row align-items-end mb-0">
-  
+
               <!-- Start Date Range Export-->
               <!-- Start Search Input -->
               <div class="col-xl col-sm-12 row m-0 mb-2">
-                <div class="col p-0 mb-0 mr-2 form-group rounded overflow-hidden">
+                <div class="col p-0 mb-0 form-group rounded overflow-hidden">
                   <div class="input-group input-group-alternative w-100">
                     <input class="form-control" placeholder="Lista de tareas..." type="text" [(ngModel)]="tableService.searchTerm">
       <!--                  <span class="ml-3" *ngIf="tableService.loading$ | async">Loading...</span>-->
@@ -104,44 +104,14 @@
                     </div>
                   </div>
                 </div>
-  
-                <button class="btn btn-neutral text-primary d-xl-none" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
-                  <i class="fas fa-sliders-h"></i>
-                </button>
-  
               </div>
               <!-- End Search Input -->
-  
-              <!-- Start Filters -->
-              <div class="d-xl-inline-flex col-12 col-xl-auto m-0 p-0" id="collapseExample" [(ngbCollapse)]="isCollapsed">
-  
-                <!-- Start Export -->
-                <div class="col-sm-12 col-xl-auto form-group mb-2 d-flex align-items-end">
-                  <div class="btn-group m-0 w-100">
-                    <button type="button" class="btn btn-primary" (click)="exportAll()">
-                      <i class="fas fa-download"></i>
-                      <span class="ml-2">Exportar</span>
-                    </button>
-                    <!-- Export for dates -->
-<!--                     <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
-                      <button class="btn btn-primary dropdown-toggle-split" ngbDropdownToggle><i class="fas fa-chevron-down"></i></button>
-                      <div class="dropdown-menu" ngbDropdownMenu>
-                        <button ngbDropdownItem (click)="exportAll()">Exportar todo</button>
-                        <button ngbDropdownItem (click)="exportByDate()">Exportar por fecha</button>
-                      </div>
-                    </div> -->
-                  </div>
-                </div>
-              <!-- End Export -->
-              </div>
-              <!-- End Filters -->
-  
-  
+
             </div>
             <!-- End Second Row -->
-  
+
           </div>
-  
+
           <!-- Start Register Table -->
           <div class="table-responsive bg-white rounded">
             <table class="table align-items-center table-flush">
@@ -204,7 +174,7 @@
               </tr>
               </thead>
               <tbody>
-  
+
               <!-- Start Register Row -->
               <tr class="row-button flex-grow-0" (click)="studentsService.viewRegister(data.id)" *ngFor="let data of arrayTable$ | async">
                 <td scope="row">
@@ -245,17 +215,17 @@
               <tr>
                 <td colspan="6">
                   <div *ngIf="!serviceData || serviceData?.length === 0" class="flex-grow-1 d-flex m-0 p-0 align-items-center justify-content-start justify-content-md-center w-100">
-                    <span style="font-size: 1.4rem;">Sin tareas por revisar</span>
+                    <span class="py-5">Sin tareas por revisar</span>
                   </div>
                 </td>
               </tr>
               <!-- End Register Row -->
-  
+
               </tbody>
             </table>
           </div>
           <!-- End Register Table -->
-  
+
           <!-- Start Pagination -->
           <div class="card-footer py-4 bg-lighterBlue">
             <ngb-pagination
@@ -265,7 +235,7 @@
           <!-- End Pagination -->
         </div>
         <!-- End Table Card -->
-  
+
       </div>
   </div>
 

@@ -31,7 +31,7 @@
                   <!-- End title Header -->
 
                   <!-- Start form -->
-                  <form [formGroup]="createGroupForm" (submit)="createGroupSubmit()">
+                  <form [formGroup]="createGroupForm" (submit)="validateForm()">
 
                     <div class="row">
                       <div class="form-group col-12">
@@ -56,11 +56,11 @@
                             <select (change)="confirmDataForm()" id="career" class="form-control form-control-alternative bg-lightblue-border" formControlName="career">
                               <option [value]="null" hidden selected>Selecciona la carreras</option>
                               <option value="Ingeniería en Software">Ingeniería en Software</option>
-                              <option value="Ingenieria Financiera">Ingeniería Financiera</option>
-                              <option value="Ingenieria en Biomedica">Ingeniería en Biomédica</option>
+                              <option value="Ingeniería Financiera">Ingeniería Financiera</option>
+                              <option value="Ingeniería en Biomédica">Ingeniería en Biomédica</option>
                               <option value="Licenciatura en Administracion y Gestion de PyMEs">Licenciatura en Administración y Gestión de PyMEs</option>
-                              <option value="Ingenieria en Biotecnologia">Ingeniería en Biotecnología</option>
-                              <option value="Licenciatura en Terapia Fisica">Licenciatura en Terapia Física</option>
+                              <option value="Ingeniería en Biotecnologia">Ingeniería en Biotecnología</option>
+                              <option value="Licenciatura en Terapia Física">Licenciatura en Terapia Física</option>
                             </select>
                           </div>
                           <div *ngIf="createGroupForm.controls.career.errors?.required && createGroupForm.controls.career.touched">
@@ -95,8 +95,8 @@
                         <div class="input-group">
                           <select (change)="confirmDataForm()" id="schedule" class="form-control bg-lightblue-border" formControlName="schedule">
                             <option [value]="null" disabled hidden selected>Selecciona el turno</option>
-                            <option>Matutino</option>
-                            <option>Vespertino</option>
+                            <option value="Matutino">Matutino</option>
+                            <option value="Vespertino">Vespertino</option>
                           </select>
                         </div>
                         <div *ngIf="createGroupForm.controls.schedule.errors?.required && createGroupForm.controls.schedule.touched">

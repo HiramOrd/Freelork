@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {HttpClientService} from '../../../../services/http-client.service';
@@ -27,6 +27,7 @@ export class CreateGroupComponent implements OnInit {
     private httpClientService: HttpClientService,
     private toastService: ToastService,
     public utilitiesService: UtilitiesService,
+    private el: ElementRef,
   ) { }
 
   ngOnInit(): void {
@@ -52,10 +53,9 @@ export class CreateGroupComponent implements OnInit {
 
   confirmDataForm() {
     if (this.career.value && this.grade.value && this.schedule.value) {
-
+      console.log(this.createGroupForm.getRawValue());
       this.httpClientService.getGroup( this.career.value, this.grade.value, this.schedule.value).subscribe( response => {
         this.groups = response;
-        console.log(this.groups);
         }, error => {
           console.warn(error);
           this.toastService.show('Error en el servidor, no se pudo cargar el contenido' , { classname: 'bg-danger text-white'});
@@ -63,14 +63,10 @@ export class CreateGroupComponent implements OnInit {
     }
   }
 
-  return(): void {
-    let route = '/dash/std/register';
-    if (this.origin === '1') {
-      route = '/dash/std/home';
-    }
-    this.router.navigate([route]).then(() => {} );
+  validateForm() {
+    (this.createGroupForm.valid) ?
+      this.createGroupSubmit() :  this.errorForm();
   }
-
 
   createGroupSubmit(): void {
     this.getGroup = this.createGroupForm.getRawValue();
@@ -79,14 +75,25 @@ export class CreateGroupComponent implements OnInit {
     delete this.getGroup.schedule;
 
     console.log(this.getGroup);
-    this.httpClientService.registerGroup(this.idGroup, this.getGroup.nameGroup, this.utilitiesService.getId()).subscribe( response => {
+    this.httpClientService.registerGroup(this.getGroup).subscribe( response => {
       console.log(this.idGroup, this.getGroup.nameGroup, 1);
-      this.toastService.show('Guardado Exitosamente' , { classname: 'bg-success text-white'});
-      this.return();
+      this.toastService.show('Grupo creado exitosamente' , { classname: 'bg-success text-white'});
+      this.router.navigate(['/dash/tch/groups']);
     }, (error) => {
       console.warn(error);
       this.toastService.show('Error en el servidor, intenta mas tarde' , { classname: 'bg-danger text-white'});
     } );
+  }
+
+  errorForm() {
+    this.createGroupForm.markAllAsTouched();
+    for (const key of Object.keys(this.createGroupForm.controls)) {
+      if (this.createGroupForm.controls[key].invalid) {
+        const invalidControl = this.el.nativeElement.querySelector('[formcontrolname="' + key + '"]');
+        invalidControl.focus();
+        break;
+      }
+    }
   }
 
 }

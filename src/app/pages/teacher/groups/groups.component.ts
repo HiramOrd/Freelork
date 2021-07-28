@@ -5,6 +5,7 @@ import {NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
 import { ClipboardService } from 'ngx-clipboard';
 import {HttpClientService} from '../../../services/http-client.service';
 import {ToastService} from '../../../utilities/toast.service';
+import {UtilitiesService} from '../../../utilities/utilities.service';
 @Component({
   selector: 'app-groups',
   templateUrl: './groups.component.html',
@@ -17,6 +18,7 @@ export class GroupsComponent implements OnInit {
     private clipboardApi: ClipboardService,
     private  httpClientService: HttpClientService,
     private toastService: ToastService,
+    private utilitiesService: UtilitiesService,
     ) {}
 
   ngOnInit(): void {
@@ -24,7 +26,8 @@ export class GroupsComponent implements OnInit {
   }
   /* API for GET All Groups in Dashboard Groups Teacher */
   getAllGroups () {
-    this.httpClientService.getAllGroups(9).subscribe( response => {
+    this.httpClientService.getAllGroups(this.utilitiesService.getId()).subscribe( response => {
+      console.log(response);
       this.serviceData = response;
     }, error => {
       console.warn(error);
