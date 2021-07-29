@@ -117,7 +117,7 @@
             <table class="table align-items-center table-flush">
               <thead class="thead-light">
               <tr>
-                <th scope="col" sortable="title" (sort)="onSort($event)" class="table-title">
+                <th scope="col" sortable="title" (sort)="onSort($event)" class="table-title d-none d-lg-table-cell">
                   <div>
                     Tarea
                     <span>
@@ -162,7 +162,7 @@
                   </span>
                   </div>
                 </th>
-                <th scope="col" sortable="status" (sort)="onSort($event)" class="table-title d-none d-lg-table-cell">
+                <th scope="col" sortable="status" (sort)="onSort($event)" class="table-title">
                   <div class="table-title">
                     Status
                     <span>
