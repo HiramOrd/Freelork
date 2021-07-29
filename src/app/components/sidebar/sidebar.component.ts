@@ -19,7 +19,7 @@ export const ROUTES: RouteInfo[] = [
 
   { role: '2', path: 'tch/home', title: 'Dashboard',  icon: 'ni-books text-primary', class: '' },
   { role: '2', path: 'tch/groups', title: 'Grupos',  icon: 'fas fa-users text-primary', class: '' },
-  { role: '2', path: 'tch/students-list', title: 'Estudiantes',  icon: 'ni-hat-3 text-primary', class: '' },
+  { role: '2', path: 'tch/students', title: 'Estudiantes',  icon: 'ni-hat-3 text-primary', class: '' },
   { role: '2', path: 'tch/profile', title: 'Perfil',  icon: 'ni-single-02 text-primary', class: ''  },
 
   { role: '3', path: 'comp/home', title: 'Dashboard',  icon: 'ni-books text-primary', class: ''  },
