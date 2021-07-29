@@ -49,6 +49,7 @@ export class HomeTeacherComponent implements OnInit {
   getTaskSummary () {
     this.httpClientService.getTaskSummary(this.utilitiesService.getId()).subscribe( response => {
       this.serviceData = response;
+      console.log(response);
       this.setTableInfo(this.serviceData.registers);
     }, error => {
       console.warn(error);

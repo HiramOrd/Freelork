@@ -16,7 +16,7 @@ export class AllUsersComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, public router: Router) {
     this.userEntity = this.formBuilder.group({
       role: new FormControl(null, [Validators.required]),
-      fullName: new FormControl(null, [Validators.required, Validators.minLength(12)]),
+      fullName: new FormControl(null, [Validators.required, Validators.minLength(8)]),
       email: new FormControl(null, [Validators.required, Validators.pattern(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)]),
       password: new FormControl(null, [Validators.required, Validators.minLength(8)]),
       confirmPassword: new FormControl(null, [Validators.required]),

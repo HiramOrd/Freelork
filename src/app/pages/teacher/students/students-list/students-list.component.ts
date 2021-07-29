@@ -45,10 +45,10 @@ export class StudentsListComponent implements OnInit {
   ngOnInit(): void {
     this.arrayTable$ = this.tableService.arrayTable$;
     this.total$ = this.tableService.total$;
-    if(this.router.url === '/dash/tch/students-list'){
+    if(this.router.url === '/dash/tch/students') {
       this.getAllStudents();
     }
-    if(this.router.url === '/dash/comp/students'){
+    if(this.router.url === '/dash/comp/students') {
       this.getAllStudentsCompany();
     }
   }
@@ -56,7 +56,7 @@ export class StudentsListComponent implements OnInit {
   getAllStudents () {
     this.httpClientService.getAllStudents(this.utilitiesService.getId()).subscribe( response => {
       this.serviceData = response;
-      console.log(this.serviceData[0].id);
+      console.log(this.serviceData);
       this.setTableInfo(this.serviceData);
       /* console.log(this.serviceData); */
     }, error => {
@@ -69,7 +69,7 @@ export class StudentsListComponent implements OnInit {
     this.httpClientService.getStudentsCompany(this.utilitiesService.getId()).subscribe( response => {
       this.serviceData = response;
       this.setTableInfo(this.serviceData);
-      /* console.log(this.serviceData); */
+      console.log(this.serviceData);
     }, error => {
       console.warn(error);
       this.toastService.show('Error en el servidor, no se pudo cargar el contenido' , { classname: 'bg-danger text-white'});

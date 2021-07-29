@@ -144,7 +144,7 @@
                   </span>
                   </div>
                 </th>
-                <th scope="col" sortable="nameProject" (sort)="onSort($event)" class="table-title">
+                <th scope="col" sortable="nameProject" (sort)="onSort($event)" class="table-title d-none d-lg-table-cell">
                   <div>
                     Proyecto
                     <span>
@@ -162,7 +162,7 @@
                   </span>
                   </div>
                 </th>
-                <th scope="col" sortable="status" (sort)="onSort($event)" class="table-title">
+                <th scope="col" sortable="status" (sort)="onSort($event)" class="table-title d-none d-lg-table-cell">
                   <div class="table-title">
                     Status
                     <span>
@@ -192,7 +192,7 @@
                   </div>
                 </td>
                 <td class="d-none d-lg-table-cell">
-                  <span class="btn-link mouse-pointer" routerLink="/dash/tch/students-list/students-profile/1">{{data.student?data.student:'No disponible'}}</span>
+                  <span class="btn-link mouse-pointer" routerLink="/dash/tch/students/students-profile/{{data.idUser}}">{{data.student?data.student:'No disponible'}}</span>
                 </td>
                 <td class="d-none d-lg-table-cell">
                   {{data.nameCompany?data.nameCompany:'No disponible'}}

@@ -77,11 +77,11 @@ export class StudentsProfileComponent implements OnInit {
   }
 
   nextProject() {
-    (this.counterProject < this.projectsLength - 1) ? this.counterProject++ : this.counterProject = 0;
+    (this.counterProject <= this.projectsLength) ? this.counterProject++ : this.counterProject = 0;
   }
 
   previousProject() {
-    (this.counterProject > 0) ? this.counterProject-- : this.counterProject = this.counterProject = this.projectsLength - 1;
+    (this.counterProject > 0) ? this.counterProject-- : this.counterProject = this.projectsLength;
   }
 
   getStudent () {
